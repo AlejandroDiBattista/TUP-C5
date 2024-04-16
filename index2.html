@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Demo 1</title>
+        <link rel="stylesheet" href="estilo.css">
+        
+        <style>
+            body{
+                font-family: Arial, sans-serif;
+                background-color: #f0f0f0;
+                margin: 0;
+                padding: 0;
+            }
+            h1{
+                background-color: #333;
+                color: white;
+                padding: 10px;
+                margin: 0;
+            }
+            ul{
+                list-style: none;
+                padding: 0;
+            }
+            li{
+                background-color: white;
+                padding: 10px;
+                margin: 5px;
+                border-radius: 5px;
+            }
+            button{
+                padding: 10px;
+                margin: 10px;
+                border: none;
+                background-color: #333;
+                color: white;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            button:hover{
+                background-color: #555;
+            }
+        </style>
+        <script>
+
+            function generarContacto(nombre, apellido, telefono){
+                return `<li>
+                            <p>${nombre} <b>${apellido}</b></p>
+                            <p>tel: <i>${telefono}</i></p>
+                        </li>`;
+            }
+    
+            let contactos = [
+                {nombre: "Juan", apellido: "Perez", telefono: "345-6789"},
+                {nombre: "Maria", apellido: "Gomez", telefono: "456-7890"},
+                {nombre: "Carlos", apellido: "Sanchez", telefono: "567-8901"},
+                {nombre: "Jose", apellido: "Rodriguez", telefono: "678-9012"},
+                {nombre: "Pedro", apellido: "Garcia", telefono: "789-0123"},
+                {nombre: "Ana", apellido: "Torres", telefono: "890-1234"}
+            ]
+
+            function generarLista(contactos){
+                let lista = "";
+                for(let contacto of contactos){
+                    lista += generarContacto(contacto.nombre, contacto.apellido, contacto.telefono);
+                }
+                return lista;
+            }
+
+            function mostrar(){
+                document.getElementById("agenda").innerHTML = generarLista(contactos);
+            }
+
+            setTimeout(mostrar, 1);
+        </script>
+    </head>
+    <body>
+        <h1>Agenda</h1>
+        <ul id="agenda">
+        </ul>
+        <button onclick="mostrar()">Mostrar</button>
+    </body>
+</html>
