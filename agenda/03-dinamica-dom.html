@@ -1,0 +1,33 @@
+<html>
+<head></head>
+<body>
+    <div id="root"></div>
+    <script>
+        let nombres = ['Juan', 'Analia', 'Maria']
+
+        const Titulo = (texto) => {
+            let h3 = document.createElement('h3')
+            h3.appendChild(document.createTextNode(texto))
+            return h3
+        }
+
+        const Item = (nombre) => {
+            let li = document.createElement('li')
+            li.appendChild(document.createTextNode(nombre))
+            return li
+        }
+
+        const Agenda = () => {
+            let ul = document.createElement('ul')
+            ul.appendChild(Titulo('Agenda DOM'))
+            for (let nombre of nombres) {
+                ul.appendChild(Item(nombre))
+            }
+            return ul
+        }
+
+        const root = document.getElementById('root')
+        root.appendChild(Agenda())
+    </script>
+</body>
+</html>

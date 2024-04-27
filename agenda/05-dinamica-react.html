@@ -1,0 +1,23 @@
+<html>
+<head>
+    <!-- react archivo html -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script>
+        let nombres = ['Juan', 'Analia', 'Maria']
+
+        const Titulo = texto => React.createElement('h3', null, texto)
+        const Nombre = nombre => React.createElement('li', null, nombre)
+        const Agenda = nombres => React.createElement(
+            'ul', null,
+                Titulo("Agenda React"),
+                ...nombres.map(nombre => Nombre(nombre)))
+
+        const root = document.getElementById('root')
+        ReactDOM.render(Agenda(nombres), root)
+    </script>
+</body>
+</html>

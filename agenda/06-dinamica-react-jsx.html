@@ -1,0 +1,24 @@
+<html>
+<head>
+    <!-- react y jsx en un archivo html -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        let nombres = ['Juan', 'Analia', 'Maria']
+
+        const Titulo = ({ texto }) => <h3>{texto}</h3>;
+        const Nombre = ({ nombre }) => <li>{nombre}</li>;
+        const Agenda = ({ nombres }) =>
+            <ul>
+                <Titulo texto="Agenda React JSX" />
+                {nombres.map(nombre => <Nombre nombre={nombre} />)}
+            </ul>
+        const root = document.getElementById('root')
+        ReactDOM.render(<Agenda nombres={nombres} />, root)
+    </script>
+</body>
+</html>

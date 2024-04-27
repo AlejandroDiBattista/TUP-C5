@@ -1,0 +1,20 @@
+<html>
+<head></head>
+<body>
+    <div id="root"></div>
+    <script>
+        let nombres = ['Juan', 'Maria', 'Jose']
+
+        let Titulo = texto => `<h3>${texto}</h3>`
+        let Item = nombre => `<li>${nombre}</li>`
+        let Agenda = () => `
+            <ul>
+                ${Titulo('Agenda Dinámica')}
+                ${nombres.map(Item).join('')}
+            </ul>`
+
+        const root = document.getElementById('root')
+        root.innerHTML = Agenda()
+    </script>
+</body>
+</html>

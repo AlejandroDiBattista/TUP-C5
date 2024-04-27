@@ -1,0 +1,33 @@
+<html>
+<head></head>
+<body>
+    <div id="root"></div>
+    <script>
+        // Funcion auxiliar para crear elementos del DOM
+        function createElement(tag, props, ...children) {
+            let element = document.createElement(tag)
+            if (props) Object.assign(element, props)
+            for (let child of children) {
+                if (typeof child === 'string') // Si es un string, lo convierto en un nodo de texto
+                    child = document.createTextNode(child)
+                element.appendChild(child)
+            }
+            return element
+        }
+    </script>
+
+    <script>
+        let nombres = ['Juan', 'Analia', 'Maria']
+
+        const Titulo = texto => createElement('h3', null, texto)
+        const Nombre = nombre => createElement('li', null, nombre)
+        const Agenda = nombres => createElement(
+                'ul', null,
+                    Titulo("Agenda DOM (con createElement)"),
+                    ...nombres.map(nombre => Nombre(nombre)))
+
+        const root = document.getElementById('root')
+        root.appendChild(Agenda(nombres))
+    </script>
+</body>
+</html>
