@@ -23,7 +23,7 @@ a.indexOf(10) //> 0
 a.concat([1,2,3])
 
 a.join("-") //> "10-20"
-a = "HOla mundo cruel".split(" ")
+a = "Hola mundo cruel".split(" ")
 // ["HOla", "mundo", "cruel"]
 
 for(let i = 0; i < a.length;i++){
@@ -46,3 +46,6 @@ for(let x of a)
 
 typeof(a) //> object
 
+for(let i in a){
+    console.log(i)
+}
