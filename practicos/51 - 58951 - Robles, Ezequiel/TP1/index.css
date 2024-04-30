@@ -5,10 +5,3 @@ body {
     padding: 0;
     box-sizing: border-box;
 }
-
-.contacto {
-    border: 1px solid #ccc;
-    border-radius: 10;
-    height: 100px;
-    width: 300px;
-}
