@@ -1,43 +1,53 @@
 const App = () =>  {
     let contactos = [{
         "id": 1,
-        "name": "John Doe",
+        "name": "John",
+        "apellido": " Doe",
         "phone": "+54705388272"
     }, {
         "id": 2,
-        "name": "Jane Doe",
+        "name": "Jane",
+        "apellido": " Doe",
         "phone": "+54024419291"
     }, {
         "id": 3,
-        "name": "Bob Smith",
+        "name": "Bob",
+        "apellido": " Smith",
         "phone": "+54130464503"
     }, {
         "id": 4,
-        "name": "Alice Smith",
+        "name": "Alice",
+        "apellido": " Smith",
         "phone": "+54764925705"
     }, {
         "id": 5,
-        "name": "Charlie Brown",
+        "name": "Charlie",
+        "apellido": " Brown",
         "phone": "+54244019730"
     }, {
         "id": 6,
-        "name": "David Miller",
+        "name": "David",
+        "apellido": " Miller",
         "phone": "+54700897730"
     }, {
         "id": 7,
-        "name": "Eve Green",
+        "name": "Eve",
+        "apellido": " Green",
         "phone": "+54737573885"
     }, {
         "id": 8,
-        "name": "Frank Jones",
+        "name": "Frank",
+        "apellido": " Jones",
         "phone": "+54975397820"
     }, {
         "id": 9,
-        "name": "Grace White",
+        "name": "Grace",
+        "apellido": " White",
         "phone": "+54903020934"
     }, {
         "id": 10,
-        "name": "Henry Davis",
+        "name": "Henry",
+        "apellido": " Davis",
         "phone": "+54388346849"
     }]
     return (
@@ -48,7 +58,7 @@ const App = () =>  {
                 contactos.map((contacto) => {
                     return (
                         <div className="contact" key={contacto.id}>
-                            <p style={{fontWeight: 'bold', fontSize: '15px'}}>{contacto.name}</p>
+                            <p style={{fontWeight: 'bold', fontSize: '15px'}}>{contacto.name}{contacto.apellido}</p>
                             <p>{contacto.phone}</p>
                         </div>
                     );
