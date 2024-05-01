@@ -63,33 +63,15 @@
         .falta {
             color: red;
         }
+
+        .alumno .ver .copia {
+            float: right;
+            font-size: 0.8rem;
+            color: #999;
+        }
     </style>
     <script>
         const datos = [
-  {
-    "id": "C5-52",
-    "comision": "C5",
-    "orden": 52,
-    "legajo": 55751,
-    "nombre": "Jeréz, Francisco David",
-    "inicial": "FDJ",
-    "TP1": false,
-    "cambio": false,
-    "antes": "C3-37",
-    "ubicacion": "./52 - 55751 - Jeréz, Francisco David/TP1/index.html"
-  },
-  {
-    "id": "C5-51",
-    "comision": "C5",
-    "orden": 51,
-    "legajo": 58951,
-    "nombre": "Robles, Ezequiel",
-    "inicial": "ERO",
-    "TP1": false,
-    "cambio": false,
-    "antes": "C3-45",
-    "ubicacion": "./51 - 58951 - Robles, Ezequiel/TP1/index.html"
-  },
   {
     "id": "C5-01",
     "comision": "C5",
@@ -306,8 +288,8 @@
     "legajo": 58687,
     "nombre": "Jadur, Sofia Nahir",
     "inicial": "SNJ",
-    "TP1": true,
-    "cambio": true,
+    "TP1": false,
+    "cambio": false,
     "ubicacion": "./20 - 58687 - Jadur, Sofia Nahir/TP1/index.html"
   },
   {
@@ -640,20 +622,48 @@
     "cambio": false,
     "antes": "C9-11",
     "ubicacion": "./50 - 59001 - Peralta, Axel Rubens/TP1/index.html"
+  },
+  {
+    "id": "C5-51",
+    "comision": "C5",
+    "orden": 51,
+    "legajo": 58951,
+    "nombre": "Robles, Ezequiel",
+    "inicial": "ERO",
+    "TP1": false,
+    "cambio": false,
+    "antes": "C3-45",
+    "ubicacion": "./51 - 58951 - Robles, Ezequiel/TP1/index.html"
+  },
+  {
+    "id": "C5-52",
+    "comision": "C5",
+    "orden": 52,
+    "legajo": 55751,
+    "nombre": "Jeréz, Francisco David",
+    "inicial": "FDJ",
+    "TP1": false,
+    "cambio": false,
+    "antes": "C3-37",
+    "ubicacion": "./52 - 55751 - Jeréz, Francisco David/TP1/index.html"
   }
 ]
     </script>
 
     <script type="text/babel">
+
         const comision = datos[0].comision
 
         const Ver = ({ alumno }) =>
-            <span class="ver">
-                {alumno.cambio ? <a href={alumno.ubicacion}>Ver Entrega</a> : <span class="falta">No entregado</span>}
+            <span className="ver">
+                {alumno.cambio ? 
+                    <a href={alumno.ubicacion}>Ver Entrega</a> : 
+                    <span class="falta">No entregado</span>}
+                {alumno.copia && <span className="copia">😲 {alumno.copia}</span>}
             </span>
         
         const Alumno = ({ alumno }) => (
-            <div class="alumno">
+            <div className="alumno">
                 <h2><span>{alumno.orden}</span> {alumno.nombre}</h2>
                 <Ver alumno={alumno} />
             </div>
@@ -661,7 +671,7 @@
 
         const App = () => (
             <div id="main">
-                <h1>{comision} | Listado de alumnos</h1>
+                <h1>| {comision} | Listado de alumnos</h1>
                 <div>
                     <div>Entregó: {datos.filter(alumno => alumno.cambio).length}</div>
                     <div>Falta entregar: {datos.filter(alumno => !alumno.cambio).length}</div>
