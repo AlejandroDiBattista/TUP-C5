@@ -1,7 +1,75 @@
 body {
-    background-color: #f0f0f0;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  background-color: #3e0c52;
+  animation-name: colores;
+  animation-duration: 3.8s;
+  animation-iteration-count: infinite;
 }
+
+.container {
+  position: relative;
+  right: 30px;
+  display: grid;
+  grid-template-columns: repeat(4, 350px); 
+  grid-template-rows: repeat(4,210px);
+  justify-content: center;
+  column-gap: 43px;
+  row-gap: 40px;
+  margin-top: 80px;
+}
+
+
+.container li {
+  background-color: #2e0435; 
+  border-radius: 10px;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: white;
+  padding: 20px;
+  text-align:start;
+  font-size: 22px;
+  list-style: none;
+  transition-property:box-shadow color;
+  transition-duration: .5s;
+  box-shadow: 3px 3px 3px 3px black;
+}
+
+.container-div {
+  margin-bottom: 11px;
+}
+
+.container li:hover {
+  box-shadow: 4px 4px 8px 8px rgb(165, 60, 235);
+  text-shadow:0px 1px 1px  #2cdcff;
+}
+
+.img {
+  position: relative;
+  left:290px;
+  width: 36px;
+  height: 35px;
+  border-radius:10% ;
+}
+
+.id {
+  position: relative;
+  left:258px;
+  
+}
+
+h1 {
+  text-align: center;
+  color: #f3ccf9;
+  font-size: 46px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+@keyframes colores {
+
+  1% {
+    background-color:#7d4686;
+  }
+
+  
+}
+
+
+  
