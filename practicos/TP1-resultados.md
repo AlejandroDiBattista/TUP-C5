@@ -2,10 +2,18 @@
 * Ok
 * No podre olvidar nunca esos colores :)
 
+## 18
+* No cumple la consigna. 18 archivo para hacer 18 lineas
+* Uso Vite en lugar de archivo referencia a librería.
+
 ## 20
 * Falto mostrar el teléfono
 * Falto formato Tarjeta
 * Nombre de variable en mayusculas
+
+## 22
+* Ok
+* No borró el código de "¡Hola Mundo!"
 
 ## 25
 * Nombre de propiedades en mayusculas
@@ -30,9 +38,12 @@
 * Sin telefono
 * Es identico a #20
 
-## 41
-* Sin telefono
-* Es identico a #20
+## 44
+* Crea clase para almacenar los datos. 
+* En las clases usa _xx como publica y xx por campos privados
+* No implementa el componente Contacto
+* Agrega el campo edad.
+* Agrega clase por todos lados que no estan definida en CSS
 
 ## 41
 * Sin telefono

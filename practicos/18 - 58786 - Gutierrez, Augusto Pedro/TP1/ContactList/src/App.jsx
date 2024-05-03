@@ -1,7 +1,6 @@
 import HeaderComponent from './components/HeaderComponent/HeaderComponent';
 
-function App() {
-  
+function App() { 
   return (
     <HeaderComponent />
   )
