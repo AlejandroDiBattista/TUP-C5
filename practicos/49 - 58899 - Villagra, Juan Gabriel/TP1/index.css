@@ -15,8 +15,6 @@
 
 
 
-
-
 .id{
     position: relative;
     display:inline-table; 
@@ -30,8 +28,4 @@
     border: cyan;
     border-radius: 30px;
     box-shadow: aqua;    
-}
-
-.id:hover.id{
-    width: 20px;
 }
