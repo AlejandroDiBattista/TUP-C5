@@ -5,6 +5,7 @@ body {
     padding: 0;
     box-sizing: border-box;
 }
+
 .agenda {
     display: flex;
     flex-wrap: wrap;

@@ -1,15 +1,15 @@
-const ListaCompleta = [ 
-    {id : 1 , nombre: "Martina" , apellido: "Salazar", telefono:"1234567" },
-    {id : 2 , nombre: "Camila" , apellido: "Robles", telefono: "3453656"},
-    {id : 3 , nombre:  "Jose" , apellido: "Rosello", telefono: "3453254" }, 
-    {id : 4 , nombre:  "Sofia" , apellido: "Jadur", telefono: "3453365" },
-    {id : 5 , nombre:  "Belen" , apellido: "Wiernna", telefono: "3453235" },
-    {id : 6 , nombre:  "Jazmin" , apellido: "Jadur", telefono: "4353454" },
-    {id : 7 , nombre:  "Camila" , apellido: "Diaz", telefono: "3453675" },
-    {id : 8 , nombre:  "Ezequiel" , apellido: "Robles", telefono: "3454447" },
+const ListaCompleta = [
+    { id: 1, nombre: "Martina", apellido: "Salazar", telefono: "1234567" },
+    { id: 2, nombre: "Camila", apellido: "Robles", telefono: "3453656" },
+    { id: 3, nombre: "Jose", apellido: "Rosello", telefono: "3453254" },
+    { id: 4, nombre: "Sofia", apellido: "Jadur", telefono: "3453365" },
+    { id: 5, nombre: "Belen", apellido: "Wiernna", telefono: "3453235" },
+    { id: 6, nombre: "Jazmin", apellido: "Jadur", telefono: "4353454" },
+    { id: 7, nombre: "Camila", apellido: "Diaz", telefono: "3453675" },
+    { id: 8, nombre: "Ezequiel", apellido: "Robles", telefono: "3454447" },
 ];
 
-const Contacto = ({nombre, apellido}) => (
+const Contacto = ({ nombre, apellido }) => (
     <div>
         <h3>Nombre: {nombre}</h3>
         <p>Apellido: {apellido}</p>
@@ -22,7 +22,7 @@ const Agenda = () => (
             <Contacto
                 key={contacto.id}
                 nombre={contacto.nombre}
-                apellido={contacto.apellido} 
+                apellido={contacto.apellido}
             />
         ))}
     </div>
