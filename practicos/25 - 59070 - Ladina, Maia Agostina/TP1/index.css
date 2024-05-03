@@ -1,7 +1,36 @@
 body {
-    background-color: #f0f0f0;
+    background-color: #fdfdfd;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
+.contact-card {
+    width: 250px;
+    height: 250px ;
+    padding: 20px;
+    border: 1px solid #707070;
+    border-radius: 10px;
+    background-color: #7ab9c4;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    margin: 15px;
+  }
+  
+  .contact-card h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .contact-card p {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  .agenda-card{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+  }
