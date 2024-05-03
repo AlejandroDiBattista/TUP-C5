@@ -38,7 +38,7 @@
 * Sin telefono
 * Es identico a #20
 
-## 44
+## 40
 * Crea clase para almacenar los datos. 
 * En las clases usa _xx como publica y xx por campos privados
 * No implementa el componente Contacto
