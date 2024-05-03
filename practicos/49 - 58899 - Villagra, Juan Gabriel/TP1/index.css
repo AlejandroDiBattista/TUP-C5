@@ -1,7 +1,28 @@
-body {
-    background-color: #f0f0f0;
+.li {
+    position: relative;
+    background:linear-gradient(0, #1b1e26 6%,
+    #303440 95%);
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
+
+.Title{
+    background-color: aqua;
+    text-align: center;
+    
+}
+
+.id{
+    
+    display:inline-table; 
+    background: rgba(0, 0, 0, 0.872);
+    color: #84ede8;
+    left: 10px;
+    padding:15px ;
+    margin:10px ;
+    border: cyan;
+    border-radius: 30px;
+    box-shadow: aqua;    
+}
+
+
