@@ -1,7 +1,30 @@
 body {
-    background-color: #f0f0f0;
+    background-color: #000000;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    color: #f0f0f0;
+}
+.contacto{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.info{
+    margin: 10px;
+    padding-left: 10px;
+    border: 0.2rem solid rgba(43, 175, 175, 0.938);
+    border-radius: 8px;
+    width: 31%;
+}
+li{
+    padding: 5px;
+    font-weight: bold;
+}
+
+h1{
+    text-align: center;
+    font-size: 2.5rem;
 }
