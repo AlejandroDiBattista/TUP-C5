@@ -5,3 +5,12 @@ body {
     padding: 0;
     box-sizing: border-box;
 }
+.targeta{
+    width: 30%;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #232323;
+    padding: 5px;
+    color: white;
+}

@@ -1,7 +1,55 @@
 body {
-    background-color: #f0f0f0;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: black;
+}
+
+.carta-contacto {
+  width: calc(33.33% - 20px);
+  background-color: bisque;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 10px;
+  /* Espacio entre cada carta */
+  display: inline-block;
+  /* Para que las cartas se muestren en línea */
+  vertical-align: auto;
+  /* Para alinear las cartas en la parte superior */
+
+}
+
+.carta-contacto h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #333;
+}
+
+.carta-contacto p {
+  margin: 10px 0;
+  color: #666;
+}
+
+
+.agenda-carta {
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  /* Permite que los elementos se envuelvan en líneas adicionales si no caben en una sola línea */
+  justify-content: space-around;
+}
+
+
+h1 {
+  color: white;
+  margin-bottom: -20px;
+}
+
+p {
+  color: white;
 }
