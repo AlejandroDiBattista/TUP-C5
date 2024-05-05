@@ -5,3 +5,10 @@ body {
     padding: 0;
     box-sizing: border-box;
 }
+.contacto-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    width: 300px;
+    box-shadow: 0 0 5px rgba(218, 5, 5, 0.815);
+}
