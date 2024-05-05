@@ -1,18 +1,18 @@
 let contactos = [
-    {id: 1, nombre: 'Emiliano', apellido: 'Stemberger', telefono: '1111'},
-    {id: 2, nombre: 'Shaquille', apellido: "O'neal", telefono: '2222'},
-    {id: 3, nombre: 'Lionel', apellido: 'Messi', telefono: '3333'},
-    {id: 4, nombre: 'Cristiano', apellido: 'Ronaldo', telefono: '4444'},
-    {id: 5, nombre: 'Emanuel', apellido: 'Ginobili', telefono: '5555'},
-    {id: 6, nombre: 'Michael', apellido: 'Jordan', telefono: '6666'},
+    {id: 1, nombre: 'Emiliano', apellido: 'Stemberger', telefono: '3813176546'},
+    {id: 2, nombre: 'Shaquille', apellido: "O'neal", telefono: '3819008765'},
+    {id: 3, nombre: 'Lionel', apellido: 'Messi', telefono: '3811219099'},
+    {id: 4, nombre: 'Cristiano', apellido: 'Ronaldo', telefono: '3816675543'},
+    {id: 5, nombre: 'Emanuel', apellido: 'Ginobili', telefono: '3810119862'},
+    {id: 6, nombre: 'Michael', apellido: 'Jordan', telefono: '3816757789'},
 ]
 
 const Contacto = ({id, nombre, apellido, telefono}) =>
     <div>
-        <p><b>Id:</b>{id}</p>
-        <p><b>Nombre:</b>{nombre}</p>
+        <p><b>Id:</b> {id}</p>
+        <p><b>Nombre:</b> {nombre}</p>
         <p><b>Apellido:</b> {apellido}</p>
-        <p><b>Teléfono:</b>{telefono}</p>
+        <p><b>Teléfono:</b> {telefono}</p>
     </div>
 
 const App = () =>  (
@@ -32,4 +32,4 @@ const App = () =>  (
 
 
 
-ReactDOM.render(<App/> , document.getElementById('root'))
+ReactDOM.render(<App/>, document.getElementById('root'))
