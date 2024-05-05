@@ -1,0 +1,1525 @@
+[
+  {
+    "id": "C3-01",
+    "comision": "C3",
+    "orden": 1,
+    "legajo": 57605,
+    "nombre": "Auad, Gerónimo",
+    "inicial": "GAU",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-02",
+    "comision": "C3",
+    "orden": 2,
+    "legajo": 59204,
+    "nombre": "Aybar, Anibal Cesar Daniel",
+    "inicial": "ACDA",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-03",
+    "comision": "C3",
+    "orden": 3,
+    "legajo": 58931,
+    "nombre": "Cabrera, Lucas Nahuel",
+    "inicial": "LNC",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-04",
+    "comision": "C3",
+    "orden": 4,
+    "legajo": 58771,
+    "nombre": "Calvo Maderuelo, Carlos M",
+    "inicial": "CMCM",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-05",
+    "comision": "C3",
+    "orden": 5,
+    "legajo": 59022,
+    "nombre": "Camafio Terán, Nicolás",
+    "inicial": "NCT",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-06",
+    "comision": "C3",
+    "orden": 6,
+    "legajo": 58889,
+    "nombre": "Capó, Mauricio Nicolás",
+    "inicial": "MNC",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-07",
+    "comision": "C3",
+    "orden": 7,
+    "legajo": 58770,
+    "nombre": "Carabajal, Ariadna Micael",
+    "inicial": "AMC",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-08",
+    "comision": "C3",
+    "orden": 8,
+    "legajo": 59046,
+    "nombre": "Carrizo, Angel Nahuel",
+    "inicial": "ANC",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-09",
+    "comision": "C3",
+    "orden": 9,
+    "legajo": 55839,
+    "nombre": "Castillo, Ignacio Agustín",
+    "inicial": "IAC",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-10",
+    "comision": "C3",
+    "orden": 10,
+    "legajo": 58925,
+    "nombre": "Castillo, Martina",
+    "inicial": "MCA",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-11",
+    "comision": "C3",
+    "orden": 11,
+    "legajo": 59181,
+    "nombre": "Castro, Maria Belén",
+    "inicial": "MBC",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-12",
+    "comision": "C3",
+    "orden": 12,
+    "legajo": 59016,
+    "nombre": "Catania, Franco Mauricio",
+    "inicial": "FMC",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-13",
+    "comision": "C3",
+    "orden": 13,
+    "legajo": 58813,
+    "nombre": "Cervera, Diego Octavio",
+    "inicial": "DOC",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-14",
+    "comision": "C3",
+    "orden": 14,
+    "legajo": 59379,
+    "nombre": "Charkiewicz, Carolina Est",
+    "inicial": "CEC",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-15",
+    "comision": "C3",
+    "orden": 15,
+    "legajo": 59027,
+    "nombre": "Chaves, Gonzalo Martín",
+    "inicial": "GMC",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-16",
+    "comision": "C3",
+    "orden": 16,
+    "legajo": 59347,
+    "nombre": "Chein, Amir Elias",
+    "inicial": "AEC",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-17",
+    "comision": "C3",
+    "orden": 17,
+    "legajo": 59315,
+    "nombre": "Chein, Santiago",
+    "inicial": "SCH",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-18",
+    "comision": "C3",
+    "orden": 18,
+    "legajo": 58768,
+    "nombre": "Cordoba, Ignacio Leandro",
+    "inicial": "ILC",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-19",
+    "comision": "C3",
+    "orden": 19,
+    "legajo": 58780,
+    "nombre": "Coronel, Juan Carlos",
+    "inicial": "JCC",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-20",
+    "comision": "C3",
+    "orden": 20,
+    "legajo": 58937,
+    "nombre": "Coronel, Lucas Francisco",
+    "inicial": "LFC",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-21",
+    "comision": "C3",
+    "orden": 21,
+    "legajo": 59019,
+    "nombre": "Corral Garcia, Mario Maxi",
+    "inicial": "MMCG",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-22",
+    "comision": "C3",
+    "orden": 22,
+    "legajo": 58939,
+    "nombre": "Cruz, Francisco Sebastian",
+    "inicial": "FSC",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-23",
+    "comision": "C3",
+    "orden": 23,
+    "legajo": 59083,
+    "nombre": "Cuellar, José Omar",
+    "inicial": "JOC",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-24",
+    "comision": "C3",
+    "orden": 24,
+    "legajo": 59063,
+    "nombre": "Cuevas, Matias Sebastián",
+    "inicial": "MSC",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-25",
+    "comision": "C3",
+    "orden": 25,
+    "legajo": 57534,
+    "nombre": "Delani, Luca",
+    "inicial": "LDE",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-26",
+    "comision": "C3",
+    "orden": 26,
+    "legajo": 59075,
+    "nombre": "Delgado, Fabricio Tobias",
+    "inicial": "FTD",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-27",
+    "comision": "C3",
+    "orden": 27,
+    "legajo": 59185,
+    "nombre": "Diaz Ghiggia, Guillermo",
+    "inicial": "GDG",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-28",
+    "comision": "C3",
+    "orden": 28,
+    "legajo": 58888,
+    "nombre": "Diaz Gómez, Andrés Dario",
+    "inicial": "ADDG",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-29",
+    "comision": "C3",
+    "orden": 29,
+    "legajo": 58844,
+    "nombre": "Diaz Gonzalez, Nahuel Ale",
+    "inicial": "NADG",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-30",
+    "comision": "C3",
+    "orden": 30,
+    "legajo": 58956,
+    "nombre": "Diaz, Viviana Lorena",
+    "inicial": "VLD",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-31",
+    "comision": "C3",
+    "orden": 31,
+    "legajo": 58747,
+    "nombre": "Diez Del Valle, Lucciano",
+    "inicial": "LDDV",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-32",
+    "comision": "C3",
+    "orden": 32,
+    "legajo": 58763,
+    "nombre": "Donelli, Luciano",
+    "inicial": "LDO",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-33",
+    "comision": "C3",
+    "orden": 33,
+    "legajo": 55847,
+    "nombre": "Elizondo Carreras, Lautaro",
+    "inicial": "LEC",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-34",
+    "comision": "C3",
+    "orden": 34,
+    "legajo": 55249,
+    "nombre": "Fernandez, Gonzalo Tomas",
+    "inicial": "GTF",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-35",
+    "comision": "C3",
+    "orden": 35,
+    "legajo": 59183,
+    "nombre": "Fernandez, Ignacio",
+    "inicial": "IFE",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-36",
+    "comision": "C3",
+    "orden": 36,
+    "legajo": 57565,
+    "nombre": "Heredia, Fabricio Nicolás",
+    "inicial": "FNH",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-52",
+    "comision": "C5",
+    "orden": 52,
+    "legajo": 55751,
+    "nombre": "Jeréz, Francisco David",
+    "inicial": "FDJ",
+    "TP1": false,
+    "cambio": false,
+    "antes": "C3-37"
+  },
+  {
+    "id": "C3-38",
+    "comision": "C3",
+    "orden": 38,
+    "legajo": 59184,
+    "nombre": "Lucena, Matias Leandro",
+    "inicial": "MLL",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-39",
+    "comision": "C3",
+    "orden": 39,
+    "legajo": 59438,
+    "nombre": "Martin, Leonardo Javier",
+    "inicial": "LJM",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-40",
+    "comision": "C3",
+    "orden": 40,
+    "legajo": 59060,
+    "nombre": "Martinez, Maira",
+    "inicial": "MMA",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-41",
+    "comision": "C3",
+    "orden": 41,
+    "legajo": 59550,
+    "nombre": "Osores Medina, Selena Pau",
+    "inicial": "SPOM",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-42",
+    "comision": "C3",
+    "orden": 42,
+    "legajo": 55883,
+    "nombre": "Pedraza, Leonardo Miguel",
+    "inicial": "LMP",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-43",
+    "comision": "C3",
+    "orden": 43,
+    "legajo": 59197,
+    "nombre": "Peralta, Antonio Nicolás",
+    "inicial": "ANP",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-44",
+    "comision": "C3",
+    "orden": 44,
+    "legajo": 59092,
+    "nombre": "Perez, Luciano Damian",
+    "inicial": "LDP",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-51",
+    "comision": "C5",
+    "orden": 51,
+    "legajo": 58951,
+    "nombre": "Robles, Ezequiel",
+    "inicial": "ERO",
+    "TP1": false,
+    "cambio": false,
+    "antes": "C3-45"
+  },
+  {
+    "id": "C3-46",
+    "comision": "C3",
+    "orden": 46,
+    "legajo": 59037,
+    "nombre": "Rodriguez, Antonella Fern",
+    "inicial": "AFR",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-47",
+    "comision": "C3",
+    "orden": 47,
+    "legajo": 58884,
+    "nombre": "Salazar, Agustina Ximena",
+    "inicial": "AXS",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-48",
+    "comision": "C3",
+    "orden": 48,
+    "legajo": 58881,
+    "nombre": "Sosa Juarez, Malena Lujan",
+    "inicial": "MLSJ",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-49",
+    "comision": "C3",
+    "orden": 49,
+    "legajo": 58905,
+    "nombre": "Sueldo, Leandro Antonio",
+    "inicial": "LADS",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C3-50",
+    "comision": "C3",
+    "orden": 50,
+    "legajo": 50792,
+    "nombre": "Tula Nelegatti, Agustin",
+    "inicial": "AETN",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C4-01",
+    "comision": "C4",
+    "orden": 1,
+    "legajo": 59263,
+    "nombre": "Acosta, Facundo",
+    "inicial": "FAC",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C4-02",
+    "comision": "C4",
+    "orden": 2,
+    "legajo": 55505,
+    "nombre": "Chazarreta Robles, María",
+    "inicial": "MCR",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C4-03",
+    "comision": "C4",
+    "orden": 3,
+    "legajo": 50694,
+    "nombre": "Ferrari, Stefano",
+    "inicial": "SFE",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C4-04",
+    "comision": "C4",
+    "orden": 4,
+    "legajo": 50704,
+    "nombre": "Juarez, Pablo Agustín",
+    "inicial": "PAJ",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C4-05",
+    "comision": "C4",
+    "orden": 5,
+    "legajo": 55896,
+    "nombre": "Lacroix, Cristian Josué",
+    "inicial": "CJL",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C4-06",
+    "comision": "C4",
+    "orden": 6,
+    "legajo": 59093,
+    "nombre": "Ledesma, Facundo Osvaldo",
+    "inicial": "FOL",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C4-07",
+    "comision": "C4",
+    "orden": 7,
+    "legajo": 59200,
+    "nombre": "López, Tiago Gabriel",
+    "inicial": "TGL",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C4-08",
+    "comision": "C4",
+    "orden": 8,
+    "legajo": 59097,
+    "nombre": "Martin Ibarra, Patricio",
+    "inicial": "PEMI",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C4-09",
+    "comision": "C4",
+    "orden": 9,
+    "legajo": 55466,
+    "nombre": "Medina, Álvaro Ignacio",
+    "inicial": "ÁIM",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C4-10",
+    "comision": "C4",
+    "orden": 10,
+    "legajo": 55986,
+    "nombre": "Paz, Octavio Emanuel",
+    "inicial": "OEP",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C4-11",
+    "comision": "C4",
+    "orden": 11,
+    "legajo": 50657,
+    "nombre": "Rmírez, Giselle Evelyn",
+    "inicial": "GER",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C4-12",
+    "comision": "C4",
+    "orden": 12,
+    "legajo": 59690,
+    "nombre": "Rios, Yanina Gisele",
+    "inicial": "YGR",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C4-13",
+    "comision": "C4",
+    "orden": 13,
+    "legajo": 58798,
+    "nombre": "Salazar, Santiago",
+    "inicial": "SSA",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C4-14",
+    "comision": "C4",
+    "orden": 14,
+    "legajo": 58800,
+    "nombre": "Valdez, Miguel Angel",
+    "inicial": "MAV",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C4-15",
+    "comision": "C4",
+    "orden": 15,
+    "legajo": 50753,
+    "nombre": "Villafañe Assef, Oscar",
+    "inicial": "OVA",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-01",
+    "comision": "C5",
+    "orden": 1,
+    "legajo": 55680,
+    "nombre": "Bustos, Mauricio Benjamin",
+    "inicial": "MBB",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-02",
+    "comision": "C5",
+    "orden": 2,
+    "legajo": 55457,
+    "nombre": "Carranza, Javier",
+    "inicial": "JCA",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-03",
+    "comision": "C5",
+    "orden": 3,
+    "legajo": 58773,
+    "nombre": "Elli Salazar, Gerónimo",
+    "inicial": "GES",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-04",
+    "comision": "C5",
+    "orden": 4,
+    "legajo": 55578,
+    "nombre": "Fernandez Dumit, Patricio",
+    "inicial": "PFD",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-05",
+    "comision": "C5",
+    "orden": 5,
+    "legajo": 58735,
+    "nombre": "Fernandez Gomez, Manuel",
+    "inicial": "MFG",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-06",
+    "comision": "C5",
+    "orden": 6,
+    "legajo": 58723,
+    "nombre": "Figueroa, Santiago Isaac",
+    "inicial": "SIF",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-07",
+    "comision": "C5",
+    "orden": 7,
+    "legajo": 58895,
+    "nombre": "Flores Gonzalez, Tomas",
+    "inicial": "TFG",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-08",
+    "comision": "C5",
+    "orden": 8,
+    "legajo": 58781,
+    "nombre": "Frias Armengol, Facundo",
+    "inicial": "FFA",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-09",
+    "comision": "C5",
+    "orden": 9,
+    "legajo": 58734,
+    "nombre": "Galvan, Victor Mateo",
+    "inicial": "VMG",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-10",
+    "comision": "C5",
+    "orden": 10,
+    "legajo": 59154,
+    "nombre": "Garcia, Máximo",
+    "inicial": "MGA",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-11",
+    "comision": "C5",
+    "orden": 11,
+    "legajo": 58740,
+    "nombre": "Garcia, Sergio Martín",
+    "inicial": "SMGA",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-12",
+    "comision": "C5",
+    "orden": 12,
+    "legajo": 59076,
+    "nombre": "Gomez Martinez, Matias",
+    "inicial": "MGM",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-13",
+    "comision": "C5",
+    "orden": 13,
+    "legajo": 59135,
+    "nombre": "Gomez, Facundo Matias",
+    "inicial": "FMG",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-14",
+    "comision": "C5",
+    "orden": 14,
+    "legajo": 58894,
+    "nombre": "Gonzalez Nacusse, Flavia",
+    "inicial": "FGN",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-15",
+    "comision": "C5",
+    "orden": 15,
+    "legajo": 59488,
+    "nombre": "Gonzalez, Mariano Emanuel",
+    "inicial": "MEG",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-16",
+    "comision": "C5",
+    "orden": 16,
+    "legajo": 58720,
+    "nombre": "Gonzalez, Martín Natanael",
+    "inicial": "MNG",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-17",
+    "comision": "C5",
+    "orden": 17,
+    "legajo": 59068,
+    "nombre": "Gonzalez, Silvina Mariela",
+    "inicial": "SMGO",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-18",
+    "comision": "C5",
+    "orden": 18,
+    "legajo": 58786,
+    "nombre": "Gutierrez, Augusto Pedro",
+    "inicial": "APG",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-19",
+    "comision": "C5",
+    "orden": 19,
+    "legajo": 58880,
+    "nombre": "Gutierrez, Cecilia Ana Lu",
+    "inicial": "CALG",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-20",
+    "comision": "C5",
+    "orden": 20,
+    "legajo": 58687,
+    "nombre": "Jadur, Sofia Nahir",
+    "inicial": "SNJ",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-21",
+    "comision": "C5",
+    "orden": 21,
+    "legajo": 58736,
+    "nombre": "Juarez Hindi, Lucas David",
+    "inicial": "LDJH",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-22",
+    "comision": "C5",
+    "orden": 22,
+    "legajo": 58761,
+    "nombre": "Juarez, Lautaro Andres",
+    "inicial": "LAJ",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-23",
+    "comision": "C5",
+    "orden": 23,
+    "legajo": 58758,
+    "nombre": "Juarez, Milagro Macarena",
+    "inicial": "MMJ",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-24",
+    "comision": "C5",
+    "orden": 24,
+    "legajo": 58721,
+    "nombre": "Juncos, Gonzalo Sebastian",
+    "inicial": "GSJ",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-25",
+    "comision": "C5",
+    "orden": 25,
+    "legajo": 59070,
+    "nombre": "Ladina, Maia Agostina",
+    "inicial": "MAL",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-26",
+    "comision": "C5",
+    "orden": 26,
+    "legajo": 58737,
+    "nombre": "Lasagna, Manuel",
+    "inicial": "MLA",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-27",
+    "comision": "C5",
+    "orden": 27,
+    "legajo": 58756,
+    "nombre": "Lazarte, Agustina Milagro",
+    "inicial": "AML",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-28",
+    "comision": "C5",
+    "orden": 28,
+    "legajo": 58727,
+    "nombre": "Lazarte, Lucas",
+    "inicial": "LLA",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-29",
+    "comision": "C5",
+    "orden": 29,
+    "legajo": 59152,
+    "nombre": "Lopez Chipoloni, Agustin",
+    "inicial": "ALC",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-30",
+    "comision": "C5",
+    "orden": 30,
+    "legajo": 58724,
+    "nombre": "Lopez Garcia, Marcos Juli",
+    "inicial": "MJLG",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-31",
+    "comision": "C5",
+    "orden": 31,
+    "legajo": 58726,
+    "nombre": "Lopez, Fausto Agustin",
+    "inicial": "FAL",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-32",
+    "comision": "C5",
+    "orden": 32,
+    "legajo": 58729,
+    "nombre": "Lovey, Mathias Exequiel",
+    "inicial": "MEL",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-33",
+    "comision": "C5",
+    "orden": 33,
+    "legajo": 59071,
+    "nombre": "Medina, Daiana Micaela",
+    "inicial": "DMM",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-34",
+    "comision": "C5",
+    "orden": 34,
+    "legajo": 59099,
+    "nombre": "Moyano Berrondo, Tahiel L",
+    "inicial": "TLMB",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-35",
+    "comision": "C5",
+    "orden": 35,
+    "legajo": 58805,
+    "nombre": "Prieto, Matias Hernan",
+    "inicial": "MHP",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-36",
+    "comision": "C5",
+    "orden": 36,
+    "legajo": 59054,
+    "nombre": "Rahman Rintoul, Ramiro",
+    "inicial": "RRR",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-37",
+    "comision": "C5",
+    "orden": 37,
+    "legajo": 58766,
+    "nombre": "Reinoso, Lisandro Gabriel",
+    "inicial": "LGR",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-38",
+    "comision": "C5",
+    "orden": 38,
+    "legajo": 58753,
+    "nombre": "Rivadeneira, Lautaro",
+    "inicial": "LRI",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-39",
+    "comision": "C5",
+    "orden": 39,
+    "legajo": 58686,
+    "nombre": "Rodriguez, Gustavo",
+    "inicial": "GRO",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-40",
+    "comision": "C5",
+    "orden": 40,
+    "legajo": 58806,
+    "nombre": "Rojas, Carlos Augusto",
+    "inicial": "CAR",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-41",
+    "comision": "C5",
+    "orden": 41,
+    "legajo": 58692,
+    "nombre": "Rosello Salas, Maia Josef",
+    "inicial": "MJRS",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-42",
+    "comision": "C5",
+    "orden": 42,
+    "legajo": 58873,
+    "nombre": "Salazar, Enzo Gabriel",
+    "inicial": "EGS",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-43",
+    "comision": "C5",
+    "orden": 43,
+    "legajo": 55870,
+    "nombre": "Stenberger, Emiliano",
+    "inicial": "EST",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-44",
+    "comision": "C5",
+    "orden": 44,
+    "legajo": 58845,
+    "nombre": "Terrera, Augusto Dante",
+    "inicial": "ADT",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-45",
+    "comision": "C5",
+    "orden": 45,
+    "legajo": 59052,
+    "nombre": "Teseira, Lucas Benjamin",
+    "inicial": "LBT",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-46",
+    "comision": "C5",
+    "orden": 46,
+    "legajo": 57543,
+    "nombre": "Touceda, Federico",
+    "inicial": "FTO",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-47",
+    "comision": "C5",
+    "orden": 47,
+    "legajo": 59064,
+    "nombre": "Urbani, Juan Pablo",
+    "inicial": "JPU",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-48",
+    "comision": "C5",
+    "orden": 48,
+    "legajo": 59188,
+    "nombre": "Vaca, Andres Emanuel",
+    "inicial": "AEV",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-49",
+    "comision": "C5",
+    "orden": 49,
+    "legajo": 58899,
+    "nombre": "Villagra, Juan Gabriel",
+    "inicial": "JGV",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-01",
+    "comision": "C9",
+    "orden": 1,
+    "legajo": 59336,
+    "nombre": "Bulan Georgieff, Alexander",
+    "inicial": "ABG",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-02",
+    "comision": "C9",
+    "orden": 2,
+    "legajo": 59429,
+    "nombre": "Caldez, María Valentina",
+    "inicial": "MVC",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-03",
+    "comision": "C9",
+    "orden": 3,
+    "legajo": 58690,
+    "nombre": "Diaz, Facundo Gabriel",
+    "inicial": "FGD",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-04",
+    "comision": "C9",
+    "orden": 4,
+    "legajo": 58876,
+    "nombre": "Diaz, Manuel Lautaro",
+    "inicial": "MLD",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-05",
+    "comision": "C9",
+    "orden": 5,
+    "legajo": 58842,
+    "nombre": "Fernandez Licciardi, Maur",
+    "inicial": "MFL",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-06",
+    "comision": "C9",
+    "orden": 6,
+    "legajo": 59053,
+    "nombre": "Guzmán, Esteban Leonel",
+    "inicial": "ELG",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-07",
+    "comision": "C9",
+    "orden": 7,
+    "legajo": 58689,
+    "nombre": "Juárez Alvarado, Agostina",
+    "inicial": "AJA",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-08",
+    "comision": "C9",
+    "orden": 8,
+    "legajo": 59058,
+    "nombre": "Monaco Torrente, Matias",
+    "inicial": "MMT",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-09",
+    "comision": "C9",
+    "orden": 9,
+    "legajo": 55773,
+    "nombre": "Morhell, Amín Gabriel",
+    "inicial": "AGM",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-10",
+    "comision": "C9",
+    "orden": 10,
+    "legajo": 59310,
+    "nombre": "Paz Berrondo, Nahuel Agus",
+    "inicial": "NAPB",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C5-50",
+    "comision": "C5",
+    "orden": 50,
+    "legajo": 59001,
+    "nombre": "Peralta, Axel Rubens",
+    "inicial": "ARP",
+    "TP1": false,
+    "cambio": false,
+    "antes": "C9-11"
+  },
+  {
+    "id": "C9-12",
+    "comision": "C9",
+    "orden": 12,
+    "legajo": 58679,
+    "nombre": "Pereyra, Franco Sebastián",
+    "inicial": "FSP",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-13",
+    "comision": "C9",
+    "orden": 13,
+    "legajo": 58869,
+    "nombre": "Perez, Enzo Matias",
+    "inicial": "EMP",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-14",
+    "comision": "C9",
+    "orden": 14,
+    "legajo": 59313,
+    "nombre": "Pisentte, Juan Pablo",
+    "inicial": "JPP",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-15",
+    "comision": "C9",
+    "orden": 15,
+    "legajo": 52142,
+    "nombre": "Reyes Gordillo, Rodrigo M",
+    "inicial": "RMRG",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-16",
+    "comision": "C9",
+    "orden": 16,
+    "legajo": 58874,
+    "nombre": "Rigazio, Malena Soledad",
+    "inicial": "MSR",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-17",
+    "comision": "C9",
+    "orden": 17,
+    "legajo": 59389,
+    "nombre": "Rivas, Carlos Agustin",
+    "inicial": "CAR",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-18",
+    "comision": "C9",
+    "orden": 18,
+    "legajo": 58222,
+    "nombre": "Rivero, Lucas Gabriel",
+    "inicial": "LGRI",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-19",
+    "comision": "C9",
+    "orden": 19,
+    "legajo": 59057,
+    "nombre": "Rocha, Lourdes Gabriela",
+    "inicial": "LGRO",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-20",
+    "comision": "C9",
+    "orden": 20,
+    "legajo": 58879,
+    "nombre": "Ruiu, Andrés",
+    "inicial": "ARU",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-21",
+    "comision": "C9",
+    "orden": 21,
+    "legajo": 59073,
+    "nombre": "Ruiz, Tomas Federico",
+    "inicial": "TFR",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-22",
+    "comision": "C9",
+    "orden": 22,
+    "legajo": 58847,
+    "nombre": "Sanchez, Tomas Emanuel",
+    "inicial": "TES",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-23",
+    "comision": "C9",
+    "orden": 23,
+    "legajo": 59082,
+    "nombre": "Santin, Lautaro",
+    "inicial": "LSA",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-24",
+    "comision": "C9",
+    "orden": 24,
+    "legajo": 59055,
+    "nombre": "Saravia, Franco Nicolas",
+    "inicial": "FNS",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-25",
+    "comision": "C9",
+    "orden": 25,
+    "legajo": 59933,
+    "nombre": "Saucedo, Lucas Nahuel",
+    "inicial": "LNS",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-26",
+    "comision": "C9",
+    "orden": 26,
+    "legajo": 59320,
+    "nombre": "Sbrocco, Micaela",
+    "inicial": "MSB",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-27",
+    "comision": "C9",
+    "orden": 27,
+    "legajo": 59568,
+    "nombre": "Serrano, Lorenzo",
+    "inicial": "LSE",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-28",
+    "comision": "C9",
+    "orden": 28,
+    "legajo": 59059,
+    "nombre": "Soraire, Elias Nicolás",
+    "inicial": "ENS",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-29",
+    "comision": "C9",
+    "orden": 29,
+    "legajo": 59110,
+    "nombre": "Soria, Joaquin",
+    "inicial": "JSO",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-30",
+    "comision": "C9",
+    "orden": 30,
+    "legajo": 59309,
+    "nombre": "Soria, Nicole",
+    "inicial": "NSO",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-31",
+    "comision": "C9",
+    "orden": 31,
+    "legajo": 58846,
+    "nombre": "Sosa, Franco Maximiliano",
+    "inicial": "FMS",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-32",
+    "comision": "C9",
+    "orden": 32,
+    "legajo": 59084,
+    "nombre": "Taboada, Jose Manuel",
+    "inicial": "JMT",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-33",
+    "comision": "C9",
+    "orden": 33,
+    "legajo": 59074,
+    "nombre": "Teseyra, Juan Ignacio",
+    "inicial": "JIT",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-34",
+    "comision": "C9",
+    "orden": 34,
+    "legajo": 58866,
+    "nombre": "Velazquez, Tobias Alejo",
+    "inicial": "TAV",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-35",
+    "comision": "C9",
+    "orden": 35,
+    "legajo": 59056,
+    "nombre": "Villafañe, Lucas Gastón",
+    "inicial": "LGV",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-36",
+    "comision": "C9",
+    "orden": 36,
+    "legajo": 59314,
+    "nombre": "Yepura, Rambo Alejandro",
+    "inicial": "RAY",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-37",
+    "comision": "C9",
+    "orden": 37,
+    "legajo": 58730,
+    "nombre": "Yñigo Lopez, Lourdes Sofi",
+    "inicial": "LSYL",
+    "TP1": false,
+    "cambio": false
+  },
+  {
+    "id": "C9-38",
+    "comision": "C9",
+    "orden": 38,
+    "legajo": 59169,
+    "nombre": "Zarlenga, Tobias",
+    "inicial": "TZA",
+    "TP1": false,
+    "cambio": false
+  }
+]

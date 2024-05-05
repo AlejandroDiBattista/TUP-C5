@@ -1,7 +1,68 @@
 body {
-    background-color: #f0f0f0;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+}
+h1 {
+    text-align: center;
+    color: #007bff;
+    margin-top: 30px;
+}
+#lista-contactos {
+    list-style: none;
+    padding: 0;
+    margin: 20px auto;
+    max-width: 400px;
+}
+#lista-contactos li {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+#lista-contactos li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+#lista-contactos li:last-child {
+    margin-bottom: 0;
+}
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #17a2b8;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+button:hover {
+    background-color: #138496;
+}
+input[type="text"], input[type="tel"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+input[type="submit"] {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+input[type="submit"]:hover {
+    background-color: #218838;
 }
