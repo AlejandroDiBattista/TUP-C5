@@ -20,6 +20,11 @@
 * Ok
 * No borró el código de "¡Hola Mundo!"
 
+## 24
+* Ok
+* No borró el código de "¡Hola Mundo!"
+* No se deben anidar componentes (Contacto definidos dentro de App)
+
 ## 25
 * Nombre de propiedades en mayusculas
 
