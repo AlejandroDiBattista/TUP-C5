@@ -24,7 +24,7 @@ class Contacto {
     this.edad = edad;
     this.telefonos = telefono;
   }
-  
+
   get id() {
     return this._id;
   }

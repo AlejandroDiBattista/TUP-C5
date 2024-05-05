@@ -1,4 +1,3 @@
-
 const Personas = [
     { id: 1, nombre: 'Martin', apellido: 'Dias', telefono: '123123' },
     { id: 2, nombre: 'Franco', apellido: 'Paredes', telefono: '123123' },
@@ -28,18 +27,14 @@ const Agenda = () => (
                 telefono={tarjeta.telefono}
             />
         ))}
-
     </div>
-
 );
 
 
 const App = () => (
     <div>
         <h1>Agenda de contactos</h1>
-
         <Agenda />
-
     </div>
 );
 

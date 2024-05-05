@@ -1,46 +1,51 @@
 body {
-    display: flexbox;
-    background-color:black;
-    font-family: Arial, sans-serif;
-    font-weight: bold;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    color: #fff;
-    display: flex;
-    justify-content: center;
+  display: flexbox;
+  background-color: black;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #fff;
+  display: flex;
+  justify-content: center;
 }
 
-.tarjetaContacto{
-    background-color: red;
-    color: white;
-    border: 3px solid;
-    border-radius: 15px;
-    padding: 7px;
-    width: 100%;
-    margin: 15%;
-    cursor: pointer;
-    transition: transform 0.3s;
+.tarjetaContacto {
+  background-color: red;
+  color: white;
+  border: 3px solid;
+  border-radius: 15px;
+  padding: 7px;
+  width: 100%;
+  margin: 15%;
+  cursor: pointer;
+  transition: transform 0.3s;
 }
 
-@keyframes humo{
-    0% {
-       box-shadow: 0 0 0 0 transparent; /* Sin sombra al principio */
-     }
-     50% {
-       box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.7); /* Brillo máximo a la mitad */
-     }
-     100% {
-       box-shadow: 0 0 0 0 transparent; /* Sin sombra al final */
-     }
- }
+@keyframes humo {
+  0% {
+    box-shadow: 0 0 0 0 transparent;
+    /* Sin sombra al principio */
+  }
 
-.tarjetaContacto:hover{
-    transform: scale(1.1);
-    animation: humo 3s linear infinite;
+  50% {
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.7);
+    /* Brillo máximo a la mitad */
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+    /* Sin sombra al final */
+  }
+}
+
+.tarjetaContacto:hover {
+  transform: scale(1.1);
+  animation: humo 3s linear infinite;
 }
 
 .container {
-    display: flex;
-    display: inline-block;
+  display: flex;
+  display: inline-block;
 }

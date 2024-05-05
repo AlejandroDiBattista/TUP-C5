@@ -20,9 +20,9 @@ const App = () => (
 
 const Contact = ({ id, nombre, apellido, telefono }) => (
     <div className="contacto">
-        <div id="id">    
+        <div id="id">
             <p><span className="id">N°</span>{id}</p>
-        </div>   
+        </div>
         <h3 className='nombre-contacto'>{apellido} {nombre}</h3>
         <p id="num"><span>Telefono: {telefono}</span></p>
     </div>

@@ -1,10 +1,34 @@
 ## 01
 * ok
 
+## 05
+* ok
+* Muestra campo ID
+
+## 07
+* ok
+* Muestra campo ID
+
+## 09
+* No cumple consigna. hace con DOM
+* Formato de presentacion incorrecto
+
+## 10
+* ok
+* Muestra nro orden arriba
+
+## 12
+* Ok
+* Falta formato de tarjeta
+
 ## 16
 * ok
 * Falta formato de tarjeta
 
+## 15
+* ok
+* Formato de las tarjetas largo
+* Mantiene Hola Mundo
 
 ## 17
 * Ok
@@ -72,6 +96,9 @@
 ## 42
 * Ok 
 * Es identico a 38
+
+## 43
+
 
 ## 44
 * Define Agenda como Contacto
