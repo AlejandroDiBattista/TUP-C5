@@ -1,3 +1,8 @@
+## 16
+* ok
+* Falta formato de tarjeta
+
+
 ## 17
 * Ok
 * No podre olvidar nunca esos colores :)
@@ -17,6 +22,13 @@
 
 ## 25
 * Nombre de propiedades en mayusculas
+
+## 29
+* ok
+* Agrega campo email
+
+## 33
+* ok
 
 ## 35
 * No usa componente para Contacto
