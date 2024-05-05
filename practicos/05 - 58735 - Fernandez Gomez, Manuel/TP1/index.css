@@ -1,7 +1,47 @@
 body {
-    background-color: #f0f0f0;
-    font-family: Arial, sans-serif;
+    background-color: #03060D;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+.contenedor {
+    color: #C4E5F2;
+    max-width: 550px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #26111F;
+    border-radius: 5px;
+}
+
+.ID {
+    color: #03060D;
+    margin: 30px;
+    margin-bottom: 20px;
+    max-width: 500px;
+    padding: 10px;
+    background-color: #F28D77;
+    border-radius: 5px;
+    border: 1px solid #03060D;
+    transition: transform 0.3s ease;
+}
+
+.ID:hover{
+    transform: scale(1.07);
+}
+.ID h3 {
+    margin-top: 0;
+}
+
+.ID p {
+    margin-bottom: 0;
+}
+
+.ID .id {
+    font-weight: bold;
+}
+
+.ID .cel{
+    font-weight: bold;
 }
