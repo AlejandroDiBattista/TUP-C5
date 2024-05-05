@@ -1,7 +1,32 @@
 body {
-    background-color: #f0f0f0;
+    background-color: #fffdfd;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
+.contacto {
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    margin: 10px;
+    height: 8rem;
+    flex-direction: flex;
+    background-color: rgb(255, 255, 255);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.agenda{
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100vh;
+    background-color: rgb(141, 109, 130);
+    flex-wrap: wrap;
+}
+
