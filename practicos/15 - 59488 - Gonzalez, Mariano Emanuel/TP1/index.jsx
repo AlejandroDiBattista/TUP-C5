@@ -1,6 +1,6 @@
 const App = () =>  (
     <div>
-        <h1>¡Hola, mundo!</h1>
+        <h1>¡Hola, a todos!</h1>
         <p>Esta es mi primera agenda de contactos</p>
         <Agenda />
     </div>
