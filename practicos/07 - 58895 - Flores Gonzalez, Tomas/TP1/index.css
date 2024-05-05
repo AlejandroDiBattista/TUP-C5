@@ -1,7 +1,36 @@
 body {
-    background-color: #f0f0f0;
+    background-color: #f1cf70;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+.contac {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.Tarjeta {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #e2c87f;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.Tarjeta h3 {
+    margin-top: 0;
+}
+
+.Tarjeta p {
+    margin-bottom: 5px;
+}
+
+.Tarjeta .id {
+    font-weight: bold;
 }
