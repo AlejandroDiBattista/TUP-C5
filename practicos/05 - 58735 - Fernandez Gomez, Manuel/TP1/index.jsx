@@ -32,3 +32,4 @@ const Contacto = ({ id, nombre, apellido, telefono }) => (
     </div>
 )
 ReactDOM.render(<App />, document.getElementById('root'))
+
