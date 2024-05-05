@@ -5,3 +5,24 @@ body {
     padding: 0;
     box-sizing: border-box;
 }
+.TarjetaPresentacion {
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .TarjetaPresentacion p {
+    margin: 0;
+  }
+  
+  .TarjetaPresentacion p:first-child {
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  .TarjetaPresentacion p:last-child {
+    color: #666666;
+    font-size: 14px;
+  }
