@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Enlaces a React, ReactDOM y Babel -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Iconos FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    <title>Demo 1</title>
+    <style>
+        /* reset */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        #root {
+            max-width: 1280px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 20px;
+        }
+
+        .card {
+            padding: 16px;
+            margin: 4px;
+            border-radius: 8px;
+            background-color: #ffffff;
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .agenda {
+            margin-top: 16px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: start;
+
+            >div {
+                text-align: center;
+                width: 240px;
+                height: 96px;
+                position: relative;
+
+                span {
+                    position: absolute;
+                    top: 8px;
+                    right: 8px;
+                }
+
+                div {
+                    margin-top: 25px;
+                    font-size: 20px;
+                }
+
+                div:last-child {
+                    text-align: right;
+                    font-size: 14px;
+                }
+            }
+        }
+
+        form {
+            width: 240px;
+            padding: 16px;
+            margin: 8px;
+            border-radius: 8px;
+
+            label {
+                display: block;
+                font-size: 12px;
+                color: #aaa;
+            }
+
+            input {
+                width: calc(100% - 8px);
+                border-radius: 4px;
+                margin: 4px 0;
+                border: 1px solid #ccc;
+                padding: 4px;
+                font-size: 16px;
+            }
+
+            div {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 16px;
+
+                button {
+                    padding: 8px 16px;
+                    border: none;
+                    border-radius: 4px;
+                    font-size: 14px;
+                    cursor: pointer;
+                }
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script>
+        const datos = [
+            { id: 1, nombre: 'Juan', apellido: 'Perez', telefono: '(381) 123-4567', favorito: true },
+            { id: 2, nombre: 'Maria', apellido: 'Gomez', telefono: '(381) 123-4567', favorito: false },
+            { id: 3, nombre: 'Pedro', apellido: 'Gonzalez', telefono: '(381) 123-4567', favorito: true },
+            { id: 4, nombre: 'Ana', apellido: 'Fernandez', telefono: '(381) 123-4567', favorito: false },
+            { id: 5, nombre: 'Lucas', apellido: 'Rodriguez', telefono: '(381) 123-4567', favorito: true },
+            { id: 6, nombre: 'Carla', apellido: 'Lopez', telefono: '(381) 123-4567', favorito: false },
+            { id: 7, nombre: 'Jorge', apellido: 'Diaz', telefono: '(381) 123-4567', favorito: true },
+            { id: 8, nombre: 'Luis', apellido: 'Martinez', telefono: '(381) 123-4567', favorito: false },
+            { id: 9, nombre: 'Florencia', apellido: 'Paz', telefono: '(381) 123-4567', favorito: true },
+            { id: 10, nombre: 'Miguel', apellido: 'Rojas', telefono: '(381) 123-4567', favorito: false },
+            { id: 11, nombre: 'Sofia', apellido: 'Acosta', telefono: '(381) 123-4567', favorito: true },
+            { id: 12, nombre: 'Carlos', apellido: 'Vera', telefono: '(381) 123-4567', favorito: false },
+            { id: 13, nombre: 'Valeria', apellido: 'Gimenez', telefono: '(381) 123-4567', favorito: true },
+            { id: 14, nombre: 'Pablo', apellido: 'Sosa', telefono: '(381) 123-4567', favorito: false },
+            { id: 15, nombre: 'Romina', apellido: 'Rios', telefono: '(381) 123-4567', favorito: true },
+            { id: 16, nombre: 'Ezequiel', apellido: 'Molina', telefono: '(381) 123-4567', favorito: false },
+            { id: 17, nombre: 'Agustina', apellido: 'Ortiz', telefono: '(381) 123-4567', favorito: true },
+            { id: 18, nombre: 'Matias', apellido: 'Luna', telefono: '(381) 123-4567', favorito: false },
+            { id: 19, nombre: 'Cecilia', apellido: 'Carrizo', telefono: '(381) 123-4567', favorito: true },
+            { id: 20, nombre: 'Facundo', apellido: 'Paez', telefono: '(381) 123-4567', favorito: false }
+        ]
+    </script>
+
+    <script type="text/babel">
+        const { createRoot } = ReactDOM
+
+        const Contacto = ({ nombre, apellido, telefono }) =>
+            <div className="card">
+                <div>{nombre} <b>{apellido}</b></div>
+                <div>{telefono}</div>
+            </div>
+
+        const Agenda = ({ datos }) =>
+            <div className="agenda">
+                {datos.map(contacto => <Contacto key={contacto.id} {...contacto} />)}
+            </div>
+
+        const App = () =>
+            <div>
+                <h1>Agenda</h1>
+                <Agenda datos={datos} />
+            </div>
+
+        const root = createRoot(document.getElementById('root'))
+        root.render(<App />);
+    </script>
+</body>
+
+</html>

@@ -1,31 +1,25 @@
-# TUP: Comisión 5
+# Trabajo Práctico Nº 2
 
-## Material de soporte para el dictado de clases 
+## React: Creación de una página interactiva
+### Funcionalidades requeridas
 
-Este respositorio contiene el material de soporte para el dictado de las clases.
+Modifica la aplicación de **Agenda** para que permita marcar contactos como favoritos y realizar operaciones de **Altas, Bajas y Modificaciones (ABM)** en la lista de contactos:
 
-Contiene código fuente, material de lectura, enunciados y el contenido de los trabajos prácticos.
+1. **Marcar / Desmarcar como favoritos**: Los usuarios deben poder marcar o desmarcar contactos como favoritos.
+2. **Orden de visualización**: Los contactos marcados como favoritos deben mostrarse primero, seguidos por el resto de los contactos en un grupo separado.
+3. **Indicador de favoritos**: Los contactos marcados como favoritos deben mostrar una ⭐ en la esquina superior derecha.
+4. **Orden alfabético**: Todos los contactos deben estar ordenados alfabéticamente por apellido y nombre.
+5. **Alta de contactos**: Agregar un botón "Agregar" que muestre un formulario para agregar nuevos contactos y permita su edición.
+6. **Borrado de contactos**: Agregar un icono en cada contacto que permita borrar el contacto (representado por un 🗑).
+7. **Edición de contactos**: Si se pulsa en cualquier lugar del contacto (excepto en los botones de favorito o borrar), se debe habilitar la edición del contacto.
 
----
+### Instrucciones para la presentación del trabajo:
 
-# Trabajo Práctico Nº 1
+1. Bajar la ultima version del repositorio del curso. (Fetch)
+2. Crear una nueva rama para tus cambios (new branch).
+3. Abrir la carpeta correspondiente a tu nombre de usuario (practicos/{alumno}/tp2).
+4. Realizar las modificaciones necesarias en el archivo index.html dentro de la carpeta TP2 (sin alterar ninguna otra carpeta).
+5. Realizar un solicitud de publicación (Pull request)
+6. Volver a la rama principal (main) para actualizar (fetch) el repositorio
 
-Hacer una app en react que muestre una agenda de contactos
-
-1. La lista de contacto debe estar ingresado como una lista de objetos.
-2. Los contactos deben tener id, nombre, apellido y teléfono
-3. Los contactos se deben mostrar como una tarjeta de presentación
-4. Para presentar el trabajo debe:
-
-    a. Bajar el repositorio del curso (clone)
-
-    b. Crear una nueva rama (new branch)
-
-    c. Abrir la carpeta que le corresponda a cada alumno (practicos/{alumno}/tp1)
-
-    d. Realizar los cambios en los archivos de muestra (no debe cambiar ninguna otra carpeta)
-
-    e. Confirmar los cambios (commit)
-
-    f. Realizar un solicitud de publicacion (pull request)
-
+¡Buena suerte con tu trabajo práctico! 😊

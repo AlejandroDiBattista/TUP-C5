@@ -23,9 +23,7 @@ function BoardComponent() {
     ]
 
     return (
-
         <table className="table table-dark border border-info">
-
             <thead>
                 <tr>
                     <th scope="col">ID</th>
