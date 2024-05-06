@@ -98,8 +98,21 @@
 * Es identico a 38
 
 ## 43
-
+* ok
+* Muestra campo ID
 
 ## 44
 * Define Agenda como Contacto
 * No define Contacto
+
+## 46 
+* Ok
+* Usan "clase-p" en lugar de ".contacto-item p"
+
+## 49
+* ok
+* define componente Agenda dentro de componente App 
+* define lista de contactos dentro de App
+
+## 51
+* ok
