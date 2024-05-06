@@ -1,7 +1,27 @@
 body {
     background-color: #f0f0f0;
-    font-family: Arial, sans-serif;
+    font-family: 'sans-serif';
     margin: 0;
     padding: 0;
+    font-size: 20px;
     box-sizing: border-box;
+    color:blue;
+    text-align: center;
 }
+.Contacto{
+    border-radius: 15px;
+    border: 3px solid royalblue;
+    padding: 10px;
+    margin: 10px;
+  }
+h3 {
+    background-color:royalblue;
+    color: #f0f0f0;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+  }
+  
+p {
+    font-size: 0.9em;
+  }
+  
