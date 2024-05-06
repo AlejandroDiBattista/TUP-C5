@@ -1,7 +1,16 @@
-body {
-    background-color: #f0f0f0;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.agenda {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.contacto-card {
+    border: 1px solid #4fd80f;
+    border-radius: 6px;
+    padding: 15px;
+    margin: 15px;
+    width: 200px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    background-color: aqua;
+    transform: scale(1.2);
 }
