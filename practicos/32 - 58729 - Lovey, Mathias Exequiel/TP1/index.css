@@ -5,3 +5,32 @@ body {
     padding: 0;
     box-sizing: border-box;
 }
+.agenda{
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+    height: 100vh;
+    background-color: antiquewhite;
+    flex-wrap: wrap;
+}
+.contacto{
+    width: 10rem;
+    height: 12rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: aqua;
+    color:black;
+    border-radius: 1rem;
+    padding: 1rem;
+    overflow-x: hidden;
+    font-style: oblique;
+    box-shadow: #f0f0f0;
+    
+}
+.contacto:hover{
+    box-shadow: 5px 5px 20px rgba(0,0,0,0.4);
+    transform: translateY(-3%);
+    
+}
