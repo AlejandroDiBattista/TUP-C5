@@ -1,15 +1,12 @@
-const ListaCompleta = [ 
-    {id : 1 , nombre: "Gabriel " , apellido: "Salazar" },
-    {id : 2 , nombre: "Ezequiel" , apellido: "Robles"},
-    {id : 3 , nombre:  "Lautaro" , apellido: "Rivadeneira" }, 
-    {id : 3 , nombre:  "Lautaro" , apellido: "Benjamin" }, 
-    {id : 3 , nombre:  "Pedro" , apellido: "Teseira" }, 
+const ListaCompleta = [
+    { id: 1, nombre: "Gabriel ", apellido: "Salazar" },
+    { id: 2, nombre: "Ezequiel", apellido: "Robles" },
+    { id: 3, nombre: "Lautaro", apellido: "Rivadeneira" },
+    { id: 3, nombre: "Lautaro", apellido: "Benjamin" },
+    { id: 3, nombre: "Pedro", apellido: "Teseira" },
 ];
 
-    
-
-
-const Contacto = ({nombre, apellido}) => (
+const Contacto = ({ nombre, apellido }) => (
     <div>
         <h3>Nombre: {nombre}</h3>
         <p>Apellido: {apellido}</p>
@@ -22,7 +19,7 @@ const Agenda = () => (
             <Contacto
                 key={contacto.id}
                 nombre={contacto.nombre}
-                apellido={contacto.apellido} 
+                apellido={contacto.apellido}
             />
         ))}
     </div>

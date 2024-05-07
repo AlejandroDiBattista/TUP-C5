@@ -1,11 +1,11 @@
 const listaContactos = [
-    {id: 1, nombre: "Martin", apellido: "Salsa", telefono: "312412"},
-    {id: 2, nombre: "Pedro", apellido: "Martin", telefono: "24234"},
-    {id: 3, nombre: "Tito", apellido: "Pereira", telefono: "345645"},
-    {id: 4, nombre: "Teresa", apellido: "Lopez", telefono: "546456"},
+    { id: 1, nombre: "Martin", apellido: "Salsa", telefono: "312412" },
+    { id: 2, nombre: "Pedro", apellido: "Martin", telefono: "24234" },
+    { id: 3, nombre: "Tito", apellido: "Pereira", telefono: "345645" },
+    { id: 4, nombre: "Teresa", apellido: "Lopez", telefono: "546456" },
 ]
 
-const Contactos = ({nombre, apellido, telefono}) => (
+const Contactos = ({ nombre, apellido, telefono }) => (
     <div className="contactodehtml">
         <h1>{nombre} {apellido}</h1>
         <p>Celular: {telefono} </p>
@@ -25,7 +25,7 @@ const Agenda = () => (
     </div>
 )
 
-const App = () =>  (
+const App = () => (
     <div>
         <Agenda />
     </div>
