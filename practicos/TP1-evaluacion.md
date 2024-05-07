@@ -89,6 +89,14 @@
 * ok
 * Agrega campo email
 
+## 30
+* ok
+* No muestra como tarjeta
+
+## 31
+* ok
+
+
 ## 32
 * ok
 
@@ -145,6 +153,9 @@
 ## 46 
 * ok
 * Usan "clase-p" en lugar de ".contacto-item p"
+
+## 47
+* ok
 
 ## 48
 * No cumple la consigna
