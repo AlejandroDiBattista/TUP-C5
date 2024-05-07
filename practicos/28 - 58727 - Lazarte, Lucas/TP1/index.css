@@ -1,7 +1,27 @@
 body {
-    background-color: #f0f0f0;
+    background-color: aqua;
+    display: flexbox;
     font-family: Arial, sans-serif;
+    font-weight: bold;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+}
+
+.tarjetaContacto{
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f8f417;
+    margin: 20px;
+
+}
+
+.container {
+    display: flex;
+    display: inline-block;
 }
