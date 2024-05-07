@@ -1,7 +1,41 @@
 body {
-    background-color: #f0f0f0;
-    font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif; 
+    background-color: #242424; 
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    padding: 20px;
+}
+
+.agendacontactos {
+    max-width: 600px; 
+    margin: 0 auto; 
+    padding: 20px;
+    background-color: #6c6b6b; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+}
+
+
+.contactodehtml {
+    border-bottom: 1px solid #ccc; 
+    padding: 10px 20px;
+}
+
+
+.contactodehtml h1 {
+    font-size: 24px; 
+    color: #ffffff; 
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+
+.contactodehtml p {
+    font-size: 16px; 
+    color: #cfcfcf; 
+    margin: 0; 
+}
+
+.h1-tittle{
+    text-align: center;
+    color: #ccc;
+    font-size: 40px;
 }
