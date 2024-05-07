@@ -1,7 +1,18 @@
 body {
-    background-color: #f0f0f0;
+background-color: rgb(145, 252, 252);
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+.agendacontactos{
+    margin: 5px;
+    -webkit-text-stroke: 5;
+}
+*:root{
+    color: black;
+    text-align: center;
+    
+}
+
+
