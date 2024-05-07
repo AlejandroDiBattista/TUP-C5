@@ -1,15 +1,16 @@
 
 
 body {
-background-color: rgb(184, 247, 247);
-    font-family: Arial, sans-serif;
+   background-color: #00b3c5;
+    font-family:'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; 
 }
 .agendacontactos{
     margin: 5px;
     -webkit-text-stroke: 5;
+
 }
 *:root{
     color: black;
