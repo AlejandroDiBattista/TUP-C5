@@ -46,7 +46,7 @@ const Agenda = () => {
 }
 
 const App = () =>  (
-    <div>
+    <div className="contenedor">
         <Agenda />
     </div>
 )
