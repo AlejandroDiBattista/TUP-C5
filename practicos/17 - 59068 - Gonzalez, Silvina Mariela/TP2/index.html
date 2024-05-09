@@ -3,21 +3,25 @@
 
 <head>
     <meta charset="UTF-8">
-    <!-- Enlaces a React, ReactDOM y Babel -->
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <!-- Iconos FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
-    <title>Demo 1</title>
+    <title>Agenda</title>
     <style>
-        /* reset */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
+            background-color: #f7fdd3;
+            display: flex;
+            justify-content: center;
+        }
+
+        i {
+            color: rgb(255, 162, 0);
+            text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.75);
         }
 
         #root {
@@ -29,18 +33,20 @@
         }
 
         .card {
+            position: relative;
             padding: 16px;
             margin: 4px;
             border-radius: 8px;
-            background-color: #ffffff;
-            box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+            background-color: rgb(160, 228, 255);
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
         }
 
         .agenda {
             margin-top: 16px;
             display: flex;
             flex-wrap: wrap;
-            justify-content: start;
+            justify-content: center;
+            margin-bottom: 4rem;
 
             >div {
                 text-align: center;
@@ -64,6 +70,11 @@
                     font-size: 14px;
                 }
             }
+        }
+
+        h1 {
+            text-align: center;
+            font-weight: bolder;
         }
 
         form {
@@ -101,6 +112,17 @@
                 }
             }
         }
+
+        .fav-button {
+            right: 1.5rem;
+            top: .25rem;
+            position: absolute;
+            border: none;
+            width: 1rem;
+            height: 1rem;
+            font-size: larger;
+            background-color: unset;
+        }
     </style>
 </head>
 
@@ -133,24 +155,60 @@
 
     <script type="text/babel">
         const { createRoot } = ReactDOM
+        const { useState } = React
 
-        const Contacto = ({ nombre, apellido, telefono }) =>
-            <div className="card">
-                <div>{nombre} <b>{apellido}</b></div>
-                <div>{telefono}</div>
-            </div>
+        const App = () => {
+            const [contactos, setContactos] = useState(datos);
 
-        const Agenda = ({ datos }) =>
-            <div className="agenda">
-                {datos.map(contacto => <Contacto key={contacto.id} {...contacto} />)}
-            </div>
+            const activarFavorito = (id) => {
+                setContactos(contactos.map(contacto => {
+                    if (contacto.id === id) {
+                        return { ...contacto, favorito: !contacto.favorito };
+                    }
+                    return contacto;
+                }));
+            };
 
-        const App = () =>
-            <div>
-                <h1>Agenda</h1>
-                <Agenda datos={datos} />
-            </div>
+            const Favoritos = ({ datos }) => (
+                <div className="agenda">
+                    {datos.map(contacto => (
+                        <Contacto key={contacto.id} {...contacto} activarFavorito={() => activarFavorito(contacto.id)} />
+                    ))}
+                </div>
+            );
 
+            const Contacto = ({ id, nombre, apellido, telefono, activarFavorito, favorito }) => (
+                <div className="card">
+                    <div>{nombre} <b>{apellido}</b></div>
+                    <div>{telefono}</div>
+                    <button onClick={activarFavorito} className="fav-button">
+                        {
+                            favorito ?
+                                <i className="fa-solid fa-star"></i>
+                                :
+                                <i className="fa-regular fa-star"></i>}
+                    </button>
+                </div>
+            );
+
+            const agendaOrdenada = [...contactos].sort((a, b) => a.apellido.localeCompare(b.apellido));
+            const favoritos = agendaOrdenada.filter(contacto => contacto.favorito);
+
+            return (
+                <div>
+                    <h1>FAVORITOS</h1><hr />
+                    <Favoritos datos={favoritos} />
+
+                    <h1>AGENDA</h1><hr />
+                    <div className="agenda">
+                        {
+                            agendaOrdenada.map(contacto => (
+                                <Contacto key={contacto.id} {...contacto} activarFavorito={() => activarFavorito(contacto.id)} />
+                            ))}
+                    </div>
+                </div>
+            );
+        };
         const root = createRoot(document.getElementById('root'))
         root.render(<App />);
     </script>
