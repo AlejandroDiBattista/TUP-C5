@@ -137,13 +137,8 @@
         const { createRoot } = ReactDOM
         const { useState } = React
 
-        const Favorito = ({ favorito, estadoFavorito }) => {
-            const cambioDeEstado = () => {
-                estadoFavorito(!favorito)
-            }
-
-            return (<i className={favorito ? "fa-solid fa-star" : "fa-regular fa-star"} onClick={cambioDeEstado}></i>)
-        }
+        const Favorito = ({ favorito, estadoFavorito }) => 
+            <i className={favorito ? "fa-solid fa-star" : "fa-regular fa-star"} onClick={() => estadoFavorito(!favorito)}></i>
 
         const Contacto = ({ nombre, apellido, telefono, favorito, FavOnoFav }) => {
             return (
