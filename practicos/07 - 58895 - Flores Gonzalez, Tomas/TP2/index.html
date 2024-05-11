@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <!-- Enlaces a React, ReactDOM y Babel -->
@@ -9,7 +8,6 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <!-- Iconos FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-
     <title>Demo 1</title>
     <style>
         /* reset */
@@ -17,9 +15,8 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
+            background-color: #e0b272;
         }
-
         #root {
             max-width: 1280px;
             display: flex;
@@ -27,57 +24,48 @@
             align-items: center;
             margin: 0 20px;
         }
-
         .card {
             padding: 16px;
             margin: 4px;
             border-radius: 8px;
-            background-color: #ffffff;
+            background-color: #FFFFFF;
             box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
         }
-
         .agenda {
             margin-top: 16px;
             display: flex;
             flex-wrap: wrap;
             justify-content: start;
-
             >div {
                 text-align: center;
                 width: 240px;
                 height: 96px;
                 position: relative;
-
                 span {
                     position: absolute;
                     top: 8px;
                     right: 8px;
                 }
-
                 div {
                     margin-top: 25px;
                     font-size: 20px;
                 }
-
                 div:last-child {
                     text-align: right;
                     font-size: 14px;
                 }
             }
         }
-
         form {
             width: 240px;
             padding: 16px;
             margin: 8px;
             border-radius: 8px;
-
             label {
                 display: block;
                 font-size: 12px;
                 color: #aaa;
             }
-
             input {
                 width: calc(100% - 8px);
                 border-radius: 4px;
@@ -86,12 +74,10 @@
                 padding: 4px;
                 font-size: 16px;
             }
-
             div {
                 display: flex;
                 justify-content: space-between;
                 margin-top: 16px;
-
                 button {
                     padding: 8px 16px;
                     border: none;
@@ -103,7 +89,6 @@
         }
     </style>
 </head>
-
 <body>
     <div id="root"></div>
     <script>
@@ -129,31 +114,57 @@
             { id: 19, nombre: 'Cecilia', apellido: 'Carrizo', telefono: '(381) 123-4567', favorito: true },
             { id: 20, nombre: 'Facundo', apellido: 'Paez', telefono: '(381) 123-4567', favorito: false }
         ]
+        datos.sort((a, b) => {
+            if (a.favorito && !b.favorito) {
+                return -1;
+            } else if (!a.favorito && b.favorito) {
+                return 1;
+            } else {
+                if (a.apellido < b.apellido) {
+                    return -1;
+                } else if (a.apellido > b.apellido) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }
+        });
     </script>
-
     <script type="text/babel">
         const { createRoot } = ReactDOM
-
-        const Contacto = ({ nombre, apellido, telefono }) =>
-            <div className="card">
-                <div>{nombre} <b>{apellido}</b></div>
-                <div>{telefono}</div>
-            </div>
-
+        const Contacto = ({ nombre, apellido, telefono, favorito }) => {
+            const toggleIcon = (event) => {
+                event.stopPropagation();
+                const icon = event.target;
+                if (icon.classList.contains("fa-solid")) {
+                    icon.classList.remove("fa-solid");
+                    icon.classList.add("fa-regular");
+                } else {
+                    icon.classList.remove("fa-regular");
+                    icon.classList.add("fa-solid");
+                }
+            };
+            return (
+                <div className="card">
+                    <div onClick={toggleIcon}>
+                        <span className="toggle-icon"><i id={`icon-${apellido}`} className={favorito ? "fa-solid fa-star" : "fa-regular fa-star"}></i></span>
+                    </div>
+                    <div>{apellido} <b>{nombre}</b></div>
+                    <div>{telefono}</div>
+                </div>
+            );
+        };
         const Agenda = ({ datos }) =>
             <div className="agenda">
                 {datos.map(contacto => <Contacto key={contacto.id} {...contacto} />)}
             </div>
-
         const App = () =>
             <div>
                 <h1>Agenda</h1>
                 <Agenda datos={datos} />
             </div>
-
         const root = createRoot(document.getElementById('root'))
         root.render(<App />);
     </script>
 </body>
-
 </html>
