@@ -3,21 +3,23 @@
 
 <head>
     <meta charset="UTF-8">
-    <!-- Enlaces a React, ReactDOM y Babel -->
+    
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <!-- Iconos FontAwesome -->
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
-    <title>Demo 1</title>
+    <title>Legajo: 55578</title>
+
     <style>
-        /* reset */
+        
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
+            background-color: lightblue;
+            text-align: center;
         }
 
         #root {
@@ -61,7 +63,10 @@
 
                 div:last-child {
                     text-align: right;
-                    font-size: 14px;
+                    font-size: 21px;
+                    position: relative;
+                    bottom: 127px;
+                    color: rgb(218, 175, 19);
                 }
             }
         }
@@ -102,10 +107,12 @@
             }
         }
     </style>
+
 </head>
 
 <body>
     <div id="root"></div>
+
     <script>
         const datos = [
             { id: 1, nombre: 'Juan', apellido: 'Perez', telefono: '(381) 123-4567', favorito: true },
@@ -133,27 +140,60 @@
 
     <script type="text/babel">
         const { createRoot } = ReactDOM
+        const { useState } = React
 
-        const Contacto = ({ nombre, apellido, telefono }) =>
-            <div className="card">
-                <div>{nombre} <b>{apellido}</b></div>
-                <div>{telefono}</div>
-            </div>
+        const Fav = ({ favorito, estadoFav }) => {
+            const cambioDeEstado = () => {
+                estadoFav(!favorito)
+            }
 
-        const Agenda = ({ datos }) =>
-            <div className="agenda">
-                {datos.map(contacto => <Contacto key={contacto.id} {...contacto} />)}
-            </div>
+            return (<i className={favorito ? "fa-solid fa-star" : "fa-regular fa-star"} onClick={cambioDeEstado}></i>)
+        }
+
+        const Contacto = ({ nombre, apellido, telefono, favorito, FavOnoFav }) => {
+            return (
+                <div className="card">
+                    <div>{nombre} <b>{apellido}</b></div>
+                    <div>{telefono}</div>
+                    <div> <Fav favorito={favorito} estadoFav={FavOnoFav} /></div>
+                </div>
+            )
+        }
+
+        const Agenda = ({ datos }) => {
+            const [contactos, setContactos] = useState(datos)
+
+            let actualizarFavorito = (id, nuevoEstado) => {
+                setContactos((contactos) => {
+                    return contactos.map((contacto) =>
+                        contacto.id === id ? { ...contacto, favorito: nuevoEstado } : contacto
+                    )
+                })
+            } 
+
+            contactos.sort((a, b) => a.nombre.localeCompare(b.nombre))
+            let filtroFavorito = contactos.filter((contacto) => contacto.favorito)
+            let filtroNoFavorito = contactos.filter((contacto) => !contacto.favorito)
+            const agendaFiltrada = [...filtroFavorito, ...filtroNoFavorito]
+
+            return (
+                <div className="agenda">
+                    {agendaFiltrada.map((contacto) => (
+                        <Contacto key={contacto.id} {...contacto} FavOnoFav={(nuevoEstado) => actualizarFavorito(contacto.id, nuevoEstado)}/>
+                    ))}
+                </div>
+            )
+        }
 
         const App = () =>
             <div>
-                <h1>Agenda</h1>
+                <h1>Agenda de contactos</h1>
                 <Agenda datos={datos} />
             </div>
 
         const root = createRoot(document.getElementById('root'))
-        root.render(<App />);
+        root.render(<App />)
     </script>
-</body>
 
+</body>
 </html>
