@@ -52,6 +52,7 @@
                     position: absolute;
                     top: 8px;
                     right: 8px;
+                    cursor: pointer; /* Agregamos un cursor de puntero para indicar que es interactivo */
                 }
 
                 div {
@@ -132,24 +133,62 @@
     </script>
 
     <script type="text/babel">
-        const { createRoot } = ReactDOM
+        const { useState } = React;
+        const { createRoot } = ReactDOM;
 
-        const Contacto = ({ nombre, apellido, telefono }) =>
+        const Contacto = ({ nombre, apellido, telefono, favorito, toggleFavorito }) => (
             <div className="card">
                 <div>{nombre} <b>{apellido}</b></div>
                 <div>{telefono}</div>
+                {/* Aquí agregamos un icono de estrella que cambiará según el estado de favorito */}
+                <span onClick={toggleFavorito}>
+                    {favorito ? <i className="fas fa-star"></i> : <i className="far fa-star"></i>}
+                </span>
             </div>
+        );
 
-        const Agenda = ({ datos }) =>
+        const Agenda = ({ datos, toggleFavorito }) => (
             <div className="agenda">
-                {datos.map(contacto => <Contacto key={contacto.id} {...contacto} />)}
+                {datos.map(contacto => (
+                    <Contacto
+                        key={contacto.id}
+                        {...contacto}
+                        toggleFavorito={() => toggleFavorito(contacto.id)} // Enviamos el id del contacto al toggleFavorito
+                    />
+                ))}
             </div>
+        );
 
-        const App = () =>
-            <div>
-                <h1>Agenda</h1>
-                <Agenda datos={datos} />
-            </div>
+        const App = () => {
+            const [contactos, setContactos] = useState(datos);
+
+            // Función para alternar el estado de favorito de un contacto
+            const toggleFavorito = id => {
+                setContactos(prevContactos =>
+                    prevContactos.map(contacto =>
+                        contacto.id === id ? { ...contacto, favorito: !contacto.favorito } : contacto
+                    )
+                );
+            };
+
+            // Ordenar los contactos favoritos primero y luego los no favoritos
+            // y luego ordenar alfabéticamente por apellidos
+            const sortedContactos = [...contactos].sort((a, b) => {
+                if (a.favorito === b.favorito) {
+                    // Si los favoritos son iguales, ordenar alfabéticamente por apellidos
+                    return a.apellido.localeCompare(b.apellido);
+                }
+                // De lo contrario, colocar los favoritos primero
+                return a.favorito ? -1 : 1;
+            });
+
+            return (
+                <div>
+                    <h1>Agenda</h1>
+                    <Agenda datos={sortedContactos} toggleFavorito={toggleFavorito} />
+                </div>
+            );
+        };
 
         const root = createRoot(document.getElementById('root'))
         root.render(<App />);
