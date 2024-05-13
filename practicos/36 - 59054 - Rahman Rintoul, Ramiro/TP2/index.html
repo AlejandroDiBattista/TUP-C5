@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
+    <!-- Icono Web -->
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2444/2444440.png" type="image/png">
     <!-- Enlaces a React, ReactDOM y Babel -->
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
@@ -10,14 +12,19 @@
     <!-- Iconos FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
-    <title>Demo 1</title>
+    <title>59054</title>
     <style>
-        /* reset */
+
+
+        h1{
+            text-align: center;
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
+            background-color: beige;
         }
 
         #root {
@@ -37,10 +44,11 @@
         }
 
         .agenda {
+            
             margin-top: 16px;
             display: flex;
             flex-wrap: wrap;
-            justify-content: start;
+            justify-content: center;
 
             >div {
                 text-align: center;
@@ -65,6 +73,16 @@
                 }
             }
         }
+        .favorito-icon {
+            cursor: pointer;
+            position: absolute;
+            bottom: 85px;
+            right: 0%;
+            margin: 8px;
+            color: gold;
+            text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+        }
+
 
         form {
             width: 240px;
@@ -108,43 +126,90 @@
     <div id="root"></div>
     <script>
         const datos = [
-            { id: 1, nombre: 'Juan', apellido: 'Perez', telefono: '(381) 123-4567', favorito: true },
-            { id: 2, nombre: 'Maria', apellido: 'Gomez', telefono: '(381) 123-4567', favorito: false },
-            { id: 3, nombre: 'Pedro', apellido: 'Gonzalez', telefono: '(381) 123-4567', favorito: true },
-            { id: 4, nombre: 'Ana', apellido: 'Fernandez', telefono: '(381) 123-4567', favorito: false },
-            { id: 5, nombre: 'Lucas', apellido: 'Rodriguez', telefono: '(381) 123-4567', favorito: true },
-            { id: 6, nombre: 'Carla', apellido: 'Lopez', telefono: '(381) 123-4567', favorito: false },
-            { id: 7, nombre: 'Jorge', apellido: 'Diaz', telefono: '(381) 123-4567', favorito: true },
-            { id: 8, nombre: 'Luis', apellido: 'Martinez', telefono: '(381) 123-4567', favorito: false },
-            { id: 9, nombre: 'Florencia', apellido: 'Paz', telefono: '(381) 123-4567', favorito: true },
-            { id: 10, nombre: 'Miguel', apellido: 'Rojas', telefono: '(381) 123-4567', favorito: false },
-            { id: 11, nombre: 'Sofia', apellido: 'Acosta', telefono: '(381) 123-4567', favorito: true },
-            { id: 12, nombre: 'Carlos', apellido: 'Vera', telefono: '(381) 123-4567', favorito: false },
-            { id: 13, nombre: 'Valeria', apellido: 'Gimenez', telefono: '(381) 123-4567', favorito: true },
-            { id: 14, nombre: 'Pablo', apellido: 'Sosa', telefono: '(381) 123-4567', favorito: false },
-            { id: 15, nombre: 'Romina', apellido: 'Rios', telefono: '(381) 123-4567', favorito: true },
-            { id: 16, nombre: 'Ezequiel', apellido: 'Molina', telefono: '(381) 123-4567', favorito: false },
-            { id: 17, nombre: 'Agustina', apellido: 'Ortiz', telefono: '(381) 123-4567', favorito: true },
-            { id: 18, nombre: 'Matias', apellido: 'Luna', telefono: '(381) 123-4567', favorito: false },
-            { id: 19, nombre: 'Cecilia', apellido: 'Carrizo', telefono: '(381) 123-4567', favorito: true },
-            { id: 20, nombre: 'Facundo', apellido: 'Paez', telefono: '(381) 123-4567', favorito: false }
+        { id: 1, nombre: 'Matias', apellido: 'Prieto', telefono: '+54 9 (381) 607-9212', favorito: true },
+            { id: 2, nombre: 'Augusto', apellido: 'Terrera', telefono: '+54 9 (381) 356-4568', favorito: false },
+            { id: 3, nombre: 'Ramiro', apellido: 'Rahman Rintoul', telefono: '+54 9 (381) 221-4252', favorito: true },
+            { id: 4, nombre: 'Patricio', apellido: 'Fernandez', telefono: '+54 9 (381) 301-8034', favorito: false },
+            { id: 5, nombre: 'Giorgio', apellido: 'Luna', telefono: '+51 (949) 094-756', favorito: true },
+            { id: 6, nombre: 'Adolfo', apellido: 'Koch', telefono: '+49 (089) 542-768', favorito: false },
+            { id: 7, nombre: 'Josefina Elizabeth', apellido: 'Alvarez', telefono: '+56 9 (8724) 5899', favorito: true },
+            { id: 8, nombre: 'Khalid', apellido: 'Kashmiri', telefono: '+971 (052) 123-456', favorito: false },
+            { id: 9, nombre: 'Jesús', apellido: 'Paz', telefono: '+1 (214) 621-6980', favorito: true },
+            { id: 10, nombre: 'Augusto', apellido: 'Rojas', telefono: '+54 9 (381) 633-8435', favorito: false },
+            { id: 11, nombre: 'Milagros', apellido: 'La Rosa Nuñez', telefono: '+51 (973) 047-094', favorito: true },
+            { id: 12, nombre: 'Khidir', apellido: 'Karawita', telefono: '+971 (052) 123-456', favorito: false },
+            { id: 13, nombre: 'Valeria', apellido: 'Gimenez', telefono: '+54 9 (385) 123-4567', favorito: true },
+            { id: 14, nombre: 'Ismail', apellido: 'Ahmad Kanabawi', telefono: '+971 (052) 547-456', favorito: false },
+            { id: 15, nombre: 'Daniela', apellido: 'Marquez', telefono: '+51 (986) 243-294', favorito: true },
+            { id: 16, nombre: 'Matt', apellido: 'Bellamy', telefono: '+44 (20) 1234-5678', favorito: false },
+            { id: 17, nombre: 'Agustina', apellido: 'Ortiz', telefono: '+54 9 (3816) 123-4567', favorito: true },
+            { id: 18, nombre: 'Hazael', apellido: 'Lozano Barona', telefono: '+52 1 (656) 763 9130', favorito: false },
+            { id: 19, nombre: 'Cecilia', apellido: 'Carrizo', telefono: '+54 9 (381) 123-4567', favorito: true },
+            { id: 20, nombre: 'Facundo', apellido: 'Paez', telefono: '+54 9 (381) 123-4567', favorito: false }
         ]
     </script>
 
     <script type="text/babel">
         const { createRoot } = ReactDOM
+        const { useState } = React
+        const FavoritoClick = ({ favorito, onClick }) => <i className={favorito ? "fa-solid fa-star" : "fa-regular fa-star"} onClick={onClick} />
+        const Favorito = ({ favorito }) => (
+             <i className={favorito ? "fas fa-star" : "far fa-star"}></i>
+        )
+        const Contacto = ({ nombre, apellido, telefono, favorito, onFavoritoChange, id }) => {
+              const [esFavorito, setEsFavorito] = useState(favorito);
+              const toggleFavorito = () => {
+                    const nuevoEstado = !esFavorito;
+                    setEsFavorito(nuevoEstado);
+                    onFavoritoChange(id, nuevoEstado);
+                }
 
-        const Contacto = ({ nombre, apellido, telefono }) =>
-            <div className="card">
-                <div>{nombre} <b>{apellido}</b></div>
-                <div>{telefono}</div>
-            </div>
+              return (
+                <div className="card">
+                  <div>{nombre} <b>{apellido}</b></div>
+                  <div>{telefono}</div>
+                  <div className="favorito-icon" onClick={toggleFavorito}>
+                    <Favorito favorito={esFavorito} />
+                  </div>
+                </div>
+            )
+            }
 
-        const Agenda = ({ datos }) =>
-            <div className="agenda">
-                {datos.map(contacto => <Contacto key={contacto.id} {...contacto} />)}
-            </div>
-
+        const Agenda = ({ datos }) => {
+              const [contactos, setContactos] = useState(datos);
+              const actualizarFavorito = (id, nuevoEstado) => {
+                const nuevosContactos = contactos.map(contacto => {
+                  if (contacto.id === id) {
+                    return { ...contacto, favorito: nuevoEstado };
+                  }
+                  return contacto;
+                })
+                const contactosOrdenados = nuevosContactos.sort((a, b) => {
+                  if (a.favorito && !b.favorito) return -1;
+                  if (!a.favorito && b.favorito) return 1;
+                  return a.apellido.localeCompare(b.apellido);
+                })
+                setContactos([...contactosOrdenados])
+              }
+             
+            const datosOrdenados = contactos.sort((a, b) => {
+                if (a.favorito && !b.favorito) { return -1;}
+                if (!a.favorito && b.favorito) { return 1;}
+                return 0;
+            }) 
+                       
+            return (
+                <div className="agenda">
+                    {contactos.map((contacto) => (
+                        <Contacto
+                          key={contacto.id}
+                          {...contacto}
+                          onFavoritoChange={actualizarFavorito}
+                        />
+                    ))}
+                </div>
+            )
+        }
         const App = () =>
             <div>
                 <h1>Agenda</h1>
@@ -155,5 +220,4 @@
         root.render(<App />);
     </script>
 </body>
-
 </html>
