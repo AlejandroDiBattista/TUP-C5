@@ -10,7 +10,7 @@
     <!-- Iconos FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
-    <title>Demo 1</title>
+    <title>58736</title>
     <style>
         /* reset */
         body {
@@ -34,6 +34,14 @@
             border-radius: 8px;
             background-color: #ffffff;
             box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .card .favorite {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            cursor: pointer;
         }
 
         .agenda {
@@ -41,29 +49,18 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: start;
+        }
 
-            >div {
-                text-align: center;
-                width: 240px;
-                height: 96px;
-                position: relative;
+        .agenda-header {
+            width: 100%;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
 
-                span {
-                    position: absolute;
-                    top: 8px;
-                    right: 8px;
-                }
-
-                div {
-                    margin-top: 25px;
-                    font-size: 20px;
-                }
-
-                div:last-child {
-                    text-align: right;
-                    font-size: 14px;
-                }
-            }
+        .favorite-contacts {
+            margin-top: 24px;
+            width: 100%;
         }
 
         form {
@@ -71,88 +68,104 @@
             padding: 16px;
             margin: 8px;
             border-radius: 8px;
-
-            label {
-                display: block;
-                font-size: 12px;
-                color: #aaa;
-            }
-
-            input {
-                width: calc(100% - 8px);
-                border-radius: 4px;
-                margin: 4px 0;
-                border: 1px solid #ccc;
-                padding: 4px;
-                font-size: 16px;
-            }
-
-            div {
-                display: flex;
-                justify-content: space-between;
-                margin-top: 16px;
-
-                button {
-                    padding: 8px 16px;
-                    border: none;
-                    border-radius: 4px;
-                    font-size: 14px;
-                    cursor: pointer;
-                }
-            }
         }
     </style>
 </head>
 
 <body>
     <div id="root"></div>
-    <script>
-        const datos = [
-            { id: 1, nombre: 'Juan', apellido: 'Perez', telefono: '(381) 123-4567', favorito: true },
-            { id: 2, nombre: 'Maria', apellido: 'Gomez', telefono: '(381) 123-4567', favorito: false },
-            { id: 3, nombre: 'Pedro', apellido: 'Gonzalez', telefono: '(381) 123-4567', favorito: true },
-            { id: 4, nombre: 'Ana', apellido: 'Fernandez', telefono: '(381) 123-4567', favorito: false },
-            { id: 5, nombre: 'Lucas', apellido: 'Rodriguez', telefono: '(381) 123-4567', favorito: true },
-            { id: 6, nombre: 'Carla', apellido: 'Lopez', telefono: '(381) 123-4567', favorito: false },
-            { id: 7, nombre: 'Jorge', apellido: 'Diaz', telefono: '(381) 123-4567', favorito: true },
-            { id: 8, nombre: 'Luis', apellido: 'Martinez', telefono: '(381) 123-4567', favorito: false },
-            { id: 9, nombre: 'Florencia', apellido: 'Paz', telefono: '(381) 123-4567', favorito: true },
-            { id: 10, nombre: 'Miguel', apellido: 'Rojas', telefono: '(381) 123-4567', favorito: false },
-            { id: 11, nombre: 'Sofia', apellido: 'Acosta', telefono: '(381) 123-4567', favorito: true },
-            { id: 12, nombre: 'Carlos', apellido: 'Vera', telefono: '(381) 123-4567', favorito: false },
-            { id: 13, nombre: 'Valeria', apellido: 'Gimenez', telefono: '(381) 123-4567', favorito: true },
-            { id: 14, nombre: 'Pablo', apellido: 'Sosa', telefono: '(381) 123-4567', favorito: false },
-            { id: 15, nombre: 'Romina', apellido: 'Rios', telefono: '(381) 123-4567', favorito: true },
-            { id: 16, nombre: 'Ezequiel', apellido: 'Molina', telefono: '(381) 123-4567', favorito: false },
-            { id: 17, nombre: 'Agustina', apellido: 'Ortiz', telefono: '(381) 123-4567', favorito: true },
-            { id: 18, nombre: 'Matias', apellido: 'Luna', telefono: '(381) 123-4567', favorito: false },
-            { id: 19, nombre: 'Cecilia', apellido: 'Carrizo', telefono: '(381) 123-4567', favorito: true },
-            { id: 20, nombre: 'Facundo', apellido: 'Paez', telefono: '(381) 123-4567', favorito: false }
-        ]
-    </script>
-
     <script type="text/babel">
-        const { createRoot } = ReactDOM
+        const { useState } = React;
 
-        const Contacto = ({ nombre, apellido, telefono }) =>
+        const Favorito = ({ favorito, onToggle }) => {
+            const onClick = () => onToggle(!favorito);
+            return (
+                <i className={favorito ? "fas fa-star favorite" : "far fa-star favorite"} onClick={onClick}></i>
+            );
+        }
+
+        const Contacto = ({ nombre, apellido, telefono, favorito, onToggle }) =>
             <div className="card">
                 <div>{nombre} <b>{apellido}</b></div>
                 <div>{telefono}</div>
-            </div>
+                <Favorito favorito={favorito} onToggle={onToggle} />
+            </div>;
 
-        const Agenda = ({ datos }) =>
-            <div className="agenda">
-                {datos.map(contacto => <Contacto key={contacto.id} {...contacto} />)}
-            </div>
+        const Agenda = ({ datos, onToggle }) => {
+            const favoritos = datos.filter(contacto => contacto.favorito);
+            const otrosContactos = datos.filter(contacto => !contacto.favorito);
+            const sortedFavoritos = favoritos.sort((a, b) => a.nombre.localeCompare(b.nombre));
+            const sortedOtrosContactos = otrosContactos.sort((a, b) => a.nombre.localeCompare(b.nombre));
+            const contactos = [...sortedFavoritos, ...sortedOtrosContactos];
 
-        const App = () =>
-            <div>
-                <h1>Agenda</h1>
-                <Agenda datos={datos} />
-            </div>
+            return (
+                <div>
+                    <div className="agenda-header">Contactos Favoritos</div>
+                    <div className="favorite-contacts">
+                        {sortedFavoritos.map(contacto => (
+                            <Contacto
+                                key={contacto.id}
+                                {...contacto}
+                                onToggle={() => onToggle(contacto.id)}
+                            />
+                        ))}
+                    </div>
+                    <div className="agenda-header">Resto de Contactos</div>
+                    <div className="agenda">
+                        {sortedOtrosContactos.map(contacto => (
+                            <Contacto
+                                key={contacto.id}
+                                {...contacto}
+                                onToggle={() => onToggle(contacto.id)}
+                            />
+                        ))}
+                    </div>
+                </div>
+            );
+        }
 
-        const root = createRoot(document.getElementById('root'))
-        root.render(<App />);
+        const App = () => {
+            const [contactos, setContactos] = useState([
+                { id: 1, nombre: 'Juan', apellido: 'Perez', telefono: '(381) 123-4567', favorito: true },
+                { id: 2, nombre: 'Maria', apellido: 'Gomez', telefono: '(381) 123-4567', favorito: false },
+                { id: 3, nombre: 'Pedro', apellido: 'Gonzalez', telefono: '(381) 123-4567', favorito: true },
+                { id: 4, nombre: 'Ana', apellido: 'Fernandez', telefono: '(381) 123-4567', favorito: false },
+                { id: 5, nombre: 'Lucas', apellido: 'Rodriguez', telefono: '(381) 123-4567', favorito: true },
+                { id: 6, nombre: 'Carla', apellido: 'Lopez', telefono: '(381) 123-4567', favorito: false },
+                { id: 7, nombre: 'Jorge', apellido: 'Diaz', telefono: '(381) 123-4567', favorito: true },
+                { id: 8, nombre: 'Luis', apellido: 'Martinez', telefono: '(381) 123-4567', favorito: false },
+                { id: 9, nombre: 'Florencia', apellido: 'Paz', telefono: '(381) 123-4567', favorito: true },
+                { id: 10, nombre: 'Miguel', apellido: 'Rojas', telefono: '(381) 123-4567', favorito: false },
+                { id: 11, nombre: 'Sofia', apellido: 'Acosta', telefono: '(381) 123-4567', favorito: true },
+                { id: 12, nombre: 'Carlos', apellido: 'Vera', telefono: '(381) 123-4567', favorito: false },
+                { id: 13, nombre: 'Valeria', apellido: 'Gimenez', telefono: '(381) 123-4567', favorito: true },
+                { id: 14, nombre: 'Pablo', apellido: 'Sosa', telefono: '(381) 123-4567', favorito: false },
+                { id: 15, nombre: 'Romina', apellido: 'Rios', telefono: '(381) 123-4567', favorito: true },
+                { id: 16, nombre: 'Ezequiel', apellido: 'Molina', telefono: '(381) 123-4567', favorito: false },
+                { id: 17, nombre: 'Agustina', apellido: 'Ortiz', telefono: '(381) 123-4567', favorito: true },
+                { id: 18, nombre: 'Matias', apellido: 'Luna', telefono: '(381) 123-4567', favorito: false },
+                { id: 19, nombre: 'Cecilia', apellido: 'Carrizo', telefono: '(381) 123-4567', favorito: true },
+                { id: 20, nombre: 'Facundo', apellido: 'Paez', telefono: '(381) 123-4567', favorito: false }
+            ]);
+
+            const handleToggleFavorite = (id) => {
+                setContactos(contactos.map(contacto => {
+                    if (contacto.id === id) {
+                        return { ...contacto, favorito: !contacto.favorito };
+                    }
+                    return contacto;
+                }));
+            }
+
+            return (
+                <div>
+                    <h1>Agenda</h1>
+                    <Agenda datos={contactos} onToggle={handleToggleFavorite} />
+                </div>
+            );
+        }
+
+        ReactDOM.render(<App />, document.getElementById('root'));
     </script>
 </body>
 
