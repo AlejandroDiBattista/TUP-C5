@@ -10,7 +10,7 @@
     <!-- Iconos FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
-    <title>Demo 1</title>
+    <title>58766</title>
     <style>
         /* reset */
         body {
@@ -61,7 +61,10 @@
 
                 div:last-child {
                     text-align: right;
-                    font-size: 14px;
+                    font-size: 21px;
+                    position: relative;
+                    bottom: 127px;
+                    color: rgb(218, 125, 19);
                 }
             }
         }
@@ -130,20 +133,47 @@
             { id: 20, nombre: 'Facundo', apellido: 'Paez', telefono: '(381) 123-4567', favorito: false }
         ]
     </script>
-
     <script type="text/babel">
         const { createRoot } = ReactDOM
+        const { useState } = React
 
-        const Contacto = ({ nombre, apellido, telefono }) =>
-            <div className="card">
-                <div>{nombre} <b>{apellido}</b></div>
-                <div>{telefono}</div>
-            </div>
+        const Favorito = ({ favorito, estadoFavorito }) => 
+            <i className={favorito ? "fa-solid fa-star" : "fa-regular fa-star"} onClick={() => estadoFavorito(!favorito)}></i>
 
-        const Agenda = ({ datos }) =>
-            <div className="agenda">
-                {datos.map(contacto => <Contacto key={contacto.id} {...contacto} />)}
-            </div>
+        const Contacto = ({ nombre, apellido, telefono, favorito, FavOnoFav }) => {
+            return (
+                <div className="card">
+                    <div>{nombre} <b>{apellido}</b></div>
+                    <div>{telefono}</div>
+                    <div> <Favorito favorito={favorito} estadoFavorito={FavOnoFav} /></div>
+                </div>
+            )
+        }
+
+        const Agenda = ({ datos }) => {
+            const [contactos, setContactos] = useState(datos)
+
+            let actualizarFavorito = (id, nuevoEstado) => {
+                setContactos((contactos) => {
+                    return contactos.map((contacto) =>
+                        contacto.id === id ? { ...contacto, favorito: nuevoEstado } : contacto
+                    )
+                })
+            } 
+
+            contactos.sort((x, y) => x.nombre.localeCompare(y.nombre))
+            let filtroFavorito = contactos.filter((contacto) => contacto.favorito)
+            let filtroNoFavorito = contactos.filter((contacto) => !contacto.favorito)
+            const agendaFiltrada = [...filtroFavorito, ...filtroNoFavorito]
+
+            return (
+                <div className="agenda">
+                    {agendaFiltrada.map((contacto) => (
+                        <Contacto key={contacto.id} {...contacto} FavOnoFav={(nuevoEstado) => actualizarFavorito(contacto.id, nuevoEstado)}/>
+                    ))}
+                </div>
+            )
+        }
 
         const App = () =>
             <div>
@@ -152,8 +182,7 @@
             </div>
 
         const root = createRoot(document.getElementById('root'))
-        root.render(<App />);
+        root.render(<App />)
     </script>
 </body>
-
 </html>
