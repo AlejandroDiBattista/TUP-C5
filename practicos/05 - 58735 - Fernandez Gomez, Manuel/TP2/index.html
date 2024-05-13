@@ -1,23 +1,23 @@
-<!DOCTYPE html>
+<!DOCTYPE html> html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
-    <!-- Enlaces a React, ReactDOM y Babel -->
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <!-- Iconos FontAwesome -->
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-
-    <title>Demo 1</title>
+    <title>58735</title>
     <style>
-        /* reset */
+        
         body {
             font-family: Arial, sans-serif;
+            color: #D6D58E;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
+            background-color: #9FC131;
+            
         }
 
         #root {
@@ -32,7 +32,7 @@
             padding: 16px;
             margin: 4px;
             border-radius: 8px;
-            background-color: #ffffff;
+            background-color: #042940;
             box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
         }
 
@@ -131,28 +131,80 @@
         ]
     </script>
 
-    <script type="text/babel">
-        const { createRoot } = ReactDOM
+<script type="text/babel">
+    const { createRoot } = ReactDOM;
 
-        const Contacto = ({ nombre, apellido, telefono }) =>
-            <div className="card">
-                <div>{nombre} <b>{apellido}</b></div>
-                <div>{telefono}</div>
-            </div>
+    const Contacto = ({
+        id,
+        nombre,
+        apellido,
+        telefono,
+        favorito,
+        onToggleFavorito,
+    }) => {
+        const handleClick = () => {
+        onToggleFavorito(id);
+        };
 
-        const Agenda = ({ datos }) =>
-            <div className="agenda">
-                {datos.map(contacto => <Contacto key={contacto.id} {...contacto} />)}
-            </div>
-
-        const App = () =>
+        return (
+        <div className="card">
             <div>
-                <h1>Agenda</h1>
-                <Agenda datos={datos} />
+            {nombre} <b>{apellido}</b>
             </div>
+            <div>{telefono}</div>
+            <button onClick={handleClick}>
+            {favorito ? (
+                <i className="fas fa-star"></i>
+            ) : (
+                <i className="far fa-star"></i>
+            )}
+            </button>
+        </div>
+        );
+    };
+    const Agenda = ({ datos, onToggleFavorito }) => (
+        <div className="agenda">
+        {datos.map((contacto) => (
+            <Contacto
+            key={contacto.id}
+            {...contacto}
+            onToggleFavorito={onToggleFavorito}
+            />
+        ))}
+        </div>
+    );
+    const App = () => {
+        const [contactos, setContactos] = React.useState(datos);
 
-        const root = createRoot(document.getElementById('root'))
-        root.render(<App />);
+        const toggleFavorito = (id) => {
+        setContactos((prevContactos) => {
+            const contactosActualizados = prevContactos.map((contacto) =>
+            contacto.id === id
+                ? { ...contacto, favorito: !contacto.favorito }
+                : contacto
+            );
+            const favoritos = contactosActualizados.filter(
+            (contacto) => contacto.favorito
+            );
+            const noFavoritos = contactosActualizados.filter(
+            (contacto) => !contacto.favorito
+            );
+            const contactosOrdenados = [
+            ...favoritos.sort((a, b) => a.nombre.localeCompare(b.nombre)),
+            ...noFavoritos.sort((a, b) => a.nombre.localeCompare(b.nombre)),
+            ];
+            return contactosOrdenados;
+        });
+        };
+        return (
+        <div>
+            <h1>Contactos</h1>
+            <Agenda datos={contactos} onToggleFavorito={toggleFavorito} />
+        </div>
+        );
+    };
+    const root = createRoot(document.getElementById("root"));
+    root.render(<App />);
     </script>
 </body>
 
