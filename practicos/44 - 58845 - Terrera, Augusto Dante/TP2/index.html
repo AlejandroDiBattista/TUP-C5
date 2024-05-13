@@ -133,18 +133,33 @@
 
     <script type="text/babel">
         const { createRoot } = ReactDOM
+        const { useState } = React
 
-        const Contacto = ({ nombre, apellido, telefono }) =>
+        const Favorito = ({ id, favorito, cambiar }) =>
+            <span onClick={() => cambiar(id)}>
+                {favorito ? <i className="fa-solid fa-star" style={{ color: "#FFD43B" }}></i> : <i className="fa-regular fa-star" style={{ color: "#FFD43B" }}></i>}
+            </span>
+        const Contacto = ({ id, nombre, apellido, telefono, favorito, cambiar }) =>
             <div className="card">
+                <Favorito favorito={favorito} cambiar={cambiar} id={id} />
                 <div>{nombre} <b>{apellido}</b></div>
                 <div>{telefono}</div>
             </div>
 
-        const Agenda = ({ datos }) =>
-            <div className="agenda">
-                {datos.map(contacto => <Contacto key={contacto.id} {...contacto} />)}
-            </div>
-
+        const Agenda = ({ datos }) => {
+            const [contactos, setContactos] = useState(datos)
+            const cambiar = (id) => {
+                setContactos(contactos.map(c => c.id === id ? { ...c, favorito: !c.favorito } : c))
+            }
+            const fav = contactos.filter(c => c.favorito).sort((a, b) => a.nombre.localeCompare(b.nombre))
+            const resto = contactos.filter(c => !c.favorito).sort((a, b) => a.nombre.localeCompare(b.nombre))
+            return (
+                <div className="agenda">
+                    {fav.map(contacto => <Contacto key={contacto.id} {...contacto} cambiar={cambiar} />)}
+                    {resto.map(contacto => <Contacto key={contacto.id} {...contacto} cambiar={cambiar} />)}
+                </div>
+            )
+        }
         const App = () =>
             <div>
                 <h1>Agenda</h1>
