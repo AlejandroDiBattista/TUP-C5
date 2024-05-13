@@ -134,17 +134,51 @@
     <script type="text/babel">
         const { createRoot } = ReactDOM
 
-        const Contacto = ({ nombre, apellido, telefono }) =>
+        const Favorito = ({favorito, ontoggle}) => {
+            const onClick = () =>
+                ontoggle(!favorito)
+
+            return (
+                <span onClick={onClick}>
+                    {favorito ?
+                        <i className="fas fa-star"></i>:
+                        <i className="far fa-star"></i>
+                    }    
+                </span>
+            )
+
+
+        }
+        const Contacto = ({ nombre, apellido, telefono, favorito, onToggleFavorito }) =>
             <div className="card">
                 <div>{nombre} <b>{apellido}</b></div>
                 <div>{telefono}</div>
+                <Favorito favorito={favorito} ontoggle={onToggleFavorito} />
             </div>
 
-        const Agenda = ({ datos }) =>
-            <div className="agenda">
-                {datos.map(contacto => <Contacto key={contacto.id} {...contacto} />)}
-            </div>
+            const Agenda = ({ datos }) => {
+            datos.sort((a, b) => {
+                if(a.favorito !== b.favorito){
+                    return a.favorito ? -1 : 1;
+                }
+                return(a.apellido + a.nombre).localeCompare(b.apellido + b.apellido);
+            });
 
+            return(
+                <div className="agenda">
+                    {datos.map(contacto => (
+                    <Contacto
+                    key={contacto.id}
+                    {...contacto}
+                    onToggleFavorito={() =>{
+                            contacto.favorito = !contacto.favorito;
+                            root.render(<App />);
+                            }}
+                        />
+                    ))}
+                </div>
+                );
+            };
         const App = () =>
             <div>
                 <h1>Agenda</h1>
