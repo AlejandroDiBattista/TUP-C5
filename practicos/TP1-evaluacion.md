@@ -1,9 +1,23 @@
 ## 01
 * ok
 
+## 03
+* ok
+* agrega campos extra
+
+## 04
+* ok
+* No define el componente Contacto
+
 ## 05
 * ok
 * Muestra campo ID
+
+## 06
+* ok
+* usa ID en lugar de class
+* Muestra campo ID 
+* Comenta el codigo describiendo lo que hace el codigo
 
 ## 07
 * ok
@@ -17,9 +31,17 @@
 * ok
 * Muestra nro orden arriba
 
+## 11
+* ok
+* No hace css para la presentacion con tarjeta
+
 ## 12
-* Ok
+* ok
 * Falta formato de tarjeta
+
+## 14
+* ok
+* Mescla declaracion de funciones, tradicional y flecha
 
 ## 16
 * ok
@@ -31,7 +53,7 @@
 * Mantiene Hola Mundo
 
 ## 17
-* Ok
+* ok
 * No podre olvidar nunca esos colores :)
 
 ## 18
@@ -44,20 +66,38 @@
 * Nombre de variable en mayusculas
 
 ## 22
-* Ok
+* ok
 * No borró el código de "¡Hola Mundo!"
 
+## 23
+* ok
+* No declara Contacto
+
 ## 24
-* Ok
+* ok
 * No borró el código de "¡Hola Mundo!"
 * No se deben anidar componentes (Contacto definidos dentro de App)
 
 ## 25
 * Nombre de propiedades en mayusculas
 
+## 28
+* ok
+* Muestra un mensaje "Hola Rey!"
+
 ## 29
 * ok
 * Agrega campo email
+
+## 30
+* ok
+* No muestra como tarjeta
+
+## 31
+* ok
+
+## 32
+* ok
 
 ## 33
 * ok
@@ -76,7 +116,7 @@
 * La grilla esta mal dimensionada no permite ver en pantalla
 
 ## 38
-* Ok
+* ok
 
 ## 39
 * Sin telefono
@@ -94,7 +134,7 @@
 * Es identico a #20
 
 ## 42
-* Ok 
+* ok 
 * Es identico a 38
 
 ## 43
@@ -105,9 +145,21 @@
 * Define Agenda como Contacto
 * No define Contacto
 
+## 45
+* ok
+* No formatea los datos (falta css)
+
 ## 46 
-* Ok
+* ok
 * Usan "clase-p" en lugar de ".contacto-item p"
+
+## 47
+* ok
+
+## 48
+* No cumple la consigna
+* usa useState para mostrar/ocultar lista.
+* usa trucos para mostrar 2 listas.
 
 ## 49
 * ok

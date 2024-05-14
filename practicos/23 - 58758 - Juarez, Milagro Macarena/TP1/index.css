@@ -5,3 +5,45 @@ body {
     padding: 0;
     box-sizing: border-box;
 }
+
+#root {
+    max-width: 800px;
+    margin: 20px auto; 
+    background-color: #ffcccc; 
+    padding: 20px;
+    border-radius: 10px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center; 
+  }
+  
+  h1, h2, h3 {
+    color: #000;
+  }
+  
+  .agenda {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+  }
+  
+  .contacto {
+    border: 3px solid #ccc; 
+    border-radius: 10px; 
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 300px; 
+    text-align: left; 
+  }
+  
+  .contacto h3 {
+    margin: 0;
+    color: #000;
+  }
+  
+  .contacto p {
+    margin: 10px 0 0;
+    color: #000; 
+  }
+  
+  
+  

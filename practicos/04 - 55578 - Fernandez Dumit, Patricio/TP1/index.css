@@ -1,7 +1,56 @@
 body {
-    background-color: #f0f0f0;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    background: lightskyblue;
 }
+
+
+.Lista-Contactos {
+    font-family: Arial, sans-serif;
+    max-width: 300px;
+    margin: 0 auto;    
+}
+
+  
+h1 {
+    text-align: center;
+}
+
+  
+ul {
+    color:black;
+    padding: 0;
+}
+
+  
+li {
+    list-style-type: none;
+    border: 1.8px solid rgb(0, 98, 255);
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+  
+.nombre {
+    font-weight: bold;
+    text-align: center;
+    font-size: 25px;
+}
+
+
+.apellido {
+    font-weight: bold;
+    text-align: center;
+    font-size: 25px;
+}
+  
+
+.telefono {
+    text-align: center;
+    font-size: 17px;
+}
+  
+
+li:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+  

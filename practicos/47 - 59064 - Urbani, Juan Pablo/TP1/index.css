@@ -1,7 +1,31 @@
 body {
-    background-color: #f0f0f0;
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #3a3938; 
+}
+
+h1 {
+    font-size: 2.5rem; 
+    text-align: center; 
+    color: #ffffff; 
+}
+
+h3 {
+    font-size: 1rem; 
+    color: #030303; 
+    margin-top: 0.5rem;
+}
+
+p {
+    color: #030303; 
+}
+
+.contact-container {
+    border: 1px solid #030303; 
+    padding: 1rem;
+    margin-top: 1rem;
+    background-color: #ffffff; 
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1); 
 }

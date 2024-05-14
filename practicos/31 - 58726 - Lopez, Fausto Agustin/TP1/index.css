@@ -1,7 +1,30 @@
 body {
-    background-color: #f0f0f0;
-    font-family: Arial, sans-serif;
+    background-color: #153448;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    text-align: center;
+    color: white;
+}
+
+.ListaContactos {
+    display: flex;
+    justify-content: center;
+}
+
+.Contactos {
+    border: 1px solid gray;
+    border-radius: 10px;
+    margin: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    background-color: #948979;
+    color: black;
+    transition: transform 0.5s, box-shadow 0.3s;
+}
+
+.Contactos:Hover {
+    cursor: pointer;
+    transform: scale(1.1);
 }
