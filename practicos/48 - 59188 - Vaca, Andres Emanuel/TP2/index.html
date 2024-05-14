@@ -10,7 +10,7 @@
     <!-- Iconos FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
-    <title>Demo 1</title>
+    <title>59188</title>
     <style>
         /* reset */
         body {
@@ -29,11 +29,12 @@
         }
 
         .card {
-            padding: 16px;
-            margin: 4px;
+            padding: 30px;
+            margin: 10px;
             border-radius: 8px;
             background-color: #ffffff;
-            box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px  5px 5px rgba(0, 0, 0, 0.1);
+           
         }
 
         .agenda {
@@ -133,17 +134,53 @@
 
     <script type="text/babel">
         const { createRoot } = ReactDOM
+        const { useState } = React;
 
-        const Contacto = ({ nombre, apellido, telefono }) =>
+        const Favorito = ({ id, favorito, cambiar }) => {
+            return (
+                <span onClick={() => cambiar(id)} className='fav'>
+                    {favorito ? <i class="fa-solid fa-star"></i> : <i class="fa-regular fa-star"></i>}
+                </span>
+            )
+        }
+
+        const favorito = (id) => {
+            setContactos(contactos.map(contacto =>
+                contacto.id === id ? { ...contacto, favorito: !contacto.favorito } : contacto
+            ));
+        };
+
+
+
+        const Contacto = ({ id, nombre, apellido, telefono, favorito, cambiar }) => (
             <div className="card">
                 <div>{nombre} <b>{apellido}</b></div>
                 <div>{telefono}</div>
+                <Favorito id={id} favorito=
+                    {favorito} cambiar={cambiar} />
             </div>
+        );
 
-        const Agenda = ({ datos }) =>
-            <div className="agenda">
-                {datos.map(contacto => <Contacto key={contacto.id} {...contacto} />)}
-            </div>
+        const Agenda = ({ datos }) => {
+            const [contactos, setContactos] = useState(datos)
+            const cambiar = (id) => {
+                setContactos(contactos.map(c => c.id === id ?
+                    { ...c, favorito: !c.favorito } : c))
+            }
+            const fav = contactos.filter(c => c.favorito).sort((a, b) => a.nombre.localeCompare(b.nombre))
+            const resto = contactos.filter(c => !c.favorito).sort((a, b) => a.nombre.localeCompare(b.nombre))
+
+            // Ordenar alfabéticamente por nombre
+            fav.sort((a, b) => a.nombre.localeCompare(b.nombre));
+            resto.sort((a, b) => a.nombre.localeCompare(b.nombre));
+
+            return (
+                <div className="agenda">
+                    {fav.map(contacto => <Contacto key={contacto.id} {...contacto} cambiar={cambiar} />)}
+                    {resto.map(contacto => <Contacto key={contacto.id} {...contacto} cambiar={cambiar} />)}
+                </div>
+            )
+        }
 
         const App = () =>
             <div>
