@@ -10,7 +10,7 @@
     <!-- Iconos FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
-    <title>Demo 1</title>
+    <title>59064</title>
     <style>
         /* reset */
         body {
@@ -66,6 +66,11 @@
             }
         }
 
+        h1 {
+            text-align: center;
+            font-weight: bolder;
+        }
+
         form {
             width: 240px;
             padding: 16px;
@@ -100,6 +105,7 @@
                     cursor: pointer;
                 }
             }
+           
         }
     </style>
 </head>
@@ -130,28 +136,74 @@
             { id: 20, nombre: 'Facundo', apellido: 'Paez', telefono: '(381) 123-4567', favorito: false }
         ]
     </script>
-
+    
     <script type="text/babel">
         const { createRoot } = ReactDOM
 
-        const Contacto = ({ nombre, apellido, telefono }) =>
+        const Favorito = ({ marcado, onClick }) => {
+            let icono;
+            if (marcado) {
+                icono = <i className="fas fa-star" style={{ color: "#951dc5" }} onClick={onClick}></i>;
+            } else {
+                icono = <i className="far fa-star" style={{ color: "#951dc5" }} onClick={onClick}></i>;
+            }
+            return <span>{icono}</span>;
+        };
+
+        const Contacto = ({ id, nombre, apellido, telefono, favorito, toggleFavorito }) =>
             <div className="card">
+                <Favorito marcado={favorito} onClick={() => toggleFavorito(id)} />
                 <div>{nombre} <b>{apellido}</b></div>
                 <div>{telefono}</div>
-            </div>
+            </div>;
 
-        const Agenda = ({ datos }) =>
-            <div className="agenda">
-                {datos.map(contacto => <Contacto key={contacto.id} {...contacto} />)}
-            </div>
+        const Agenda = ({ datos, toggleFavorito }) => {
+            const comparar = (a, b) => a.nombre.localeCompare(b.nombre) && a.apellido.localeCompare(b.apellido);
+            datos.sort(comparar);
 
-        const App = () =>
-            <div>
-                <h1>Agenda</h1>
-                <Agenda datos={datos} />
-            </div>
+            const favoritos = datos.filter(contacto => contacto.favorito);
+            const noFavoritos = datos.filter(contacto => !contacto.favorito);
+            return (
+                <>
+                    <div className="agenda">
+                        {favoritos.map(contacto => <Contacto key={contacto.id} {...contacto} toggleFavorito={toggleFavorito} />)}
+                    </div>
+                    <div className="agenda">
+                        {noFavoritos.map(contacto => <Contacto key={contacto.id} {...contacto} toggleFavorito={toggleFavorito} />)}
+                    </div>
+                </>
+            );
+        };
 
-        const root = createRoot(document.getElementById('root'))
+        const App = () => {
+            const [contactos, setContactos] = React.useState(datos);
+
+            const toggleFavorito = (id) => {
+                const nuevosContactos = contactos.map(contacto => {
+                    if (contacto.id === id) {
+                        return { ...contacto, favorito: !contacto.favorito };
+                    }
+                    return contacto;
+                });
+                setContactos(nuevosContactos);
+            };
+
+            return (
+                <div>
+            <h1 style={{textAlign: 'center'}}>Agenda</h1>
+            <div style={{textAlign: 'left'}}>
+                <h2>Favoritos</h2>
+                <Agenda datos={contactos.filter(contacto => contacto.favorito)} toggleFavorito={toggleFavorito} />
+            </div>
+            <div style={{textAlign: 'left'}}>
+                <h2>Contactos</h2>
+                <Agenda datos={contactos.filter(contacto => !contacto.favorito)} toggleFavorito={toggleFavorito} />
+            </div>
+        </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
     </script>
 </body>
