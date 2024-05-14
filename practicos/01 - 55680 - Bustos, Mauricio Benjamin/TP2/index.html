@@ -10,7 +10,7 @@
     <!-- Iconos FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
-    <title>Demo 1</title>
+    <title>Bustos Mauricio</title>
     <style>
         /* reset */
         body {
@@ -32,7 +32,7 @@
             padding: 16px;
             margin: 4px;
             border-radius: 8px;
-            background-color: #ffffff;
+            background-color: #c93a3a;
             box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
         }
 
@@ -131,29 +131,65 @@
         ]
     </script>
 
-    <script type="text/babel">
-        const { createRoot } = ReactDOM
+<script type="text/babel">
+    const { createRoot } = ReactDOM
+    const { useState } = React
 
-        const Contacto = ({ nombre, apellido, telefono }) =>
+    const App = () => {
+        const [contactos, setContactos] = useState(datos);
+
+        const favoritoActivar = (id) => {
+            setContactos(contactos.map(contacto => {
+                if (contacto.id === id) {
+                    return { ...contacto, favorito: !contacto.favorito };
+                }
+                return contacto;
+            }));
+        };
+
+        const Favoritos = ({ datos }) => (
+            <div className="agenda">
+                {datos.map(contacto => (
+                    <Contacto key={contacto.id} {...contacto} favoritoActivar={() => favoritoActivar(contacto.id)} />
+                ))}
+            </div>
+        );
+
+        const Contacto = ({ id, nombre, apellido, telefono, favoritoActivar, favorito }) => (
             <div className="card">
                 <div>{nombre} <b>{apellido}</b></div>
                 <div>{telefono}</div>
+                <button onClick={favoritoActivar} className="fav-button">
+                    {
+                        favorito ?
+                            <i className="fa-solid fa-star"></i>
+                            :
+                            <i className="fa-regular fa-star"></i>}
+                </button>
             </div>
+        );
 
-        const Agenda = ({ datos }) =>
-            <div className="agenda">
-                {datos.map(contacto => <Contacto key={contacto.id} {...contacto} />)}
-            </div>
+        const agendaOrdenada = [...contactos].sort((a, b) => a.apellido.localeCompare(b.apellido));
+        const favoritos = agendaOrdenada.filter(contacto => contacto.favorito);
 
-        const App = () =>
+        return (
             <div>
-                <h1>Agenda</h1>
-                <Agenda datos={datos} />
-            </div>
+                <h1>CONTACTOS FAVORITOS</h1><hr />
+                <Favoritos datos={favoritos} />
 
-        const root = createRoot(document.getElementById('root'))
-        root.render(<App />);
-    </script>
+                <h1>AGENDA</h1><hr />
+                <div className="agenda">
+                    {
+                        agendaOrdenada.map(contacto => (
+                            <Contacto key={contacto.id} {...contacto} favoritoActivar={() => favoritoActivar(contacto.id)} />
+                        ))}
+                </div>
+            </div>
+        );
+    };
+    const root = createRoot(document.getElementById('root'))
+    root.render(<App />);
+</script>
 </body>
 
 </html>
