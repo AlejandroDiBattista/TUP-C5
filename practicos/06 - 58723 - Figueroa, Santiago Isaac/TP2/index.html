@@ -10,9 +10,8 @@
     <!-- Iconos FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
-    <title>Demo 1</title>
+    <title>58723</title>
     <style>
-        /* reset */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -36,6 +35,8 @@
             box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
         }
 
+
+
         .agenda {
             margin-top: 16px;
             display: flex;
@@ -52,16 +53,6 @@
                     position: absolute;
                     top: 8px;
                     right: 8px;
-                }
-
-                div {
-                    margin-top: 25px;
-                    font-size: 20px;
-                }
-
-                div:last-child {
-                    text-align: right;
-                    font-size: 14px;
                 }
             }
         }
@@ -87,19 +78,18 @@
                 font-size: 16px;
             }
 
-            div {
-                display: flex;
-                justify-content: space-between;
-                margin-top: 16px;
+        }
 
-                button {
-                    padding: 8px 16px;
-                    border: none;
-                    border-radius: 4px;
-                    font-size: 14px;
-                    cursor: pointer;
-                }
-            }
+        .xd {
+            display: flex;
+            justify-content: end;
+        }
+
+        h1 {
+            display: flex;
+            justify-content: center;
+            margin-left: -100px;
+            font-size: 45px;
         }
     </style>
 </head>
@@ -132,28 +122,86 @@
     </script>
 
     <script type="text/babel">
-        const { createRoot } = ReactDOM
+        const { createRoot } = ReactDOM;
+        const { useState } = React;
 
-        const Contacto = ({ nombre, apellido, telefono }) =>
-            <div className="card">
-                <div>{nombre} <b>{apellido}</b></div>
-                <div>{telefono}</div>
-            </div>
+        const App = () => {
+            
+            const [contactos, setContactos] = useState(datos);
 
-        const Agenda = ({ datos }) =>
-            <div className="agenda">
-                {datos.map(contacto => <Contacto key={contacto.id} {...contacto} />)}
-            </div>
+            const activarFavorito = (id) => {
+                setContactos(contactos.map(contacto => {
+                    if (contacto.id === id) {
+                       
+                        return { ...contacto, favorito: !contacto.favorito };
+                    }
+                    return contacto;
+                }));
+            };
 
-        const App = () =>
-            <div>
-                <h1>Agenda</h1>
-                <Agenda datos={datos} />
-            </div>
+            const limpiarFavoritos = () => {
 
-        const root = createRoot(document.getElementById('root'))
+                setContactos(contactos.map(contacto => ({ ...contacto, favorito: false })));
+            };
+
+            const Favoritos = ({ datos }) => (
+                <div className="agenda">
+                    {datos.map(contacto => (
+                        <Contacto key={contacto.id} {...contacto} activarFavorito={() => activarFavorito(contacto.id)} />
+                    ))}
+                </div>
+            );
+
+            const Contacto = ({ id, nombre, apellido, telefono, activarFavorito, favorito }) => (
+                <div className="card">
+                    <div className="xd">
+                        <button onClick={activarFavorito} className="fav-button">
+                            {
+                                favorito ?
+                                    <i className="fa-solid fa-star"></i>
+                                    :
+                                    <i className="fa-regular fa-star"></i>}
+                        </button>
+                    </div>
+
+                    <div>
+                        <div>{nombre} <b>{apellido}</b></div>
+                        <div>{telefono}</div>
+                    </div>
+
+                </div>
+            );
+
+
+            const agendaord = [...contactos].sort((a, b) => a.nombre.localeCompare(b.nombre));
+            const favs = agendaord.filter(contacto => contacto.favorito == true);
+            const nofav = agendaord.filter(contacto => contacto.favorito == false);
+
+            return (
+                <div>
+                    <h1>Agenda</h1><hr />
+
+                    <Favoritos datos={favs} />
+
+                   
+                    <div className="agenda">
+                        {
+                            nofav.map(contacto => (
+                                <Contacto key={contacto.id} {...contacto} activarFavorito={() => activarFavorito(contacto.id)} />
+                            ))
+                        }
+                    </div>
+
+                </div>
+            );
+        };
+
+        const root = createRoot(document.getElementById('root'));
         root.render(<App />);
     </script>
+
+
+
 </body>
 
 </html>
