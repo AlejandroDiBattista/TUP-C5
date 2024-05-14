@@ -10,7 +10,7 @@
     <!-- Iconos FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
-    <title>Demo 1</title>
+    <title>TP2</title>
     <style>
         /* reset */
         body {
@@ -101,12 +101,14 @@
                 }
             }
         }
+        h1 {
+            text-align: center;
+        }
     </style>
 </head>
-
 <body>
     <div id="root"></div>
-    <script>
+    <script type="text/babel">
         const datos = [
             { id: 1, nombre: 'Juan', apellido: 'Perez', telefono: '(381) 123-4567', favorito: true },
             { id: 2, nombre: 'Maria', apellido: 'Gomez', telefono: '(381) 123-4567', favorito: false },
@@ -129,31 +131,59 @@
             { id: 19, nombre: 'Cecilia', apellido: 'Carrizo', telefono: '(381) 123-4567', favorito: true },
             { id: 20, nombre: 'Facundo', apellido: 'Paez', telefono: '(381) 123-4567', favorito: false }
         ]
-    </script>
+        const {createRoot} = ReactDOM
+        const {useState} = React
 
-    <script type="text/babel">
-        const { createRoot } = ReactDOM
+        const Favorito = ({ favorito, onToggle }) => {
+            const onClick = () =>
+                onToggle(!favorito)
+            return(
+                <span onClick = {onClick}>
+                    {favorito ? <i className = "fas fa-star"></i> : <i className = "far fa-star"> </i>}                    
+                </span>
+            )    
+        }
 
-        const Contacto = ({ nombre, apellido, telefono }) =>
-            <div className="card">
-                <div>{nombre} <b>{apellido}</b></div>
-                <div>{telefono}</div>
-            </div>
+        const Contacto = ({ nombre, apellido, telefono, favorito, onToggleFavorito }) => (
+        <div className={`card ${favorito ? 'favorite' : ''} contact`}>
+        <div>{nombre} <b>{apellido}</b></div>
+        <div>{telefono}</div>
+        <Favorito favorito={favorito} onToggle={onToggleFavorito} />
+        </div>);
 
-        const Agenda = ({ datos }) =>
-            <div className="agenda">
-                {datos.map(contacto => <Contacto key={contacto.id} {...contacto} />)}
-            </div>
-
+        const Agenda = ({ datos }) => {
+            const [contactos, setContactos] = useState(datos)
+            
+            const toggleFavorito = (id) => {
+                const actContactos = contactos.map(contacto => {
+                    if(contacto.id === id) {
+                        return {...contacto, favorito:!contacto.favorito}
+                    }
+                    return contacto
+                })
+                setContactos(actContactos)
+            }
+            
+            const contactosFavoritos = contactos.filter(contacto => contacto.favorito)
+            const contactosNoFavoritos = contactos.filter(contacto => !contacto.favorito)
+            const ordenarContactos = [...contactosFavoritos.sort((a,b) => a.apellido.localeCompare(b.apellido)), ...contactosNoFavoritos.sort((a,b) => a.apellido.localeCompare(b.apellido))]
+            return (
+                <div className="agenda">
+                        {ordenarContactos.map(contacto => 
+                        <Contacto key={contacto.id} nombre={contacto.nombre} apellido={contacto.apellido} telefono={contacto.telefono} favorito={contacto.favorito} 
+                        onToggleFavorito={() => toggleFavorito(contacto.id)} />)}
+                </div>
+            )    
+        }    
+        
         const App = () =>
             <div>
                 <h1>Agenda</h1>
-                <Agenda datos={datos} />
+                <Agenda datos={datos}/>
             </div>
 
         const root = createRoot(document.getElementById('root'))
         root.render(<App />);
     </script>
 </body>
-
 </html>
