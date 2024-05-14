@@ -164,23 +164,26 @@
                 console.log(NuevoContacto);//veo que se hace el cambio de la variable pero no se redibuja el cambio
             };
 
-            const Fav = datos.filter((contacto) => contacto.favorito);
-            const NFav = datos.filter((contacto) => !contacto.favorito);
+            const separar = [...contactos].sort((a, b) => {
+
+                if (a.favorito && !b.favorito) return -1;
+                if (!a.favorito && b.favorito) return 1;
+
+                return 0;
+                // if (a.favorito && !b.favorito) ;
+                // else if (!a.favorito && b.favorito) return 1;
+
+            });
+
+            // const Fav = datos.filter((contacto) => contacto.favorito);
+            //const NFav = datos.filter((contacto) => !contacto.favorito);
 
             return (
                 <>
 
                     <div className="agenda">
 
-                        {Fav.map(contacto => <Contacto key={contacto.id} {...contacto} cambiarFav={cambiarFav} />)}
-
-                    </div>
-
-                    <br></br>
-
-                    <div className="agenda">
-
-                        {NFav.map(contacto => <Contacto key={contacto.id} {...contacto} cambiarFav={cambiarFav} />)}
+                        {separar.map(contacto => <Contacto key={contacto.id} {...contacto} cambiarFav={cambiarFav} />)}
 
                     </div>
 
