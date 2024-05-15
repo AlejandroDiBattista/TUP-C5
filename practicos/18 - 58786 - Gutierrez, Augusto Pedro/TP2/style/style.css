@@ -1,0 +1,112 @@
+body{
+    width: 100vw;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: "Inter", sans-serif !important;
+    font-optical-sizing: auto !important;
+    font-style: normal !important;
+    font-variation-settings: "slnt" 0 !important;
+    overflow-x: hidden;
+}
+#root{
+    width: 100%;
+}
+
+
+
+.title-diary{
+    margin: 30px 0 10px 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.line{
+    width: 90%;
+    margin: 0 0 30px 0;
+    height: 1px;
+    background-color: #000000;
+}
+.container-button-action{
+    width: 100%;
+    padding: 15px 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    gap: 5px;
+}
+
+.container-button-action .btn-remove{
+    padding: 5px;   
+    border: 2px solid red;
+    border-radius: 5px;
+    background-color: rgb(255, 173, 173);
+}
+.container-button-action .btn-remove svg{
+    fill: red;
+}
+
+.container-button-action .btn-favorite{
+    padding: 5px ;   
+    border: 2px solid rgb(176 176 0);
+    border-radius: 5px;
+    background-color: rgb(237 237 0);
+}
+
+.container-button-action .btn-favorite svg{
+    fill: rgb(176 176 0);
+}
+
+.container-button-action .btn-contact{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: green;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 8px 15px;   
+    border: 1px solid green;
+    border-radius: 8px ;
+    background-color: #94ff94;
+    position: absolute;
+    right: 0;
+}
+
+.container-button-action .btn-remove-favorite{
+    padding: 5px;   
+    border: 2px solid red;
+    border-radius: 5px;
+    background-color: rgb(255, 173, 173);
+}
+
+.container-button-action .btn-remove-favorite svg{
+    fill: red;
+}
+
+.container-button-action .btn-restore{
+    border: 1px solid green;
+    border-radius: 8px ;
+    background-color: #94ff94;
+}
+
+.container-button-action .btn-restore svg{
+    fill: green;
+}
+
+.container-button-action .btn-delete-contact{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: red;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 8px 15px;   
+    border: 1px solid red;
+    border-radius: 8px ;
+    background-color: rgb(255, 173, 173);
+    position: absolute;
+    right: 0;
+}
