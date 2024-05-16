@@ -1,33 +1,27 @@
-# Trabajo Práctico Nº 2
+# Trabajo Práctico 3
 
-## React: Creación de una página interactiva
-### Funcionalidades requeridas
+Este trabajo se considera como el primer parcial.
 
-Modifica la aplicación de **Agenda** para que permita marcar contactos como favoritos 
+## Requerimientos
+Usted trabaja en una pequeña empresa y debe llevar a cabo el control de cuántas unidades de cada producto hay en el depósito.
 
-1. **Marcar / Desmarcar como favoritos**: Los usuarios deben poder marcar o desmarcar contactos como favoritos.
-2. **Indicador de favoritos**: Los contactos marcados como favoritos deben mostrar una ⭐ en la esquina superior derecha.
-3. **Orden de visualización**: Los contactos favoritos deben mostrarse primero, seguidos por el resto de los contactos en un grupo separado.
-4. **Orden alfabético**: Todos los contactos deben estar ordenados alfabéticamente por apellido y nombre.
+El depósito no está bien organizado y aunque no tiene una gran variedad, aproximadamente 30 productos distintos, sí cuenta con un número considerable de unidades, estimando no más de 100 por producto. Algunos productos están agrupados, mientras que otros se encuentran dispersos en diferentes habitaciones. Incluso hay productos en exhibición para la venta que también deben ser contabilizados.
 
----
+Una opción sería hacerlo con lápiz y papel para luego transferir los datos a una hoja de cálculo de Excel, pero recientemente ha completado un curso de programación en ReactJS. Por lo tanto, decide poner a prueba sus habilidades recién adquiridas desarrollando una aplicación web que facilite el control del inventario del depósito.
 
-### Instrucciones para la presentación del trabajo:
+Tras reflexionar, se da cuenta de que solo necesita dos datos de cada producto: el nombre y el código EAN, el número que se encuentra justo debajo del código de barras.
 
-1. Bajar la última versión del repositorio del curso. (fetch)
-2. Crear una nueva rama para tus cambios (new branch).
-3. Abrir la carpeta correspondiente a tu nombre de usuario (practicos/{alumno}/tp2).
-4. Realizar las modificaciones necesarias en el archivo index.html dentro de la carpeta TP2 (sin alterar ninguna otra carpeta).
-5. Realizar un solicitud de publicación (pull request).
-6. Volver a la rama principal (main) para actualizar (fetch) el repositorio.
+Dado que no dispone de un listado de productos, opta por la posibilidad de agregar productos a medida que los va encontrando. Si localiza un producto que ya está en la lista, con solo seleccionarlo, incrementaría la cantidad en una unidad.
 
----
-El trabajo debe ser presentado hasta el 
+Para su comodidad, y siendo el usuario final, decide que debe ser posible editar cualquier producto en cualquier momento; esto incluye corregir el nombre, el código o la cantidad, o incluso eliminarlo directamente. La edición se realizará en el mismo lugar donde se encuentra la información. Aunque pueda parecer excesivo, es una oportunidad para poner a prueba sus habilidades, y por ello, le resulta un desafío interesante.
 
-**LUNES 13 a las 23:59**
+Finalmente, considera que lo más práctico es que los productos se muestren ordenados alfabéticamente.
 
-¡Buena suerte con tu trabajo práctico! 😊
+Con las ideas claras, procede a realizar un diseño gráfico rápido, con la intención de que el resultado final sea lo más fiel posible al diseño propuesto.
 
-### Nota: 
-En el index.html hacer referencia la librería de iconos 
-https://fontawesome.com/icons
+![Diseño](control-deposito.png)
+
+Se trata de un ABM (Alta, Baja, Modificación) simple, ni siquiera va a tener que hacer un servidor ni conectarse a una base de datos, solo va guardar los datos en el armacenamiento local de navegador. 
+
+Tiene que salir perfecto!! al fin y al cabo es para lucirse asi que se va a tomar una semana para completar el trabajo.
+
