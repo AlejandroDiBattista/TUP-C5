@@ -1,7 +1,30 @@
 body {
-    background-color: #f0f0f0;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    background-color: #c500ab;
+     font-family:'Open Sans', sans-serif;
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box; 
+ }
+ .agendacontactos{
+     margin: 5px;
+     -webkit-text-stroke: 5;
+ 
+ }
+ *:root{
+     color: black;
+     text-align: center;
+     
+ }
+ /* Estilos CSS */
+.agendacontactos {
+    display: flex;
+    flex-wrap: wrap;
 }
+
+.cuadrante {
+    border: 1px solid black;
+    padding: 10px;
+    margin: 5px;
+    background-color: lightgray; /* Cambia el color de fondo de cada cuadrante */
+}
+
