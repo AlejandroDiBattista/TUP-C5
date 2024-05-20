@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -5,28 +6,110 @@
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js" crossorigin="anonymous"></script>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
         .panel {
-            width: 200px;
-            margin: 0 auto;
+            width: 300px;
+            margin: 10px auto;
             border: 1px solid #ccc;
-            padding: 10px;
+            padding: 20px;
             border-radius: 8px;
-            margin: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         label {
             display: block;
+            margin-bottom: 5px;
+            color: #333;
         }
 
         input {
-            width: 100%;
+            width: calc(100% - 22px);
             margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
         }
 
         .acciones {
+            margin-top: 20px;
             display: flex;
             justify-content: space-between;
+        }
+
+        button {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            color: #fff;
+            background-color: #3498db;
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        .producto {
+            width: 300px;
+            margin: 10px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .producto h2 {
+            margin: 0 0 10px 0;
+            color: #3498db;
+        }
+
+        .producto p {
+            margin: 0;
+            color: #333;
+        }
+
+        .botones {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .boton-eliminar,
+        .boton-editar {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #333;
+            font-size: 1.2em;
+        }
+
+        .boton-eliminar:hover {
+            color: #e74c3c;
+        }
+
+        .boton-editar:hover {
+            color: #3498db;
         }
     </style>
 </head>
@@ -34,186 +117,142 @@
 <body>
     <div id="root"></div>
     <script type="text/babel">
-        const { useState, useEffect } = React
+        const { useState, useEffect } = React;
 
-        const ContactosIniciales = [ 
-            { id: 1, nombre: 'Juan', apellido: 'Perez', telefono: '(381) 456-1234' },
-            { id: 2, nombre: 'Maria', apellido: 'Gomez', telefono: '(381) 456-5678' },
-            { id: 3, nombre: 'Pedro', apellido: 'Gonzalez', telefono: '(381) 456-9012' },
-            { id: 4, nombre: 'Ana', apellido: 'Fernandez', telefono: '(381) 456-3456' }
-        ]
-        function Editar({ contacto, alGuardar }) {
-            let [nombre, setNombre] = useState(contacto.nombre)
-            let [apellido, setApellido] = useState(contacto.apellido)
-            let [telefono, setTelefono] = useState(contacto.telefono)
+        const ProductosIniciales = [ 
+            { id: 1, nombre: 'Producto 1', cantidad: 10 },
+            { id: 2, nombre: 'Producto 2', cantidad: 20 },
+            { id: 3, nombre: 'Producto 3', cantidad: 30 },
+            { id: 4, nombre: 'Producto 4', cantidad: 40 }
+        ];
 
-            const cambiarNombre = (e) => setNombre(e.target.value)
-            const cambiarApellido = (e) => setApellido(e.target.value)
-            const cambiarTelefono = (e) => setTelefono(e.target.value)
+        function Editar({ producto, alGuardar }) {
+            let [nombre, setNombre] = useState(producto.nombre);
+            let [cantidad, setCantidad] = useState(producto.cantidad);
+
+            const cambiarNombre = (e) => setNombre(e.target.value);
+            const cambiarCantidad = (e) => setCantidad(e.target.value);
 
             const aceptar = (e) => {
-                e.preventDefault()
-                contacto.nombre = nombre
-                contacto.apellido = apellido
-                alGuardar({...contacto, nombre, apellido, telefono})
+                e.preventDefault();
+                alGuardar({ ...producto, nombre, cantidad: parseInt(cantidad) });
             }
             const cancelar = (e) => {
-                e.preventDefault()
-                alGuardar(null)
+                e.preventDefault();
+                alGuardar(null);
             }
 
-            return <>
-                <form className="panel">
+            return (
+                <form className="panel" onSubmit={aceptar}>
                     <label>Nombre:</label>
-                    <input type="text" value={nombre}
-                        onChange={cambiarNombre}
-                    />
+                    <input type="text" value={nombre} onChange={cambiarNombre} />
 
-                    <label>Apellido:</label>
-                    <input type="text" value={apellido}
-                        onChange={cambiarApellido}
-                    />
-
-                    <label>Telefono:</label>
-                    <input type="text" value={telefono}
-                        onChange={cambiarTelefono}
-                    />
+                    <label>Cantidad:</label>
+                    <input type="number" value={cantidad} onChange={cambiarCantidad} />
 
                     <div className="acciones">
-                        <button onClick={aceptar}>Aceptar</button>
-                        <button onClick={cancelar}>Cancelar</button>
+                        <button type="submit">Aceptar</button>
+                        <button type="button" onClick={cancelar}>Cancelar</button>
                     </div>
                 </form>
-            </>
+            );
         }
 
-        function Mostrar({ contacto, alEditar, alBorrar }) {
-            return <>
-                <div className="panel">
-                    <h2>{contacto.nombre} {contacto.apellido}</h2>
-                    <p>{contacto.telefono}</p>
-                    <div className="acciones">
-                        <button onClick={alEditar}>Editar</button>
-                        <button onClick={alBorrar}>Borrar</button>
+        function Mostrar({ producto, onEliminar, onEditar }) {
+            return (
+                <div className="producto">
+                    <h2>{producto.nombre}</h2>
+                    <p>Cantidad: {producto.cantidad}</p>
+                    <div className="botones">
+                        <button className="boton-editar" onClick={() => onEditar(producto)}>
+                            <i className="fas fa-pencil-alt"></i>
+                        </button>
+                        <button className="boton-eliminar" onClick={() => onEliminar(producto.id)}>
+                            <i className="fas fa-trash-alt"></i>
+                        </button>
                     </div>
                 </div>
-            </>
+            );
         }
-
-        function Agenda({datos, alAgregar, alEditar, alBorrar}){
-            
-            return <>
-                <h3>Agenda</h3>
-                <button onClick={() => alAgregar()}>Agregar</button>
-                {
-                    datos.map((contacto) => 
-                        <Mostrar 
-                            key={contacto.id}
-                            contacto={contacto}
-                            alEditar={ () => alEditar(contacto.id) }
-                            alBorrar={ () => alBorrar(contacto.id) }
-                            />
-                    )
-                }
-            </>
-        }
-
-        function proximoId(contactos){
-            return Math.max(...contactos.map(c => c.id))+1
-        }
-        
-        function leerContactos(){
-            return JSON.parse(localStorage.getItem('contactos'))
-        }
-
-        function guardarContactos(contactos){
-            localStorage.setItem('contactos', JSON.stringify(contactos))
-        }
-
 
         function App() {
-            let [editando, setEditando] = useState(false)
-            let [contacto, setContacto] = useState({})
-            let [contactos, setContactos] = useState([])
-            
-            useEffect(() => {
-                console.log("Ejecutando useEffect")
-                let datos = leerContactos()
-                console.log("Datos", datos)
-                setContactos(datos)
-                return () => console.log("Limpiando")
-            }, [])
+            let [editando, setEditando] = useState(false);
+            let [producto, setProducto] = useState(null);
+            let [productos, setProductos] = useState([]);
 
             useEffect(() => {
-                console.log("Guardando", contactos)
-                guardarContactos(contactos)
-            }, [contactos])
+                let datos = leerProductos();
+                setProductos(datos || ProductosIniciales);
+            }, []);
 
             useEffect(() => {
-                console.log("Editando", editando)
-            }, [editando])
-            
-            if(localStorage.getItem('contactos') === null){
-                console.log("Guardando", ContactosIniciales)
-                guardarContactos(ContactosIniciales)
-            }
+                guardarProductos(productos);
+            }, [productos]);
 
             const agregar = () => {
-                setContacto({nombre: "", apellido: "", telefono: ""})
-                setEditando(true)
+                setProducto({ nombre: "", cantidad: 0 });
+                setEditando(true);
             }
 
-            const editar = (id) => {
-                const contacto = contactos.find(c => c.id === id)
-                setContacto(contacto)
-                setEditando(true)
-            }
-
-            const borrar = (id) => {
-                // Baja
-                const copia = contactos.filter(c => c.id !== id)
-                setContactos(copia)
-                setContacto({})
-            }
-
-            const guardar = (contacto) => {                
-                if (contacto) {
-                    setContacto(contacto)
-                    if(contacto.id){
-                        // Modificacion
-                        let copia = contactos.map(
-                            c => c.id === contacto.id ? contacto : c
-                        )
-                        setContactos(copia)
+            const guardar = (productoEditado) => {                
+                if (productoEditado) {
+                    if (productoEditado.id) {
+                        const copia = productos.map(p => p.id === productoEditado.id ? productoEditado : p);
+                        setProductos(copia);
                     } else {
-                        // Alta 
-                        const id = proximoId(contactos)
-                        const copia = [...contactos, {...contacto, id}]
-                        setContactos(copia)
+                        const id = proximoId(productos);
+                        const copia = [...productos, { ...productoEditado, id }];
+                        setProductos(copia);
                     }
                 }
-                setEditando(false)
+                setEditando(false);
+            }
+
+            const editar = (producto) => {
+                setProducto(producto);
+                setEditando(true);
+            }
+
+            const eliminar = (id) => {
+                const copia = productos.filter(p => p.id !== id);
+                setProductos(copia);
             }
 
             return (
                 <>
-                    <h1>Contacto</h1>
-                    {
-                        editando
-                            ? <Editar
-                                contacto={contacto}
-                                alGuardar={guardar} />
-                            : <Agenda 
-                                datos={contactos}
-                                alAgregar={agregar}
-                                alEditar={editar}
-                                alBorrar={borrar} />
+                    <h1>Productos</h1>
+                    {editando
+                        ? <Editar producto={producto} alGuardar={guardar} />
+                        : (
+                            <>
+                                {productos.map((producto) => 
+                                    <div key={producto.id}>
+                                        <Mostrar producto={producto} onEditar={editar} onEliminar={eliminar} />
+                                    </div>
+                                )}
+                                <div className="panel">
+                                    <button onClick={agregar}>Agregar Producto</button>
+                                </div>
+                            </>
+                        )
                     }
                 </>
-            )
+            );
         }
 
-        const root = ReactDOM.createRoot(document.getElementById('root'))
+        function proximoId(productos) {
+            return Math.max(0, ...productos.map(p => p.id)) + 1;
+        }
+
+        function leerProductos() {
+            return JSON.parse(localStorage.getItem('productos'));
+        }
+
+        function guardarProductos(productos) {
+            localStorage.setItem('productos', JSON.stringify(productos));
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
     </script>
 </body>
