@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        #root {
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: tomato;
+        }
+
+        .producto {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            border: 2px solid salmon;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .producto .numero {
+            font-size: 28px;
+            color: #FF5722;
+            margin-right: 15px;
+        }
+
+        .producto .info {
+            flex-grow: 1;
+        }
+
+        .producto .acciones {
+            display: flex;
+            align-items: center;
+        }
+
+        .producto button {
+            border: none;
+            background: none;
+            cursor: pointer;
+            margin-left: 8px;
+            font-size: 20px;
+            color: #FF5722;
+        }
+
+        .producto button:hover {
+            color: #E64A19;
+        }
+
+        .formulario {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            border: 2px solid salmon;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .formulario input {
+            padding: 10px;
+            margin-bottom: 10px;
+            width: calc(100% - 20px);
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+
+        .formulario button {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: 1px solid black;
+            background-color: salmon;
+            color: white;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        function guardarEnLocalStorage(productos) {
+            localStorage.setItem('productos', JSON.stringify(productos));
+        }
+
+        function cargarDeLocalStorage() {
+            const productosGuardados = localStorage.getItem('productos');
+            return productosGuardados ? JSON.parse(productosGuardados) : [];
+        }
+
+        function Producto({ producto, alGuardar, alBorrar, alIncrementar }) {
+            const [editando, setEditando] = useState(false);
+            const [nombre, setNombre] = useState(producto.nombre);
+            const [ean, setEan] = useState(producto.ean);
+            const [cantidad, setCantidad] = useState(producto.cantidad);
+
+            const cambiarNombre = e => setNombre(e.target.value);
+            const cambiarEan = e => setEan(e.target.value);
+            const cambiarCantidad = e => setCantidad(e.target.value);
+
+            const guardar = e => {
+                e.preventDefault();
+                alGuardar({ ...producto, nombre, ean, cantidad: parseInt(cantidad) });
+                setEditando(false);
+            };
+
+            const incrementar = () => {
+                const nuevaCantidad = producto.cantidad + 1;
+                setCantidad(nuevaCantidad);
+                alIncrementar(producto.id, nuevaCantidad);
+            };
+
+            return (
+                <div className="producto">
+                    {editando ? (
+                        <>
+                            <div className="info">
+                                <input type="text" value={nombre} onChange={cambiarNombre} />
+                                <input type="text" value={ean} onChange={cambiarEan} />
+                                <input type="text" value={cantidad} onChange={cambiarCantidad} />
+                            </div>
+                            <div className="acciones">
+                                <button onClick={guardar}>Aceptar</button>
+                                <button onClick={() => setEditando(false)}>Cancelar</button>
+                            </div>
+                        </>
+                    ) : (
+                        <>
+                            <div className="numero">{producto.cantidad}</div>
+                            <div className="info">
+                                <div><strong>Producto:</strong> {producto.nombre}</div>
+                                <div><strong>EAN:</strong> {producto.ean}</div>
+                            </div>
+                            <div className="acciones">
+                                <button onClick={() => setEditando(true)}>&#9998;</button>
+                                <button onClick={() => alBorrar(producto.id)}>&#128465;</button>
+                                <button onClick={incrementar}>+1</button>
+                            </div>
+                        </>
+                    )}
+                </div>
+            );
+        }
+
+        function ControlDeposito({ productos, alAgregar, alGuardar, alBorrar, alIncrementar }) {
+            const [nuevoNombre, setNuevoNombre] = useState('');
+            const [nuevoEan, setNuevoEan] = useState('');
+            const [nuevaCantidad, setNuevaCantidad] = useState('');
+
+            const agregar = e => {
+                e.preventDefault();
+                if (!nuevoNombre || !nuevoEan || !nuevaCantidad) return;
+                alAgregar({ nombre: nuevoNombre, ean: nuevoEan, cantidad: parseInt(nuevaCantidad) });
+                setNuevoNombre('');
+                setNuevoEan('');
+                setNuevaCantidad('');
+            };
+
+            return (
+                <>
+                    <h1>Control Depósito</h1>
+                    <div className="formulario">
+                        <input type="text" placeholder="Producto" value={nuevoNombre} onChange={e => setNuevoNombre(e.target.value)} />
+                        <input type="text" placeholder="EAN" value={nuevoEan} onChange={e => setNuevoEan(e.target.value)} />
+                        <input type="text" placeholder="Cantidad" value={nuevaCantidad} onChange={e => setNuevaCantidad(e.target.value)} />
+                        <button onClick={agregar}>Aceptar</button>
+                    </div>
+                    {productos.map(producto => (
+                        <Producto
+                            key={producto.id}
+                            producto={producto}
+                            alGuardar={alGuardar}
+                            alBorrar={alBorrar}
+                            alIncrementar={alIncrementar}
+                        />
+                    ))}
+                </>
+            );
+        }
+
+        function App() {
+            const [productos, setProductos] = useState(cargarDeLocalStorage);
+
+            useEffect(() => {
+                guardarEnLocalStorage(productos);
+            }, [productos]);
+
+            const guardar = producto => {
+                const productosActualizados = productos.map(p => p.id === producto.id ? producto : p);
+                setProductos(productosActualizados);
+            };
+
+            const agregar = producto => {
+                const nuevoProducto = { ...producto, id: productos.length + 1 };
+                setProductos([...productos, nuevoProducto]);
+            };
+
+            const borrar = id => {
+                const productosActualizados = productos.filter(p => p.id !== id);
+                setProductos(productosActualizados);
+            };
+
+            const incrementar = (id, nuevaCantidad) => {
+                const productosActualizados = productos.map(p => p.id === id ? { ...p, cantidad: nuevaCantidad } : p);
+                setProductos(productosActualizados);
+            };
+
+            return (
+                <div id="root">
+                    <ControlDeposito
+                        productos={productos}
+                        alAgregar={agregar}
+                        alGuardar={guardar}
+                        alBorrar={borrar}
+                        alIncrementar={incrementar}
+                    />
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+
+</html>
+
+
+
+
+
