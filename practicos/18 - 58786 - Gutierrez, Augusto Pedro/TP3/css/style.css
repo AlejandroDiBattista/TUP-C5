@@ -1,0 +1,161 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #3f51b5;
+}
+
+.line {
+    height: 4px;
+    width: 50px;
+    background-color: #3f51b5;
+    margin: 0 auto 40px;
+}
+
+form .form-label {
+    font-weight: bold;
+}
+
+form .form-control {
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+form .btn-primary {
+    background-color: #3f51b5;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+
+form .btn-primary:hover {
+    background-color: #303f9f;
+}
+
+.table-container {
+    margin-top: 40px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+}
+
+.table thead th {
+    background-color: #3f51b5;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.table tbody tr td p{
+    text-align: center;
+    color: #999;
+    font-style: italic;
+    padding: 20px 0;
+    margin: 0;
+}
+
+.table tbody td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 12px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+
+.container-button-action .btn {
+    margin: 0 5px;
+    border-radius: 20px;
+    padding: 6px 12px;
+    transition: background-color 0.3s;
+}
+
+.container-button-action .btn-edit {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.container-button-action .btn-edit:hover {
+    background-color: #388e3c;
+}
+
+.container-button-action .btn-remove {
+    background-color: #f44336;
+    color: #fff;
+}
+
+.container-button-action .btn-remove:hover {
+    background-color: #d32f2f;
+}
+
+/* Modal Background Overlay */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1040;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .table {
+        font-size: 0.875rem;
+    }
+
+    .form-control, .btn {
+        font-size: 0.875rem;
+    }
+
+    .container-button-action .btn {
+        padding: 4px 8px;
+    }
+
+    .table-container {
+        overflow-x: auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .table {
+        font-size: 0.75rem;
+    }
+
+    .form-control, .btn {
+        font-size: 0.75rem;
+    }
+
+    .container-button-action .btn {
+        padding: 2px 4px;
+    }
+}
