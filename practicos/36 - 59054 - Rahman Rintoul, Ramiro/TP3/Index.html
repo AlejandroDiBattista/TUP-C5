@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="almacen.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>Control De Inventario - 59054</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: azure;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffe0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header input {
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .header button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .product-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .product-card,
+        .product-edit-form {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card {
+            background-color: #f9f9f9;
+        }
+
+        .product-cantidad {
+            font-size: 2rem;
+            font-weight: bold;
+            color: blue;
+            margin-right: 1rem;
+        }
+
+        .product-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .product-codigo {
+            color: #555;
+        }
+
+        .icon-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: #555;
+            margin-left: 0.5rem;
+        }
+
+        .icon-button:hover {
+            color: #000;
+        }
+
+        .product-edit-form {
+            flex-wrap: wrap;
+        }
+
+        .product-edit-form input {
+            margin-right: 0.5rem;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-edit-form button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-edit-form button:first-of-type {
+            background-color: #28a745;
+            color: white;
+            margin-right: 0.5rem;
+        }
+
+        .product-edit-form button:last-of-type {
+            background-color: #dc3545;
+            color: white;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="root"></div>
+    <!-- React and ReactDOM -->
+    <script src="https://unpkg.com/react/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js" crossorigin></script>
+    <!-- Babel -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+        const { createRoot } = ReactDOM
+        const { useState } = React;
+        const initialProducts = [
+            { nombre: "7up", cantidad: 70, codigo: "7799836543210" },
+            { nombre: "Aquarius", cantidad: 70, codigo: "7790123456789" },
+            { nombre: "Bonaqua", cantidad: 13, codigo: "7793456789123" },
+            { nombre: "Bubly", cantidad: 17, codigo: "7793457890123" },
+            { nombre: "Canada Dry", cantidad: 40, codigo: "7792345678912" },
+            { nombre: "Cola Cola", cantidad: 92, codigo: "7791234567890" },
+            { nombre: "Fanta", cantidad: 5, codigo: "7793219876540" },
+            { nombre: "Mirinda", cantidad: 6, codigo: "7797894561230" },
+            { nombre: "Pepsi Cola", cantidad: 3, codigo: "7799876543210" },
+            { nombre: "Sprite", cantidad: 40, codigo: "7796543219870" },
+            { nombre: "Schweppes", cantidad: 80, codigo: "7798765432109" },
+            { nombre: "Mountain Dew", cantidad: 12, codigo: "7790987654321" },
+            { nombre: "Dr Pepper", cantidad: 10, codigo: "7792345678901" },
+            { nombre: "Gatorade", cantidad: 20, codigo: "7793456789012" },
+            { nombre: "Lipton", cantidad: 15, codigo: "7794567890123" },
+            { nombre: "Nestea", cantidad: 18, codigo: "7795678901234" },
+            { nombre: "Powerade", cantidad: 25, codigo: "7796789012345" },
+            { nombre: "Oreo", cantidad: 30, codigo: "7797890123456" },
+            { nombre: "Pepitos", cantidad: 14, codigo: "7798901234567" },
+            { nombre: "Rockstar", cantidad: 22, codigo: "7799012345678" },
+            { nombre: "Coca Cola Zero", cantidad: 50, codigo: "7791234567891" },
+            { nombre: "Coca Cola Light", cantidad: 90, codigo: "7792345678902" },
+            { nombre: "Pepsi Light", cantidad: 11, codigo: "7793456789013" },
+            { nombre: "Pepsi Zero", cantidad: 60, codigo: "7794567890124" },
+            { nombre: "Fanta Zero", cantidad: 70, codigo: "7795678901235" },
+            { nombre: "Sprite Zero", cantidad: 80, codigo: "7796789012346" },
+            { nombre: "Manaos", cantidad: 12, codigo: "7797890123457" },
+            { nombre: "Crush", cantidad: 10, codigo: "7798901234568" },
+            { nombre: "Inca Kola", cantidad: 30, codigo: "7799012345679" },
+            { nombre: "Jupiña", cantidad: 20, codigo: "7790123456780" }
+        ];
+        function ProductList({ products, updateProduct, deleteProduct, incrementProduct }) {
+            const [editingcodigo, setEditingcodigo] = useState(null);
+            const [editedName, setEditedName] = useState('');
+            const [editedcodigo, setEditedcodigo] = useState('');
+            const [editedcantidad, setEditedcantidad] = useState(0);
+            const startEditing = (product) => {
+                setEditingcodigo(product.codigo);
+                setEditedName(product.nombre);
+                setEditedcodigo(product.codigo);
+                setEditedcantidad(product.cantidad);
+            };
+            const handleUpdate = () => {
+                if (editedName.trim() === '' || editedcodigo.trim() === '') {
+                    alert('El nombre y el código EAN no pueden estar vacíos.');
+                    return;
+                }
+                if (editedcantidad <= 0) {
+                    alert('La cantidad debe ser mayor que 0.');
+                    return;
+                }
+                updateProduct({
+                    nombre: editedName,
+                    codigo: editedcodigo,
+                    cantidad: editedcantidad,
+                });
+                setEditingcodigo(null);
+            };
+            return (
+                <div className="product-list">
+                    {products.sort((a, b) => a.nombre.localeCompare(b.nombre)).map((product) =>
+                        editingcodigo === product.codigo ? (
+                            <div key={product.codigo} className="product-edit-form">
+                                <input
+                                    placeholder="Nombre"
+                                    type="text"
+                                    value={editedName}
+                                    onChange={(e) => setEditedName(e.target.value)}
+                                />
+                                <input
+                                    placeholder="Código EAN"
+                                    type="text"
+                                    value={editedcodigo}
+                                    onChange={(e) => setEditedcodigo(e.target.value)}
+                                />
+                                <input
+                                    placeholder="Cantidad"
+                                    type="number"
+                                    value={editedcantidad}
+                                    onChange={(e) => setEditedcantidad(Number(e.target.value))}
+                                />
+                                <button onClick={handleUpdate}>Aceptar</button>
+                                <button onClick={() => setEditingcodigo(null)}>Cancelar</button>
+                            </div>
+                        ) : (
+                            <div key={product.codigo} className="product-card">
+                                <div className="product-cantidad">{product.cantidad}</div>
+                                <div>
+                                    <div className="product-name">{product.nombre}</div>
+                                    <div className="product-codigo">{product.codigo}</div>
+                                </div>
+                                <button className="icon-button" onClick={() => startEditing(product)}>
+                                    <i className="fa-solid fa-pencil"></i>
+                                </button>
+                                <button className="icon-button" onClick={() => incrementProduct(product.codigo)}>
+                                    <i className="fa-solid fa-plus"></i>
+                                </button>
+                                <button className="icon-button" onClick={() => deleteProduct(product.codigo)}>
+                                    <i className="fa-solid fa-trash-can"></i>
+                                </button>
+                            </div>
+                        )
+                    )}
+                </div>
+            );
+        }
+        function App() {
+            const [products, setProducts] = useState(initialProducts);
+            const [newProductName, setNewProductName] = useState('');
+            const [newProductcodigo, setNewProductcodigo] = useState('');
+            const addProduct = () => {
+                if (newProductName.trim() === '' || newProductcodigo.trim() === '') {
+                    alert('El nombre y el código EAN no pueden estar vacíos.');
+                    return;
+                }
+                const existingProduct = products.find(
+                    (product) => product.codigo === newProductcodigo
+                );
+                if (existingProduct) {
+                    setProducts((prevProducts) =>
+                        prevProducts.map((product) =>
+                            product.codigo === newProductcodigo
+                                ? { ...product, cantidad: product.cantidad + 1 }
+                                : product
+                        )
+                    );
+                } else {
+                    const newProduct = { nombre: newProductName, codigo: newProductcodigo, cantidad: 1 };
+                    setProducts([...products, newProduct]);
+                    const storedProducts = JSON.parse(localStorage.getItem("ProductoAgregado")) || [];
+                    storedProducts.push(newProduct);
+                    localStorage.setItem("ProductoAgregado", JSON.stringify(storedProducts));
+                }
+                setNewProductName('');
+                setNewProductcodigo('');
+            };
+            const updateProduct = (updatedProduct) => {
+                setProducts((prevProducts) =>
+                    prevProducts.map((product) =>
+                        product.codigo === updatedProduct.codigo ? updatedProduct : product
+                    )
+                );
+            };
+            const deleteProduct = (codigo) => {
+                setProducts((prevProducts) =>
+                    prevProducts.filter((product) => product.codigo !== codigo)
+                );
+            };
+            const incrementProduct = (codigo) => {
+                setProducts((prevProducts) =>
+                    prevProducts.map((product) =>
+                        product.codigo === codigo ? { ...product, cantidad: product.cantidad + 1 } : product
+                    )
+                );
+            };
+            return (
+                <div className="container">
+                    <h1>Control Depósito</h1>
+                    <div className="header">
+                        <input
+                            type="text"
+                            id="productName"
+                            placeholder="Nombre del producto"
+                            value={newProductName}
+                            onChange={(e) => setNewProductName(e.target.value)}
+                        />
+                        <input
+                            type="text"
+                            id="productcodigo"
+                            placeholder="Código EAN"
+                            value={newProductcodigo}
+                            onChange={(e) => setNewProductcodigo(e.target.value)}
+                        />
+                        <button id="addProductButton" onClick={addProduct}>+</button>
+                    </div>
+                    <ProductList
+                        products={products}
+                        updateProduct={updateProduct}
+                        deleteProduct={deleteProduct}
+                        incrementProduct={incrementProduct}
+                    />
+                </div>
+            );
+        }
+        const root = createRoot(document.getElementById('root'))
+        root.render(<App />);
+    </script>
+</body>
+
+</html>
