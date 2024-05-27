@@ -840,9 +840,11 @@
 
             return (
                 <div className="ver">
-                    {alumno[entrega] ?
-                        <a href={ubicar(alumno.ubicacion, entrega)}>Ver {entrega}  (nota {nota})</a> :
-                        <span className="falta">{entrega} ❌</span>}
+                    {
+                    alumno[entrega] 
+                        ? <a href={ubicar(alumno.ubicacion, entrega)}>Ver Trabajo {(entrega == "TP3") && <b>(nota {nota})</b>}</a> 
+                        : <span className="falta">{entrega} ❌</span>
+                    }
                 </div>
             )
         }
