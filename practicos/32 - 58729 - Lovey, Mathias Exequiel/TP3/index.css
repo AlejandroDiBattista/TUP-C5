@@ -1,0 +1,165 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: 0;
+}
+
+body {
+    background-color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-weight: bold;
+}
+
+.contenido {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+h1 {
+    margin: 0;
+    font-weight: bold;
+}
+
+h2 {
+    font-weight: bold;
+    margin: 0 1rem;
+    color: #0000FF;
+    font-size: 4rem;
+}
+
+h3 {
+    text-align: start;
+    color: rgb(12, 28, 207);
+    font-size: xx-large;
+}
+
+h4 {
+    margin-bottom: 1rem;
+    font-weight: bold;
+    font-size: xx-large;
+
+}
+
+p {
+    margin: 0;
+    font-size: x-large;
+    font-weight: lighter;
+}
+
+.formulario-producto {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 1rem;
+    align-items: start;
+    width: 30rem;
+    height: 10rem;
+    padding: 1rem;
+    margin: .5rem;
+    border-radius: 1rem;
+    box-shadow: 0 .25rem .5rem rgba(0, 0, 0, 0.4);
+    padding: 20px;
+}
+
+.botonForm {
+    border: .1rem solid black;
+    border-radius: .7rem;
+    font-size: large;
+    width: 6rem;
+    padding: .3rem .5rem;
+    margin-bottom: .5rem;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+input {
+    width: 20rem;
+    margin: .15rem 0;
+    padding: .5rem;
+    border-radius: .5rem;
+    border: solid .01rem rgb(207, 207, 207);
+    font-size: large;
+}
+
+.producto {
+    position: relative;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 30rem;
+    height: 10rem;
+    padding: 1rem;
+    margin: .5rem;
+    border-radius: 1rem;
+    box-shadow: 0 .25rem .5rem rgba(0, 0, 0, 0.4);
+    padding: 20px;
+}
+
+.producto-item {
+    display: flex;
+    flex-direction: column;
+    margin: .75rem;
+}
+
+.botones {
+    padding: 1rem;
+    right: 0%;
+    position: absolute;
+    color: blue;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.botones2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: .5rem;
+}
+
+img {
+    height: 1.5rem;
+}
+
+.boton {
+    height: 1.5rem;
+    width: 1.5rem;
+    cursor: pointer;
+}
+
+.iconoAgregar {
+    width: 2.5rem;
+    height: 2.5rem;
+    cursor: pointer;
+}
+
+.titulo {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+    margin: 1rem 0;
+}
+
+.titulo1 {
+    margin-right: 2rem;
+}
