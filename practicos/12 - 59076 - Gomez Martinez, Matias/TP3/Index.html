@@ -110,14 +110,41 @@
         const { createRoot } = ReactDOM;
         const { useState, useEffect } = React;
 
-
         const ProductosIniciales = [
-            { id: 1, descripcion: "Pesi", cantidad: 12, codigo: "22113", editando: false },
-            { id: 2, descripcion: "Coca Cola", cantidad: 10, codigo: "22114", editando: false },
-            { id: 3, descripcion: "Chocolate", cantidad: 15, codigo: "22115", editando: false },
-            { id: 4, descripcion: "Fanta", cantidad: 54, codigo: "22116", editando: false },
-            { id: 5, descripcion: "Agua", cantidad: 30, codigo: "22117", editando: false },
-        ]
+            { id: 1, descripcion: "Pesi 1.5l", cantidad: 12, codigo: "7791813421115", editando: false },
+            { id: 2, descripcion: "Coca Cola 1.5l", cantidad: 10, codigo: "7790895000430", editando: false },
+            { id: 3, descripcion: "Chocolate", cantidad: 15, codigo: "7622210745132", editando: false },
+            { id: 4, descripcion: "Fanta 1.5l", cantidad: 54, codigo: "7790895000454", editando: false },
+            { id: 5, descripcion: "Agua 1.5l", cantidad: 30, codigo: "7792799000059", editando: false },
+        ];
+
+        const validacionProducto = (descripcion, cantidad, codigo) => {
+            if (descripcion === '' || descripcion === null || cantidad === null || cantidad === '') {
+                alert("Debes completar todos los campos.");
+                return false;
+            }
+
+            if (cantidad < 0) {
+                alert("La cantidad no puede ser negativa.");
+                return false;
+            }
+
+            if (cantidad >= 101) {
+                alert("Excedió la cantidad de unidades, el maximo es 100.");
+                return false;
+            }
+
+            if (cantidad === 0) {
+                alert("Debes establecer una cantidad.");
+                return false;
+            }
+
+            if (codigo <= 7790000000000 || codigo >= 7799999999999) {
+                alert("El código debe tener 13 dígitos y empezar con 779.");
+                return false;
+            }
+            return true;
+        }
 
         function Tarjeta({ producto, alGuardar, alBorrar, alEditar }) {
             const [editando, setEditando] = useState(producto.editando);
@@ -131,12 +158,8 @@
 
             const aceptar = (e) => {
                 if (
-                    document.getElementById("des").value == '' ||
-                    document.getElementById("can").value == '' ||
-                    document.getElementById("cod").value == ''
+                    validacionProducto(document.getElementById("des").value, document.getElementById("can").value, document.getElementById("cod").value)
                 ) {
-                    alert("Los campos no pueden estar vacios");
-                } else {
                     e.preventDefault();
                     const productoEditado = { ...producto, descripcion, cantidad, codigo, editando: false };
                     alGuardar(productoEditado);
@@ -145,18 +168,22 @@
             };
 
             const sumar = (e) => {
-                if (editando) {
-                } else {
-                    const productoEditado = { ...producto, cantidad: parseInt(producto.cantidad) + 1, editando: false };
-                    alGuardar(productoEditado);
+                if (!editando) {
+                    if (producto.cantidad > 99) {
+                        alert("Excedió la cantidad de unidades, el maximo es 100.");
+                        return;
+                    } else {
+                        const productoEditado = { ...producto, cantidad: parseInt(producto.cantidad) + 1, editando: false };
+                        alGuardar(productoEditado);
+                    }
                 }
+            };
 
-            }
             const editar = (e) => {
                 const productoEditado = { ...producto, descripcion, cantidad, codigo, editando: true };
                 alGuardar(productoEditado);
                 setEditando(true);
-            }
+            };
 
             const cancelar = (e) => {
                 e.preventDefault();
@@ -165,19 +192,18 @@
                     producto.cantidad === null ||
                     producto.codigo === null
                 ) {
-                    alBorrar(producto.id)
+                    alBorrar(producto.id);
                 } else {
                     const productoEditado = { ...producto, descripcion, cantidad, codigo, editando: false };
                     alGuardar(productoEditado);
-                    setEditando(false)
+                    setEditando(false);
                 }
             };
 
             return (
                 <div className="card" onClick={sumar}>
                     {editando ? (
-                        <div className="editar" >
-
+                        <div className="editar">
                             <div className="inputs">
                                 <input type="text" id="des" value={descripcion} placeholder="descripcion" onChange={cambiarDescripcion} />
                                 <input type="number" id="can" value={cantidad} placeholder="cantidad" onChange={cambiarCantidad} />
@@ -188,7 +214,6 @@
                                 <button onClick={aceptar}>Aceptar</button>
                                 <button onClick={cancelar}>Cancelar</button>
                             </div>
-
                         </div>
                     ) : (
                         <>
@@ -207,8 +232,6 @@
             );
         }
 
-
-
         function Mostrar({ inventario, alGuardar, alBorrar }) {
             return (
                 <div className="container">
@@ -225,19 +248,18 @@
         }
 
         function leerInventario() {
-            return JSON.parse(localStorage.getItem('inventario'))
+            return JSON.parse(localStorage.getItem('inventario'));
         }
 
         function guardarInventario(inventario) {
-            localStorage.setItem('inventario', JSON.stringify(inventario))
+            localStorage.setItem('inventario', JSON.stringify(inventario));
         }
 
         function proximoId(inventario) {
-            return Math.max(...inventario.map(c => c.id)) + 1
+            return Math.max(...inventario.map(c => c.id)) + 1;
         }
 
         const App = () => {
-
             const [inventario, setInventario] = useState([]);
 
             useEffect(() => {
@@ -245,31 +267,34 @@
                     guardarInventario(ProductosIniciales);
                 }
                 const datos = leerInventario();
-                setInventario(datos);
+                setInventario(ordenarPorDescripcion(datos));
             }, []);
 
             useEffect(() => {
                 guardarInventario(inventario);
             }, [inventario]);
 
+            const ordenarPorDescripcion = (productos) => {
+                return productos.sort((a, b) => a.descripcion.localeCompare(b.descripcion));
+            };
+
             const agregar = () => {
                 const nuevoProducto = {
                     id: proximoId(inventario),
-                    descripcion: null,
-                    cantidad: null,
-                    codigo: null,
+                    descripcion: '',
+                    cantidad: '',
+                    codigo: '',
                     editando: true
                 };
-                setInventario([...inventario, nuevoProducto]);
+                setInventario(ordenarPorDescripcion([...inventario, nuevoProducto]));
             };
 
-
             const guardar = (productoEditado) => {
-                setInventario((prevInventario) =>
+                setInventario((prevInventario) => ordenarPorDescripcion(
                     prevInventario.map((producto) =>
                         producto.id === productoEditado.id ? productoEditado : producto
                     )
-                );
+                ));
             };
 
             const borrar = (id) => {
@@ -285,7 +310,8 @@
                     <Mostrar
                         inventario={inventario}
                         alGuardar={guardar}
-                        alBorrar={borrar} />
+                        alBorrar={borrar}
+                    />
                 </>
             );
         };
