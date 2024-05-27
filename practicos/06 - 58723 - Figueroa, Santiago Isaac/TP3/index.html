@@ -57,6 +57,7 @@
             padding: 10px;
             margin-bottom: 10px;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
         }
 
         .cantidad {
@@ -103,9 +104,7 @@
         .error {
             color: red;
             font-size: 14px;
-            background-color: #000;
             margin-left: 5px;
-           
         }
 
         .formulario-edicion {
@@ -152,7 +151,7 @@
         function Editar({ producto, alGuardar, alCancelar }) {
             const [nombre, setNombre] = useState(producto.producto);
             const [EAN, setEAN] = useState(producto.EAN);
-            const [cantidad, setCantidad] = useState(producto.cantidad);
+            const [cantidad, setCantidad] = useState(producto.cantidad === 0 ? '' : producto.cantidad);
             const [error, setError] = useState(false);
 
             const cambiarNombre = e => {
@@ -174,7 +173,7 @@
                     setError(true);
                     return;
                 }
-                alGuardar({ ...producto, producto: nombre, EAN, cantidad });
+                alGuardar({ ...producto, producto: nombre, EAN, cantidad: Number(cantidad) });
             };
             const cancelar = e => {
                 e.preventDefault();
@@ -211,10 +210,14 @@
                 alCancelar();
             };
 
+            const incrementarCantidad = () => {
+                alGuardar({ ...producto, cantidad: producto.cantidad + 1 });
+            };
+
             return editando ? (
                 <Editar producto={producto} alGuardar={handleGuardar} alCancelar={handleCancelar} />
             ) : (
-                <div className="panel">
+                <div className="panel" onClick={incrementarCantidad}>
                     <div className="cantidad">{producto.cantidad}</div>
                     <div className="info">
                         <p><strong>{producto.producto}</strong></p>
@@ -233,6 +236,8 @@
         }
 
         function Agenda({ productos, alAgregar, alGuardar, alBorrar, alCancelar }) {
+            const productosOrdenados = [...productos].sort((a, b) => a.producto.localeCompare(b.producto));
+
             return (
                 <>
                     <div className="nav">
@@ -240,7 +245,7 @@
                         <button className="bttmas" onClick={alAgregar}>+</button>
                     </div>
                     {productos.length === 0 && <h2>No hay productos</h2>}
-                    {productos.map(producto => (
+                    {productosOrdenados.map(producto => (
                         <Producto
                             key={producto.id}
                             producto={producto}
