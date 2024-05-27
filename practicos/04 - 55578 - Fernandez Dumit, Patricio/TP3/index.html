@@ -11,11 +11,13 @@
             text-align: center;
             font-family: Arial, Helvetica, sans-serif;
         }
+
         h3 {
             text-align: center;
             font-size: x-large;
             font-family: Arial, Helvetica, sans-serif;
         }
+
         button {
             font-size: medium;
             font-family: Arial, Helvetica, sans-serif;
@@ -24,52 +26,52 @@
             margin: 3px;
             padding: 4px;
         }
+
         html, body {
             height: 100%;
             margin: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
+            background-color: rgb(217, 217, 217);
         }
+
+        .formulario {
+            display: flex;
+            flex-direction: column; 
+            align-items: center; 
+        }
+
         .panel {
-            width: 200px;
+            width: 300px;
             border: 1px solid #ccc;
             padding: 30px;
             border-radius: 10px;
             margin: 10px;
-            background-color: rgb(161, 161, 161);
+            background-color: white;
             text-align: center;
             font-size: large;
             font-family: Arial, Helvetica, sans-serif;
         }
-        .formulario {
-            display: flex;
-            flex-wrap: wrap;
-        }
-        label {
-            display: grid;
-            align-self: center;
-        }
-        input {
-            width: 100%;
-            margin-bottom: 10px;  
-        }
+
         .acciones {
             display: flex;
-            justify-content: start;
-            grid-column: span 2;
+            justify-content: space-between;
         }
+
         .cantidad {
-           color: rgb(0, 17, 199);
-           font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-           font-size: 50px;
+            color: rgb(0, 17, 199);
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 50px;
         }
+
         .accion-img {
             cursor: pointer;
             margin: 0 35px;
             height: 40px;
             width: 40px;
         }
+
         .agregar-img {
             cursor: pointer;
             height: 40px;
