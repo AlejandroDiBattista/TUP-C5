@@ -120,6 +120,20 @@
             padding: 0 10px;
             text-align: right;
         }
+
+        input {
+            width: 510px;
+            padding: 12px 24px;
+            border-radius:100px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        body {
+          overflow-x: hidden; /* Deshabilita el desplazamiento horizontal */
+          overflow-y: scroll; /* Habilita el desplazamiento vertical */
+        }
+
     </style>
     <script>
         const datos = [
@@ -865,29 +879,44 @@
                     <table>
                         <thead>
                             <th>Prácticos</th>
-                            {practicos.map(practico => <th>{practico}</th>)}
+                            {practicos.map(practico => <th key={practico}>{practico}</th>)}
                         </thead>
                         <tbody>
                             <tr>
                                 <th>Entregó</th>
-                                {practicos.map(practico => <td>{contarEntrega(practico).si}</td>)}
+                                {practicos.map(practico => <td key={practico}>{contarEntrega(practico).si}</td>)}
                             </tr>
                             <tr>
                                 <th>Falta</th>
-                                {practicos.map(practico => <td>{contarEntrega(practico).no}</td>)}
+                                {practicos.map(practico => <td key={practico}>{contarEntrega(practico).no}</td>)}
                             </tr>
                         </tbody>
                     </table>
                 </div>
             )
         }
-        const App = () => (
+
+        function incluir(alumno, filtro){
+            const texto = `${alumno.ubicacion} ${alumno.comentario_tp3} ${alumno.nota_tp3}`.toLowerCase();
+            const palabras = filtro.trim().split(" ")
+            // console.log(palabras, palabras.every(palabra => texto.includes(palabra)), texto)
+            return palabras.every(palabra => texto.includes(palabra));
+        }
+
+        const App = () => {
+          let [filtro, setFiltro] = useState("")
+          function filtrar(e){
+            setFiltro(e.target.value.toLowerCase())
+          }
+          let mostrar = datos.filter(a => incluir(a, filtro) )          
+          return (
             <div id="main">
                 <h1>| {comision} | Listado de alumnos</h1>
+                <input type="search" onChange={filtrar} />
                 <Estadistica />
-                {datos.map(alumno => <Alumno key={alumno.id} alumno={alumno} />)}
+                {mostrar.map(alumno => <Alumno key={alumno.id} alumno={alumno} />)}
             </div>
-        )
+        )}
 
         const root = createRoot(document.getElementById('root'))
         root.render(<App />);
