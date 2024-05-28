@@ -176,7 +176,6 @@ body {
   { "codigo_ean": "7794455667788", "nombre": "Café Molido", "unidades": 45 },
   { "codigo_ean": "7793344556677", "nombre": "Galletitas Dulces", "unidades": 80 },
   { "codigo_ean": "7795566443322", "nombre": "Mermelada de Durazno", "unidades": 55 }]
-
     </script>
     <script type="text/babel">
         const {useState, useEffect} = React
@@ -217,7 +216,6 @@ const FormEditar = ({nombre, unidades, codigo_ean, editarProductos, onClose})=>{
         </div>
 )
 }
-
 const Producto = ({ nombre, unidades, codigo_ean, editarProductos, eliminar, sumar, setEditar }) => {
   return (
     <div className="product-card" onClick={()=>sumar(codigo_ean)}>
