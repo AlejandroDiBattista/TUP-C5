@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Enlaces a React, ReactDOM y Babel -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Iconos FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <title>TP3-Parcial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+        }
+        .control-deposito {
+            margin: 20px;
+            width: 300px; 
+        }
+        .target {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+            width: 100%; /* Hacer que la tarjeta ocupe el 100% del contenedor */
+        }
+        .numero {
+            color: blue;
+            padding: 15px;
+            font-size: 36px; /* Reducir el tamaño de la fuente del número */
+            font-weight: bold;
+        }
+        .info-producto {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-grow: 1;
+            text-align: left;
+        }
+        .nombre-producto {
+            font-size: 25px; /* Ajustar el tamaño de la fuente del nombre del producto */
+            font-weight: bold;
+        }
+        .codigo-producto {
+            font-size: 14px; /* Ajustar el tamaño de la fuente del código del producto */
+            color: #666;
+        }
+        .acciones {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .acciones1 {
+            cursor: pointer;
+            margin-top: 10px;
+            color: #333;
+        }
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        .form-container input {
+            margin: 5px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: calc(100% - 22px);
+        }
+        .form-container .acciones1 {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        const productosIniciales = [
+            { id: 1, nombre: '7up', codigoEAN: '7799876543210', cantidad: 7 },
+            { id: 2, nombre: 'Coca Cola', codigoEAN: '7791234567890', cantidad: 92 },
+            { id: 3, nombre: 'Fanta', codigoEAN: '7793219876540', cantidad: 5 },
+            { id: 4, nombre: 'Manaos', codigoEAN: '7794567891230', cantidad: 1 },
+            { id: 5, nombre: 'Mirinda', codigoEAN: '7797894561230', cantidad: 6 },
+            { id: 6, nombre: 'Pepsi', codigoEAN: '7799876543211', cantidad: 3 },
+            { id: 7, nombre: 'Sprite', codigoEAN: '7796543219870', cantidad: 4 }
+        ];
+        function Inventario({ datos, alAgregar, alEditar, alBorrar, alIncrementar }) {
+            const productosOrdenados = datos.sort((a, b) => a.nombre.localeCompare(b.nombre));
+            return (
+                <div className="control-deposito">
+                    <h1>Control Depósito  <i className="fa-regular fa-square-plus" onClick={alAgregar}></i></h1>
+                    {productosOrdenados.map((producto) => (
+                        <Mostrar
+                            key={producto.id}
+                            producto={producto}
+                            alEditar={alEditar}
+                            alBorrar={alBorrar}
+                            alIncrementar={alIncrementar}
+                        />
+                    ))}
+                </div>
+            );
+        }
+        function Editar({ producto, alGuardar}) {
+            let [nombre, setNombre] = useState(producto.nombre);
+            let [codigoEAN, setCodigoEAN] = useState(producto.codigoEAN);
+            let [cantidad, setCantidad] = useState(producto.cantidad);
+
+            const cambiarNombre = (e) => setNombre(e.target.value);
+            const cambiarCodigoEAN = (e) => setCodigoEAN(e.target.value);
+            const cambiarCantidad = (e) => setCantidad(e.target.value);
+
+            const aceptar = (e) => {
+                e.preventDefault();
+                alGuardar({ ...producto, nombre, codigoEAN, cantidad });
+            };
+
+            const cancelar = (e) => {
+                e.preventDefault();
+                alGuardar(null);
+            };
+
+            return (
+                <form className="target form-container">
+                    <input type="text" value={nombre} onChange={cambiarNombre} placeholder="Nombre"/>
+                    <input type="text" value={codigoEAN} onChange={cambiarCodigoEAN} placeholder="Código EAN"/>
+                    <input type="number" value={cantidad} onChange={cambiarCantidad} placeholder="Cantidad"/>
+                    <div className="acciones1">
+                        <button onClick={aceptar}>Aceptar</button>
+                        <button onClick={cancelar}>Cancelar</button>
+                    </div>
+                </form>
+            );
+        }
+
+        function Mostrar({ producto, alEditar, alBorrar, alIncrementar}) {
+            const [editando, setEditando] = useState(false);
+            const toggleEditar = () => setEditando(!editando);
+            const handleCardClick = (e) => {
+                if (e.target.closest('.acciones1')) return;
+                alIncrementar(producto.id);
+            };
+            return (
+                <div className="target" onClick={handleCardClick}>
+                    {editando ? (
+                        <Editar producto={producto} alGuardar={(nuevoProducto) => {
+                            setEditando(false);
+                            if (nuevoProducto) {
+                                alEditar(nuevoProducto);
+                            }
+                        }} />
+                    ) : (
+                        <>
+                            <div className="numero">{producto.cantidad}</div>
+                            <div className="info-producto">
+                                <div className="nombre-producto">{producto.nombre}</div>
+                                <div className="codigo-producto">{producto.codigoEAN}</div>
+                            </div>
+                            <div className="acciones">
+                                <i className="fas fa-edit acciones1" onClick={toggleEditar}></i>
+                                <i className="fas fa-trash acciones1" onClick={() => alBorrar(producto.id)}></i>
+                            </div>
+                        </>
+                    )}
+                </div>
+            );
+        }
+
+        function proximoId(productos){
+            return Math.max(...productos.map(c => c.id)) + 1;
+        }
+
+        function leerProductos(){
+            return JSON.parse(localStorage.getItem('productos')) || productosIniciales;
+        }
+
+        function guardarProductos(productos){
+            localStorage.setItem('productos', JSON.stringify(productos));
+        }
+
+        function App() {
+            let [editando, setEditando] = useState(false);
+            let [producto, setProducto] = useState({});
+            let [productos, setProductos] = useState([]);
+
+            useEffect(() => {
+                let datos = leerProductos();
+                setProductos(datos);
+            }, []);
+
+            useEffect(() => {
+                guardarProductos(productos);
+            }, [productos]);
+
+            if(localStorage.getItem('productos') === null){
+                guardarProductos(productosIniciales);
+            }
+
+            const agregar = () => {
+                setProducto({nombre: "", codigoEAN: "", cantidad: ""});
+                setEditando(true);
+            };
+
+            const editar = (nuevoProducto) => {
+                const copia = productos.map(c => c.id === nuevoProducto.id ? nuevoProducto : c);
+                setProductos(copia);
+                setEditando(false);
+            };
+
+            const borrar = (id) => {
+                const copia = productos.filter(c => c.id !== id);
+                setProductos(copia);
+                setProducto({});
+            };
+
+            const guardar = (producto) => {
+                if (producto) {
+                    if (producto.id) {
+                        const copia = productos.map(c => c.id === producto.id ? producto : c);
+                        setProductos(copia);
+                    } else {
+                        const id = proximoId(productos);
+                        const copia = [...productos, { ...producto, id }];
+                        setProductos(copia);
+                    }
+                }
+                setEditando(false);
+            };
+
+            const incrementar = (id) => {
+                const copia = productos.map(c => c.id === id ? { ...c, cantidad: parseInt(c.cantidad) + 1 } : c);
+                setProductos(copia);
+            };
+
+            return (
+                <>
+                    {
+                        editando
+                            ? <Editar producto={producto} alGuardar={guardar} />
+                            : <Inventario 
+                                datos={productos}
+                                alAgregar={agregar}
+                                alEditar={editar}
+                                alBorrar={borrar}
+                                alIncrementar={incrementar}
+                            />
+                    }
+                </>
+            );
+        }
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
