@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>58899</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        body {
+          background-color: #f8f9fa;
+        }
+        .container {
+          max-width: 540px;
+          margin-top: 20px;
+        }
+        h1 {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-size: 3rem;
+          font-weight: bold;
+        }
+        .card {
+          margin-bottom: 10px;
+          border-radius: 10px;
+          height: 190px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card-title {
+          position: absolute;
+          top: 30px;
+          left: 120px;
+          font-size: 2.5rem;
+          font-weight: bold;
+        }
+        .card-text{
+          position: absolute;
+          top: 100px;
+          left: 120px;
+          font-size: 1.1rem;
+        }
+        .cantidad {
+          color: blue;
+          font-size: 3rem;
+          font-weight: bold;
+        }
+        .icon-btn,
+        .btn-edit,
+        .btn-borrar {
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 0;
+          margin-left: 10px;
+          font-size: 1.2rem;
+        }
+        .icon-btn i {
+          font-size: 2rem;
+        }
+        .form-group {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 10px;
+        }
+        .form-control {
+          flex: 1;
+        }
+        .form-actions {
+          display: flex;
+          gap: 10px;
+          margin-top: 10px;
+        }
+        .btn-edit {
+          position: absolute;
+          display: flex;
+          flex-direction: column;
+          top: 7px;
+          left: 468px;
+        }
+        .btn-borrar {
+          position: absolute;
+          display: flex;
+          flex-direction: column;
+          top: 40px;
+          left: 468px;
+        }
+      </style>
+</head>
+<body>
+    <div class="container">
+        <div id="root"></div>
+    </div>
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        const App = () => {
+            const [productos, setProductos] = useState([]);
+            const [nuevoProducto, setNuevoProducto] = useState(null);
+
+            useEffect(() => {
+                const productosGuardados = JSON.parse(localStorage.getItem('productos')) || [];
+                setProductos(productosGuardados);
+            }, []);
+
+            useEffect(() => {
+                localStorage.setItem('productos', JSON.stringify(productos));
+            }, [productos]);
+
+            const manejarCambio = (e) => {
+                setNuevoProducto({ ...nuevoProducto, [e.target.name]: e.target.value });
+            };
+
+            const agregarProducto = () => {
+                if (nuevoProducto.nombre && nuevoProducto.cantidad && nuevoProducto.ean.length === 13) {
+                    setProductos([...productos, { ...nuevoProducto, id: Date.now() }]);
+                    setNuevoProducto(null);
+                } else {
+                    alert('Asegúrate de llenar todos los campos y que el código EAN tenga 13 dígitos.');
+                }
+            };
+
+            const actualizarProducto = (id, productoActualizado) => {
+                const productosActualizados = productos.map(producto =>
+                    producto.id === id ? productoActualizado : producto
+                );
+                setProductos(productosActualizados);
+            };
+
+            const borrarProducto = (id) => {
+                const productosFiltrados = productos.filter(producto => producto.id !== id);
+                setProductos(productosFiltrados);
+            };
+
+            return (
+                <div>
+                    <h1>Control Depósito
+                        <button onClick={() => setNuevoProducto({ nombre: '', cantidad: '', ean: '' })} className="icon-btn">
+                            <i className="fas fa-plus-circle"></i>
+                        </button>
+                    </h1>
+                    {nuevoProducto && (
+                        <div className="card product-card">
+                            <div className="card-body">
+                                <div className="form-group">
+                                    <input type="text" name="nombre" placeholder="Nombre" value={nuevoProducto.nombre} onChange={manejarCambio} className="form-control" />
+                                    <input type="number" name="cantidad" placeholder="Cantidad" value={nuevoProducto.cantidad} onChange={manejarCambio} className="form-control" />
+                                    <input type="text" name="ean" placeholder="Código EAN" value={nuevoProducto.ean} onChange={manejarCambio} className="form-control" />
+                                </div>
+                                <div className="form-actions">
+                                    <button onClick={agregarProducto} className="btn btn-success">Aceptar</button>
+                                    <button onClick={() => setNuevoProducto(null)} className="btn btn-secondary">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                    <div>
+                        {productos.map(producto => (
+                            <TarjetaProducto key={producto.id} producto={producto} actualizarProducto={actualizarProducto} borrarProducto={borrarProducto} />
+                        ))}
+                    </div>
+                </div>
+            );
+        };
+
+        const TarjetaProducto = ({ producto, actualizarProducto, borrarProducto }) => {
+            const [estaEditando, setEstaEditando] = useState(false);
+            const [productoEditado, setProductoEditado] = useState(producto);
+
+            useEffect(() => {
+                setProductoEditado(producto);
+            }, [producto]);
+
+            const manejarCambioEdicion = (e) => {
+                setProductoEditado({ ...productoEditado, [e.target.name]: e.target.value });
+            };
+
+            const guardarCambios = () => {
+                if (productoEditado.nombre && productoEditado.cantidad && productoEditado.ean.length === 13) {
+                    actualizarProducto(producto.id, productoEditado);
+                    setEstaEditando(false);
+                } else {
+                    alert('Asegúrate de llenar todos los campos y que el código EAN tenga 13 dígitos.');
+                }
+            };
+
+            const cancelarEdicion = () => {
+                setProductoEditado(producto);
+                setEstaEditando(false);
+            };
+
+            const incrementarCantidad = () => {
+                const productoIncrementado = { ...producto, cantidad: parseInt(producto.cantidad) + 1 };
+                actualizarProducto(producto.id, productoIncrementado);
+            };
+
+            return (
+                <div className="card product-card" onClick={!estaEditando ? incrementarCantidad : null}>
+                    <div className="card-body">
+                        {estaEditando ? (
+                            <>
+                                <input type="text" name="nombre" value={productoEditado.nombre} onChange={manejarCambioEdicion} className="form-control" />
+                                <input type="number" name="cantidad" value={productoEditado.cantidad} onChange={manejarCambioEdicion} className="form-control" />
+                                <input type="text" name="ean" value={productoEditado.ean} onChange={manejarCambioEdicion} className="form-control" />
+                                <div className="form-actions">
+                                    <button onClick={guardarCambios} className="btn btn-success">Aceptar</button>
+                                    <button onClick={cancelarEdicion} className="btn btn-secondary">Cancelar</button>
+                                </div>
+                            </>
+                        ) : (
+                            <>
+                                <div className="cantidad">{producto.cantidad}</div>
+                                <div>
+                                    <h5 className="card-title">{producto.nombre}</h5>
+                                    <p className="card-text">{producto.ean}</p>
+                                </div>
+                                <div className="icon-container">
+                                    <button onClick={(e) => {e.stopPropagation(); setEstaEditando(true);}} className="btn-edit">
+                                        <i className="fas fa-edit"></i>
+                                    </button>
+                                    <button onClick={(e) => {e.stopPropagation(); borrarProducto(producto.id);}} className="btn-borrar">
+                                        <i className="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </>
+                        )}
+                    </div>
+                </div>
+            );
+        };
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</html>
+</body>
