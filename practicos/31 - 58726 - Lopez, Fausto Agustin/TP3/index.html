@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    <title>58726</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f7f7f7;
+        }
+
+        #root {
+            width: 400px;
+            margin: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: -20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #000;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        input {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button[type="submit"], .editar-form button {
+            padding: 3.7px;
+            border: 1px solid black;
+            border-radius: 10px;
+            color: black;
+            cursor: pointer;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .producto-info {
+            display: flex;
+            align-items: center;
+            margin: auto;
+            gap: 20px;
+        }
+
+        .producto-info-datos {
+            display: flex;
+            gap: 20px;
+            font-size: 2.5em;
+            font-weight: bold;
+            color: blue;
+            margin-right: 10px;
+            width: 10%;
+            justify-content: center;
+        }
+
+        .producto-info-dos {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .producto-info-producto {
+            font-weight: bold; 
+            font-size: 1.5em;
+        }
+
+        .editar-form {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+        }
+
+        .editar-form-inputs {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            width: 100%;
+        }
+
+        .editar-form-botones {
+            display: flex;
+            flex-direction: column; 
+            gap: 5px;
+        }
+
+        .editar-form-botones button {
+            color: #000;
+            background-color: #f7f7f7;
+        }
+
+        .botones-accion {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .botones-accion button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .boton-borrar {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+
+        .boton-borrar button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .agregar-boton {
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+
+        const { useState, useEffect } = React
+
+        function App() {
+            const [productos, setProductos] = useState([])
+            const [mostrarFormulario, setMostrarFormulario] = useState(false)
+
+            useEffect(() => {
+                const totProductos = JSON.parse(localStorage.getItem('productos')) || []
+                setProductos(totProductos)
+            }, [])
+
+            useEffect(() => {
+                localStorage.setItem('productos', JSON.stringify(productos));
+            }, [productos])
+
+            const duplicado = (productos, producto) => {
+                return productos.some(p => (p.id !== producto.id) && (p.nombre === producto.nombre || p.ean === producto.ean))
+            }
+
+            const ordenarProductos = (productos) => {
+                return productos.sort((a, b) => a.nombre.localeCompare(b.nombre))
+            }
+
+            const agregarProducto = (producto) => {
+                if (duplicado(productos, producto)) {
+                    alert('El nombre del producto o el código EAN ya existe.')
+                    return
+                }
+                setProductos(ordenarProductos([...productos, producto]))
+            }
+
+            const updateProducto = (updateProducto) => {
+                if (duplicado(productos, updateProducto)) {
+                    alert('El nombre del producto o el código EAN ya existe.')
+                    return
+                }
+                const updateProductos = productos.map((producto) =>
+                    producto.id === updateProducto.id ? updateProducto : producto
+                )
+                setProductos(ordenarProductos(updateProductos))
+            }
+
+            const borrarProducto = (id) => {
+                const updateProductos = productos.filter((producto) => producto.id !== id);
+                setProductos(ordenarProductos(updateProductos))
+            }
+
+            return (
+                <div>
+                    <div className="header">
+                        <h1>Control Depósito</h1>
+                        <button className="agregar-boton" onClick={() => setMostrarFormulario(!mostrarFormulario)}><i className="fa-regular fa-square-plus fa-2x"></i></button>                   
+                    </div>
+                    {mostrarFormulario && <ProductoForm agregarProducto={agregarProducto} />}
+                    <ProductoLista 
+                        productos={productos}
+                        updateProducto={updateProducto}
+                        borrarProducto={borrarProducto} 
+                    />
+                </div>
+            )
+        }
+
+        function ProductoForm({ agregarProducto }) {
+            const [nombre, setNombre] = useState('')
+            const [ean, setEan] = useState('')
+            const [quantity, setQuantity] = useState(1)
+
+            const handleQuantityChange = (e) => {
+                const value = Math.max(0, Number(e.target.value))
+                setQuantity(value === 0 ? '' : value)
+            }
+
+            const submitProductos = (e) => {
+                e.preventDefault()
+                if (ean.length !== 13) {
+                    alert('El código EAN debe tener 13 dígitos.')
+                    return
+                }
+                const nuevoProducto = { id: Date.now(), nombre, ean, quantity: quantity || 0 }
+                agregarProducto(nuevoProducto)
+                setNombre('')
+                setEan('')
+                setQuantity(1)
+            }
+
+            return (
+                <form onSubmit={submitProductos}>
+                    <input 
+                        type="text"
+                        placeholder="Nombre Producto"
+                        value={nombre}
+                        onChange={(e) => setNombre(e.target.value)}
+                        required
+                    />
+                    <input 
+                        type="text"
+                        placeholder="Código EAN"
+                        value={ean}
+                        onChange={(e) => setEan(e.target.value)}
+                        required
+                    />
+                    <input 
+                        type="number"
+                        placeholder="Cantidad"
+                        value={quantity}
+                        onChange={handleQuantityChange}
+                        required
+                        min="0"
+                    />
+                    <button type="submit">Agregar Producto</button>
+                </form>
+            )
+        }
+
+        function ProductoLista({ productos, updateProducto, borrarProducto }) {
+            return (
+                <ul>
+                    {productos.map((producto) => (
+                        <ProductoItem 
+                            key={producto.id}
+                            producto={producto}
+                            updateProducto={updateProducto}
+                            borrarProducto={borrarProducto}
+                        />
+                    ))}
+                </ul>
+            )
+        }
+
+        function ProductoItem({ producto, updateProducto, borrarProducto }) {
+            const [editar, setEditar] = useState(false)
+
+            const incrementarCantidad = () => {
+                const updatedProduct = { ...producto, quantity: producto.quantity + 1 }
+                updateProducto(updatedProduct)
+            }
+
+            return (
+                <li onClick={incrementarCantidad}>
+                    {editar ? (
+                        <EditarProductoForm
+                            producto={producto}
+                            updateProducto={updateProducto}
+                            setEditar={setEditar}
+                        />
+                    ) : (
+                        <div className="producto-info">
+                            <div className="producto-info-datos">
+                                <div><span>{producto.quantity}</span></div>
+                            </div>  
+                            <div className="producto-info-dos">
+                                <div className="producto-info-producto">{producto.nombre}</div>
+                                <div>{producto.ean}</div>  
+                            </div>
+                            <div className="botones-accion">
+                                <button onClick={(e) => {e.stopPropagation(); setEditar(true)}}><i className="fa-regular fa-pen-to-square"></i></button>
+                            </div>
+                            <div className="boton-borrar">
+                                <button onClick={(e) => {e.stopPropagation(); borrarProducto(producto.id)}}><i className="fa-solid fa-trash"></i></button>
+                            </div>
+                        </div>
+                    )}
+                </li>
+            )
+        }
+
+        function EditarProductoForm({ producto, updateProducto, setEditar }) {
+            const [nombre, setNombre] = useState(producto.nombre)
+            const [ean, setEan] = useState(producto.ean)
+            const [quantity, setQuantity] = useState(producto.quantity)
+
+            const handleQuantityChange = (e) => {
+                const value = Math.max(0, Number(e.target.value))
+                setQuantity(value === 0 ? '' : value)
+            }
+
+            const submitEditar = (e) => {
+                e.preventDefault()
+                if (ean.length !== 13) {
+                    alert('El código EAN debe tener 13 dígitos.')
+                    return
+                }
+                const updatedProduct = { ...producto, nombre, ean, quantity: quantity || 0 }
+                updateProducto(updatedProduct)
+                setEditar(false)
+            }
+
+            return (
+                <form className="editar-form" onSubmit={submitEditar}>
+                    <div className="editar-form-inputs">
+                        <input 
+                            type="text"
+                            value={nombre}
+                            onChange={(e) => setNombre(e.target.value)}
+                            required
+                        />
+                        <input 
+                            type="text"
+                            value={ean}
+                            onChange={(e) => setEan(e.target.value)}
+                            required
+                        />
+                        <input 
+                            type="number"
+                            value={quantity}
+                            onChange={handleQuantityChange}
+                            required
+                            min="0"
+                        />
+                    </div>
+                    <div className="editar-form-botones">
+                        <button type="submit">Aceptar</button>
+                        <button type="button" onClick={() => setEditar(false)}>Cancelar</button>    
+                    </div>
+                </form>
+            )
+        }
+
+        ReactDOM.render(<App />, document.getElementById('root'))
+    </script>
+</body>
+</html>
