@@ -1,29 +1,22 @@
 import express from "express"
+import morgan from 'morgan'
+import productos from "./productos.js"
 
 const app = express()
 
-app.get("/", (req, res) => {
-    res.send("<h1>Estamos en un get</h1>")
-})
+let datos = [
+    { id: 1, nombre: "Juan", apellido: "Perez" },
+    { id: 2, nombre: "Ana", apellido: "Gomez" },
+    { id: 3, nombre: "Pedro", apellido: "Garcia" },
+    { id: 4, nombre: "Maria", apellido: "Rodriguez" },
+]
 
-app.get("/saludar", (req, res) => {
-    console.log(req.query) 
-    let { nombre } = req.query
-    res.send("<h1>Bienvenido " + nombre + "</h1>")
-})
+app.use(morgan('dev'))
+app.use(express.json())
 
+app.use("/productos", express.json(), productos)
 
-app.get("/despedir/:nombre/:edad", (req, res) => {
-    console.log(req.query)
-    console.log(req.params)
-
-    const {nombre, edad} = req.params
-    res.send("<h1>Bienvenido " + nombre.toUpperCase() +
-    
-        " tiene " + edad + " años</h1>")
-})
-
-
+app.get("/home")
 app.listen(3000, () => {
     console.log("Servidor funcionando en 3000")
     console.log("http://localhost:3000/")

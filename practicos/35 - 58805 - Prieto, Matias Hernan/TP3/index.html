@@ -180,6 +180,7 @@ body {
     </script>
     <script type="text/babel">
         const {useState, useEffect} = React
+
 const Agregar=({agregar, setVentana})=>{
   const [nombre, setNombre]= useState('')
   const [cantidad, setCantidad]= useState(0)
@@ -327,6 +328,9 @@ localStorage.setItem('productos', JSON.stringify(productosIniciales))
     setEditando((prevState => ({ ...prevState, [ean]: false })))
   }
   productos.sort((a,b)=> a.nombre.localeCompare(b.nombre))
+  {id, nombre, unidades, codigo_ean
+
+    const nuevo = {nombre: "", unidades: 0, codigo_ean: 0}
   return (
     <>
       <div className="header">
@@ -334,14 +338,13 @@ localStorage.setItem('productos', JSON.stringify(productosIniciales))
         <span className="agregar-btn" onClick={()=>{setVentana(true)}}><img src="plus-square.svg"/> </span>
       </div>
       {ventana && <Agregar agregar={agregar} setVentana={setVentana}/>}
+      {ventana && <FormEditar  {...nuevo} agregar={agregar} setVentana={setVentana}/>}
         {productos.map(p => (
   <div key={p.codigo_ean}> 
     {editando[p.codigo_ean] ? 
       <FormEditar
         editarProductos={editarProductos}
-        nombre={p.nombre}
-        unidades={p.unidades}
-        codigo_ean={p.codigo_ean}
+        {...p}
         onClose={onClose}
       />
      : 
