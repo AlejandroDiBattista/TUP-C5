@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    <title>59076</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin: 20px;
+        }
+
+        h1 i {
+            padding: 10px;
+        }
+
+        .card {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            padding: 20px;
+            padding-right: 5px;
+            margin: auto;
+            margin-bottom: 10px;
+            border: transparent 1px;
+            border-radius: 8px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(15, 15, 15, 0.5);
+            width: 250px;
+            height: 50px;
+        }
+
+        .card p {
+            margin: 0;
+            font-size: 1em;
+        }
+
+        .card .icon {
+            cursor: pointer;
+            margin-left: 10px;
+            padding: 10px;
+            padding-right: 0;
+        }
+
+        .card .number {
+            font-size: 3em;
+            color: blue;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        .card .details {
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        .card .details span {
+            display: block;
+        }
+
+        .des {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .editar {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            padding: 0px;
+        }
+
+        .editar input {
+            margin: 2px;
+            border: transparent 1px;
+            border-radius: 8px;
+            box-shadow: 0 1px 2px rgba(15, 15, 15, 0.5);
+        }
+
+        .editar button {
+            width: 100%;
+            background-color: white;
+            border: 1px solid #000;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        const { createRoot } = ReactDOM;
+        const { useState, useEffect } = React;
+
+        const ProductosIniciales = [
+            { id: 1, descripcion: "Pesi 1.5l", cantidad: 12, codigo: "7791813421115", editando: false },
+            { id: 2, descripcion: "Coca Cola 1.5l", cantidad: 10, codigo: "7790895000430", editando: false },
+            { id: 3, descripcion: "Chocolate", cantidad: 15, codigo: "7622210745132", editando: false },
+            { id: 4, descripcion: "Fanta 1.5l", cantidad: 54, codigo: "7790895000454", editando: false },
+            { id: 5, descripcion: "Agua 1.5l", cantidad: 30, codigo: "7792799000059", editando: false },
+        ];
+
+        const validacionProducto = (descripcion, cantidad, codigo) => {
+            if (descripcion === '' || descripcion === null || cantidad === null || cantidad === '') {
+                alert("Debes completar todos los campos.");
+                return false;
+            }
+
+            if (cantidad < 0) {
+                alert("La cantidad no puede ser negativa.");
+                return false;
+            }
+
+            if (cantidad >= 101) {
+                alert("Excedió la cantidad de unidades, el maximo es 100.");
+                return false;
+            }
+
+            if (cantidad === 0) {
+                alert("Debes establecer una cantidad.");
+                return false;
+            }
+
+            if (codigo <= 7790000000000 || codigo >= 7799999999999) {
+                alert("El código debe tener 13 dígitos y empezar con 779.");
+                return false;
+            }
+            return true;
+        }
+
+        function Tarjeta({ producto, alGuardar, alBorrar, alEditar }) {
+            const [editando, setEditando] = useState(producto.editando);
+            const [descripcion, setDescripcion] = useState(producto.descripcion);
+            const [cantidad, setCantidad] = useState(producto.cantidad);
+            const [codigo, setCodigo] = useState(producto.codigo);
+
+            const cambiarDescripcion = (e) => setDescripcion(e.target.value);
+            const cambiarCantidad = (e) => setCantidad(e.target.value);
+            const cambiarCodigo = (e) => setCodigo(e.target.value);
+
+            const aceptar = (e) => {
+                if (
+                    validacionProducto(document.getElementById("des").value, document.getElementById("can").value, document.getElementById("cod").value)
+                ) {
+                    e.preventDefault();
+                    const productoEditado = { ...producto, descripcion, cantidad, codigo, editando: false };
+                    alGuardar(productoEditado);
+                    setEditando(false);
+                }
+            };
+
+            const sumar = (e) => {
+                if (!editando) {
+                    if (producto.cantidad > 99) {
+                        alert("Excedió la cantidad de unidades, el maximo es 100.");
+                        return;
+                    } else {
+                        const productoEditado = { ...producto, cantidad: parseInt(producto.cantidad) + 1, editando: false };
+                        alGuardar(productoEditado);
+                    }
+                }
+            };
+
+            const editar = (e) => {
+                const productoEditado = { ...producto, descripcion, cantidad, codigo, editando: true };
+                alGuardar(productoEditado);
+                setEditando(true);
+            };
+
+            const cancelar = (e) => {
+                e.preventDefault();
+                if (
+                    producto.descripcion === null ||
+                    producto.cantidad === null ||
+                    producto.codigo === null
+                ) {
+                    alBorrar(producto.id);
+                } else {
+                    const productoEditado = { ...producto, descripcion, cantidad, codigo, editando: false };
+                    alGuardar(productoEditado);
+                    setEditando(false);
+                }
+            };
+
+            return (
+                <div className="card" onClick={sumar}>
+                    {editando ? (
+                        <div className="editar">
+                            <div className="inputs">
+                                <input type="text" id="des" value={descripcion} placeholder="descripcion" onChange={cambiarDescripcion} />
+                                <input type="number" id="can" value={cantidad} placeholder="cantidad" onChange={cambiarCantidad} />
+                                <input type="text" id="cod" value={codigo} placeholder="codigo" onChange={cambiarCodigo} />
+                            </div>
+
+                            <div className="acciones">
+                                <button onClick={aceptar}>Aceptar</button>
+                                <button onClick={cancelar}>Cancelar</button>
+                            </div>
+                        </div>
+                    ) : (
+                        <>
+                            <div className="number">{producto.cantidad}</div>
+                            <div className="details">
+                                <span className="des">{producto.descripcion}</span>
+                                <span>{producto.codigo}</span>
+                            </div>
+                            <div className="botones">
+                                <div className="icon"><i className="fa-regular fa-edit" onClick={editar}></i></div>
+                                <div className="icon"><i className="fa fa-trash" onClick={() => alBorrar(producto.id)}></i></div>
+                            </div>
+                        </>
+                    )}
+                </div>
+            );
+        }
+
+        function Mostrar({ inventario, alGuardar, alBorrar }) {
+            return (
+                <div className="container">
+                    {inventario.map((producto) => (
+                        <Tarjeta
+                            key={producto.id}
+                            producto={producto}
+                            alGuardar={alGuardar}
+                            alBorrar={alBorrar}
+                        />
+                    ))}
+                </div>
+            );
+        }
+
+        function leerInventario() {
+            return JSON.parse(localStorage.getItem('inventario'));
+        }
+
+        function guardarInventario(inventario) {
+            localStorage.setItem('inventario', JSON.stringify(inventario));
+        }
+
+        function proximoId(inventario) {
+            return Math.max(...inventario.map(c => c.id)) + 1;
+        }
+
+        const App = () => {
+            const [inventario, setInventario] = useState([]);
+
+            useEffect(() => {
+                if (localStorage.getItem('inventario') === null) {
+                    guardarInventario(ProductosIniciales);
+                }
+                const datos = leerInventario();
+                setInventario(ordenarPorDescripcion(datos));
+            }, []);
+
+            useEffect(() => {
+                guardarInventario(inventario);
+            }, [inventario]);
+
+            const ordenarPorDescripcion = (productos) => {
+                return productos.sort((a, b) => a.descripcion.localeCompare(b.descripcion));
+            };
+
+            const agregar = () => {
+                const nuevoProducto = {
+                    id: proximoId(inventario),
+                    descripcion: '',
+                    cantidad: '',
+                    codigo: '',
+                    editando: true
+                };
+                setInventario(ordenarPorDescripcion([...inventario, nuevoProducto]));
+            };
+
+            const guardar = (productoEditado) => {
+                setInventario((prevInventario) => ordenarPorDescripcion(
+                    prevInventario.map((producto) =>
+                        producto.id === productoEditado.id ? productoEditado : producto
+                    )
+                ));
+            };
+
+            const borrar = (id) => {
+                const copia = inventario.filter((c) => c.id !== id);
+                setInventario(copia);
+            };
+
+            return (
+                <>
+                    <h1>Control Depósito
+                        <i onClick={agregar} className="fa-regular fa-square-plus"></i>
+                    </h1>
+                    <Mostrar
+                        inventario={inventario}
+                        alGuardar={guardar}
+                        alBorrar={borrar}
+                    />
+                </>
+            );
+        };
+
+        const root = createRoot(document.getElementById('root'));
+        root.render(<App />);
+
+
+    </script>
+</body>
+
+
+</html>
