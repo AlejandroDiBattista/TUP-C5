@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="index.css">
+
+     <!-- Enlaces a React, ReactDOM y Babel -->
+     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+     <script src="index.jsx"></script>
+    <title>Document</title>
+</head> 
+<center>
+<body>
+    
+    <header>
+        <h1>Control  Depósito</h1>
+        <button class="add-btn" onclick="addItem()">+</button>
+    </header>
+    
+    <div class="container">
+        
+        <div class="item" id="item-1">
+            <div class="number" onclick="incrementNumber('item-1')">7</div>
+            <div class="details">
+                <h2>7up</h2>
+                <p>7799876543210</p>
+            </div>
+            <div class="actions">
+                <button class="edit-btn" onclick="openEditForm('item-1')"><img src="imgedit.png" alt="editar"></button>
+                <button class="delete-btn" onclick="deleteItem('item-1')"><img src="imgeliminar.png" alt="eliminar"></button>
+            </div>
+        </div>
+        <div class="item" id="item-2">
+            <div class="number" onclick="incrementNumber('item-2')">92</div>
+            <div class="details">
+                <h2>Cola Cola</h2>
+                <p>7791234567890</p>
+            </div>
+            <div class="actions">
+                <button class="edit-btn" onclick="openEditForm('item-2')"><img src="imgedit.png" alt="editar"></button>
+                <button class="delete-btn" onclick="deleteItem('item-2')"><img src="imgeliminar.png" alt="eliminar"></button>
+            </div>
+        </div>
+        <div class="item" id="item-3">
+            <div class="number" onclick="incrementNumber('item-3')">30</div>
+            <div class="details">
+                <h2>fanta</h2>
+                <p>7791234567567</p>
+            </div>
+            <div class="actions">
+                <button class="edit-btn" onclick="openEditForm('item-3')"><img src="imgedit.png" alt="editar"></button>
+                <button class="delete-btn" onclick="deleteItem('item-3')"><img src="imgeliminar.png" alt="eliminar"></button>
+            </div>
+        </div>
+        <div class="item" id="item-4">
+            <div class="number" onclick="incrementNumber('item-4')">10</div>
+            <div class="details">
+                <h2>secco</h2>
+                <p>7791234567512</p>
+            </div>
+            <div class="actions">
+                <button class="edit-btn" onclick="openEditForm('item-4')"><img src="imgedit.png" alt="editar"></button>
+                <button class="delete-btn" onclick="deleteItem('item-4')"><img src="imgeliminar.png" alt="eliminar"></button>
+            </div>
+        </div>
+    </div>
+    <div id="editForm" class="edit-form">
+        <br>
+            <input type="text" id="editName" name="editName"><br><br>
+            <input type="text" id="editCode" name="editCode"><br><br>
+            <input type="number" id="editNumber" name="editNumber">
+            <br><br>
+            <button type="button" onclick="saveEdit()">Guardar</button>
+            <button type="button" onclick="closeEditForm()">Cancelar</button>
+        
+  </div>
+  </div>
+</body>
+</center>
+</html>
