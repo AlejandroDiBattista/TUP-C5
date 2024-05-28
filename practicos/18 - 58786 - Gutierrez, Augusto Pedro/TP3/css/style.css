@@ -179,3 +179,40 @@
     color: #000000;
     cursor: pointer;
 }
+
+@media screen and (min-width: 200px) and (max-width: 767px){
+    .container-title .title{
+        font-size: 5rem !important;
+    }
+    .container-title .add-product{
+        width: 60px;
+        height: 60px;
+        top: 39%;
+        left: 90%;
+    }
+    .container-title .add-product svg{
+        width: 55px;
+        height: 55px;
+    }
+    .container-card .card-product{
+        width: 90%;
+        height: 300px;
+    }
+    .container-card .card-product .quantity {
+        font-size: 7rem;
+    }
+    
+    .container-card .card-product .data .name {
+        font-size: 3rem;
+    }
+    
+    .container-card .card-product .data .ean {
+        font-size: 2rem;
+    }
+    
+    .container-card .card-product .data .icono svg {
+        width: 60px;
+        height: 60px;
+        fill: #000000;
+    }
+}
