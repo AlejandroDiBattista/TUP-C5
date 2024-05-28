@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TP3-FloresTomas</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: rgb(3, 3, 3);
+        }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #ffffff;
+        }
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            margin: 30px 0px;
+            color: rgb(0, 0, 0);
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 70px;
+            width: 100%;
+        }
+        .contenedor {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin: 50px auto 45px auto;
+            width: 90%;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        .contenedor > div {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            background-color: #dfdddd;
+            height: 400px;
+            width: 400px;
+            border-radius: 20px;
+            flex-direction: column;
+            padding-top: 35px;
+            gap: 25px;
+            flex: 1 1 300px;
+        }
+        .contenedor > div > form {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .contenedor > div > form > input,
+        select {
+            border-radius: 5px;
+            border: none;
+            padding: 5px;
+            color: black;
+        }
+        .contenedor .button {
+            margin-top: 20px;
+            height: 30px;
+            border-radius: 7px;
+            border: none;
+            color: black;
+            background-color: #a5a4a4;
+        }
+        .contenedorProductos h2 {
+            text-align: center;
+            padding-bottom: 20px;
+            font-weight: 300;
+            font-size: 40px;
+        }
+        .mostrarProductos {
+            width: 90%;
+            margin: auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .producto {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fcfcfc;
+            border-radius: 20px;
+            width: 100%;
+            padding: 20px;
+            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+        }
+        .producto .nombre {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            color: black;
+        }
+        .producto .codigo {
+            font-size: 16px;
+            color: grey;
+        }
+        .producto .cantidad {
+            font-size: 25px;
+            font-weight: bold;
+            color: blue;
+        }
+        .producto .acciones {
+            display: flex;
+            gap: 10px;
+        }
+        .producto .acciones .editar,
+        .producto .acciones .eliminar {
+            cursor: pointer;
+        }
+        .mensaje {
+            color: red;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        const AddProduct = ({ añadirProducto }) => {
+            const [nombre, setNombre] = useState('');
+            const [valor, setValor] = useState('');
+            const [existencia, setExistencia] = useState('');
+
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                añadirProducto(nombre, valor, existencia);
+                setNombre('');
+                setValor('');
+                setExistencia('');
+            };
+            return (
+                <div className="añadir">
+                    <h2>Añadir</h2>
+                    <form onSubmit={handleSubmit}>
+                        <label>Nombre del producto</label>
+                        <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
+
+                        <label>Código</label>
+                        <input type="number" value={valor} onChange={(e) => setValor(e.target.value)} />
+
+                        <label>Cantidad</label>
+                        <input type="number" value={existencia} onChange={(e) => setExistencia(e.target.value)} />
+
+                        <input className="button" type="submit" value="Añadir" />
+                    </form>
+                </div>
+            );
+        };
+        const EditProduct = ({ producto, editarProducto, cancelarEdicion }) => {
+            const [nombre, setNombre] = useState(producto ? producto.nombre : '');
+            const [valor, setValor] = useState(producto ? producto.valor : '');
+            const [existencia, setExistencia] = useState(producto ? producto.existencia : '');
+
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                editarProducto(producto.nombre, nombre, valor, existencia);
+                cancelarEdicion();
+            };
+            useEffect(() => {
+                if (producto) {
+                    setNombre(producto.nombre);
+                    setValor(producto.valor);
+                    setExistencia(producto.existencia);
+                }
+            }, [producto]);
+            return (
+                <div className="editar">
+                    <h2>Editar</h2>
+                    <form onSubmit={handleSubmit}>
+                        <label>Nombre del producto</label>
+                        <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
+
+                        <label>Código</label>
+                        <input type="number" value={valor} onChange={(e) => setValor(e.target.value)} />
+
+                        <label>Cantidad</label>
+                        <input type="number" value={existencia} onChange={(e) => setExistencia(e.target.value)} />
+
+                        <input className="button" type="submit" value="Guardar cambios" />
+                        <button type="button" className="button" onClick={cancelarEdicion}>Cancelar</button>
+                    </form>
+                </div>
+            );
+        };
+        const DeleteProduct = ({ producto, eliminarProducto, cancelarEliminacion }) => {
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                eliminarProducto(producto.nombre);
+                cancelarEliminacion();
+            };
+
+            return (
+                <div className="eliminar">
+                    <h2>Eliminar</h2>
+                    <form onSubmit={handleSubmit}>
+                        <p>¿Está seguro de que desea eliminar {producto.nombre}?</p>
+                        <input className="button" type="submit" value="Eliminar" />
+                        <button type="button" className="button" onClick={cancelarEliminacion}>Cancelar</button>
+                    </form>
+                </div>
+            );
+        };
+        const ProductList = ({ productos, seleccionarProductoEditar, seleccionarProductoEliminar }) => (
+            <div className="contenedorProductos">
+                <h2>Productos</h2>
+                <div className="mostrarProductos">
+                    {productos.map(producto => (
+                        <div key={producto.nombre} className="producto">
+                            <div className="cantidad">{producto.existencia}</div>
+                            <div>
+                                <div className="nombre">{producto.nombre}</div>
+                                <div className="codigo">{producto.valor}</div>
+                            </div>
+                            <div className="acciones">
+                                <i className='bx bx-edit editar' onClick={() => seleccionarProductoEditar(producto)}></i>
+                                <i className='bx bx-trash eliminar' onClick={() => seleccionarProductoEliminar(producto)}></i>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        );
+        const App = () => {
+            const [productos, setProductos] = useState(() => {
+                const productosGuardados = localStorage.getItem('productos');
+                return productosGuardados ? JSON.parse(productosGuardados) : [
+                    { nombre: "Producto1", valor: 1, existencia: 100 },
+                    { nombre: "Producto2", valor: 2, existencia: 200 },
+                ];
+            });
+            const [mensaje, setMensaje] = useState('');
+            const [productoEditar, setProductoEditar] = useState(null);
+            const [productoEliminar, setProductoEliminar] = useState(null);
+
+            useEffect(() => {
+                localStorage.setItem('productos', JSON.stringify(productos));
+            }, [productos]);
+            const añadirProducto = (nombre, valor, existencia) => {
+                const productoExistente = productos.find(producto => producto.nombre === nombre || producto.valor === valor);
+                if (productoExistente) {
+                    setMensaje('El producto o código ya existe. Intente con otro nombre o código.');
+                    setTimeout(() => setMensaje(''), 3000);
+                    return;
+                }
+
+                const nuevoProducto = { nombre, valor, existencia: parseInt(existencia) };
+                setProductos([...productos, nuevoProducto]);
+                setMensaje('Producto añadido correctamente.');
+                setTimeout(() => setMensaje(''), 3000);
+            };
+            const editarProducto = (nombreAntiguo, nombreNuevo, valor, existencia) => {
+                if (productos.some(producto => producto.nombre === nombreNuevo && producto.nombre !== nombreAntiguo)) {
+                    setMensaje('El nuevo nombre ya está en uso. Intente con otro nombre.');
+                    setTimeout(() => setMensaje(''), 3000);
+                    return;
+                }
+
+                const nuevosProductos = productos.map(producto => {
+                    if (producto.nombre === nombreAntiguo) {
+                        return { nombre: nombreNuevo, valor, existencia: parseInt(existencia) };
+                    }
+                    return producto;
+                });
+                setProductos(nuevosProductos);
+                setMensaje('Producto editado correctamente.');
+                setTimeout(() => setMensaje(''), 3000);
+            };
+            const eliminarProducto = (nombre) => {
+                const nuevosProductos = productos.filter(producto => producto.nombre !== nombre);
+                setProductos(nuevosProductos);
+                setMensaje('Producto eliminado correctamente.');
+                setTimeout(() => setMensaje(''), 3000);
+            };
+            const seleccionarProductoEditar = (producto) => {
+                setProductoEditar(producto);
+            };
+            const cancelarEdicion = () => {
+                setProductoEditar(null);
+            };
+            const seleccionarProductoEliminar = (producto) => {
+                setProductoEliminar(producto);
+            };
+            const cancelarEliminacion = () => {
+                setProductoEliminar(null);
+            };
+            return (
+                <div>
+                    <header>
+                        <h1>Control Depósito</h1>
+                    </header>
+                    {mensaje && <div className="mensaje">{mensaje}</div>}
+                    <div className="contenedor">
+                        <AddProduct añadirProducto={añadirProducto} />
+                        {productoEditar && <EditProduct producto={productoEditar} editarProducto={editarProducto} cancelarEdicion={cancelarEdicion} />}
+                        {productoEliminar && <DeleteProduct producto={productoEliminar} eliminarProducto={eliminarProducto} cancelarEliminacion={cancelarEliminacion} />}
+                    </div>
+                    <ProductList productos={productos} seleccionarProductoEditar={seleccionarProductoEditar} seleccionarProductoEliminar={seleccionarProductoEliminar} />
+                </div>
+            );
+        };
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+</html>
