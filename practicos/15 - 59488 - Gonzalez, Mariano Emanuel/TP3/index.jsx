@@ -130,10 +130,10 @@ const Aplicacion = () => {
             return;
         }
 
-        if (!verificarProducto(item.nombre, item.cantidad, item.ean)) {
+        //if (!verificarProducto(item.nombre, item.cantidad, item.ean)) {
             eliminarProducto(item.id);
-            return;
-        }
+           // return;
+       // }
 
         setIdsEditando(idsEditando.filter(editId => editId !== id));
     };
