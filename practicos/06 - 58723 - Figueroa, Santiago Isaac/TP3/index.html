@@ -31,6 +31,10 @@
             margin-right: 10px;
         }
 
+        p {
+            font-size: 20px;
+        }
+
         .bttmas {
             height: 40px;
             width: 40px;
@@ -52,36 +56,34 @@
             align-items: center;
             width: 300px;
             border: 1px solid #ccc;
-            background-color: #eee;
+            background-color: white;
             border-radius: 10px;
             padding: 10px;
             margin-bottom: 10px;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-            cursor: pointer; /* Añadido para indicar que el panel es clickeable */
+            cursor: pointer;
         }
 
         .cantidad {
-            font-size: 36px;
+            font-size: 56px;
             color: blue;
             margin-right: 10px;
         }
 
         .info {
-            flex: 1;
+            margin-right: 50px;
         }
 
         .acciones {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
         }
 
         .icono {
             background: none;
             border: none;
             cursor: pointer;
-            margin: 5px 0;
+            margin: 10px 0;
         }
 
         .icono img {
@@ -89,8 +91,17 @@
             height: 20px;
         }
 
+        #icono1 {
+            position: relative;
+            bottom: 15px;
+        }
+
+        #icono2 {
+            position: relative;
+            top: 15px;
+        }
+
         .general {
-            margin: 25px 10px 10px;
             padding: 5px 20px;
             font-size: 10px;
             border: none;
@@ -111,6 +122,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            width: 350px;
+            padding: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: white;
         }
 
         .formulario-edicion input {
@@ -141,11 +158,11 @@
         const { useState, useEffect } = React;
 
         const ProductosIniciales = [
-            { id: 1, producto: '7up', EAN: '7799876543210', cantidad: 7 },
-            { id: 2, producto: 'Coca Cola', EAN: '7798765432109', cantidad: 10 },
-            { id: 3, producto: 'Pepsi', EAN: '7797654321098', cantidad: 5 },
-            { id: 4, producto: 'Fanta', EAN: '7796543210987', cantidad: 12 },
-            { id: 5, producto: 'Sprite', EAN: '7795432109876', cantidad: 8 }
+            { id: 1, producto: '7up', EAN: '7799876543210', cantidad: 7, editando: false },
+            { id: 2, producto: 'Coca Cola', EAN: '7798765432109', cantidad: 10, editando: false },
+            { id: 3, producto: 'Pepsi', EAN: '7797654321098', cantidad: 5, editando: false },
+            { id: 4, producto: 'Fanta', EAN: '7796543210987', cantidad: 12, editando: false },
+            { id: 5, producto: 'Sprite', EAN: '7795432109876', cantidad: 8, editando: false }
         ];
 
         function Editar({ producto, alGuardar, alCancelar }) {
@@ -154,14 +171,19 @@
             const [cantidad, setCantidad] = useState(producto.cantidad !== 0 ? producto.cantidad : '');
 
             const [error, setError] = useState(false);
+            const [errorEAN, setErrorEAN] = useState(false);
 
             const cambiarNombre = e => {
                 setNombre(e.target.value);
                 setError(false);
             };
             const cambiarEAN = e => {
-                setEAN(e.target.value);
-                setError(false);
+                const value = e.target.value;
+                if (/^\d*$/.test(value)) {
+                    setEAN(value);
+                    setError(false);
+                    setErrorEAN(false);
+                }
             };
             const cambiarCantidad = e => {
                 setCantidad(e.target.value);
@@ -174,11 +196,15 @@
                     setError(true);
                     return;
                 }
-                alGuardar({ ...producto, producto: nombre, EAN, cantidad: parseInt(cantidad, 10) });
+                if (EAN.length !== 13 && EAN.length !== 8) {
+                    setErrorEAN(true);
+                    return;
+                }
+                alGuardar({ ...producto, producto: nombre, EAN, cantidad: parseInt(cantidad, 10), editando: false });
             };
             const cancelar = e => {
                 e.preventDefault();
-                alCancelar();
+                alCancelar(producto.id);
             };
             return (
                 <form className="panel formulario-edicion">
@@ -187,12 +213,15 @@
                         <input type="text" value={EAN} onChange={cambiarEAN} placeholder="EAN" />
                         <input type="number" value={cantidad} onChange={cambiarCantidad} placeholder="Cantidad" />
                     </div>
-                    <div className="acciones">
-                        <button className="general" onClick={guardar}>Aceptar</button>
-                        <button className="general" onClick={cancelar}>Cancelar</button>
-                    </div>
-                    <div className="error">
-                        {error && <p className="error">Todos los campos son obligatorios</p>}
+                    <div className="xdxd">
+                        <div className="acciones">
+                            <button className="general" onClick={guardar}>Aceptar</button>
+                            <button className="general" onClick={cancelar}>Cancelar</button>
+                        </div>
+                        <div className="error">
+                            {error && <p className="error">Todos los campos son obligatorios</p>}
+                            {errorEAN && <p className="error">El codigo EAN debe tener 13 o 8 dígitos</p>}
+                        </div>
                     </div>
                 </form>
             );
@@ -208,7 +237,7 @@
             };
             const handleCancelar = () => {
                 setEditando(false);
-                alCancelar();
+                alCancelar(producto.id);
             };
 
             return editando ? (
@@ -221,10 +250,10 @@
                         <p>{producto.EAN}</p>
                     </div>
                     <div className="acciones" onClick={(e) => e.stopPropagation()}>
-                        <button className="icono" onClick={handleEditar}>
+                        <button className="icono" id="icono1" onClick={handleEditar}>
                             <img src="https://img.icons8.com/material-rounded/24/000000/edit.png" alt="Editar" />
                         </button>
-                        <button className="icono" onClick={() => alBorrar(producto.id)}>
+                        <button className="icono" id="icono2" onClick={() => alBorrar(producto.id)}>
                             <img src="https://img.icons8.com/material-rounded/24/000000/delete-forever.png" alt="Borrar" />
                         </button>
                     </div>
@@ -245,7 +274,6 @@
                         <Producto
                             key={producto.id}
                             producto={producto}
-                            alEditar={() => alGuardar(producto.id)}
                             alBorrar={alBorrar}
                             alGuardar={alGuardar}
                             alCancelar={alCancelar}
@@ -258,6 +286,7 @@
 
         function App() {
             const [productos, setProductos] = useState([]);
+            const [nuevoProducto, setNuevoProducto] = useState(null);
 
             useEffect(() => {
                 const productosGuardados = localStorage.getItem('productos');
@@ -273,10 +302,20 @@
             }, [productos]);
 
             const guardarProducto = (productoActualizado) => {
-                setProductos(productos.map(p => p.id === productoActualizado.id ? productoActualizado : p));
+                if (nuevoProducto && nuevoProducto.id === productoActualizado.id) {
+                    setProductos([...productos, productoActualizado]);
+                    setNuevoProducto(null);
+                } else {
+                    setProductos(productos.map(p => p.id === productoActualizado.id ? productoActualizado : p));
+                }
             };
 
-            const cancelarEdicion = () => {
+            const cancelarEdicion = (id) => {
+                if (nuevoProducto && nuevoProducto.id === id) {
+                    setNuevoProducto(null);
+                } else {
+                    setProductos(productos.map(p => p.id === id ? { ...p, editando: false } : p));
+                }
             };
 
             const agregarProducto = () => {
@@ -287,7 +326,7 @@
                     cantidad: '',
                     editando: true
                 };
-                setProductos([...productos, nuevoProducto]);
+                setNuevoProducto(nuevoProducto);
             };
 
             const borrarProducto = (id) => {
@@ -300,7 +339,7 @@
 
             return (
                 <Agenda
-                    productos={productos}
+                    productos={nuevoProducto ? [...productos,nuevoProducto] : productos}
                     alAgregar={agregarProducto}
                     alGuardar={guardarProducto}
                     alBorrar={borrarProducto}
@@ -316,4 +355,3 @@
 </body>
 
 </html>
-
