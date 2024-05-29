@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <title>58740</title>
+    <style>
+        
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        #root {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        h1 button {
+            font-size: 0.5em;
+            margin-left: 10px;
+        }
+
+        .panel {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+            padding: 20px;
+            position: relative;
+            display: flex;
+            font-size: 20px;
+        }
+
+        .nombre {
+            margin-top: 20px;
+        }
+
+        .gaseosa {
+            font-size: 30px;
+
+        }
+
+        .st {
+            padding-top: 10px;
+            margin-right: 20px;
+
+        }
+
+
+
+        .panel p {
+            margin: 5px 0;
+        }
+
+        .stock {
+            color: blue;
+            font-size: 80px;
+        }
+
+        .panel p:first-child {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        #edicion {
+            position: relative;
+            left: 63px;
+        }
+
+        #trash {
+            position: relative;
+            top: 90px;
+        }
+
+        .panel .acciones {
+
+            top: 10px;
+            right: 10px;
+        }
+
+        .panel .acciones button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2em;
+            margin-left: 10px;
+            color: #333;
+        }
+
+        .panel .acciones button:hover {
+            color: #000;
+        }
+
+        input {
+            width: calc(100% - 20px);
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .acciones-guardar {
+            position: relative;
+        }
+
+        .acciones {
+            position: absolute;
+            justify-content: space-between;
+        }
+
+        .acciones button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .acciones button:hover {
+            background-color: #ddd;
+        }
+
+        .acciones button:first-child {
+            background-color: white;
+
+        }
+
+        .acciones button:last-child {
+            background-color: white;
+
+        }
+
+        .acciones button i {
+            margin-right: 5px;
+        }
+
+        .erro {
+            color: red;
+            font-size: 0.9em;
+            margin-top: -10px;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        const ProductosIniciales = [
+            { id: 1, stock: '1', nombre: 'CocaCola', ean: '7793454353210' },
+            { id: 2, stock: '3', nombre: 'Fanta', ean: '7792432423540' },
+            { id: 3, stock: '5', nombre: 'Pepsi', ean: '7791246542360' },
+            { id: 4, stock: '6', nombre: 'Mirinda', ean: '7790436326720' },
+            { id: 5, stock: '5', nombre: 'Sprite', ean: '7793618946750' },
+            { id: 6, stock: '8', nombre: 'Secco', ean: '7794837082350' },
+            { id: 7, stock: '9', nombre: 'Manaos', ean: '7793617847940' },
+            { id: 8, stock: '3', nombre: 'Torasso', ean: '7798476308570' }
+        ];
+
+        function Editar({ producto, alGuardar, alCancelar }) {
+            let [nombre, setNombre] = useState(producto.nombre || '');
+            let [ean, setEan] = useState(producto.ean || '');
+            let [stock, setStock] = useState(producto.stock || '');
+            let [error, setError] = useState(false);
+
+            const cambiarNombre = e => {
+                setNombre(e.target.value);
+                setError(false);
+            };
+            const cambiarEan = e => {
+                setEan(e.target.value);
+                setError(false);
+            };
+            const cambiarStock = e => {
+                setStock(e.target.value);
+                setError(false);
+            };
+
+            const guardarCambios = e => {
+                e.preventDefault();
+                if (nombre.trim() === '' || ean.trim() === '' || stock.trim() === '') {
+                    setError(true);
+                    return;
+                }
+
+                alGuardar({ ...producto, nombre, ean, stock });
+            };
+
+            const cancelar = e => {
+                e.preventDefault();
+                alCancelar();
+            };
+
+            return (
+                <form className="panel">
+                    <input type="text" value={nombre} onChange={cambiarNombre} />
+                    <input type="text" value={ean} onChange={cambiarEan} />
+                    <input type="text" value={stock} onChange={cambiarStock} />
+                    {error && <p className="erro">El campo está vacío, todos los campos son obligatorios</p>}
+                    <div className="acciones-guardar">
+                        <button id="Aceptar" onClick={guardarCambios}>Aceptar</button>
+                        <button id="cancelar" onClick={cancelar}>Cancelar</button>
+                    </div>
+                </form>
+            );
+        }
+
+        function Mostrar({ producto, alGuardar, alBorrar }) {
+            const [editando, setEditando] = useState(false);
+            const [tempProducto, setTempProducto] = useState(producto);
+
+            const editar = () => setEditando(true);
+            const cancelar = () => {
+                setEditando(false);
+                setTempProducto(producto);
+            };
+
+            const guardar = actualizado => {
+                alGuardar(actualizado);
+                setEditando(false);
+            };
+
+            return (
+                <div className="panel">
+                    {editando ? (
+                        <Editar producto={tempProducto} alGuardar={guardar} alCancelar={cancelar} />
+                    ) : (
+                        <>
+                            <div className="st">
+                                <p className="stock">{producto.stock}</p>
+                            </div>
+                            <div className="nombre">
+                                <p className="gaseosa">{producto.nombre}</p>
+                                <p className="gaseosa">{producto.ean}</p>
+                            </div>
+                            <div className="acciones">
+                                <button id="edicion" onClick={editar}><i className="fa-regular fa-pen-to-square"></i></button>
+                                <button id="trash" onClick={() => alBorrar(producto.id)}><i className="fa-solid fa-trash"></i></button>
+                            </div>
+                        </>
+                    )}
+                </div>
+            );
+        }
+
+        function Agenda({ productos, alAgregar, alGuardar, alBorrar }) {
+            if (productos.length === 0) return <h1>No hay Productos <button onClick={alAgregar}><i className="fa-solid fa-plus"></i></button></h1>;
+            return (
+                <>
+                    <h1>Control de Depósito <button onClick={alAgregar}><i className="fa-solid fa-plus"></i></button></h1>
+                    {productos.map(producto =>
+                        <Mostrar
+                            key={producto.id}
+                            producto={producto}
+                            alGuardar={alGuardar}
+                            alBorrar={alBorrar}
+                        />
+                    )}
+                </>
+            );
+        }
+
+        function leerProductos() {
+            const productos = JSON.parse(localStorage.getItem('productos'));
+            return productos ? productos : ProductosIniciales;
+        }
+
+        function guardarProductos(productos) {
+            localStorage.setItem('productos', JSON.stringify(productos));
+        }
+
+        function App() {
+            let [productos, setProductos] = useState(leerProductos);
+
+            useEffect(() => {
+                guardarProductos(productos);
+            }, [productos]);
+
+            productos.sort((a, b) => a.nombre.localeCompare(b.nombre));
+
+            const guardar = productoActualizado => {
+                let copia = productos.map(p => p.id === productoActualizado.id ? productoActualizado : p);
+                setProductos(copia);
+            };
+
+            const borrar = id => {
+                let copia = productos.filter(p => p.id !== id);
+                setProductos(copia);
+            };
+
+            const agregar = () => {
+                const nuevoProducto = {
+                    id: productos.length > 0 ? Math.max(...productos.map(p => p.id)) + 1 : 1,
+                    stock: '',
+                    nombre: '',
+                    ean: ''
+                };
+                setProductos([...productos, nuevoProducto]);
+            };
+
+            return (
+                <>
+                    <Agenda productos={productos} alAgregar={agregar} alGuardar={guardar} alBorrar={borrar} />
+                </>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+
+
+</html>
