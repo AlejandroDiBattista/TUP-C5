@@ -30,6 +30,9 @@
           height: 190px;
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+        .card-body{
+            width: 420px;
+        }
         .card-title {
           position: absolute;
           top: 30px;
@@ -63,17 +66,49 @@
         }
         .form-group {
           display: flex;
-          justify-content: space-between;
-          align-items: center;
+          justify-content: center;
+          position: absolute;
+          flex-direction: column;
           gap: 10px;
+          width: 400px;
         }
         .form-control {
           flex: 1;
         }
         .form-actions {
-          display: flex;
+          position: relative;
           gap: 10px;
           margin-top: 10px;
+        }
+        .btnAcep,.btnCancel{
+          position: absolute;
+          top: -120px;
+          right: -95px;
+          background-color: #f8f9fa;
+          border-radius: 13px;
+        }
+        .btnCancel{
+          top: -80px;
+          width: 78px;
+        }
+        .btn-Acep, .btn-Cancel{
+           position: absolute;
+           top: 20px;
+           left: 405px;
+           border-radius: 13px;
+           background-color: #f8f9fa;
+           border-color: black;
+           color: black;
+        }
+        .btn-Acep{
+           width: 80px;
+           height: 33px;
+           top: -10px;
+        }
+        .btn-Cancel{
+           width: 80px;
+           height: 33px;
+           top: 40px;
         }
         .btn-edit {
           position: absolute;
@@ -88,6 +123,11 @@
           flex-direction: column;
           top: 40px;
           left: 468px;
+        }
+        .btn-Acep:hover,.btn-Cancel:hover,
+        .btnAcep:hover,.btnCancel:hover{
+            background-color: #c4d6e78e;
+
         }
       </style>
 </head>
@@ -117,8 +157,14 @@
 
             const agregarProducto = () => {
                 if (nuevoProducto.nombre && nuevoProducto.cantidad && nuevoProducto.ean.length === 13) {
-                    setProductos([...productos, { ...nuevoProducto, id: Date.now() }]);
-                    setNuevoProducto(null);
+                    if (parseInt(nuevoProducto.cantidad) >= 0) {
+                        const nuevosProductos = [...productos, { ...nuevoProducto, id: Date.now() }];
+                        const productosOrdenados = nuevosProductos.sort((a, b) => a.nombre.localeCompare(b.nombre));
+                        setProductos(productosOrdenados);
+                        setNuevoProducto(null);
+                    } else {
+                        alert('La cantidad no puede ser negativa.');
+                    }
                 } else {
                     alert('Asegúrate de llenar todos los campos y que el código EAN tenga 13 dígitos.');
                 }
@@ -128,7 +174,8 @@
                 const productosActualizados = productos.map(producto =>
                     producto.id === id ? productoActualizado : producto
                 );
-                setProductos(productosActualizados);
+                const productosOrdenados = productosActualizados.sort((a, b) => a.nombre.localeCompare(b.nombre));
+                setProductos(productosOrdenados);
             };
 
             const borrarProducto = (id) => {
@@ -152,8 +199,8 @@
                                     <input type="text" name="ean" placeholder="Código EAN" value={nuevoProducto.ean} onChange={manejarCambio} className="form-control" />
                                 </div>
                                 <div className="form-actions">
-                                    <button onClick={agregarProducto} className="btn btn-success">Aceptar</button>
-                                    <button onClick={() => setNuevoProducto(null)} className="btn btn-secondary">Cancelar</button>
+                                    <button onClick={agregarProducto} className="btn-Acep">Aceptar</button>
+                                    <button onClick={() => setNuevoProducto(null)} className="btn-Cancel">Cancelar</button>
                                 </div>
                             </div>
                         </div>
@@ -181,8 +228,12 @@
 
             const guardarCambios = () => {
                 if (productoEditado.nombre && productoEditado.cantidad && productoEditado.ean.length === 13) {
-                    actualizarProducto(producto.id, productoEditado);
-                    setEstaEditando(false);
+                    if (parseInt(productoEditado.cantidad) >= 0) {
+                        actualizarProducto(producto.id, productoEditado);
+                        setEstaEditando(false);
+                    } else {
+                        alert('La cantidad no puede ser negativa.');
+                    }
                 } else {
                     alert('Asegúrate de llenar todos los campos y que el código EAN tenga 13 dígitos.');
                 }
@@ -207,8 +258,8 @@
                                 <input type="number" name="cantidad" value={productoEditado.cantidad} onChange={manejarCambioEdicion} className="form-control" />
                                 <input type="text" name="ean" value={productoEditado.ean} onChange={manejarCambioEdicion} className="form-control" />
                                 <div className="form-actions">
-                                    <button onClick={guardarCambios} className="btn btn-success">Aceptar</button>
-                                    <button onClick={cancelarEdicion} className="btn btn-secondary">Cancelar</button>
+                                    <button onClick={guardarCambios} className="btnAcep">Aceptar</button>
+                                    <button onClick={cancelarEdicion} className="btnCancel">Cancelar</button>
                                 </div>
                             </>
                         ) : (
@@ -232,7 +283,7 @@
                 </div>
             );
         };
+
         ReactDOM.render(<App />, document.getElementById('root'));
     </script>
 </html>
-</body>
