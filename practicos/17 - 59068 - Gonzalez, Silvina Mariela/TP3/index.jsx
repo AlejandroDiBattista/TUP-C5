@@ -22,11 +22,6 @@ const validacionProducto = (nombre, cantidad, ean) => {
         alert("Debes establecer una cantidad.");
         return false;
     }
-
-    if (ean <= 7790000000000 || ean >= 7799999999999) {
-        alert("El código debe tener 13 dígitos y empezar con 779.");
-        return false;
-    }
     return true;
 }
 
@@ -41,7 +36,8 @@ const Titulo = ({ onAgregarProducto }) => (
     </div>
 );
 
-const Contenido = ({ productos, productosEditandoId, onEditarProducto, onEliminarProducto, onGuardarProducto, onCancelarEdicion }) => (
+
+const Contenido = ({ productos, productosEditandoId, onEditarProducto, onEliminarProducto, onGuardarProducto, onCancelarEdicion, onIncrementarCantidad }) => (
     <div id="contenido" className="contenido">
         {productos.map(producto => (
             <Producto
@@ -52,12 +48,13 @@ const Contenido = ({ productos, productosEditandoId, onEditarProducto, onElimina
                 onEliminarProducto={() => onEliminarProducto(producto.id)}
                 onGuardarProducto={onGuardarProducto}
                 onCancelar={onCancelarEdicion}
+                onIncrementarCantidad={() => onIncrementarCantidad(producto.id)}
             />
         ))}
     </div>
 );
 
-const Producto = ({ id, ean, nombre, cantidad, estaEditando, onEditarProducto, onEliminarProducto, onGuardarProducto, onCancelar }) => (
+const Producto = ({ id, ean, nombre, cantidad, estaEditando, onEditarProducto, onEliminarProducto, onGuardarProducto, onCancelar, onIncrementarCantidad }) => (
     <div>
         {
             estaEditando ? (
@@ -70,7 +67,7 @@ const Producto = ({ id, ean, nombre, cantidad, estaEditando, onEditarProducto, o
                     onCancelar={onCancelar}
                 />
             ) : (
-                <div className="producto">
+                <div className="producto" onClick={onIncrementarCantidad}>
                     <div className="producto-item">
                         <h2>{cantidad}</h2>
                     </div>
@@ -79,10 +76,10 @@ const Producto = ({ id, ean, nombre, cantidad, estaEditando, onEditarProducto, o
                         <p>{ean}</p>
                     </div>
                     <div className="botones">
-                        <button className="boton" onClick={onEditarProducto}>
+                        <button className="boton" onClick={(e) => { e.stopPropagation(); onEditarProducto(); }}>
                             <img src="./imagenes/iconoEdita.png" alt="boton_editar" />
                         </button>
-                        <button className="boton" onClick={onEliminarProducto}>
+                        <button className="boton" onClick={(e) => { e.stopPropagation(); onEliminarProducto(); }}>
                             <img src="./imagenes/iconoBorra.png" alt="boton_borrar" />
                         </button>
                     </div>
@@ -99,19 +96,19 @@ const App = () => {
     });
     const [productosEditandoId, setProductosEditandoId] = useState([]);
 
-    const min = 7790000000000;
-    const max = 7799999999999;
-    const randomInt = Math.floor(Math.random() * (max - min + 1)) + min;
-
     useEffect(() => {
         localStorage.setItem('productos', JSON.stringify(productos));
     }, [productos]);
 
     const agregarProducto = () => {
-        const nuevoProducto = { id: Date.now(), ean: randomInt, nombre: '', cantidad: null };
+        console.log(productosEditandoId)
+        if (productosEditandoId.length > 0) {
+            return;
+        }
 
-        setProductos([...productos, nuevoProducto]);
-        setProductosEditandoId([...productosEditandoId, nuevoProducto.id]);
+        const nuevoProducto = { id: Date.now(), ean: null, nombre: '', cantidad: null };
+        setProductos([nuevoProducto, ...productos]);
+        setProductosEditandoId([nuevoProducto.id, ...productosEditandoId]);
     };
 
     const editarProducto = (id) => {
@@ -120,9 +117,7 @@ const App = () => {
 
     const eliminarProducto = (id) => {
         setProductos(productos.filter(producto => producto.id !== id));
-        if (productosEditandoId === id) {
-            setProductosEditandoId(null);
-        }
+        setProductosEditandoId(productosEditandoId.filter(editandoId => editandoId !== id));
     };
 
     const guardarProducto = (productoActualizado) => {
@@ -150,6 +145,15 @@ const App = () => {
         setProductosEditandoId(productosEditandoId.filter(editandoId => editandoId !== id));
     };
 
+    const incrementarCantidad = (id) => {
+        setProductos(
+            productos.map(producto =>
+                producto.cantidad < 100 &&
+                    producto.id === id ? { ...producto, cantidad: producto.cantidad + 1 } : producto
+            )
+        );
+    };
+
     return (
         <div className="main">
             <Titulo onAgregarProducto={agregarProducto} />
@@ -160,6 +164,7 @@ const App = () => {
                 onEliminarProducto={eliminarProducto}
                 onGuardarProducto={guardarProducto}
                 onCancelarEdicion={cancelarEdicion}
+                onIncrementarCantidad={incrementarCantidad}
             />
         </div>
     );
