@@ -70,6 +70,7 @@
     padding: 15px;
     margin-bottom: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
 }
 
 .container-card .card-product .data{
@@ -109,6 +110,8 @@
     margin: 0;
 }
 .container-card .card-product .data .icono {
+    width: 100px;
+    height: 100px;
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -180,23 +183,33 @@
     cursor: pointer;
 }
 
-@media screen and (min-width: 200px) and (max-width: 767px){
+@media (300px <= width <= 1024px){
+    .container-title{
+        justify-content: center;
+        padding: 30px 0 ;
+    }
     .container-title .title{
+        text-align: center;
         font-size: 5rem !important;
     }
     .container-title .add-product{
         width: 60px;
         height: 60px;
-        top: 39%;
-        left: 90%;
+        top: 32%;
+        left: 88%;
     }
     .container-title .add-product svg{
         width: 55px;
         height: 55px;
     }
+    .container-card {
+        margin-top: 40px;
+        justify-content: center;
+        align-items: center;
+    }
     .container-card .card-product{
         width: 90%;
-        height: 300px;
+        height: 350px;
     }
     .container-card .card-product .quantity {
         font-size: 7rem;
@@ -214,5 +227,32 @@
         width: 60px;
         height: 60px;
         fill: #000000;
+    }
+
+    .update-form{
+        width: 90%;
+        height: 350px;
+    }
+
+    .update-form .container-input{
+        gap: 20px;
+    }
+    .update-form .container-input input {
+        width: 100%;
+        height: 80px;
+        padding: 12px 10px;
+        font-size: 2rem;
+        border: 1.5px solid grey;
+        border-radius: 15px;
+    }
+    .update-form .container-buttons {
+        gap: 20px;
+        padding: 20px 0 0 0;
+    }
+    .update-form .container-buttons .general {
+        padding: 5px;
+        font-size: 2rem;
+        border: 1.5px solid #000000;
+        border-radius: 15px;
     }
 }

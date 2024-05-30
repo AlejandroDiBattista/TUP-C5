@@ -1,11 +1,11 @@
 const { useState, useEffect } = React;
 
 const InitialProducts = [
-    { id: 1, name: 'Gomitas', EAN: '7799876543210', quantity: '1' },
-    { id: 2, name: 'Coca Cola', EAN: '7798765432109', quantity: '50' },
-    { id: 3, name: 'Pepsi', EAN: '7797654321098', quantity: '30' },
-    { id: 4, name: 'Fanta', EAN: '7796543210987', quantity: '40' },
-    { id: 5, name: 'Sprite', EAN: '7795432109876', quantity: '80' }
+    { id: 1, name: 'Gomitas', EAN: '7799876543210', quantity: 1 },
+    { id: 2, name: 'Coca Cola', EAN: '7798765432109', quantity: 50 },
+    { id: 3, name: 'Pepsi', EAN: '7797654321098', quantity: 30 },
+    { id: 4, name: 'Fanta', EAN: '7796543210987', quantity: 40 },
+    { id: 5, name: 'Sprite', EAN: '7795432109876', quantity: 90 }
 ];
 
 function UpdateCardComponent({ product, products, onSaveProduct, onCancel }) {
@@ -21,24 +21,44 @@ function UpdateCardComponent({ product, products, onSaveProduct, onCancel }) {
         setEAN(e.target.value);
     };
     const updateQuantity = (e) => {
-        setQuantity(e.target.value);
+        let number = Number.parseInt(e.target.value)
+        setQuantity(number);
     };
 
     const saveChanges = (e)=> {
         e.preventDefault();
         
         if (name === '' || EAN === '' || quantity === '') {
-            alert("No puedes dejar campos vacios")
-            return;
-        }
-        const similEAN = products.find(product => product.EAN === EAN);
-        if (similEAN) {
-            alert("Ya existe un producto con el mismo EAN");
+            Toastify({
+                text: "No puedes dejar campos vacios",
+                duration: 3000,
+                newWindow: true,
+                close: false,
+                gravity: "bottom",
+                position: "center",
+                stopOnFocus: true,
+                style: {
+                  background: "#FF033E",
+                  borderRadius: "10px",
+                },
+              }).showToast();
             return;
         }
         
-        if (Number(quantity) < 0) {
-            alert("La cantidad no puede ser negativa");
+        if (quantity < 0) {
+            Toastify({
+                text: "La cantidad no puede ser negativa",
+                duration: 3000,
+                newWindow: true,
+                close: false,
+                gravity: "bottom",
+                position: "center",
+                stopOnFocus: true,
+                style: {
+                  background: "#FF033E",
+                  borderRadius: "10px",
+                },
+            }).showToast();
             return;
         }
 
@@ -53,7 +73,7 @@ function UpdateCardComponent({ product, products, onSaveProduct, onCancel }) {
             <div className="container-input">
                 <input type="text" value={name} onChange={updateName} placeholder="Producto" />
                 <input type="text" value={EAN} onChange={updateEAN} placeholder="EAN" />
-                <input type="text" value={quantity} onChange={updateQuantity} placeholder="Cantidad" />
+                <input type="number" value={quantity} onChange={updateQuantity} placeholder="Cantidad" />
             </div>
             <div className="container-buttons">
                 <button className="general" onClick={saveChanges}>Aceptar</button>
@@ -63,41 +83,84 @@ function UpdateCardComponent({ product, products, onSaveProduct, onCancel }) {
     );
 }
 
-function CreateCardComponent( { products, counter, setProducts, setCounter, setFormCreate} ){
+function CreateCardComponent( { products, counter, setProducts, setCounter, setFormCreate } ){
 
-    const [formData, setFormData] = useState( {
-        id: counter,
-        name: '',
-        EAN: '',
-        quantity:'',
-        editing: ''
-    })
+    const [name, setName] = useState("");
+    const [EAN, setEAN] = useState("");
+    const [quantity, setQuantity] = useState("");
 
-    const handleOnChange = (evt) => {
-        setFormData({
-            ...formData,
-            [evt.target.name]: evt.target.value
-        })
-    }
+    const CreateName = (e) => {
+        setName(e.target.value);
+    };
+    const CreateEAN = (e) => {
+        setEAN(e.target.value);
+    };
+    const CreateQuantity = (e) => {
+        let number = Number.parseInt(e.target.value)
+        setQuantity(number);
+    };
 
 
+    const createCardProduct = () => {
 
-    const saveNewProduct = () => {
-       
+        const formData = {
+            id: counter,
+            name: name,
+            EAN: EAN,
+            quantity:quantity,
+            editing: ''
+        }
+
         if (formData.name === "" || formData.EAN === "" || formData.quantity === "") {
-            alert("Debes completar todos los campos");
+            Toastify({
+                text: "No puede quedar campos vacios",
+                duration: 3000,
+                newWindow: true,
+                close: false,
+                gravity: "bottom",
+                position: "center",
+                stopOnFocus: true,
+                style: {
+                  background: "#FF033E",
+                  borderRadius: "10px",
+                },
+              }).showToast();
             return;
         }
     
         
         const similEAN = products.find(product => product.EAN === formData.EAN);
         if (similEAN) {
-            alert("Ya existe un producto con el mismo EAN");
+            Toastify({
+                text: "Ya existe un producto con el mismo EAN",
+                duration: 3000,
+                newWindow: true,
+                close: false,
+                gravity: "bottom",
+                position: "center",
+                stopOnFocus: true,
+                style: {
+                  background: "#FF033E",
+                  borderRadius: "10px",
+                },
+            }).showToast();
             return;
         }
         
-        if (Number(formData.quantity) < 0) {
-            alert("La cantidad no puede ser negativa");
+        if (formData.quantity < 0) {
+            Toastify({
+                text: "La cantidad no puede ser negativa",
+                duration: 3000,
+                newWindow: true,
+                close: false,
+                gravity: "bottom",
+                position: "center",
+                stopOnFocus: true,
+                style: {
+                  background: "#FF033E",
+                  borderRadius: "10px",
+                },
+            }).showToast();
             return;
         }
         
@@ -110,7 +173,6 @@ function CreateCardComponent( { products, counter, setProducts, setCounter, setF
             alert("El producto ya existe en la base de datos");
             return;
         }
-    
         
         setProducts([...products, formData]);
         setFormCreate(false);
@@ -122,18 +184,18 @@ function CreateCardComponent( { products, counter, setProducts, setCounter, setF
     return (
         <form className="update-form">
             <div className="container-input">
-                <input type="text" name="name" onChange={handleOnChange} value={formData.name} placeholder="Producto" />
-                <input type="text" name="EAN" onChange={handleOnChange} value={formData.EAN}  placeholder="EAN" />
-                <input type="text" name="quantity" onChange={handleOnChange} value={formData.quantity} placeholder="Cantidad" />
+                <input type="text" name="name" onChange={CreateName} placeholder="Producto" />
+                <input type="text" name="EAN" onChange={CreateEAN} placeholder="EAN" />
+                <input type="number" name="quantity" onChange={CreateQuantity} placeholder="Cantidad" />
             </div>
             <div className="container-buttons">
-                <button type="button" className="general" onClick={saveNewProduct}>Aceptar</button>
+                <button type="button" className="general" onClick={createCardProduct}>Aceptar</button>
                 <button type="button" className="general" onClick={ () => setFormCreate(false) }>Cancelar</button>
             </div>
         </form>
     );
 }
-function CardComponent({ product, products, onDeleteProduct, onSaveProduct, onCancel }) {
+function CardComponent({ product, products, onIncrementProduct, onDeleteProduct, onSaveProduct }) {
 
     const [editing, setEditing] = useState(product.editing);
 
@@ -151,6 +213,10 @@ function CardComponent({ product, products, onDeleteProduct, onSaveProduct, onCa
         onDeleteProduct();
     };
 
+    const handleDeleteProduct = (e) => {
+        e.stopPropagation();
+        onDeleteProduct(product.id);
+    };
     return(
         <>
             {
@@ -163,7 +229,7 @@ function CardComponent({ product, products, onDeleteProduct, onSaveProduct, onCa
                     onCancel={handleCancel} 
                 />
                 :
-                <div className="card-product">
+                <div className="card-product" onClick={() => onIncrementProduct(product.EAN)}>
                     <div className="data">
                         <p className="quantity">{product.quantity}</p>
                     </div>
@@ -180,7 +246,7 @@ function CardComponent({ product, products, onDeleteProduct, onSaveProduct, onCa
                             </svg>
                         </button>
 
-                        <button className="icono" onClick={() => onDeleteProduct(product.id)}>
+                        <button className="icono" onClick={handleDeleteProduct}>
                             <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 16 16">
                                 <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
                             </svg>
@@ -192,7 +258,7 @@ function CardComponent({ product, products, onDeleteProduct, onSaveProduct, onCa
         </>
     )
 }
-function ContainerCardComponent({ products, onSaveProduct, onDeleteProduct, onCancel }) {
+function ContainerCardComponent({ products, onSaveProduct, onIncrementProduct, onDeleteProduct, onCancel }) {
     return (
         <>
             
@@ -203,6 +269,7 @@ function ContainerCardComponent({ products, onSaveProduct, onDeleteProduct, onCa
                     key={product.id}
                     product={product}
                     products={products}
+                    onIncrementProduct={onIncrementProduct}
                     onUpdateProduct={() => onSaveProduct(product.id)}
                     onDeleteProduct={onDeleteProduct}
                     onSaveProduct={onSaveProduct}
@@ -212,6 +279,7 @@ function ContainerCardComponent({ products, onSaveProduct, onDeleteProduct, onCa
         </>
     );
 }
+
 function App() {
 
     const [products, setProducts] = useState(InitialProducts);
@@ -220,18 +288,20 @@ function App() {
 
     useEffect(() => {
         sortProductsByName();
-    }, [ products]);
-    console.table(products)
+    }, [products]);
 
     const saveProduct = (updatedProduct) => {
         setProducts(products.map(product => 
             product.id === updatedProduct.id ? updatedProduct : product
         ));
     };
-    
 
     const createProduct = () => {
         formCreate ? setFormCreate(false) : setFormCreate(true)
+    };
+
+    const incrementProduct = (ean) => {
+        setProducts(products.map(p => p.EAN === ean ? { ...p, quantity: p.quantity + 1} : p));
     };
 
     const deleteProduct = (id) => {
@@ -242,7 +312,6 @@ function App() {
         const sortedProducts = [...products].sort((a, b) => a.name.localeCompare(b.name));
         setProducts(sortedProducts);
     };
-    
     
     return (
         <div className="row">
@@ -257,11 +326,20 @@ function App() {
             </div>
             <div className="col-12 container-card">
                 {
-                    formCreate && <CreateCardComponent products={products} counter={counter} setCounter={setCounter} setProducts={setProducts} setFormCreate={setFormCreate}/>
+                    formCreate 
+                    && 
+                    <CreateCardComponent 
+                        products={products} 
+                        counter={counter} 
+                        setCounter={setCounter} 
+                        setProducts={setProducts} 
+                        setFormCreate={setFormCreate}
+                    />
                 }
                 <ContainerCardComponent
                     products={products}
                     onSaveProduct={saveProduct}
+                    onIncrementProduct={incrementProduct}
                     onDeleteProduct={deleteProduct}
                     onCancel={ () => {} }
                 />
