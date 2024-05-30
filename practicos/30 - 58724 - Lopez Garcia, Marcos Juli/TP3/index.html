@@ -1,20 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <style>
-        /* Estilo del cuerpo del documento */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
         }
 
-        /* Estilo del contenedor principal */
         #root {
             padding: 20px;
             margin: 0 auto;
@@ -22,20 +19,17 @@
             justify-content: center;
         }
 
-        /* Estilo de la barra de navegación */
         .nav {
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        /* Estilo del título */
         h1 {
             font-size: 44px;
             margin-right: 10px;
         }
 
-        /* Estilo del botón de agregar */
         .bttmas {
             height: 40px;
             width: 40px;
@@ -51,7 +45,6 @@
             border: 2px solid black;
         }
 
-        /* Estilo del panel de producto */
         .panel {
             display: flex;
             justify-content: space-between;
@@ -63,21 +56,19 @@
             padding: 10px;
             margin-bottom: 10px;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
         }
 
-        /* Estilo de la cantidad de producto */
         .cantidad {
             font-size: 36px;
             color: blue;
             margin-right: 10px;
         }
 
-        /* Estilo de la información del producto */
         .info {
             flex: 1;
         }
 
-        /* Estilo de las acciones (botones) */
         .acciones {
             display: flex;
             flex-direction: column;
@@ -85,7 +76,6 @@
             align-items: center;
         }
 
-        /* Estilo de los iconos de los botones */
         .icono {
             background: none;
             border: none;
@@ -93,13 +83,11 @@
             margin: 5px 0;
         }
 
-        /* Estilo de las imágenes de los iconos */
         .icono img {
             width: 20px;
             height: 20px;
         }
 
-        /* Estilo de los botones generales */
         .general {
             margin: 25px 10px 10px;
             padding: 5px 20px;
@@ -112,7 +100,6 @@
             cursor: pointer;
         }
 
-        /* Estilo del mensaje de error */
         .error {
             color: red;
             font-size: 14px;
@@ -120,14 +107,12 @@
             margin-left: 5px;
         }
 
-        /* Estilo del formulario de edición */
         .formulario-edicion {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        /* Estilo de los inputs del formulario de edición */
         .formulario-edicion input {
             width: calc(100% - 20px);
             padding: 5px;
@@ -137,7 +122,6 @@
             border-radius: 4px;
         }
 
-        /* Estilo de las acciones dentro del formulario de edición */
         .formulario-edicion .acciones {
             display: flex;
             flex-direction: column;
@@ -145,21 +129,16 @@
             margin-left: 10px;
         }
 
-        /* Estilo de los botones dentro del formulario de edición */
         .formulario-edicion .acciones button {
             margin: 5px 0;
         }
     </style>
 </head>
-
 <body>
-    <!-- Contenedor principal donde se renderiza la aplicación React -->
     <div id="root"></div>
     <script type="text/babel">
-        // Importa los hooks useState y useEffect de React
         const { useState, useEffect } = React;
 
-        // Datos iniciales de productos
         const ProductosIniciales = [
             { id: 1, producto: '7up', EAN: '7799876543210', cantidad: 7 },
             { id: 2, producto: 'Coca Cola', EAN: '7798765432109', cantidad: 10 },
@@ -168,15 +147,12 @@
             { id: 5, producto: 'Sprite', EAN: '7795432109876', cantidad: 8 }
         ];
 
-        // Componente para editar un producto
         function Editar({ producto, alGuardar, alCancelar }) {
-            // Estados locales para los campos del producto
             const [nombre, setNombre] = useState(producto.producto);
             const [EAN, setEAN] = useState(producto.EAN);
             const [cantidad, setCantidad] = useState(producto.cantidad);
             const [error, setError] = useState(false);
 
-            // Funciones para manejar cambios en los campos del formulario
             const cambiarNombre = e => {
                 setNombre(e.target.value);
                 setError(false);
@@ -186,11 +162,10 @@
                 setError(false);
             };
             const cambiarCantidad = e => {
-                setCantidad(e.target.value);
+                setCantidad(Math.min(Math.max(0, e.target.value), 100)); // Limitar la cantidad a un máximo de 100 unidades
                 setError(false);
             };
 
-            // Función para guardar los cambios
             const guardar = e => {
                 e.preventDefault();
                 if (nombre.trim() === '' || EAN.trim() === '' || cantidad === '') {
@@ -200,7 +175,6 @@
                 alGuardar({ ...producto, producto: nombre, EAN, cantidad });
             };
 
-            // Función para cancelar la edición
             const cancelar = e => {
                 e.preventDefault();
                 alCancelar();
@@ -224,32 +198,28 @@
             );
         }
 
-        // Componente para mostrar un producto
-        function Producto({ producto, alEditar, alBorrar, alGuardar, alCancelar }) {
-            // Estado local para manejar si el producto está en modo de edición
+        function Producto({ producto, alEditar, alBorrar, alGuardar, alCancelar, alIncrementar }) {
             const [editando, setEditando] = useState(producto.editando);
 
-            // Función para iniciar la edición
-            const handleEditar = () => setEditando(true);
+            const handleEditar = (e) => {
+                e.stopPropagation();
+                setEditando(true);
+            };
 
-            // Función para guardar los cambios
             const handleGuardar = (productoActualizado) => {
                 alGuardar(productoActualizado);
                 setEditando(false);
             };
 
-            // Función para cancelar la edición
             const handleCancelar = () => {
                 setEditando(false);
                 alCancelar();
             };
 
             return editando ? (
-                // Si está en modo edición, muestra el formulario de edición
                 <Editar producto={producto} alGuardar={handleGuardar} alCancelar={handleCancelar} />
             ) : (
-                // Si no está en modo edición, muestra la vista del producto
-                <div className="panel">
+                <div className="panel" onClick={() => alIncrementar(producto.id)}>
                     <div className="cantidad">{producto.cantidad}</div>
                     <div className="info">
                         <p><strong>{producto.producto}</strong></p>
@@ -259,7 +229,10 @@
                         <button className="icono" onClick={handleEditar}>
                             <img src="https://img.icons8.com/material-rounded/24/000000/edit.png" alt="Editar" />
                         </button>
-                        <button className="icono" onClick={() => alBorrar(producto.id)}>
+                        <button className="icono" onClick={(e) => {
+                            e.stopPropagation();
+                            alBorrar(producto.id);
+                        }}>
                             <img src="https://img.icons8.com/material-rounded/24/000000/delete-forever.png" alt="Borrar" />
                         </button>
                     </div>
@@ -267,15 +240,12 @@
             );
         }
 
-       // Continuación del código anterior...
-
-        // Componente para mostrar la lista de productos
-        function Agenda({ productos, alAgregar, alGuardar, alBorrar, alCancelar }) {
+        function Agenda({ productos, alAgregar, alGuardar, alBorrar, alCancelar, alIncrementar }) {
             return (
                 <>
                     <div className="nav">
                         <h1>Control Depósito</h1>
-                        <button className="bttmas" onClick={alAgregar}>+</button>
+                        {productos.length < 30 && <button className="bttmas" onClick={alAgregar}>+</button>}
                     </div>
                     {productos.length === 0 && <h2>No hay productos</h2>}
                     {productos.map(producto => (
@@ -286,18 +256,16 @@
                             alBorrar={alBorrar}
                             alGuardar={alGuardar}
                             alCancelar={alCancelar}
+                            alIncrementar={alIncrementar}
                         />
                     ))}
                 </>
             );
         }
 
-        // Componente principal de la aplicación
         function App() {
-            // useState para manejar el estado de los productos
             const [productos, setProductos] = useState([]);
 
-            // useEffect para cargar productos desde localStorage al montar el componente
             useEffect(() => {
                 const productosGuardados = localStorage.getItem('productos');
                 if (productosGuardados) {
@@ -305,37 +273,50 @@
                 } else {
                     setProductos(ProductosIniciales);
                 }
-            }, []); // [] indica que se ejecuta solo una vez, al montar el componente
+            }, []);
 
-            // useEffect para guardar productos en localStorage cuando cambian
             useEffect(() => {
                 localStorage.setItem('productos', JSON.stringify(productos));
-            }, [productos]); // Se ejecuta cuando 'productos' cambia
+            }, [productos]);
 
-            // Función para guardar un producto actualizado
             const guardarProducto = (productoActualizado) => {
-                setProductos(productos.map(p => p.id === productoActualizado.id ? productoActualizado : p));
+                const productosActualizados = productos.map(p => p.id === productoActualizado.id ? productoActualizado : p);
+                setProductos(productosActualizados.sort((a, b) => a.producto.localeCompare(b.producto)));
             };
 
-            // Función para cancelar la edición (sin implementación específica aquí)
-            const cancelarEdicion = () => {
-            };
+            const cancelarEdicion = () => {};
 
-            // Función para agregar un nuevo producto
             const agregarProducto = () => {
-                const nuevoProducto = {
-                    id: Date.now(),
-                    producto: '',
-                    EAN: '',
-                    cantidad: 0,
-                    editando: true
-                };
-                setProductos([...productos, nuevoProducto]);
+                if (productos.length < 30) {
+                    const nuevoProducto = {
+                        id: Date.now(),
+                        producto: '',
+                        EAN: '',
+                        cantidad: 0,
+                        editando: true
+                    };
+                    const productosActualizados = [...productos, nuevoProducto];
+                    // Validar que no haya productos con campos vacíos antes de agregar el nuevo producto
+                    if (productos.every(p => p.producto.trim() !== '' && p.EAN.trim() !== '' && p.cantidad !== '')) {
+                        setProductos(productosActualizados.sort((a, b) => a.producto.localeCompare(b.producto)));
+                    } else {
+                        alert('Complete todos los campos antes de agregar un nuevo producto.');
+                    }
+                }
             };
 
-            // Función para borrar un producto
             const borrarProducto = (id) => {
                 setProductos(productos.filter(p => p.id !== id));
+            };
+
+            const incrementarCantidad = (id) => {
+                const productosActualizados = productos.map(p=> {
+                    if (p.id === id && p.cantidad < 100) { // Verificar si la cantidad es menor a 100
+                        return { ...p, cantidad: p.cantidad + 1 };
+                    }
+                    return p;
+                });
+                setProductos(productosActualizados);
             };
 
             return (
@@ -345,15 +326,13 @@
                     alGuardar={guardarProducto}
                     alBorrar={borrarProducto}
                     alCancelar={cancelarEdicion}
+                    alIncrementar={incrementarCantidad}
                 />
             );
         }
 
-        // Renderiza el componente App en el contenedor 'root'
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
     </script>
 </body>
-
 </html>
-
