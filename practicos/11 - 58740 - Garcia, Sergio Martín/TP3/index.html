@@ -9,8 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <title>58740</title>
     <style>
-        
-
         body {
             font-family: Arial, sans-serif;
             background-color: #f8f8f8;
@@ -52,16 +50,12 @@
 
         .gaseosa {
             font-size: 30px;
-
         }
 
         .st {
             padding-top: 10px;
             margin-right: 20px;
-
         }
-
-
 
         .panel p {
             margin: 5px 0;
@@ -88,7 +82,6 @@
         }
 
         .panel .acciones {
-
             top: 10px;
             right: 10px;
         }
@@ -138,12 +131,10 @@
 
         .acciones button:first-child {
             background-color: white;
-
         }
 
         .acciones button:last-child {
             background-color: white;
-
         }
 
         .acciones button i {
@@ -154,10 +145,11 @@
             color: red;
             font-size: 0.9em;
             margin-top: -10px;
+            padding-top: 40px;
+            position: absolute;
         }
     </style>
 </head>
-
 
 <body>
     <div id="root"></div>
@@ -185,15 +177,17 @@
             const cambiarNombre = e => {
                 setNombre(e.target.value);
                 setError(false);
-            };
+            }
+
             const cambiarEan = e => {
                 setEan(e.target.value);
                 setError(false);
-            };
+            }
+
             const cambiarStock = e => {
                 setStock(e.target.value);
                 setError(false);
-            };
+            }
 
             const guardarCambios = e => {
                 e.preventDefault();
@@ -201,52 +195,52 @@
                     setError(true);
                     return;
                 }
-
                 alGuardar({ ...producto, nombre, ean, stock });
-            };
-
-            const cancelar = e => {
-                e.preventDefault();
-                alCancelar();
-            };
+            }
 
             return (
-                <form className="panel">
-                    <input type="text" value={nombre} onChange={cambiarNombre} />
-                    <input type="text" value={ean} onChange={cambiarEan} />
-                    <input type="text" value={stock} onChange={cambiarStock} />
+                <form className="panel" onSubmit={guardarCambios}>
+                    <input placeholder="Nombre" value={nombre} onChange={cambiarNombre} />
+                    <input placeholder="Ean:779" value={ean} onChange={cambiarEan} />
+                    <input placeholder="stock" value={stock} onChange={cambiarStock} />
                     {error && <p className="erro">El campo está vacío, todos los campos son obligatorios</p>}
                     <div className="acciones-guardar">
-                        <button id="Aceptar" onClick={guardarCambios}>Aceptar</button>
-                        <button id="cancelar" onClick={cancelar}>Cancelar</button>
+                        <button type="submit">Aceptar</button>
+                        <button onClick={alCancelar}>Cancelar</button>
                     </div>
                 </form>
             );
         }
 
-        function Mostrar({ producto, alGuardar, alBorrar }) {
-            const [editando, setEditando] = useState(false);
-            const [tempProducto, setTempProducto] = useState(producto);
+        function Mostrar({ producto, alGuardar, alBorrar, enEdicionInicial }) {
+            const [editando, setEditando] = useState(enEdicionInicial || false);
 
-            const editar = () => setEditando(true);
+            const editar = e => {
+                e.stopPropagation();
+                setEditando(true);
+            }
+
             const cancelar = () => {
                 setEditando(false);
-                setTempProducto(producto);
-            };
+            }
 
-            const guardar = actualizado => {
-                alGuardar(actualizado);
-                setEditando(false);
-            };
+            const incrementarStock = () => {
+                const nuevoStock = parseInt(producto.stock, 10) + 1;
+                alGuardar({ ...producto, stock: nuevoStock.toString() });
+            }
 
             return (
-                <div className="panel">
+                <div className="panel" onClick={incrementarStock}>
                     {editando ? (
-                        <Editar producto={tempProducto} alGuardar={guardar} alCancelar={cancelar} />
+                        <Editar producto={producto} alGuardar={(actualizado) => {
+                            alGuardar(actualizado);
+                            setEditando(false);
+                        }} alCancelar={cancelar} />
                     ) : (
                         <>
                             <div className="st">
-                                <p className="stock">{producto.stock}</p>
+                                <p className="stock" >{producto.stock}</p>
+
                             </div>
                             <div className="nombre">
                                 <p className="gaseosa">{producto.nombre}</p>
@@ -254,7 +248,10 @@
                             </div>
                             <div className="acciones">
                                 <button id="edicion" onClick={editar}><i className="fa-regular fa-pen-to-square"></i></button>
-                                <button id="trash" onClick={() => alBorrar(producto.id)}><i className="fa-solid fa-trash"></i></button>
+                                <button id="trash" onClick={(e) => {
+                                    e.stopPropagation();
+                                    alBorrar(producto.id);
+                                }}><i className="fa-solid fa-trash"></i></button>
                             </div>
                         </>
                     )}
@@ -263,7 +260,7 @@
         }
 
         function Agenda({ productos, alAgregar, alGuardar, alBorrar }) {
-            if (productos.length === 0) return <h1>No hay Productos <button onClick={alAgregar}><i className="fa-solid fa-plus"></i></button></h1>;
+            if (productos.length === 0) return <h1>No hay Productos <button onClick={alAgregar}><i className="fa-solid fa-plus"></i></button></h1>
             return (
                 <>
                     <h1>Control de Depósito <button onClick={alAgregar}><i className="fa-solid fa-plus"></i></button></h1>
@@ -273,6 +270,7 @@
                             producto={producto}
                             alGuardar={alGuardar}
                             alBorrar={alBorrar}
+                            enEdicionInicial={producto.enEdicionInicial}
                         />
                     )}
                 </>
@@ -298,24 +296,26 @@
             productos.sort((a, b) => a.nombre.localeCompare(b.nombre));
 
             const guardar = productoActualizado => {
-                let copia = productos.map(p => p.id === productoActualizado.id ? productoActualizado : p);
+                let copia = productos.map(p => p.id === productoActualizado.id ? { ...productoActualizado, enEdicionInicial: false } : p);
                 setProductos(copia);
-            };
+            }
 
             const borrar = id => {
                 let copia = productos.filter(p => p.id !== id);
                 setProductos(copia);
-            };
+            }
 
-            const agregar = () => {
+            const agregar = e => {
+                e.stopPropagation();
                 const nuevoProducto = {
                     id: productos.length > 0 ? Math.max(...productos.map(p => p.id)) + 1 : 1,
                     stock: '',
                     nombre: '',
-                    ean: ''
+                    ean: '',
+                    enEdicionInicial: true
                 };
                 setProductos([...productos, nuevoProducto]);
-            };
+            }
 
             return (
                 <>
@@ -328,6 +328,5 @@
         root.render(<App />);
     </script>
 </body>
-
 
 </html>

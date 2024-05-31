@@ -1,0 +1,21 @@
+{
+  "name": "servidor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "servidor.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon servidor.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.1"
+  }
+}

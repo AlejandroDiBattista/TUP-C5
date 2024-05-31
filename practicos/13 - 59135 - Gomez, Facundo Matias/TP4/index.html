@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Enlaces a React, ReactDOM y Babel -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
+    <link rel="stylesheet" href="./estilo.css" />
+
+    <script type="text/babel" src="main.jsx"></script>
+    <!-- Agregar aca otros modulos -->
+    <script type="text/babel" src="XXX.jsx"></script>
+    <title>Clima</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState, useEffect } = React
+        const root = ReactDOM.createRoot(document.getElementById('root'))
+        root.render(<App />); // Renderizar el componente principal
+    </script>
+</body>
+
+</html>

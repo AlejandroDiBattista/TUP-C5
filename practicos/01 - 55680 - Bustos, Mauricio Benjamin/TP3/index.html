@@ -1,0 +1,228 @@
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        h1 {
+            text-align: center;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        h3 {
+            text-align: center;
+            font-size: x-large;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        button {
+            font-size: large;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-color:thistle;
+            border-radius: 8px;
+            margin: 4px;
+            padding: 10px;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: cadetblue;
+        }
+
+        .panel {
+            width: 180px;
+            border: 1px solid #ccc;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 10px;
+            background-color: color(srgb red green blue);
+            text-align: start;
+            font-size: large;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+           
+        }
+
+        .formulario {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        label {
+            display: grid;
+            align-self: center;
+        }
+
+        input {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .acciones {
+            display: flex;
+            justify-content: start;
+            grid-column: span 2;
+        }
+
+        .cantidad {
+            color: rgb(0, 17, 199);
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 50px;
+        }
+
+        .accion-img {
+            cursor: pointer;
+            margin: 0 35px;
+            height: 40px;
+            width: 40px;
+        }
+
+        .agregar-img {
+            cursor: pointer;
+            height: 40px;
+            width: 40px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState } = React
+        const ProductosIniciales = []
+        function Editar({ producto, alGuardar, AlCancelar }) {
+            let [nombre, setNombre] = useState(producto.nombre);
+            let [ean, setEan] = useState(producto.ean)
+            let [cantidad, setCantidad] = useState(producto.cantidad)
+
+            const cambiarNombre = (e) => {
+                setNombre(e.target.value);
+            }
+            const cambiarEan = (e) => {
+                setEan(e.target.value);
+            }
+            const cambiarCantidad = (e) => {
+                setCantidad(e.target.value);
+            }
+            const guardar = e => {
+                e.preventDefault()
+                alGuardar({ ...producto, nombre, ean, cantidad })
+            }
+            const borrar = (e) => {
+                e.preventDefault()
+                AlCancelar()
+            }
+            return <>
+                <form className="panel">
+                    <label>Nombre</label>
+                    <input type="text" value={nombre} onChange={cambiarNombre} />
+
+                    <label>Ean</label>
+                    <input type="text" value={ean} onChange={cambiarEan} />
+
+                    <label>Cantidad</label>
+                    <input type="text" value={cantidad} onChange={cambiarCantidad} />
+
+                    <div className="acciones">
+                        <button onClick={guardar}>Guardar</button>
+                        <button onClick={borrar}>Cancelar</button>
+                    </div>
+                </form>
+            </>
+        }
+
+        function Mostrar({ producto, alEditar, alBorrar }) {
+            const editar = (e) => alEditar()
+            const borrar = (e) => alBorrar(producto.id)
+            const cambiarCantidad = (e) => setCantidad(e.target.value);
+            const incrementarCantidad = () => setCantidad(prev => Number(prev) + 1);
+            const decrementarCantidad = () => setCantidad(prev => (Number(prev) > 0 ? Number(prev) - 1 : 0)) //
+
+            return <>
+            
+                <div className="panel">
+                    <p><strong>Nombre:</strong>{producto.nombre}</p>
+                    <p><strong>Ean:</strong> {producto.ean}</p>
+                    <p><strong>Cantidad:</strong> {producto.cantidad}</p>
+                </div>
+                
+                <div className="acciones">
+                    <button onClick={editar}>Editar</button>
+                    <button onClick={borrar}>Borrar</button>
+                </div>
+            </>
+        }
+
+        function Inventario({ producto, alAgregar, alEditar, alBorrar }) {
+            return <>
+            <h1></h1>
+                <h2>Inventario/Deposito</h2>
+                <button onClick={()=> alAgregar()}>Agregar</button>
+                {producto.map(producto =>
+                    <Mostrar producto={producto}
+                        alEditar={() => alEditar(producto.id)}
+                        alBorrar={() => alBorrar(producto.id)} />)}
+            </>
+        }
+        function App() {
+    let [producto, setProducto] = useState({});
+    let [editando, setEditando] = useState(false);
+    let [productos, setProductos] = useState(ProductosIniciales);
+
+    const guardar = (producto) => {
+        if (producto.id) {
+            // Actualiza el producto existente
+            const copia = productos.map(p => p.id === producto.id ? producto : p);
+            setProductos(copia);
+        } else {
+            // Crea un nuevo producto con un ID único
+            producto.id = productos.length ? Math.max(...productos.map(p => p.id)) + 1 : 1;
+            setProductos([...productos, producto]);
+        }
+        setEditando(false);
+    }
+
+    const cancelar = () => {
+        setProducto({});
+        setEditando(false);
+    }
+
+    const editar = (id) => {
+        let producto = productos.find(p => p.id === id);
+        setProducto(producto);
+        setEditando(true);
+    }
+
+    const borrar = (id) => {
+        const copia = productos.filter(p => p.id !== id);
+        setProductos(copia);
+    };
+
+    const agregar = () => {
+        setProducto({});  // Inicia la edición de un nuevo producto
+        setEditando(true);
+    }
+
+    return (
+        <>
+            {editando
+                ? <Editar producto={producto} alGuardar={guardar} AlCancelar={cancelar} />
+                : <Inventario producto={productos} alEditar={editar} alBorrar={borrar} alAgregar={agregar} />
+            }
+        </>
+    );
+}
+
+        const root = ReactDOM.createRoot(document.getElementById('root'))
+        root.render(<App />);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Agenda Dinámica</title>
+        <link rel="stylesheet" href="estilo.css">
+        <script>
+
+            const contactos = [
+                {nombre: "Juan", apellido: "Perez", telefono: "345-6789"},
+                {nombre: "Maria", apellido: "Gomez", telefono: "456-7890"},
+                {nombre: "Carlos", apellido: "Sanchez", telefono: "567-8901"},
+                {nombre: "Jose", apellido: "Rodriguez", telefono: "678-9012"},
+                {nombre: "Pedro", apellido: "Garcia", telefono: "789-0123"},
+                {nombre: "Ana", apellido: "Torres", telefono: "890-1234"}
+            ]
+
+            function generarContacto({nombre, apellido, telefono}){
+                return `<li>
+                            <p>${nombre} <b>${apellido}</b></p>
+                            <p>tel: <i>${telefono}</i></p>
+                        </li>`
+            }
+    
+            function generarLista(contactos){
+                let lista = ""
+                for(let contacto of contactos){
+                    lista += generarContacto(contacto)
+                }
+                return lista
+                // return contactos.map(generarContacto).join("") // Forma alternativa más compacta
+            }
+            
+            function mostrar(){
+                document.getElementById("agenda").innerHTML = generarLista(contactos)
+            }
+
+            setTimeout(mostrar, 1)
+        </script>
+    </head>
+    <body>
+        <h1>Agenda</h1>
+        <ul id="agenda"></ul>
+    </body>
+</html>
