@@ -1,4 +1,4 @@
-const { useState } = React;
+const { useState, useEffect } = React;
 
 const ProductoIniciales = [
   { id: 1, nombrep: "Manzanas", codigoEAN: "1234567890123", cantidad: 10 },
@@ -14,33 +14,43 @@ function Editar({ producto, alGuardar, alCancelar }) {
   const [cantidad, setCantidad] = useState(producto.cantidad);
   const [error, setError] = useState(false);
   const [mayora100, setMayora100] = useState(false);
+  const [mayora13, setMayora13] = useState(false);
+  const [menor, setMenor] = useState(false);
 
-  const cambiarNombre = (e) => {
-    setNombrep(e.target.value);
-    setError(false);
-  };
+  const cambiarNombre = (e) => setNombrep(e.target.value);
 
-  const cambiarCodigo = (e) => {
-    setCodigoEAN(e.target.value);
-    setError(false);
-  };
+  const cambiarCodigo = (e) => setCodigoEAN(e.target.value);
 
-  const cambiarCantidad = (e) => {
-    setCantidad(e.target.value);
-    setError(false);
-  };
+  const cambiarCantidad = (e) => setCantidad(e.target.value);
 
   const guardar = (e) => {
     e.preventDefault();
+    setError(false);
+    setMayora100(false);
+    setMayora13(false);
+    setMenor(false);
+
     if (nombrep.trim() === "" || codigoEAN.trim() === "" || cantidad === "") {
       setError(true);
       return;
     }
-    if (cantidad > 100) {
+    if (parseInt(cantidad) > 100) {
       setMayora100(true);
       return;
+    } else if (parseInt(cantidad) < 1) {
+      setMenor(true);
+      return;
     }
-    alGuardar({ ...producto, nombrep, codigoEAN, cantidad });
+    if (codigoEAN.length !== 13) {
+      setMayora13(true);
+      return;
+    }
+    alGuardar({
+      ...producto,
+      nombrep,
+      codigoEAN,
+      cantidad: parseInt(cantidad),
+    });
   };
 
   const cancelar = (e) => {
@@ -49,22 +59,41 @@ function Editar({ producto, alGuardar, alCancelar }) {
   };
 
   return (
-    <form className="panel" onClick={(e) => e.stopPropagation()}>
-      <label>Nombre</label>
-      <input type="text" value={nombrep} onChange={cambiarNombre} />
+    <form className="paneldeedicion" onSubmit={guardar}>
+      <div>
+        <input
+          type="text"
+          value={nombrep}
+          onChange={cambiarNombre}
+          placeholder="Nombre del producto"
+        />
 
-      <label>Codigo EAN</label>
-      <input type="text" value={codigoEAN} onChange={cambiarCodigo} />
+        <input
+          type="number"
+          value={codigoEAN}
+          onChange={cambiarCodigo}
+          placeholder="Código EAN"
+        />
 
-      <label>Cantidad</label>
-      <input type="number" value={cantidad} onChange={cambiarCantidad} />
-      {error && <p className="error">Todos los campos deben ser completados</p>}
-      {mayora100 && (
-        <p className="error">No puede ingresar más de 100 productos</p>
-      )}
+        <input
+          type="number"
+          value={cantidad}
+          onChange={cambiarCantidad}
+          placeholder="Cantidad"
+        />
 
-      <div className="acciones">
-        <button onClick={guardar}>Guardar</button>
+        {error && (
+          <p className="error">Todos los campos deben ser completados</p>
+        )}
+        {menor && <p className="error">ingrese una cantidad valida</p>}
+        {mayora100 && (
+          <p className="error">No puede ingresar más de 100 productos</p>
+        )}
+        {mayora13 && <p className="error">Ingrese un código EAN válido.</p>}
+      </div>
+
+      <div className="accioneseditar">
+        <button type="submit">Guardar</button>
         <button onClick={cancelar}>Cancelar</button>
       </div>
     </form>
@@ -79,17 +108,61 @@ function Lista({
   editando,
   setEditando,
 }) {
+  const [mostrandoFormulario, setMostrandoFormulario] = useState(false);
+  const [mayora100, setMayora100] = useState(false);
+
+  const agregarProducto = () => {
+    setMostrandoFormulario(true);
+    setEditando(true);
+  };
+
+  const guardarNuevoProducto = (producto) => {
+    if (parseInt(producto.cantidad) > 100) {
+      setMayora100(true);
+      alert("No puede ingresar más de 100 productos");
+      return;
+    }
+    alAgregar(producto);
+    setMostrandoFormulario(false);
+    setEditando(false);
+    setMayora100(false);
+  };
+
+  const cancelarNuevoProducto = () => {
+    setMostrandoFormulario(false);
+    setEditando(false);
+    setMayora100(false);
+  };
+
+  const productosOrdenados = [...productos].sort((a, b) =>
+    a.nombrep.localeCompare(b.nombrep)
+  );
+
   return (
     <>
-      <h1>Productos</h1>
-      <img
-        className="agregar"
-        src="./iconos/iconoagregar.jpeg"
-        alt=""
-        onClick={alAgregar}
-        disabled={editando}
-      />
-      {productos.map((producto) => (
+      <div className="encabezado">
+        <h1>Productos</h1>
+        <img
+          className="agregar"
+          src="./iconos/iconoagregar.jpeg"
+          alt=""
+          onClick={agregarProducto}
+          style={{ cursor: editando ? "not-allowed" : "pointer" }}
+        />
+      </div>
+      {mostrandoFormulario && (
+        <div className="panelagregar">
+          <Editar
+            producto={{ id: null, nombrep: "", codigoEAN: "", cantidad: "" }}
+            alGuardar={guardarNuevoProducto}
+            alCancelar={cancelarNuevoProducto}
+          />
+          {mayora100 && (
+            <p className="error">No puede ingresar más de 100 productos</p>
+          )}
+        </div>
+      )}
+      {productosOrdenados.map((producto) => (
         <Mostrar
           key={producto.id}
           producto={producto}
@@ -105,6 +178,7 @@ function Lista({
 
 function Mostrar({ producto, alEditar, alBorrar, editando, setEditando }) {
   const [estaEditando, setEstaEditando] = useState(false);
+  const [mayora100, setMayora100] = useState(false);
 
   const editar = (e) => {
     e.stopPropagation();
@@ -113,14 +187,21 @@ function Mostrar({ producto, alEditar, alBorrar, editando, setEditando }) {
   };
 
   const guardar = (productoActualizado) => {
+    if (parseInt(productoActualizado.cantidad) > 100) {
+      setMayora100(true);
+      alert("No puede ingresar más de 100 productos");
+      return;
+    }
     alEditar(productoActualizado);
     setEstaEditando(false);
     setEditando(false);
+    setMayora100(false);
   };
 
   const cancelar = () => {
     setEstaEditando(false);
     setEditando(false);
+    setMayora100(false);
   };
 
   const borrar = (e) => {
@@ -129,40 +210,56 @@ function Mostrar({ producto, alEditar, alBorrar, editando, setEditando }) {
   };
 
   const añadir = () => {
-    if (!editando && !estaEditando) {
+    if (!editando && !estaEditando && producto.cantidad < 100) {
       const nuevaCantidad = parseInt(producto.cantidad) + 1;
+      if (nuevaCantidad > 100) {
+        setMayora100(true);
+        alert("No puede ingresar más de 100 productos");
+        return;
+      }
       alEditar({ ...producto, cantidad: nuevaCantidad });
     }
   };
 
   return (
     <div className={`panel ${estaEditando ? "editando" : ""}`} onClick={añadir}>
-      <p className="ps">{producto.nombrep}</p>
-      <p className="ps">{producto.codigoEAN}</p>
-      <p className="cantidadn">{producto.cantidad}</p>
-      <div className="acciones">
-        <img
-          className="editar"
-          src="./iconos/iconoeditar.jpeg"
-          onClick={editar}
-          disabled={editando || estaEditando}
-        />
-        <img
-          className="borrar"
-          src="./iconos/iconoeliminar.jpeg"
-          onClick={borrar}
-          disabled={editando || estaEditando}
-        />
-      </div>
-      <div className={`formulario-edicion ${estaEditando ? "editando" : ""}`}>
-        {estaEditando && (
+      {estaEditando ? (
+        <div className="formulario-edicion">
           <Editar
             producto={producto}
             alGuardar={guardar}
             alCancelar={cancelar}
           />
-        )}
-      </div>
+          {mayora100 && (
+            <p className="error">No puede ingresar más de 100 productos</p>
+          )}
+        </div>
+      ) : (
+        <div className="contenido">
+          <p className="ps">{producto.nombrep}</p>
+          <p className="ps">{producto.codigoEAN}</p>
+          <p className="cantidadn">{producto.cantidad}</p>
+          <div className="acciones">
+            <img
+              className="editar"
+              src="./iconos/iconoeditar.jpeg"
+              onClick={editar}
+              style={{
+                cursor: editando || estaEditando ? "not-allowed" : "pointer",
+              }}
+            />
+            <br />
+            <img
+              className="borrar"
+              src="./iconos/iconoeliminar.jpeg"
+              onClick={borrar}
+              style={{
+                cursor: editando || estaEditando ? "not-allowed" : "pointer",
+              }}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -170,46 +267,52 @@ function Mostrar({ producto, alEditar, alBorrar, editando, setEditando }) {
 let contadorID = ProductoIniciales.length;
 
 function App() {
-  const [productosx, setProductosx] = useState(ProductoIniciales);
+  const [productosx, setProductosx] = useState(() => {
+    const productosGuardados = localStorage.getItem("productos");
+    return productosGuardados
+      ? JSON.parse(productosGuardados)
+      : ProductoIniciales;
+  });
   const [editando, setEditando] = useState(false);
 
+  useEffect(() => {
+    localStorage.setItem("productos", JSON.stringify(productosx));
+  }, [productosx]);
+
   const guardar = (productoActualizado) => {
-    const copia = productosx.map((c) =>
-      c.id === productoActualizado.id ? productoActualizado : c
-    );
-    setProductosx(copia);
-    setEditando(false);
+    let nuevosProductos;
+    if (productoActualizado.id === null) {
+      productoActualizado.id = ++contadorID;
+      nuevosProductos = [...productosx, productoActualizado];
+    } else {
+      nuevosProductos = productosx.map((p) =>
+        p.id === productoActualizado.id ? productoActualizado : p
+      );
+    }
+    setProductosx(nuevosProductos);
   };
 
   const borrar = (id) => {
-    const copia = productosx.filter((c) => c.id !== id);
-    setProductosx(copia);
+    const nuevosProductos = productosx.filter((p) => p.id !== id);
+    setProductosx(nuevosProductos);
   };
 
-  const agregarProducto = () => {
-    contadorID += 1;
-    const nuevoProducto = {
-      id: contadorID,
-      nombrep: "Nuevo Producto",
-      codigoEAN: "0000000000000",
-      cantidad: 0,
-    };
-    setProductosx([nuevoProducto, ...productosx]);
-  };
-
-  const cancelarEdicion = () => {
-    setEditando(false);
+  const agregar = (producto) => {
+    producto.id = ++contadorID;
+    setProductosx([...productosx, producto]);
   };
 
   return (
-    <Lista
-      productos={productosx}
-      alEditar={guardar}
-      alBorrar={borrar}
-      alAgregar={agregarProducto}
-      editando={editando}
-      setEditando={setEditando}
-    />
+    <div className="App">
+      <Lista
+        productos={productosx}
+        alEditar={guardar}
+        alBorrar={borrar}
+        alAgregar={agregar}
+        editando={editando}
+        setEditando={setEditando}
+      />
+    </div>
   );
 }
 
