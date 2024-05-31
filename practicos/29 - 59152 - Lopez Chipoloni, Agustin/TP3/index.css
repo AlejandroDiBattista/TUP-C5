@@ -1,0 +1,102 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: rgb(221, 221, 221);
+}
+h1 {
+    text-align: center;
+    color: #333;
+}
+h3{
+    text-align: center;
+    font-size: 200%;
+}
+.panel {
+    background: rgb(252, 252, 252);
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 250px;
+    flex-shrink: 0;
+}
+.panel h2 {
+    margin: 1px;
+    margin-bottom: 2px;
+    font-size: 50px;
+    color: rgb(0, 64, 255);
+}
+.panel p {
+    margin: 3px ;
+    font-size: x-large;
+    color: black;
+}
+.acciones {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.acciones button {
+    background-color: rgb(0, 64, 255);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+.acciones button:hover {
+    background-color: darkblue;
+}
+.acciones button:last-child {
+    background-color: rgb(0, 64, 255);
+}
+.acciones button:last-child:hover {
+    background-color: rgb(0, 64, 255);
+}
+.acciones button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+}
+label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+input[type="text"],
+input[type="number"] {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid rgb(209, 209, 209);
+    border-radius: 5px;
+    font-size: 16px;
+}
+.bottonagregar{
+    background-color: rgb(0, 64, 255);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+.inventario {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
