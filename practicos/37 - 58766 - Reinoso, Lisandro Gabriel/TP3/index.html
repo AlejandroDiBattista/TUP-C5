@@ -1,0 +1,333 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>58766</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <style>
+        .conteiner-tarjetas {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h1 {
+            position: relative;
+            top: 40px;
+            text-align: center;
+            font-size: 45px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 1px 1px 1px 3px;
+            width: 480px;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px;
+            position: relative;
+        }
+
+        .EAN {
+            font-size: 27px;
+            top: 60px;
+            position: relative;
+            left: 20px;
+        }
+
+        .nombre {
+            font-size: 48px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            position: relative;
+            top: 20px;
+            left: 5px;
+        }
+
+        .cantidad {
+            position: relative;
+            bottom: 40px;
+            right: 150px;
+            color: blue;
+            font-family: sans-serif;
+            font-size: 92px;
+            font-weight: 600;
+        }
+
+        .fa-pen-to-square {
+            position: absolute;
+            font-size: 28px;
+            top: 7px;
+            right: 10px;
+        }
+
+        .fa-trash {
+            position: absolute;
+            font-size: 28px;
+            bottom: 10px;
+            right: 10px;
+        }
+
+        .fa-regular {
+            font-size: 40px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .div-flex {
+            display: flex;
+            justify-content: center;
+        }
+
+        .formulario {
+            width: 456px;
+            height: 190px;
+            display: flex;
+            flex-direction: column;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 10px auto;
+            background-color: #f9f9f9;
+        }
+
+        .formulario button {
+            margin-top: 10px;
+            position: relative;
+            left: 360px;
+            bottom: 181px;
+            padding: 10px;
+            width: 100px;
+            font-size: 19px;
+            border-radius: 10px;
+            background-color: #fff;
+            cursor: pointer;
+        }
+
+        .formulario input[type="text"],
+        .formulario input[type="number"] {
+            width: 320px;
+            position: relative;
+            top: 10px;
+            padding: 10px;
+            font-size: 24px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState } = React
+
+        const productosDesordenados = [
+            { EAN: "7791234500011", nombre: "Torasso", cantidad: 10, estadoEditando: false },
+            { EAN: "7792345600022", nombre: "Levite", cantidad: 5, estadoEditando: false },
+            { EAN: "7793456700033", nombre: "Agua", cantidad: 20, estadoEditando: false },
+            { EAN: "7794569283182", nombre: "Pepsi", cantidad: 28, estadoEditando: false },
+            { EAN: "7799219838028", nombre: "Secco", cantidad: 8, estadoEditando: false }
+        ]
+
+        const EditarProducto = ({ producto, guardar, cancelar }) => {
+            const [nombre, setNombre] = useState(producto.nombre)
+            const [EAN, setEAN] = useState(producto.EAN)
+            const [cantidad, setCantidad] = useState(producto.cantidad)
+
+            const actualizarNombre = (event) => setNombre(event.target.value)
+            const actualizarEAN = (event) => setEAN(event.target.value)
+            const actualizarCantidad = (event) => setCantidad(event.target.value)
+            const originalEAN = producto.EAN
+
+            const productoGuardado = (event) => {
+                event.preventDefault()
+                guardar({ originalEAN, EAN, nombre, cantidad })
+            }
+
+            const cancelarProducto = (event) => {
+                event.preventDefault()
+                cancelar()
+            }
+
+            return (
+                <form className="formulario">
+                    <input type="text" placeholder="Nombre" value={nombre} onChange={actualizarNombre} />
+                    <input type="number" placeholder="EAN" value={EAN} onChange={actualizarEAN} min="0" />
+                    <input type="number" placeholder="Cantidad" value={cantidad} onChange={actualizarCantidad} min="0" />
+                    <button onClick={productoGuardado}>Guardar</button>
+                    <button onClick={cancelarProducto}>Cancelar</button>
+                </form>
+            )
+        }
+
+        const AgregarProducto = ({ guardar, cancelar }) => {
+            const [nombre, setNombre] = useState("")
+            const [EAN, setEAN] = useState("")
+            const [cantidad, setCantidad] = useState("")
+
+            const actualizarNombre = (event) => setNombre(event.target.value)
+            const actualizarEAN = (event) => setEAN(event.target.value)
+            const actualizarCantidad = (event) => setCantidad(event.target.value)
+
+            const productoGuardado = (event) => {
+                event.preventDefault()
+                guardar({ EAN, nombre, cantidad })
+            }
+
+            const cancelarProducto = (event) => {
+                event.preventDefault()
+                cancelar()
+            }
+
+            return (
+                <form className="formulario">
+                    <input type="text" placeholder="Nombre" value={nombre} onChange={actualizarNombre} />
+                    <input type="number" placeholder="EAN" value={EAN} onChange={actualizarEAN} min="0" />
+                    <input type="number" placeholder="Cantidad" value={cantidad} onChange={actualizarCantidad} min="0" />
+                    <button onClick={productoGuardado}>Guardar</button>
+                    <button onClick={cancelarProducto}>Cancelar</button>
+                </form>
+            )
+        }
+
+        const Producto = ({ producto, editarProducto, borrarProducto, aumentarProductos, guardarProducto, cancelarEdicion }) => (
+            producto.estadoEditando ? (
+                <EditarProducto
+                    producto={producto}
+                    guardar={guardarProducto}
+                    cancelar={() => cancelarEdicion(producto.EAN)}
+                />
+            ) : (
+                <li key={producto.EAN} onClick={() => aumentarProductos(producto.EAN)}>
+                    <div className="nombre">{producto.nombre}</div>
+                    <div className="EAN">{producto.EAN}</div>
+                    <div className="cantidad">{producto.cantidad}</div>
+                    <i className="fa-solid fa-pen-to-square" onClick={(e) => { e.stopPropagation(); editarProducto(producto) }}></i>
+                    <i className="fa-solid fa-trash" onClick={(e) => { e.stopPropagation(); borrarProducto(producto.EAN) }}></i>
+                </li>
+            )
+        )
+
+        const MostrarControlDeProductos = ({ productos, agregar, editar, borrar, aumentarProductos, guardarProducto, cancelarEdicion }) => {
+            const productosOrdenados = [...productos].sort((a, b) => a.nombre.localeCompare(b.nombre))
+            return (
+                <>
+                    <h1>Control de Depósito</h1>
+                    <div className="div-flex"><i className="fa-regular fa-square-plus" onClick={agregar}></i></div>
+                    <ul className="conteiner-tarjetas">
+                        {productosOrdenados.map((p) => (
+                            <Producto key={p.EAN} producto={p} editarProducto={editar} borrarProducto={borrar}
+                                aumentarProductos={aumentarProductos} guardarProducto={guardarProducto}
+                                cancelarEdicion={cancelarEdicion}
+                            />
+                        ))}
+                    </ul>
+                </>
+            )
+        }
+
+        function App() {
+            const productosIniciales = JSON.parse(localStorage.getItem("Productos")) || productosDesordenados
+            const [productos, setProductos] = useState(productosIniciales)
+            const [agregando, setAgregando] = useState(false)
+
+            const actualizarProductos = (nuevosProductos) => {
+                setProductos(nuevosProductos);
+                localStorage.setItem("Productos", JSON.stringify(nuevosProductos))
+            }
+
+            const agregarNuevoProducto = () => {
+                setAgregando(true)
+            }
+
+            const cancelarAgregarProducto = () => {
+                setAgregando(false)
+            }
+
+            const editarProducto = (producto) => {
+                actualizarProductos(productos.map(p => p.EAN === producto.EAN ? { ...p, estadoEditando: true } : p))
+            }
+
+            const borrarProducto = (EAN) => {
+                actualizarProductos(productos.filter((i) => i.EAN !== EAN))
+            }
+
+            const guardarProducto = (producto) => {
+                const { originalEAN, EAN, nombre, cantidad } = producto
+
+                if (EAN !== "" && nombre !== "" && cantidad !== "") {
+                    const existe = productos.some((p) => p.EAN === EAN && p.EAN !== originalEAN)
+
+                    if (existe) {
+                        alert("Este código EAN ya existe, por favor ingrese otro diferente")
+                        return
+                    }
+
+                    if (EAN.length !== 13) {
+                        alert("El codigo EAN debe contener 13 digitos")
+                    }
+
+                    else {
+
+                        if (originalEAN) {
+                            actualizarProductos(productos.map(p =>
+                                p.EAN === originalEAN ? { EAN, nombre, cantidad, estadoEditando: false } : p
+                            ))
+                        }
+                        else {
+                            actualizarProductos([...productos, { EAN, nombre, cantidad, estadoEditando: false }])
+                        }
+                        setAgregando(false)
+                    }
+                }
+                else {
+                    alert("Complete los espacios para poder guardar un producto")
+                }
+            }
+
+            const cancelarEdicion = (EAN) => {
+                actualizarProductos(productos.map(p => p.EAN === EAN ? { ...p, estadoEditando: false } : p))
+            }
+
+            const incrementarCantidad = (EAN) => {
+                actualizarProductos(productos.map((p) =>
+                    p.EAN === EAN ? { ...p, cantidad: parseInt(p.cantidad) + 1 } : p
+                ).sort((a, b) => a.nombre.localeCompare(b.nombre)))
+            }
+
+            return (
+                <>
+                    {agregando ? (
+                        <AgregarProducto guardar={guardarProducto} cancelar={cancelarAgregarProducto}/>
+                    ) : (
+                        <MostrarControlDeProductos
+                            productos={productos}
+                            agregar={agregarNuevoProducto}
+                            editar={editarProducto}
+                            borrar={borrarProducto}
+                            aumentarProductos={incrementarCantidad}
+                            guardarProducto={guardarProducto}
+                            cancelarEdicion={cancelarEdicion}
+                        />
+                    )}
+                </>
+            )
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'))
+        root.render(<App />)
+    </script>
+</body>
+</html>

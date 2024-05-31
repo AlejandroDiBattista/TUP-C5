@@ -1,36 +1,28 @@
 # TP4 
 
 ## App: Consultar Clima
+---
 
-Hacer una aplicación que permita mostrar el clima actual en la ciudad elegida.
-
+Hacer una aplicacion que permita mostrar el clima actual en la ciudad elegida.
 - Debe tener enlaces para acceder directamente a las ciudades de "Tucuman", "Salta" y "Buenos Aires"
-
 - Debe permitir buscar cualquier ciudad
-    - Al escribir debe automaticamente actualizar la ciudad
-
-- Debe mostrar: 
+- Debe mostrar 
     - El nombre de la ciudad completo
     - La temperatura actual, minima y maxima 
     - La humedad actual
     - Una imagen que represente el clima 
 
-- El trabajo debe ser presentado modificando los archivos que se encuentra en la carpeta TP4 de manera que la aplicacion pueda correr con los archivos presentados (sin nodejs o vite)
+Para hacer la aplicación recomendamos usar los siguientes recursos:
+- https://openweathermap.org/ 
+    Para consultar el API del clima
+    API -> "Current weather data" -> "Built-in API request by city name"
 
+- https://picocss.com/
+    Para dar formato a la pagina
 
-> [!INFO]
->
-> Para hacer la aplicación recomendamos usar los siguientes recursos:
-> - https://openweathermap.org/ 
->    Para consultar el API del clima
->
-> - https://picocss.com/
->    Para dar formato a la página
->
->
-> - https://bas.dev/work/meteocons 
->    Para los iconos animados que representa el clima actual.
->    (bajar archivo y buscar los iconos para openweathermap)
+- https://bas.dev/work/meteocons 
+    Para los iconos animados que representa el clima actual.
+    (bajar archivo y buscar los iconos para openweathermap)
 
 ### Diseño 
 ![Diseño](clima.jpg)
