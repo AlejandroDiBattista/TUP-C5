@@ -1,165 +1,117 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    border: 0;
-}
-
 body {
-    background-color: #ffffff;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-weight: bold;
 }
 
-.contenido {
+#root {
+    padding: 20px;
+    margin: 0 auto;
+    display: grid;
+    justify-content: center;
+}
+
+.nav {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
 }
 
 h1 {
-    margin: 0;
-    font-weight: bold;
+    font-size: 44px;
+    margin-right: 10px;
 }
 
-h2 {
-    font-weight: bold;
-    margin: 0 1rem;
-    color: #0000FF;
-    font-size: 4rem;
+.Agrega {
+    height: 30px;
 }
 
-h3 {
-    text-align: start;
-    color: rgb(12, 28, 207);
-    font-size: xx-large;
-}
-
-h4 {
-    margin-bottom: 1rem;
-    font-weight: bold;
-    font-size: xx-large;
-
-}
-
-p {
-    margin: 0;
-    font-size: x-large;
-    font-weight: lighter;
-}
-
-.formulario-producto {
+.panel {
     display: flex;
     justify-content: space-between;
-    border-radius: 1rem;
-    align-items: start;
-    width: 30rem;
-    height: 10rem;
-    padding: 1rem;
-    margin: .5rem;
-    border-radius: 1rem;
-    box-shadow: 0 .25rem .5rem rgba(0, 0, 0, 0.4);
-    padding: 20px;
-}
-
-.botonForm {
-    border: .1rem solid black;
-    border-radius: .7rem;
-    font-size: large;
-    width: 6rem;
-    padding: .3rem .5rem;
-    margin-bottom: .5rem;
+    align-items: center;
+    width: 300px;
+    border: 1px solid #ffffff;
     background-color: #ffffff;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     cursor: pointer;
 }
 
-input {
-    width: 20rem;
-    margin: .15rem 0;
-    padding: .5rem;
-    border-radius: .5rem;
-    border: solid .01rem rgb(207, 207, 207);
-    font-size: large;
-}
-
-.producto {
-    position: relative;
-    border-radius: 1rem;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    width: 30rem;
-    height: 10rem;
-    padding: 1rem;
-    margin: .5rem;
-    border-radius: 1rem;
-    box-shadow: 0 .25rem .5rem rgba(0, 0, 0, 0.4);
-    padding: 20px;
-}
-
-.producto-item {
-    display: flex;
-    flex-direction: column;
-    margin: .75rem;
-}
-
-.botones {
-    padding: 1rem;
-    right: 0%;
-    position: absolute;
+.cantidad {
+    font-size: 36px;
     color: blue;
-    height: 100%;
+    margin-right: 10px;
+}
+
+.info {
+    flex: 1;
+    font-family: "Gill Sans", sans-serif; 
+}
+
+.acciones {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-
-.main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 
-.botones2 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    margin-top: .5rem;
+.icono {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin: 5px 0;
 }
 
-img {
-    height: 1.5rem;
+.icono img {
+    width: 20px;
+    height: 20px;
 }
 
-.boton {
-    height: 1.5rem;
-    width: 1.5rem;
+.general {
+    margin: 25px 10px 10px;
+    padding: 5px 20px;
+    font-size: 14px;
+    font-family: "Gill Sans", sans-serif;
+    border: none;
+    border-radius: 8px;
+    border: solid 2px black;
+    background-color: white;
+    color: #000;
     cursor: pointer;
 }
 
-.iconoAgregar {
-    width: 2.5rem;
-    height: 2.5rem;
-    cursor: pointer;
+.error {
+    color: red;
+    font-size: 14px;
+    background-color: #000;
+    margin-left: 5px;
 }
 
-.titulo {
-    position: relative;
+.formulario-edicion {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    font-weight: bolder;
-    margin: 1rem 0;
 }
 
-.titulo1 {
-    margin-right: 2rem;
+.formulario-edicion input {
+    width: calc(100% - 20px);
+    padding: 5px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.formulario-edicion .acciones {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.formulario-edicion .acciones button {
+    margin: 5px 0;
 }
