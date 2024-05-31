@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow-y: auto;
+            max-height: 90vh;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            position: sticky;
+            top: 0;
+            background-color: #fff;
+            z-index: 1;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .add-button {
+            font-size: 24px;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+
+        .item-list {
+            padding: 10px 0;
+        }
+
+        .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .item-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .item-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .item-code {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .item-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .item-actions button {
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 18px;
+            margin-left: 10px;
+            color: #000;
+        }
+
+        .item-actions .edit-button::before {
+            content: '✏️';
+        }
+
+        .item-actions .delete-button::before {
+            content: '🗑️';
+        }
+
+        .panel {
+            width: 100%;
+            margin: 20px 0;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            background: #fff;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .acciones {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .acciones button {
+            font-size: 14px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+        }
+
+        .acciones .accept-button {
+            background-color: #007bff;
+            color: #fff;
+            margin-right: 5px;
+        }
+
+        .acciones .cancel-button {
+            background-color: #007bff;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        const ProductosIniciales = [
+            { id: 7, nombre: '7up', codigo: '7799876543210', cantidad: 1 },
+            { id: 92, nombre: 'Cola Cola', codigo: '7791234567890', cantidad: 2 },
+            { id: 5, nombre: 'Fanta', codigo: '7793219876540', cantidad: 3 },
+            { id: 6, nombre: 'Mirinda', codigo: '7797894561230', cantidad: 4 },
+            { id: 4, nombre: 'Sprite', codigo: '7796543219870', cantidad: 5 }
+        ];
+
+        function Editar({ producto, alGuardar }) {
+            let [nombre, setNombre] = useState(producto.nombre);
+            let [codigo, setCodigo] = useState(producto.codigo);
+            let [cantidad, setCantidad] = useState(producto.cantidad);
+
+            const cambiarNombre = (e) => setNombre(e.target.value);
+            const cambiarCodigo = (e) => setCodigo(e.target.value);
+            const cambiarCantidad = (e) => setCantidad(e.target.value);
+
+            const aceptar = (e) => {
+                e.preventDefault();
+                alGuardar({ ...producto, nombre, codigo, cantidad });
+            };
+
+            const cancelar = (e) => {
+                e.preventDefault();
+                alGuardar(null);
+            };
+
+            return (
+                <form className="panel">
+                    <label>Nombre:</label>
+                    <input type="text" value={nombre} onChange={cambiarNombre} />
+
+                    <label>Código EAN:</label>
+                    <input type="text" value={codigo} onChange={cambiarCodigo} />
+
+                    <label>Cantidad:</label>
+                    <input type="number" value={cantidad} onChange={cambiarCantidad} />
+
+                    <div className="acciones">
+                        <button className="accept-button" onClick={aceptar}>Aceptar</button>
+                        <button className="cancel-button" onClick={cancelar}>Cancelar</button>
+                    </div>
+                </form>
+            );
+        }
+
+        function Mostrar({ producto, alEditar, alBorrar }) {
+            return (
+                <div className="item">
+                    <div className="item-info">
+                        <span className="item-name">{producto.nombre}</span>
+                        <span className="item-code">Código EAN: {producto.codigo}</span>
+                        <span className="item-code">Cantidad: {producto.cantidad}</span>
+                    </div>
+                    <div className="item-actions">
+                        <button className="edit-button" onClick={alEditar}></button>
+                        <button className="delete-button" onClick={alBorrar}></button>
+                    </div>
+                </div>
+            );
+        }
+
+        function Inventario({ datos, alAgregar, alEditar, alBorrar }) {
+            return (
+                <div className="container">
+                    <header>
+                        <h1>Control Depósito</h1>
+                        <button className="add-button" onClick={alAgregar}>➕</button>
+                    </header>
+                    <div className="item-list">
+                        {datos.map((producto) => (
+                            <Mostrar
+                                key={producto.id}
+                                producto={producto}
+                                alEditar={() => alEditar(producto.id)}
+                                alBorrar={() => alBorrar(producto.id)}
+                            />
+                        ))}
+                    </div>
+                </div>
+            );
+        }
+
+        function proximoId(productos) {
+            return productos.length ? Math.max(...productos.map(p => p.id)) + 1 : 1;
+        }
+
+        function leerProductos() {
+            const productos = JSON.parse(localStorage.getItem('productos'));
+            return productos ? productos : ProductosIniciales;
+        }
+
+        function guardarProductos(productos) {
+            console.log("Guardando productos en localStorage:", productos);
+            localStorage.setItem('productos', JSON.stringify(productos));
+        }
+
+        function App() {
+            let [editando, setEditando] = useState(false);
+            let [producto, setProducto] = useState({});
+            let [productos, setProductos] = useState(leerProductos());
+
+            useEffect(() => {
+                guardarProductos(productos);
+            }, [productos]);
+
+            const agregar = () => {
+                setProducto({ nombre: "", codigo: "", cantidad: 0 });
+                setEditando(true);
+            };
+
+            const editar = (id) => {
+                const producto = productos.find(p => p.id === id);
+                setProducto(producto);
+                setEditando(true);
+            };
+
+            const borrar = (id) => {
+                //Baja
+                const copia = productos.filter(p => p.id !== id);
+                setProductos(copia);
+            };
+
+            const guardar = (producto) => {
+                if (producto) {
+                    if (producto.id) {//Modificacion 
+                        const copia = productos.map(p => p.id === producto.id ? producto : p);
+                        setProductos(copia);
+                    } else {//Alta
+                        const id = proximoId(productos);
+                        const nuevoProducto = { ...producto, id };
+                        const copia = [...productos, nuevoProducto];
+                        setProductos(copia);
+                    }
+                }
+                setEditando(false);
+            };
+
+            return (
+                <>
+                    {editando ? (
+                        <Editar producto={producto} alGuardar={guardar} />
+                    ) : (
+                        <Inventario datos={productos} alAgregar={agregar} alEditar={editar} alBorrar={borrar} />
+                    )}
+                </>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+
+</html>

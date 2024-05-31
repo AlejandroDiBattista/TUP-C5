@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <link rel="stylesheet" href="index.css">
+    <title>Inventario</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState } = React;
+
+        function Formulario({ producto, alGuardar, alCancelar }) {
+            let [nombre, setNombre] = useState(producto.nombre || '');
+            let [ean, setEan] = useState(producto.ean || '');
+            let [cantidad, setCantidad] = useState(producto.cantidad || 1);
+            let [error, setError] = useState(false);
+
+            const cambiarNombre = e => {
+                setNombre(e.target.value);
+                setError(false);
+            };
+            const cambiarEan = e => {
+                setEan(e.target.value);
+                setError(false);
+            };
+            const cambiarCantidad = e => {
+                setCantidad(parseInt(e.target.value) || 1);
+                setError(false);
+            };
+
+            const guardar = e => {
+                e.preventDefault();
+                if (nombre.trim() === '' || ean.trim() === '') {
+                    setError(true);
+                    return;
+                }
+                alGuardar({ ...producto, nombre, ean, cantidad });
+            };
+            const cancelar = e => {
+                e.preventDefault();
+                alCancelar();
+            };
+            return (
+                <form className="formulario">
+                    
+                    <input type="text" value={nombre} onChange={cambiarNombre} />
+                    <input type="text" value={ean} onChange={cambiarEan} />
+                    <input type="number" value={cantidad} onChange={cambiarCantidad} />
+                    
+                    {error && <p className="error">Todos los campos son obligatorios</p>}
+                    <div className="acciones">
+                        <button onClick={guardar}>Guardar</button>
+                        <button onClick={cancelar}>Cancelar</button>
+                    </div>
+                </form>
+            );
+        }
+
+        function Producto({ producto, alEditar, alBorrar }) {
+            return (
+                <div className="producto">
+                    <div className="numero">{producto.cantidad}</div>
+                    <div className="detalles">
+                        <p className="nombre">{producto.nombre}</p>
+                        <p className="ean">{producto.ean}</p>
+                    </div>
+                    <div className="botones">
+                        <button className="img-editar" onClick={() => alEditar(producto.id)}></button>
+                        <button className="img-borrar" onClick={() => alBorrar(producto.id)}></button>
+                    </div>
+                </div>
+            );
+        }
+
+        function ListaProductos({ productos, alAgregar, alEditar, alBorrar }) {
+            return (
+                <>
+                    <div className="centrado">
+                        <h1>Inventario del Depósito</h1>
+                        <button className="add-button" onClick={alAgregar}></button>
+                    </div>
+                    {productos.length === 0 && <h3 className="centrado">No hay productos</h3>}
+                    {productos.map(producto =>
+                        <Producto key={producto.id}
+                            producto={producto}
+                            alEditar={alEditar}
+                            alBorrar={alBorrar}
+                        />
+                    )}
+                </>
+            );
+        }
+
+        function App() {
+            const [productos, setProductos] = useState([]);
+            const [editando, setEditando] = useState(false);
+            const [productoActual, setProductoActual] = useState({});
+
+            const guardarProducto = (producto) => {
+                if (producto.id) {
+                    setProductos(productos.map(p => p.id === producto.id ? producto : p));
+                } else {
+                    producto.id = Math.max(0, ...productos.map(p => p.id)) + 1;
+                    setProductos([...productos, producto]);
+                }
+                setEditando(false);
+            };
+
+            const cancelarEdicion = () => {
+                setEditando(false);
+            };
+
+            const agregarProducto = () => {
+                setProductoActual({});
+                setEditando(true);
+            };
+
+            const editarProducto = (id) => {
+                setProductoActual(productos.find(p => p.id === id));
+                setEditando(true);
+            };
+
+            const borrarProducto = (id) => {
+                setProductos(productos.filter(p => p.id !== id));
+            };
+
+            return (
+                <>
+                    {editando
+                        ? <Formulario producto={productoActual}
+                            alGuardar={guardarProducto}
+                            alCancelar={cancelarEdicion}
+                        />
+                        : <ListaProductos productos={productos}
+                            alAgregar={agregarProducto}
+                            alEditar={editarProducto}
+                            alBorrar={borrarProducto}
+                        />
+                    }
+                </>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+
+</html>
