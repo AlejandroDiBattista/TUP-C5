@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>58721</title>
+    <!-- Cargando React y ReactDOM para desarrollo -->
     <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+   
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  
     <style>
-       body {
+       
+        body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
             margin: 0;
@@ -25,12 +28,14 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 300px;
+            width: 310px;
             margin-bottom: 20px;
             position: relative;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            height: auto; 
+            
         }
 
         .texto {
@@ -38,12 +43,14 @@
             margin-bottom: 10px;
         }
 
+       
         .acciones {
             display: flex;
             flex-direction: column;
             position: absolute;
-            top: 10px;
-            right: 10px;
+            top: 2px;
+            right: 15px;
+            
         }
 
         .acciones button {
@@ -67,28 +74,36 @@
             font-weight: bold;
         }
 
-        h1 {
+        .header {
+            display: flex;
+            align-items: center;
             margin-top: 20px;
-            text-align: center;
+        }
+
+        .header h1 {
+            flex-grow: 1;
+            margin: 0;
         }
 
         .agregar-btn {
-            margin-bottom: 20px;
-            font-size: 24px;
+            margin-left: 20px; 
             cursor: pointer;
             background: none;
             border: none;
-            color: #007bff;
+            padding: 0;
         }
 
         .agregar-btn:hover {
             color: #0056b3;
         }
 
+        .agregar {
+            transform: scale(1); 
+        }
+
         .container {
             display: flex;
             flex-direction: column;
-            align-items: center;
         }
 
         .contador-btn {
@@ -113,19 +128,15 @@
         .panel input {
             width: calc(100% - 40px);
             padding: 10px;
-            margin: 5px 0;
+            margin: 1px 0;
             border-radius: 5px;
             border: 1px solid #ccc;
+            box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el ancho total */
         }
 
         .panel label {
             margin: 15px 0;
             font-weight: bold;
-        }
-
-        .panel .acciones form {
-            display: flex;
-            justify-content: space-between;
         }
 
         .panel .acciones form button {
@@ -135,22 +146,23 @@
             border-radius: 5px;
             padding: 5px 10px;
             cursor: pointer;
+            margin: 5px 0;
         }
 
         .panel .acciones form button:hover {
             background: #003d80;
         }
 
-        .editar{
-            transform: scale(0.5); 
+        .editar {
+            transform: scale(0.5);
         }
 
-        .borrar{
-            transform: scale(0.5); 
+        .borrar {
+            transform: scale(0.5);
         }
 
-        .agregar{
-            transform: scale(0.5); 
+        .agregar {
+            transform: scale(0.5);
         }
     </style>
 </head>
@@ -159,6 +171,7 @@
     <script type="text/babel">
         const { useState, useEffect } = React;
 
+        // Componente para editar un producto existente o nuevo
         function Editar({ producto, alGuardar, alCancelar }) {
             const [nombre, setNombre] = useState(producto.nombre || "");
             const [codigo, setCodigo] = useState(producto.codigo || "");
@@ -196,12 +209,9 @@
 
             return (
                 <div className="panel">
-                    <label>Nombre</label>
-                    <input type="text" value={nombre} onChange={cambiarNombre} />
-                    <label>Codigo</label>
-                    <input type="text" value={codigo} onChange={cambiarCodigo} />
-                    <label>Cantidad</label>
-                    <input type="number" value={cantidad} onChange={cambiarCantidad} />
+                    <input type="text" value={nombre} onChange={cambiarNombre} placeholder="Nombre" />
+                    <input type="text" value={codigo} onChange={cambiarCodigo} placeholder="EAN" />
+                    <input type="number" value={cantidad} onChange={cambiarCantidad} placeholder="Cantidad" />
                     {error && <p className="Error">Todos los campos son obligatorios y la cantidad debe ser mayor a 0</p>}
                     <div className="acciones">
                         <form onSubmit={guardar}>
@@ -213,15 +223,18 @@
             );
         }
 
+       
         function Mostrar({ producto, alEditar, alBorrar, alIncrementar }) {
             const editar = (e) => {
                 e.stopPropagation();
                 alEditar(producto);
             };
+
             const borrar = (e) => {
                 e.stopPropagation();
                 alBorrar(producto);
             };
+
             const incrementar = () => alIncrementar(producto);
 
             return (
@@ -241,15 +254,18 @@
             );
         }
 
+        // Componente que organiza y muestra todos los productos
         function Agenda({ productos, alEditar, alBorrar, alAgregar, alIncrementar }) {
             const productosOrdenados = [...productos].sort((a, b) => a.nombre.localeCompare(b.nombre));
 
             return (
                 <div className="container">
-                    <h1>Control Deposito</h1>
-                    <button className="agregar-btn" onClick={alAgregar}>
-                        <img className="agregar" src="./imagenes/Agregar.jpg" alt=""/>
-                    </button>
+                    <div className="header">
+                        <h1>Control Depósito</h1>
+                        <button className="agregar-btn" onClick={alAgregar}>
+                            <img className="agregar" src="./imagenes/Agregar.jpg" alt=""/>
+                        </button>
+                    </div>
                     {productosOrdenados.map(producto => (
                         producto.editando
                             ? <Editar
@@ -270,6 +286,7 @@
             );
         }
 
+        // Componente principal que maneja el estado de la aplicación
         function App() {
             const [productos, setProductos] = useState(() => {
                 const savedProductos = localStorage.getItem('productos');
@@ -280,12 +297,6 @@
                 localStorage.setItem('productos', JSON.stringify(productos));
             }, [productos]);
 
-            const generarCodigoAleatorio = () => {
-                const min = 7790000000000;
-                const max = 7799999999999;
-                return Math.floor(Math.random() * (max - min + 1)) + min;
-            };
-
             const guardar = productoActualizado => {
                 setProductos(productos.map(c => c.id === productoActualizado.id ? productoActualizado : c));
             };
@@ -294,7 +305,7 @@
                 const nuevoProducto = {
                     id: Date.now(),
                     nombre: "",
-                    codigo: generarCodigoAleatorio().toString(),
+                    codigo: "",
                     contador: 1,
                     editando: true
                 };
