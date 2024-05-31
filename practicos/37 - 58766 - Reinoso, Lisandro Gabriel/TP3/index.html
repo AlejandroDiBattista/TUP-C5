@@ -141,10 +141,10 @@
             { EAN: "7799219838028", nombre: "Secco", cantidad: 8, estadoEditando: false }
         ]
 
-        const EditarProducto = ({ producto, guardar, cancelar }) => {
-            const [nombre, setNombre] = useState(producto.nombre)
-            const [EAN, setEAN] = useState(producto.EAN)
-            const [cantidad, setCantidad] = useState(producto.cantidad)
+        const EditarAgregar = ({ producto = {}, guardar, cancelar }) => {
+            const [nombre, setNombre] = useState(producto.nombre || "")
+            const [EAN, setEAN] = useState(producto.EAN || "")
+            const [cantidad, setCantidad] = useState(producto.cantidad || "")
 
             const actualizarNombre = (event) => setNombre(event.target.value)
             const actualizarEAN = (event) => setEAN(event.target.value)
@@ -172,39 +172,9 @@
             )
         }
 
-        const AgregarProducto = ({ guardar, cancelar }) => {
-            const [nombre, setNombre] = useState("")
-            const [EAN, setEAN] = useState("")
-            const [cantidad, setCantidad] = useState("")
-
-            const actualizarNombre = (event) => setNombre(event.target.value)
-            const actualizarEAN = (event) => setEAN(event.target.value)
-            const actualizarCantidad = (event) => setCantidad(event.target.value)
-
-            const productoGuardado = (event) => {
-                event.preventDefault()
-                guardar({ EAN, nombre, cantidad })
-            }
-
-            const cancelarProducto = (event) => {
-                event.preventDefault()
-                cancelar()
-            }
-
-            return (
-                <form className="formulario">
-                    <input type="text" placeholder="Nombre" value={nombre} onChange={actualizarNombre} />
-                    <input type="number" placeholder="EAN" value={EAN} onChange={actualizarEAN} min="0" />
-                    <input type="number" placeholder="Cantidad" value={cantidad} onChange={actualizarCantidad} min="0" />
-                    <button onClick={productoGuardado}>Guardar</button>
-                    <button onClick={cancelarProducto}>Cancelar</button>
-                </form>
-            )
-        }
-
         const Producto = ({ producto, editarProducto, borrarProducto, aumentarProductos, guardarProducto, cancelarEdicion }) => (
             producto.estadoEditando ? (
-                <EditarProducto
+                <EditarAgregar
                     producto={producto}
                     guardar={guardarProducto}
                     cancelar={() => cancelarEdicion(producto.EAN)}
@@ -214,8 +184,8 @@
                     <div className="nombre">{producto.nombre}</div>
                     <div className="EAN">{producto.EAN}</div>
                     <div className="cantidad">{producto.cantidad}</div>
-                    <i className="fa-solid fa-pen-to-square" onClick={(e) => { e.stopPropagation(); editarProducto(producto) }}></i>
-                    <i className="fa-solid fa-trash" onClick={(e) => { e.stopPropagation(); borrarProducto(producto.EAN) }}></i>
+                    <i className="fa-solid fa-pen-to-square" onClick={(e) => { e.stopPropagation(); editarProducto(producto)}}></i>
+                    <i className="fa-solid fa-trash" onClick={(e) => { e.stopPropagation(); borrarProducto(producto.EAN)}}></i>
                 </li>
             )
         )
@@ -244,7 +214,7 @@
             const [agregando, setAgregando] = useState(false)
 
             const actualizarProductos = (nuevosProductos) => {
-                setProductos(nuevosProductos);
+                setProductos(nuevosProductos)
                 localStorage.setItem("Productos", JSON.stringify(nuevosProductos))
             }
 
@@ -277,23 +247,20 @@
 
                     if (EAN.length !== 13) {
                         alert("El codigo EAN debe contener 13 digitos")
-                    }
-
+                    } 
                     else {
-
                         if (originalEAN) {
                             actualizarProductos(productos.map(p =>
                                 p.EAN === originalEAN ? { EAN, nombre, cantidad, estadoEditando: false } : p
                             ))
-                        }
-                        else {
+                        } else {
                             actualizarProductos([...productos, { EAN, nombre, cantidad, estadoEditando: false }])
                         }
                         setAgregando(false)
                     }
-                }
+                } 
                 else {
-                    alert("Complete los espacios para poder guardar un producto")
+                    alert("Complete los espacios para poder guardar un producto");
                 }
             }
 
@@ -304,13 +271,13 @@
             const incrementarCantidad = (EAN) => {
                 actualizarProductos(productos.map((p) =>
                     p.EAN === EAN ? { ...p, cantidad: parseInt(p.cantidad) + 1 } : p
-                ).sort((a, b) => a.nombre.localeCompare(b.nombre)))
+                ))
             }
 
             return (
                 <>
                     {agregando ? (
-                        <AgregarProducto guardar={guardarProducto} cancelar={cancelarAgregarProducto}/>
+                        <EditarAgregar guardar={guardarProducto} cancelar={cancelarAgregarProducto} />
                     ) : (
                         <MostrarControlDeProductos
                             productos={productos}
