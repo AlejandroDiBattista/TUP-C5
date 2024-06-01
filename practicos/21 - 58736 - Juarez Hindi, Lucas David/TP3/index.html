@@ -75,6 +75,7 @@
             background-color: #f9f9f9;
             border: 1px solid #ddd;
             border-radius: 8px;
+            cursor: pointer; /* Añadido para indicar que la tarjeta es clicable */
         }
 
         .item-info {
@@ -209,8 +210,8 @@
                     <input type="text" value={codigo} onChange={cambiarCodigo} placeholder="Código EAN" />
                     <input type="number" value={cantidad} onChange={cambiarCantidad} placeholder="Cantidad" />
                     <div className="acciones">
-                        <button className="accept-button" onClick={aceptar}>Aceptar </button>
-                        <button className="cancel-button" onClick={cancelar}>Cancelar</button>
+                        <button className="accept-button" onClick={aceptar}>Aceptar</button>
+<button className="cancel-button" onClick={cancelar}>Cancelar</button>
                     </div>
                 </form>
             );
@@ -218,7 +219,7 @@
 
         function Mostrar({ producto, alEditar, alBorrar, alIncrementarCantidad }) {
             return (
-                <div className="item">
+                <div className="item" onClick={alIncrementarCantidad}>
                     <div className="item-info">
                         <span className="item-id">{producto.id}</span>
                         <span className="item-name">{producto.nombre}</span>
@@ -226,15 +227,14 @@
                         <span className="item-quantity">Cantidad: {producto.cantidad}</span>
                     </div>
                     <div className="item-actions">
-                        <button className="increment-button" onClick={alIncrementarCantidad}><i className="fas fa-plus"></i></button>
-                        <button className="edit-button" onClick={alEditar}><i className="far fa-pen-to-square"></i></button>
-                        <button className="delete-button" onClick={alBorrar}><i className="far fa-trash-can"></i></button>
+                        <button className="edit-button" onClick={(e) => { e.stopPropagation(); alEditar(); }}><i className="far fa-pen-to-square"></i></button>
+                        <button className="delete-button" onClick={(e) => { e.stopPropagation(); alBorrar(); }}><i className="far fa-trash-can"></i></button>
                     </div>
                 </div>
             );
         }
 
-        function Inventario({ datos, alAgregar, alEditar, alBorrar, alGuardar, alCancelar, alCancelarAgregar, alIncrementarCantidad }) {
+        function Inventario({ datos, alAgregar, alEditar, alBorrar, alGuardar, alCancelarEdicion, alCancelarAgregar, alIncrementarCantidad }) {
             const [isHeaderSticky, setIsHeaderSticky] = useState(false);
 
             useEffect(() => {
@@ -255,8 +255,7 @@
                 alAgregar();
             };
 
-            return (
-                <div className="container">
+            return (<div className="container">
                     <header className={isHeaderSticky ? 'sticky' : ''}>
                         <h1>Control Depósito</h1>
                         <button className="add-button" onClick={agregarProducto}>
@@ -270,7 +269,13 @@
                                     key={producto.id}
                                     producto={producto}
                                     alGuardar={alGuardar}
-                                    alCancelar={() => alCancelar(producto.id)}
+                                    alCancelar={() => {
+                                        if (producto.id === -1) {
+                                            alCancelarAgregar();
+                                        } else {
+                                            alCancelarEdicion(producto.id);
+                                        }
+                                    }}
                                 />
                             ) : (
                                 <Mostrar
@@ -328,11 +333,18 @@
             };
 
             const cancelarEdicion = (id) => {
+                const productosOriginales = leerProductos();
+                const productoOriginal = productosOriginales.find(producto => producto.id === id);
                 setProductos(
                     productos.map(producto =>
-                        producto.id === id ? { ...producto, editando: false } : producto
+                        producto.id === id ? { ...productoOriginal, editando: false } : producto
                     )
                 );
+            };
+
+            const cancelarAgregar = () => {
+                const productosFiltrados = productos.filter(producto => producto.id !== -1);
+                setProductos(productosFiltrados);
             };
 
             const borrar = (id) => {
@@ -353,12 +365,6 @@
                 );
             };
 
-            const cancelarAgregar = () => {
-    const productosSinEditando = productos.filter(producto => !producto.editando);
-    setProductos(productosSinEditando);
-};
-
-
             const incrementarCantidad = (id) => {
                 setProductos(
                     productos.map(producto =>
@@ -374,7 +380,7 @@
                     alEditar={editar}
                     alBorrar={borrar}
                     alGuardar={guardar}
-                    alCancelar={cancelarEdicion}
+                    alCancelarEdicion={cancelarEdicion}
                     alCancelarAgregar={cancelarAgregar}
                     alIncrementarCantidad={incrementarCantidad}
                 />
@@ -387,4 +393,3 @@
 </body>
 
 </html>
-
