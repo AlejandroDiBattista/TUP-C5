@@ -6,6 +6,8 @@
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://kit.fontawesome.com/d59e108fde.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -27,6 +29,7 @@
             padding: 20px;
             overflow-y: auto;
             max-height: 90vh;
+            position: relative;
         }
 
         header {
@@ -35,10 +38,8 @@
             align-items: center;
             padding-bottom: 20px;
             border-bottom: 1px solid #ddd;
-            position: sticky;
-            top: 0;
             background-color: #fff;
-            z-index: 1;
+            transition: top 0.3s;
         }
 
         header h1 {
@@ -51,6 +52,14 @@
             border: none;
             background: none;
             cursor: pointer;
+        }
+
+        header.sticky {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1;
         }
 
         .item-list {
@@ -74,6 +83,12 @@
             align-items: flex-start;
         }
 
+        .item-id {
+            font-size: 24px;
+            font-weight: bold;
+            color: blue;
+        }
+
         .item-name {
             font-size: 18px;
             font-weight: bold;
@@ -83,6 +98,11 @@
         .item-code {
             font-size: 14px;
             color: #666;
+        }
+
+        .item-quantity {
+            font-size: 14px;
+            color: #333;
         }
 
         .item-actions {
@@ -99,61 +119,48 @@
             color: #000;
         }
 
-        .item-actions .edit-button::before {
-            content: '✏️';
-        }
-
-        .item-actions .delete-button::before {
-            content: '🗑️';
-        }
-
-        .panel {
-            width: 100%;
-            margin: 20px 0;
-            border: 1px solid #ccc;
-            padding: 20px;
-            border-radius: 8px;
-            background: #fff;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        input {
-            width: 100%;
-            margin-bottom: 10px;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
-        .acciones {
+        .formulario-edicion {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff;
         }
 
-        .acciones button {
-            font-size: 14px;
-            padding: 8px 12px;
-            border-radius: 4px;
+        .formulario-edicion input {
+            width: calc(100% - 20px);
+            margin: 5px 0;
+            padding: 10px;
             border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .formulario-edicion .acciones {
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .formulario-edicion .acciones button {
+            margin-left: 10px;
+            padding: 8px 16px;
+            font-size: 14px;
+            border: 1px solid #000305;
+            border-radius: 4px;
+            background-color: #ffffff;
+            color: #000000;
             cursor: pointer;
         }
 
-        .acciones .accept-button {
-            background-color: #007bff;
-            color: #fff;
-            margin-right: 5px;
-        }
-
-        .acciones .cancel-button {
-            background-color: #007bff;
-            color: #fff;
+        .formulario-edicion .acciones .cancel-button {
+            background-color: #ffffff;
+            border-color: #000305;
+            color: #000000;
         }
     </style>
+
 </head>
 
 <body>
@@ -162,17 +169,17 @@
         const { useState, useEffect } = React;
 
         const ProductosIniciales = [
-            { id: 7, nombre: '7up', codigo: '7799876543210', cantidad: 1 },
-            { id: 92, nombre: 'Cola Cola', codigo: '7791234567890', cantidad: 2 },
-            { id: 5, nombre: 'Fanta', codigo: '7793219876540', cantidad: 3 },
-            { id: 6, nombre: 'Mirinda', codigo: '7797894561230', cantidad: 4 },
-            { id: 4, nombre: 'Sprite', codigo: '7796543219870', cantidad: 5 }
+            { id: 7, nombre: '7up', codigo: '7799876543210', cantidad: 1, editando: false },
+            { id: 92, nombre: 'Cola Cola', codigo: '7791234567890', cantidad: 2, editando: false },
+            { id: 5, nombre: 'Fanta', codigo: '7793219876540', cantidad: 3, editando: false },
+            { id: 6, nombre: 'Mirinda', codigo: '7797894561230', cantidad: 4, editando: false },
+            { id: 4, nombre: 'Sprite', codigo: '7796543219870', cantidad: 5, editando: false }
         ];
 
-        function Editar({ producto, alGuardar }) {
-            let [nombre, setNombre] = useState(producto.nombre);
-            let [codigo, setCodigo] = useState(producto.codigo);
-            let [cantidad, setCantidad] = useState(producto.cantidad);
+        function Editar({ producto, alGuardar, alCancelar }) {
+            const [nombre, setNombre] = useState(producto.nombre);
+            const [codigo, setCodigo] = useState(producto.codigo);
+            const [cantidad, setCantidad] = useState(producto.cantidad);
 
             const cambiarNombre = (e) => setNombre(e.target.value);
             const cambiarCodigo = (e) => setCodigo(e.target.value);
@@ -180,65 +187,101 @@
 
             const aceptar = (e) => {
                 e.preventDefault();
+                if (!nombre || !codigo || !cantidad) {
+                    alert("Por favor, complete todos los campos antes de guardar el producto.");
+                    return;
+                }
+                if (codigo.length !== 13) {
+                    alert("El código EAN debe tener exactamente 13 dígitos.");
+                    return;
+                }
                 alGuardar({ ...producto, nombre, codigo, cantidad });
             };
 
             const cancelar = (e) => {
                 e.preventDefault();
-                alGuardar(null);
+                alCancelar();
             };
 
             return (
-                <form className="panel">
-                    <label>Nombre:</label>
-                    <input type="text" value={nombre} onChange={cambiarNombre} />
-
-                    <label>Código EAN:</label>
-                    <input type="text" value={codigo} onChange={cambiarCodigo} />
-
-                    <label>Cantidad:</label>
-                    <input type="number" value={cantidad} onChange={cambiarCantidad} />
-
+                <form className="formulario-edicion">
+                    <input type="text" value={nombre} onChange={cambiarNombre} placeholder="Nombre" />
+                    <input type="text" value={codigo} onChange={cambiarCodigo} placeholder="Código EAN" />
+                    <input type="number" value={cantidad} onChange={cambiarCantidad} placeholder="Cantidad" />
                     <div className="acciones">
-                        <button className="accept-button" onClick={aceptar}>Aceptar</button>
+                        <button className="accept-button" onClick={aceptar}>Aceptar </button>
                         <button className="cancel-button" onClick={cancelar}>Cancelar</button>
                     </div>
                 </form>
             );
         }
 
-        function Mostrar({ producto, alEditar, alBorrar }) {
+        function Mostrar({ producto, alEditar, alBorrar, alIncrementarCantidad }) {
             return (
                 <div className="item">
                     <div className="item-info">
+                        <span className="item-id">{producto.id}</span>
                         <span className="item-name">{producto.nombre}</span>
-                        <span className="item-code">Código EAN: {producto.codigo}</span>
-                        <span className="item-code">Cantidad: {producto.cantidad}</span>
+                        <span className="item-code">{producto.codigo}</span>
+                        <span className="item-quantity">Cantidad: {producto.cantidad}</span>
                     </div>
                     <div className="item-actions">
-                        <button className="edit-button" onClick={alEditar}></button>
-                        <button className="delete-button" onClick={alBorrar}></button>
+                        <button className="increment-button" onClick={alIncrementarCantidad}><i className="fas fa-plus"></i></button>
+                        <button className="edit-button" onClick={alEditar}><i className="far fa-pen-to-square"></i></button>
+                        <button className="delete-button" onClick={alBorrar}><i className="far fa-trash-can"></i></button>
                     </div>
                 </div>
             );
         }
 
-        function Inventario({ datos, alAgregar, alEditar, alBorrar }) {
+        function Inventario({ datos, alAgregar, alEditar, alBorrar, alGuardar, alCancelar, alCancelarAgregar, alIncrementarCantidad }) {
+            const [isHeaderSticky, setIsHeaderSticky] = useState(false);
+
+            useEffect(() => {
+                const handleScroll = () => {
+                    setIsHeaderSticky(window.scrollY > 0);
+                };
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            const agregarProducto = () => {
+                const productoEditando = datos.find(producto => producto.editando);
+                if (productoEditando) {
+                    alert("Por favor, complete la edición del producto actual antes de agregar uno nuevo.");
+                    return;
+                }
+
+                alAgregar();
+            };
+
             return (
                 <div className="container">
-                    <header>
+                    <header className={isHeaderSticky ? 'sticky' : ''}>
                         <h1>Control Depósito</h1>
-                        <button className="add-button" onClick={alAgregar}>➕</button>
+                        <button className="add-button" onClick={agregarProducto}>
+                            <i className="fa-solid fa-plus"></i>
+                        </button>
                     </header>
                     <div className="item-list">
-                        {datos.map((producto) => (
-                            <Mostrar
-                                key={producto.id}
-                                producto={producto}
-                                alEditar={() => alEditar(producto.id)}
-                                alBorrar={() => alBorrar(producto.id)}
-                            />
-                        ))}
+                        {datos.map((producto) =>
+                            producto.editando ? (
+                                <Editar
+                                    key={producto.id}
+                                    producto={producto}
+                                    alGuardar={alGuardar}
+                                    alCancelar={() => alCancelar(producto.id)}
+                                />
+                            ) : (
+                                <Mostrar
+                                    key={producto.id}
+                                    producto={producto}
+                                    alEditar={() => alEditar(producto.id)}
+                                    alBorrar={() => alBorrar(producto.id)}
+                                    alIncrementarCantidad={() => alIncrementarCantidad(producto.id)}
+                                />
+                            )
+                        )}
                     </div>
                 </div>
             );
@@ -259,8 +302,6 @@
         }
 
         function App() {
-            let [editando, setEditando] = useState(false);
-            let [producto, setProducto] = useState({});
             let [productos, setProductos] = useState(leerProductos());
 
             useEffect(() => {
@@ -268,45 +309,75 @@
             }, [productos]);
 
             const agregar = () => {
-                setProducto({ nombre: "", codigo: "", cantidad: 0 });
-                setEditando(true);
+                const productoEditando = productos.find(producto => producto.editando);
+                if (productoEditando) {
+                    alert("Por favor, complete la edición del producto actual antes de agregar uno nuevo.");
+                    return;
+                }
+
+                const nuevoProducto = { id: proximoId(productos), nombre: '', codigo: '', cantidad: 0, editando: true };
+                setProductos([nuevoProducto, ...productos]);
             };
 
             const editar = (id) => {
-                const producto = productos.find(p => p.id === id);
-                setProducto(producto);
-                setEditando(true);
+                setProductos(
+                    productos.map(producto =>
+                        producto.id === id ? { ...producto, editando: true } : producto
+                    )
+                );
+            };
+
+            const cancelarEdicion = (id) => {
+                setProductos(
+                    productos.map(producto =>
+                        producto.id === id ? { ...producto, editando: false } : producto
+                    )
+                );
             };
 
             const borrar = (id) => {
-                //Baja
                 const copia = productos.filter(p => p.id !== id);
                 setProductos(copia);
             };
 
-            const guardar = (producto) => {
-                if (producto) {
-                    if (producto.id) {//Modificacion 
-                        const copia = productos.map(p => p.id === producto.id ? producto : p);
-                        setProductos(copia);
-                    } else {//Alta
-                        const id = proximoId(productos);
-                        const nuevoProducto = { ...producto, id };
-                        const copia = [...productos, nuevoProducto];
-                        setProductos(copia);
-                    }
+            const guardar = (productoEditado) => {
+                if (!productoEditado.nombre || !productoEditado.codigo || !productoEditado.cantidad) {
+                    alert("Por favor, complete todos los campos antes de guardar el producto.");
+                    return;
                 }
-                setEditando(false);
+
+                setProductos(
+                    productos.map(producto =>
+                        producto.id === productoEditado.id ? { ...productoEditado, editando: false } : producto
+                    )
+                );
+            };
+
+            const cancelarAgregar = () => {
+    const productosSinEditando = productos.filter(producto => !producto.editando);
+    setProductos(productosSinEditando);
+};
+
+
+            const incrementarCantidad = (id) => {
+                setProductos(
+                    productos.map(producto =>
+                        producto.id === id ? { ...producto, cantidad: parseInt(producto.cantidad) + 1 } : producto
+                    )
+                );
             };
 
             return (
-                <>
-                    {editando ? (
-                        <Editar producto={producto} alGuardar={guardar} />
-                    ) : (
-                        <Inventario datos={productos} alAgregar={agregar} alEditar={editar} alBorrar={borrar} />
-                    )}
-                </>
+                <Inventario
+                    datos={productos}
+                    alAgregar={agregar}
+                    alEditar={editar}
+                    alBorrar={borrar}
+                    alGuardar={guardar}
+                    alCancelar={cancelarEdicion}
+                    alCancelarAgregar={cancelarAgregar}
+                    alIncrementarCantidad={incrementarCantidad}
+                />
             );
         }
 
@@ -316,3 +387,4 @@
 </body>
 
 </html>
+
