@@ -14,34 +14,38 @@
             background-color: #f9f9f9;
         }
         #root {
-            padding: 20px;
+            padding: 10px;
             margin: 0 auto;
             max-width: 600px;
         }
-        h1 {
-            font-size: 32px;
-            text-align: center;
+        .header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center; 
+            gap: 10px; 
             margin-bottom: 20px;
-            border: 2px solid #007bff;
-            padding: 10px;
-            border-radius: 8px;
-            color: #007bff;
-            background-color: #f9f9f9;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin: 10;
+            font-size: 40px;
         }
         .panel {
             border: 1px solid #ccc;
-            background-color: #fff;
-            border-radius: 10px;
+            position: relative;
             padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            width: 400px;
+            min-height: 130px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            border-radius: 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+            overflow: hidden;
         }
         .panel p {
-            margin: 0;
+            margin: 7;
         }
         label {
             display: block;
@@ -50,7 +54,7 @@
             margin-bottom: 5px;
         }
         input {
-            width: calc(100% - 10px);
+            width: calc(100% - 20px);
             padding: 10px;
             margin-bottom: 10px;
             font-size: 14px;
@@ -59,44 +63,43 @@
         }
         .acciones {
             display: flex;
-            flex-direction: column;
             align-items: center;
             margin-top: 10px;
         }
         button {
-            margin-bottom: 5px;
-            padding: 10px 15px;
-            font-size: 14px;
-            border: none;
-            border-radius: 4px;
-            background-color: #007bff;
-            color: #fff;
+            border: .1rem solid black;
+            border-radius: .7rem;
+            font-size: large;
+            width: 6rem;
+            padding: .3rem .5rem;
+            margin-bottom: .5rem;
+            background-color: #ffffff;
             cursor: pointer;
+            margin-right: 1.500rem;
+            margin-left: 1.500rem;
         }
         button:hover {
-            background-color: #0056b3;
+            background-color: #ffffff;
         }
         .error {
             color: red;
             font-size: 12px;
         }
         .cantidad {
-            font-size: 32px;
-            color: #007bff;
+            font-size: 70px;
             font-weight: bold;
-            cursor: pointer;
-            margin-right: 20px;
-            min-width: 60px;
-            text-align: center;
+            color: blue;
+            margin-left: 2px;
+            flex-shrink: 0;
         }
         .producto-detalles {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
+            font-size: 20px;
+            margin-left: 40px;
+            text-align: start;
             flex-grow: 1;
         }
         .nombre {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
             margin: 0;
         }
@@ -105,33 +108,41 @@
             color: #888;
         }
         .icon {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             cursor: pointer;
-            margin-left: 10px;
+            font-size: 1.5em;
         }
         .icon:hover {
-            color: #0056b3;
+            color: #252524;
         }
         .icon-edit {
-            font-size: 18px;
-            color: #007bff;
+            bottom: 130px;
+            right: 12px;
         }
         .icon-delete {
-            font-size: 18px;
-            color: #dc3545;
+            bottom: 20px;
+            right: 12px;
         }
         .icon-add {
             font-size: 32px;
-            color: #007bff;
+            color: #000000;
             display: block;
-            margin: 0 auto 20px auto;
+            margin: 0 auto 30px auto;
             cursor: pointer;
+            right: 350px
         }
         .icon-add:hover {
-            color: #0056b3;
+            color: #2b2c2c;
+        }
+        .editar-form {
+            display: flex;
+            flex-direction: column;
         }
     </style>
 </head>
-
 <body>
     <div id="root"></div>
     <script type="text/babel">
@@ -150,21 +161,19 @@
                 setError(false);
             };
             const cambiarEAN = e => {
-              const inputEAN = e.target.value;
+                const inputEAN = e.target.value;
 
-               if (/^\d{0,13}$/.test(inputEAN)) {
-                  setEAN(inputEAN);
-                  setError(false);
-                }else {
-                      setError(true);
-                }  
+                if (/^\d{0,13}$/.test(inputEAN)) {
+                    setEAN(inputEAN);
+                    setError(false);
+                } else {
+                    setError(true);
+                }
             };
-
             const cambiarCantidad = e => {
                 setCantidad(e.target.value);
                 setError(false);
             };
-
             const guardar = e => {
                 e.preventDefault();
                 if (nombre.trim() === '' || ean.trim() === '' || isNaN(cantidad) || cantidad < 0) {
@@ -173,21 +182,14 @@
                 }
                 alGuardar({ ...producto, nombre, ean, cantidad: parseInt(cantidad) });
             };
-
             const cancelar = e => {
                 e.preventDefault();
                 alCancelar();
             };
-
             return (
-                <form className="panel" onSubmit={guardar}>
-                    <label>Nombre</label>
+                <form className="panel editar-form" onSubmit={guardar}>
                     <input type="text" value={nombre} onChange={cambiarNombre} />
-
-                    <label>EAN</label>
                     <input type="text" value={ean} onChange={cambiarEAN} />
-
-                    <label>Cantidad</label>
                     <input type="number" value={cantidad} onChange={cambiarCantidad} />
                     {error && <p className="error">Todos los campos son obligatorios y la cantidad debe ser un número no negativo</p>}
                     <div className="acciones">
@@ -197,53 +199,52 @@
                 </form>
             );
         }
-
         function Mostrar({ producto, alEditar, alBorrar, incrementarCantidad }) {
             return (
-                <div className="panel">
-                    <div className="cantidad" onClick={incrementarCantidad}>{producto.cantidad}</div>
+                <div className="panel" onClick={incrementarCantidad}>
+                    <div className="cantidad">{producto.cantidad}</div>
                     <div className="producto-detalles">
                         <h2 className="nombre">{producto.nombre}</h2>
                         <p className="ean">{producto.ean}</p>
                     </div>
-                    <div>
+                    <div className="icon-container" onClick={e => e.stopPropagation()}>
                         <i className="fas fa-edit icon icon-edit" onClick={alEditar}></i>
                         <i className="fas fa-trash icon icon-delete" onClick={() => alBorrar(producto.id)}></i>
                     </div>
                 </div>
             );
         }
-
         function Inventario({ productos, alAgregar, alEditar, alBorrar, enEdicion, setEnEdicion, incrementarCantidad }) {
-            return (
-                <div>
-                    <h1>Control Depósito</h1>
-                    <i className="fas fa-plus-circle icon icon-add" onClick={alAgregar}></i>
-                    {productos.map(producto =>
-                        enEdicion.has(producto.id) ? (
-                            <Editar
-                                key={producto.id}
-                                producto={producto}
-                                alGuardar={p => {
-                                    alEditar(producto.id, p);
-                                    setEnEdicion(new Set([...enEdicion].filter(id => id !== producto.id)));
-                                }}
-                                alCancelar={() => setEnEdicion(new Set([...enEdicion].filter(id => id !== producto.id)))}
-                            />
-                        ) : (
-                            <Mostrar
-                                key={producto.id}
-                                producto={producto}
-                                alEditar={() => setEnEdicion(new Set([...enEdicion, producto.id]))}
-                                alBorrar={alBorrar}
-                                incrementarCantidad={() => incrementarCantidad(producto.id)}
-                            />
-                        )
-                    )}
+         return (
+            <div>
+                <div className="header">
+                  <h1>Control Depósito</h1>
+                  <i className="fa fa-plus-square icon icon-add" onClick={alAgregar}></i>
                 </div>
-            );
-        }
-
+                {productos.map(producto =>
+                  enEdicion.has(producto.id) ? (
+                    <Editar
+                        key={producto.id}
+                        producto={producto}
+                        alGuardar={p => {
+                            alEditar(producto.id, p);
+                            setEnEdicion(new Set([...enEdicion].filter(id => id !== producto.id)));
+                        }}
+                        alCancelar={() => setEnEdicion(new Set([...enEdicion].filter(id => id !== producto.id)))}
+                    />
+                ) : (
+                    <Mostrar
+                        key={producto.id}
+                        producto={producto}
+                        alEditar={() => setEnEdicion(new Set([...enEdicion, producto.id]))}
+                        alBorrar={alBorrar}
+                        incrementarCantidad={() => incrementarCantidad(producto.id)}
+                    />
+                )
+            )}
+        </div>
+    );
+}
         function App() {
             const [productos, setProductos] = useState(productosIniciales);
             const [enEdicion, setEnEdicion] = useState(new Set());
@@ -251,22 +252,22 @@
             useEffect(() => {
                 localStorage.setItem('productos', JSON.stringify(productos));
             }, [productos]);
-
             const agregar = () => {
+                if (enEdicion.size > 0) {
+                    alert('Solo se puede agregar un producto a la vez');
+                    return;
+                }
                 const nuevoProducto = { id: Date.now(), nombre: '', ean: '', cantidad: 0 };
                 setProductos([...productos, nuevoProducto]);
                 setEnEdicion(new Set([...enEdicion, nuevoProducto.id]));
             };
-
             const editar = (id, productoActualizado) => {
                 setProductos(productos.map(p => (p.id === id ? productoActualizado : p)));
             };
-
             const borrar = id => {
                 setProductos(productos.filter(p => p.id !== id));
                 setEnEdicion(new Set([...enEdicion].filter(editId => editId !== id)));
             };
-
             const incrementarCantidad = id => {
                 const productoActualizado = productos.find(p => p.id === id);
                 if (productoActualizado) {
@@ -274,7 +275,6 @@
                     editar(id, productoActualizado);
                 }
             };
-
             return (
                 <Inventario
                     productos={productos.sort((a, b) => a.nombre.localeCompare(b.nombre))}
