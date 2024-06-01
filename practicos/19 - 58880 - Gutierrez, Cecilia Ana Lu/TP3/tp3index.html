@@ -1,0 +1,356 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://kit.fontawesome.com/e497f0bc95.js" crossorigin="anonymous"></script>
+    <style>
+
+       .panel{
+            width:380px;
+            height: 120px;
+            margin: 10px auto;
+            border: 1px solid #d0d0d0;
+            background-color: #ffffff;
+            box-shadow: 0px 5px 15px #dbdbdb;
+            border-radius: 15px;
+            padding: 20px;
+            font-family: Verdana, Tahoma, sans-serif;
+            font-size: 16px;
+        }
+
+        label { 
+            display: block;
+            margin-bottom: 3px;
+            color: #0000ff;
+            font-family:fantasy;
+        }
+
+        input {
+            width: 85%;
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #d0d0d0;
+            border-radius: 10px;
+        }
+
+        input:focus{
+            outline: none;
+            border-color: #d0d0d0;
+            box-shadow: 0 0 5px #252525;
+        }
+
+        .acciones {
+            display:grid;
+            margin-top: -140px;
+            margin-left: 60%;
+        }
+
+        .transparent-button {
+             background-color: transparent;
+             border: none;
+             height: 90px;
+             cursor: pointer;
+             margin-left: 100px;
+             padding: 20px 20px;
+        }
+
+        .transparent-button2{
+            background-color: transparent;
+            border: none;
+            margin-left: 58%;
+            margin-top:-70px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .transparent-buttonI{
+            margin-left: -200px;
+            margin-top: -160px;
+            width: 15px;
+            height: 130px;
+            border:none;
+            background-color: transparent;
+            color:transparent;
+            cursor:crosshair;
+        }
+
+        .transparent-buttonD{
+            width: 15px;
+            height: 10px;
+            margin-top: -100px;
+            margin-left: -10px;
+            background-color: transparent;
+            border: none;
+            color:transparent;
+            cursor:grab;
+
+        }
+
+         h1{
+            font-family:Verdana, Tahoma, sans-serif;
+            font-size: 30px;
+            font-weight: bold;
+            width:300px;
+            margin-left:36%;
+            margin-top:30px;
+            padding: 3px;
+        }
+
+        h2{
+            margin: 20px;
+            margin-left: 90px;
+        }
+
+        h3{
+            margin:20px;
+            margin-top:-33px;
+            margin-left: 20px;
+            color:#0000ff;
+            font-size: 45px;
+        }
+
+        p{
+          margin: -20px;
+          margin-left: 90px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState, useEffect } = React
+
+        const InitialItems = [
+            { id: 1, nombre: 'Caja', cantidad: 50, ean: '123456789012' },
+            { id: 2, nombre: 'Pallet', cantidad: 20, ean: '012345678901' },
+            { id: 3, nombre: 'Bulto', cantidad: 30, ean: '234567890123' }
+        ]
+
+        function Editar({ item, onSave }) {
+            let [nombre, setNombre] = useState(item.nombre)
+            let [cantidad, setCantidad] = useState(item.cantidad)
+            let [ean, setEan] = useState(item.ean)
+
+            const cambiarNombre = (e) => setNombre(e.target.value)
+            const cambiarCantidad = (e) => setCantidad(e.target.value)
+            const cambiarEan = (e) => setEan(e.target.value)
+
+            const validarFormulario = () => {
+                if (!nombre ||!cantidad ||!ean) {
+                alert("Rellenar campos");
+                return false;
+                }
+                if (ean.length!== 13){
+                    alert("el codigo EAN debe tener 13 caracteres");
+                    return false;
+                }
+                return true;
+            };
+
+            const aceptar = (e) => {
+                e.preventDefault();
+                if (validarFormulario()) {
+                item.nombre = nombre;
+                item.cantidad = cantidad;
+                item.ean = ean;
+                onSave(item);
+                }
+            };
+
+
+            const cancelar = (e) => {
+                e.preventDefault()
+                onSave(null)
+            }
+
+            return <>
+            <div class="container">
+                <form className="panel">
+                    <input type="text" placeholder="Ingresa Nombre" value={nombre} onChange={cambiarNombre} />
+                    <input type="number" placeholder="Seleccionar cantidad" value={cantidad} onChange={cambiarCantidad} />
+                    <input type="text" placeholder="Ingresar Codigo EAN" value={ean} onChange={cambiarEan} />
+
+                    <div className="acciones">
+                        <button className="transparent-button" onClick={aceptar}><i class="fa-regular fa-circle-check fa-2xl"></i></button>
+                        <button className="transparent-button" onClick={cancelar}><i class="fa-solid fa-rectangle-xmark fa-2xl"></i></button>
+
+                    </div>
+                </form>
+            </div>
+            </>
+        }
+
+        function Mostrar({ item, onEdit, onDelete, onSelect, onIncrement, onDecrement }) {
+        return (
+            <div className="panel">
+            <h2>{item.nombre}</h2>
+            <h3>{item.cantidad}</h3>
+            <p>{item.ean}</p>
+            <div className="acciones">
+                <button className="transparent-button" onClick={onEdit}><i class="fa-regular fa-pen-to-square fa-2xl"></i></button>
+                <button className="transparent-button" onClick={onDelete}><i class="fa-regular fa-trash-can fa-2xl"></i></button>
+                <button className="transparent-buttonI" onClick={() => onIncrement(item.id)}><i class="fa-solid fa-plus fa-2xl"></i></button>
+                <button className="transparent-buttonD" onClick={() => onDecrement(item.id)}><i class="fa-solid fa-minus fa-2xl"></i></button>
+            </div>
+            </div>
+        );
+        }
+
+        function Inventario({ items, onAdd, onEdit, onDelete, onSelect, onIncrement, onDecrement }) {
+        return (
+            <>
+            <div class="search-container">
+                <button className="transparent-button2" onClick={onAdd}><i class="fa-regular fa-square-plus fa-3x"></i></button>
+            </div>
+            {
+                items.sort((a, b) => a.nombre.localeCompare(b.nombre)).map((item) => 
+                <Mostrar
+                    key={item.id}
+                    item={item}
+                    onEdit={() => onEdit(item.id)}
+                    onDelete={() => onDelete(item.id)}
+                    onSelect={() => onSelect(item)}
+                    onIncrement={() => onIncrement(item.id)}
+                    onDecrement={() => onDecrement(item.id)}
+                />
+                )
+            }
+            </>
+        );
+        }
+
+        function proximoId(items) {
+            return Math.max(...items.map(i => i.id)) + 1
+        }
+
+        function leerItems() {
+            return JSON.parse(localStorage.getItem('items'))
+        }
+
+        function guardarItems(items) {
+            localStorage.setItem('items', JSON.stringify(items))
+        }
+
+        function App() {
+            let [editando, setEditando] = useState(false)
+            let [item, setItem] = useState({})
+            let [selectedItem, setSelectedItem] = useState(null)
+            let [items, setItems] = useState(leerItems() || InitialItems)
+
+            useEffect(() => {
+                console.log("Cargando items...")
+                let datos = leerItems()
+                setItems(datos || InitialItems)
+            }, [])
+
+            useEffect(() => {
+                console.log("Guardando items...")
+                guardarItems(items)
+            }, [items])
+
+            useEffect(() => {
+                console.log("Editando item:", editando)
+            }, [editando])
+
+            if (localStorage.getItem('items') === null) {
+                console.log("Guardando items iniciales...")
+                guardarItems(InitialItems)
+            }
+
+            const agregar = () => {
+                setItem({ nombre: "", cantidad: 0, ean: "" })
+                setEditando(true)
+            }
+
+            const guardaItem = (item) => { //arreglo: caso de que la cantidad tenga valor NaN y no incremente
+                    if (item) {
+                          setItem({ ...item, cantidad: item.cantidad || 0 })
+                        }
+                        setEditando(false)
+                        setSelectedItem(null)
+                        }
+
+            const editar = (id) => {
+                const item = items.find(i => i.id === id)
+                setItem(item)
+                setEditando(true)
+            }
+
+            const borrar = (id) => {
+                const copia = items.filter(i => i.id !== id)
+                setItems(copia)
+                setItem({})
+            }
+            const selectItem = (item) => {
+                setSelectedItem(item)
+            }
+
+            const guardarItem = (item) => {
+                if (item) {
+                    setItem(item)
+                    if (item.id) {
+                        // Modifica actualizacion
+                        const copia = items.map(
+                            i => i.id === item.id? item : i
+                        )
+                        setItems(copia)
+                    } else {
+                        // Agrega actualizacion 
+                        const id = proximoId(items)
+                        const copia = [...items, {...item, id }]
+                        setItems(copia)
+                    }
+                }
+                setEditando(false)
+                setSelectedItem(null)
+            }
+
+            const incrementarCantidad = (id) => {
+    const item = items.find(i => i.id === id);
+    if (item) {
+      item.cantidad++;
+      setItems([...items]);
+    }
+  };
+
+  const decrementarCantidad = (id) => {
+    const item = items.find(i => i.id === id);
+    if (item) {
+      item.cantidad--;
+      if (item.cantidad < 0) {
+        item.cantidad = 0;
+      }
+      setItems([...items]);
+    }
+  };
+
+  return (
+    <>
+      <h1>Control Depósito</h1>
+      {
+        editando
+         ? <Editar
+              item={item}
+              onSave={guardarItem}
+            />
+          : <Inventario
+              items={items}
+              onAdd={agregar}
+              onEdit={editar}
+              onDelete={borrar}
+              onSelect={selectItem}
+              onIncrement={incrementarCantidad}
+              onDecrement={decrementarCantidad}
+            />
+      }
+    </>
+  );
+}
+        const root = ReactDOM.createRoot(document.getElementById('root'))
+        root.render(<App />);
+    </script>
+</body>
+
+</html>

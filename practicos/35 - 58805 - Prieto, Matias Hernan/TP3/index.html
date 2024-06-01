@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>58805</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    padding: 25px;
+    width: 100%;
+}
+
+.header h1 {
+    font-size: 50px;
+    margin: 0;
+    white-space: nowrap;
+    margin-bottom: 20px;
+}
+
+.agregar-btn {
+    cursor: pointer;
+    background-size: cover;
+    display: flow-root;
+    justify-content: center;
+    align-items: center;
+    width: fit-content; 
+    margin-bottom: 20px;
+}
+.card-add{
+    display: flex;
+    width: 100%;
+ }
+.agregar-btn img{
+    width: 50px;
+    height: 30px;
+}
+.product-card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px 0;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+    width: 600px;
+    max-width: 1500px;
+    height: 150px;
+    position: relative;
+}
+
+.product-units {
+    font-size: 3em;
+    font-weight: bold;
+    color: blue;
+}
+
+.product-details {
+    flex: 1;
+    margin-left: 20px;
+    line-height: 4em;
+}
+.product-name{
+    font-weight: bold;
+}
+
+.product-details span {
+    display: block;
+    font-size: 1.5em;
+}
+.product-actions {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    margin-top: 40px; 
+    margin-right: 5px;
+}
+.product-actions span {
+    margin-bottom: 5rem;
+}
+
+.product-actions img {
+    width: 24px;
+    height: 24px;
+}
+.form-control {
+    margin-right: 10px;
+    width: calc(70% - 20px);
+}
+
+.btn-aceptar,
+.btn-cancelar {
+    background-color: #f8f9fa;
+    color: black;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 5px 10px;
+    margin-right: 10px;
+    font-size: 12px;
+}
+
+.btn-aceptar:hover,
+.btn-cancelar:hover {
+    background-color: #e2e6ea;
+}
+
+.card {
+    background-color: #f8f9fa;
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px 0;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+    width: 600px;
+    max-width: 1500px;
+    height: 150px;
+    position: relative;
+}
+.card-inputs{
+    flex: 1;
+    margin-left: 20px;
+    line-height: 0%;
+}
+.button-actions{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    margin-top: -15px; 
+    margin-right: 5px;
+}
+.button-actions button{
+    margin-bottom: 5px;
+}
+ .eliminar, 
+ .editar {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    background-size: cover;
+}
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script>
+ const productosIniciales = [
+  { "codigo_ean": "7791234567890", "nombre": "Arroz Largo Fino", "unidades": 50 },
+  { "codigo_ean": "7790987654321", "nombre": "Leche Entera", "unidades": 75 },
+  { "codigo_ean": "7791122334455", "nombre": "Aceite de Girasol", "unidades": 40 },
+  { "codigo_ean": "7795566778899", "nombre": "Fideos Spaghetti", "unidades": 60 },
+  { "codigo_ean": "7799988776655", "nombre": "Harina de Trigo", "unidades": 90 },
+  { "codigo_ean": "7792233445566", "nombre": "Azúcar Blanca", "unidades": 85 },
+  { "codigo_ean": "7796677889900", "nombre": "Yerba Mate", "unidades": 30 },
+  { "codigo_ean": "7794455667788", "nombre": "Café Molido", "unidades": 45 },
+  { "codigo_ean": "7793344556677", "nombre": "Galletitas Dulces", "unidades": 80 },
+  { "codigo_ean": "7795566443322", "nombre": "Mermelada de Durazno", "unidades": 55 }]
+
+    </script>
+    <script type="text/babel">
+        const {useState, useEffect} = React
+const FormEditar = ({nombre, unidades, codigo_ean, editarProductos, onClose})=>{
+    const [nuevonombre, setNombre] = useState(nombre)
+    const [cantidad, setCantidad] = useState(unidades)
+    const [codigo, setCodigo] = useState(codigo_ean)
+    const editar = (e)=>{
+        e.preventDefault()
+      
+    if(nuevonombre === '' && cantidad === 0 || cantidad<0 || cantidad>100){
+      alert('Campos sin rellenar o incorrectos')
+      return
+    }
+    else{
+        const productosModificados={
+            nombre : nuevonombre,
+            unidades : cantidad,
+            codigo_ean : codigo
+        }
+        editarProductos(productosModificados, codigo_ean)
+        onClose(codigo_ean) 
+      }  
+    }
+    return(
+      <div className="card">
+        <form>
+          <div className="card-inputs">
+                     <input className="form-control" type="text" value={nuevonombre} onChange={(e) => setNombre(e.target.value)} required /> <br />
+                     <input className="form-control" type="number" value={cantidad} onChange={(e) => setCantidad(e.target.value)} required /> <br />
+                     <input className="form-control" type="number" value={codigo} onChange={(e) => setCodigo(e.target.value)} required /> <br />
+          </div>
+          <div className="button-actions">
+              <button className="btn btn-aceptar" onClick={editar}>Aceptar</button>
+              <button className="btn btn-cancelar" onClick={() => onClose(codigo_ean)}>Cancelar</button>
+          </div>
+        </form>
+        </div>
+)
+}
+
+const Producto = ({ nombre, unidades, codigo_ean, editarProductos, eliminar, sumar, setEditar }) => {
+  return (
+    <div className="product-card" onClick={()=>sumar(codigo_ean)}>
+          <div className="product-units">{unidades}</div>
+          <div className="product-details">
+            <span className="product-name">{nombre}</span>
+            <span>{codigo_ean}</span>
+          </div>
+          <div className="product-actions">
+            <span onClick={(e)=>{ e.stopPropagation(); setEditar(codigo_ean)}} ><img src="edit.svg" className="editar"/></span>
+            <span onClick={(e) => { e.stopPropagation(); eliminar(codigo_ean) }}><img src="trash.svg" className="eliminar"/></span>
+          </div>
+        </div>
+  )
+}
+const Inventario = () => {
+  const [productos, setProductos] = useState([])
+  const [editando, setEditando] = useState({})
+  const [ventana, setVentana] = useState(false)
+  useEffect(() => {
+    if(localStorage.getItem('productos')===null){
+
+localStorage.setItem('productos', JSON.stringify(productosIniciales))
+}
+    const productosGuardados = localStorage.getItem('productos')
+    if (productosGuardados) {
+      setProductos(JSON.parse(productosGuardados))
+    }
+  }, [])
+  const eliminar = (ean)=>{
+    const productosEliminados = productos.filter(p=> p.codigo_ean !== ean)
+  localStorage.setItem('productos', JSON.stringify(productosEliminados))
+  setProductos(productosEliminados)
+  }
+  const editaroagregarProductos = (productosModificados, ean) => {
+    const productoExistente = productos.find(p => p.codigo_ean === ean)
+    if(productoExistente){
+      const nuevosProductos = productos.map(p =>
+      p.codigo_ean === ean ? { ...p, ...productosModificados } : p)
+      localStorage.setItem('productos', JSON.stringify(nuevosProductos))
+      const copia = localStorage.getItem('productos')
+      setProductos(JSON.parse(copia));
+    }
+    else{
+      const productosConMismoEAN = productos.filter(p => p.codigo_ean === productosModificados.codigo_ean)
+      if (productosConMismoEAN.length > 0) {
+        alert('este producto ya existe')
+        return
+      } else {
+        const copia = [...productos, { ...productosModificados }]
+        localStorage.setItem('productos', JSON.stringify(copia))
+        setProductos(copia)
+      
+    }
+  }
+  }
+  const sumar =(ean)=>{
+    const copia = productos.map(p=> p.codigo_ean === ean ? {...p, unidades: parseInt(p.unidades) + 1 }: p)
+    localStorage.setItem('productos', JSON.stringify(copia))
+    setProductos(copia)
+  }
+  const onClose = (ean)=>{
+    setEditando((prevState => ({ ...prevState, [ean]: false })))
+  }
+  productos.sort((a,b)=> a.nombre.localeCompare(b.nombre))
+  const productoNuevo={
+    codigo_ean: 0,
+    nombre: '',
+    unidades: 0
+  }
+  return (
+    <>
+      <div className="header">
+        <h1>Control depósito</h1>
+        <span className="agregar-btn" onClick={()=>{setVentana(true)}}><img src="plus-square.svg"/> </span>
+      </div>
+      {ventana && <FormEditar {...productoNuevo} editarProductos={editaroagregarProductos} onClose={()=> setVentana(false)}/>}
+        {productos.map(p => (
+  <div key={p.codigo_ean}> 
+    {editando[p.codigo_ean] ? 
+      <FormEditar
+         {...p}
+        editarProductos={editaroagregarProductos}
+        onClose={onClose}
+      />
+     : 
+      <Producto
+        {...p}
+        editarProductos={editaroagregarProductos}
+        eliminar={eliminar}
+        sumar={sumar}
+        setEditar={() => setEditando({ ...editando, [p.codigo_ean]: true })}
+      />
+    }
+  </div>
+))}
+    </>
+  )
+}
+const App = ()=>{
+    return(
+    <>
+    <Inventario/>
+    </>
+)}
+const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<App />);
+    </script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#root {
+    padding: 20px;
+    margin: 0 auto;
+    display: grid;
+    justify-content: center;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 44px;
+    margin-right: 10px;
+}
+
+.Agrega {
+    height: 30px;
+}
+
+.panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    border: 1px solid #ffffff;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.cantidad {
+    font-size: 36px;
+    color: blue;
+    margin-right: 10px;
+}
+
+.info {
+    flex: 1;
+    font-family: "Gill Sans", sans-serif; 
+}
+
+.acciones {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icono {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin: 5px 0;
+}
+
+.icono img {
+    width: 20px;
+    height: 20px;
+}
+
+.general {
+    margin: 25px 10px 10px;
+    padding: 5px 20px;
+    font-size: 14px;
+    font-family: "Gill Sans", sans-serif;
+    border: none;
+    border-radius: 8px;
+    border: solid 2px black;
+    background-color: white;
+    color: #000;
+    cursor: pointer;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    background-color: #000;
+    margin-left: 5px;
+}
+
+.formulario-edicion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.formulario-edicion input {
+    width: calc(100% - 20px);
+    padding: 5px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.formulario-edicion .acciones {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.formulario-edicion .acciones button {
+    margin: 5px 0;
+}

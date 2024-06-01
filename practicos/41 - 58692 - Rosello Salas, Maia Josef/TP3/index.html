@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <title>58692</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        #root {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1{
+            font-size: 33px;
+            margin: 0;
+        }
+
+        .header .add-icon{
+            font-size: 30px;
+            cursor: pointer;
+            color: rgba(0, 0, 0);
+            margin-right: 300px;
+            border-color: #333;
+        }
+
+        .product-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .product-card {
+            position:relative;
+            padding: 25px;
+            margin-bottom: 16px;
+            border-radius: 12px;
+            background-color: #ffffff;
+            box-shadow:  0 0 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid#ccc;
+            height: 100px;
+            width: 400px;
+          
+        }
+
+        .product-card .number {
+            font-size: 70px;
+            font-weight: bold;
+            color: blue;
+            margin-right: 16px;
+        }
+
+        .product-card .info {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .product-card .info .name {
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            margin-left: 15px;
+        }
+
+        .product-card .info .code {
+            color: #777;
+            font-size: 18px;
+            margin-left: 15px;
+        }
+
+        .product-card .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+        }
+        
+        .product-card .actions i{
+            font-size: 18px;
+            color: black;
+            cursor: pointer;
+        }
+
+        .add-product-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+            width:540px;
+        }
+
+        .add-product-form input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+           font-size: 16px;
+        }
+
+        .add-product-form button {
+            padding: 10px 20px;
+            border: none;
+            background-color: rgb(0,0,0);
+            color: white;
+            border-radius: 200px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .add-product-form button:hover {
+            background-color: #000000;
+        }
+
+        .edit-product-form{
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .edit-product-form input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            width: 300px;
+            margin-top: 5px;
+            height: 10px;
+        }
+
+        .edit-product-form button {
+            padding: 5px 10px;
+            border: 2px, solid black;
+            background-color: transparent;
+            color: rgb(0, 0, 0);
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .edit-product-form button:hover {
+            background-color:rgba(135, 135, 135, 0.1)
+        }
+
+        .edit-column{
+            flex: 1;
+        }
+
+        .edit-buttons{
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .edit-buttons button{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        const ProductoCard = ({ producto, onEditar, onEliminar, onIncrementar }) => {
+            const [estaEditando, setEstaEditando] = useState(false);
+            const [nombreEditado, setNombreEditado] = useState(producto.nombre);
+            const [codigoEditado, setCodigoEditado] = useState(producto.codigo);
+            const [cantidadEditada, setCantidadEditada] = useState(producto.cantidad);
+
+            const handleGuardar = () => {
+                onEditar(producto.id, nombreEditado, codigoEditado, cantidadEditada);
+                setEstaEditando(false);
+            };
+
+            return (
+                <div className="product-card" onClick={() => onIncrementar(producto.id)}>
+                    {estaEditando ? (
+                        <div className="edit-product-form" onClick={(e) => e.stopPropagation()}>
+                            <div className="edit-column">
+                                <input
+                                    type="text"
+                                    value={nombreEditado}
+                                    onChange={(e) => setNombreEditado(e.target.value)}
+                                />
+                                <input
+                                    type="text"
+                                    value={codigoEditado}
+                                    onChange={(e) => setCodigoEditado(e.target.value)}
+                                />
+                                <input
+                                    type="number"
+                                    value={cantidadEditada}
+                                    onChange={(e) => setCantidadEditada(parseInt(e.target.value))}
+                                />
+                            </div>
+                            <div className="edit-column">
+                                <div  className="edit-buttons">    
+                                    <button onClick={handleGuardar}>Aceptar</button>
+                                    <button onClick={() => setEstaEditando(false)}>Cancelar</button>
+                                </div>
+                            </div>    
+                        </div>
+                    ) : (
+                        <React.Fragment>
+                            <div className="number">{producto.cantidad}</div>
+                            <div className="info">
+                                <div className="name">{producto.nombre}</div>
+                                <div className="code">{producto.codigo}</div>
+                            </div>
+                            <div className="actions">
+                                <i className="fas fa-edit" onClick={(e) => {e.stopPropagation(); setEstaEditando(true);}}></i>
+                                <i className="fas fa-trash" onClick={(e) => {e.stopPropagation(); onEliminar(producto.id);}}></i>
+                            </div>
+                        </React.Fragment>
+                    )}
+                </div>
+            );
+        };
+
+        const App = () => {
+            const [productos, setProductos] = useState([]);
+            const [nuevoNombre, setNuevoNombre] = useState('');
+            const [nuevoCodigo, setNuevoCodigo] = useState('');
+            const [nuevaCantidad, setNuevaCantidad] = useState(1);
+            const [mostrarFormulario, setMostrarFormulario] = useState(false);
+
+            useEffect(() => {
+                const productosGuardados = JSON.parse(localStorage.getItem('productos')) || [];
+                setProductos(productosGuardados);
+            }, []);
+
+            useEffect(() => {
+                localStorage.setItem('productos', JSON.stringify(productos));
+            }, [productos]);
+
+            const agregarProducto = () => {
+               if(nuevoNombre.trim() === '' || nuevoCodigo.trim() === '' || nuevaCantidad <= 0) {
+                alert('Por favor completa todos los campos antes de agregar un nuevo producto.');
+                return;
+               }
+               
+                if (!mostrarFormulario) {
+                    setMostrarFormulario(true);
+                } else {
+                    const nuevoProducto = {
+                        id: Date.now(),
+                        nombre: nuevoNombre,
+                        codigo: nuevoCodigo,
+                        cantidad: nuevaCantidad,
+                    };
+                    setProductos([...productos, nuevoProducto].sort((a, b) => a.nombre.localeCompare(b.nombre)));
+                    setNuevoNombre('');
+                    setNuevoCodigo('');
+                    setNuevaCantidad(1);
+                    setMostrarFormulario(false);
+                }
+            };
+
+            const toggleMostrarFormulario = () => {
+                setMostrarFormulario(!mostrarFormulario);
+            };
+
+            const editarProducto = (id, nombreNuevo, codigoNuevo, cantidadNueva) => {
+                const productosActualizados = productos.map((producto) =>
+                    producto.id === id
+                        ? { ...producto, nombre: nombreNuevo, codigo: codigoNuevo, cantidad: cantidadNueva }
+                        : producto
+                );
+                setProductos(productosActualizados.sort((a, b) => a.nombre.localeCompare(b.nombre)));
+            };
+
+            const eliminarProducto = (id) => {
+                const productosActualizados = productos.filter((producto) => producto.id !== id);
+                setProductos(productosActualizados);
+            };
+
+            const incrementarCantidad = (id) => {
+                const productosActualizados = productos.map((producto) =>
+                    producto.id === id ? { ...producto, cantidad: parseInt(producto.cantidad) + 1 } : producto
+                );
+                setProductos(productosActualizados);
+            };
+
+            return (
+                <div>
+                    <div className="header">
+                        <h1>Control Depósito</h1>
+                        <i className="fas fa-plus add-icon" onClick={toggleMostrarFormulario}></i>
+                    </div>
+                    {mostrarFormulario && (
+                        <div className="add-product-form">
+                            <input
+                                type="text"
+                                placeholder="Nombre del producto"
+                                value={nuevoNombre}
+                                onChange={(e) => setNuevoNombre(e.target.value)}
+                            />
+                            <input
+                                type="text"
+                                placeholder="Código EAN"
+                                value={nuevoCodigo}
+                                onChange={(e) => setNuevoCodigo(e.target.value)}
+                            />
+                            <input
+                                type="number"
+                                placeholder="Cantidad"
+                                value={nuevaCantidad}
+                                onChange={(e) => setNuevaCantidad(parseInt(e.target.value))}
+                            />
+                            <button onClick={agregarProducto}>Agregar Producto</button>
+                        </div>
+                    )}
+                    <ul className="product-list">
+                        {productos.map((producto) => (
+                            <ProductoCard
+                                key={producto.id}
+                                producto={producto}
+                                onEditar={editarProducto}
+                                onEliminar={eliminarProducto}
+                                onIncrementar={incrementarCantidad}
+                            />
+                        ))}
+                    </ul>
+                </div>
+            );
+        };
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>

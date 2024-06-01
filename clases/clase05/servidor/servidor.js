@@ -1,6 +1,11 @@
 import express from 'express';
+import morgan from 'morgan';
 
 const app = express();
+
+app.use(express.json());
+app.use(morgan('dev'));
+app.use(express.static('a'));
 
 app.get('/', (req, res) => {
     res.send('<html><head></head><body><h1>Hello World!</h1></body></html>');

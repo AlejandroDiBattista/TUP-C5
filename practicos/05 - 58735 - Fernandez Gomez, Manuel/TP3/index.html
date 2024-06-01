@@ -1,0 +1,42 @@
+
+            };
+
+            const guardar = (nuevoProducto) => {
+                if (nuevoProducto) {
+                    if (!nuevoProducto.id) {
+                        const id = proximoId(productos);
+                        setProductos(ordenarProductos([...productos, { ...nuevoProducto, id }]));
+                    } else {
+                        const copia = productos.map(c => c.id === nuevoProducto.id ? nuevoProducto : c);
+                        setProductos(ordenarProductos(copia));
+                    }
+                }
+                setEditando(false);
+            };
+
+            const ordenarProductos = (productos) => {
+                return productos.sort((a, b) => a.nombre.localeCompare(b.nombre));
+            };
+
+            return (
+                <>
+                    {
+                        editando
+                            ? <Editar producto={producto} alGuardar={guardar} productosDisponibles={productosIniciales} />
+                            : <Inventario
+                                datos={productos}
+                                alAgregar={agregar}
+                                alEditar={editar}
+                                alBorrar={borrar}
+                            />
+                    }
+                </>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
+

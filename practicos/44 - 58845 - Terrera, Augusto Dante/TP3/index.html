@@ -1,0 +1,291 @@
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    <title>58845 | TP3</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            background-color: #f0f0f0;
+        }
+
+        .deposito {
+            display: grid;
+            gap: 10px;
+        }
+
+        .card {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            width: 300px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px #c9c9c9;
+            padding: 10px;
+        }
+
+        h2 {
+            font-size: 48px;
+            color: #000fff;
+            margin: 5px;
+        }
+
+        .medio {
+            flex-grow: 1;
+            padding: 0 10px;
+        }
+
+        .derecha {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            height: 100%;
+            font-size: large;
+        }
+
+        .derecha span {
+            cursor: pointer;
+        }
+
+        form {
+            display: flex;
+
+        }
+
+        .inputs {
+            margin: 2px;
+            display: grid;
+            gap: 5px;
+        }
+
+        .accionesBoton {
+            margin-bottom: 35px;
+        }
+
+        .inputs input {
+            width: 220px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 4px;
+        }
+
+        .accionesBoton button {
+            margin: 3px 10px;
+            border: 2px solid black;
+            border-radius: 6px;
+            width: 70px;
+            background-color: white;
+            float: right;
+            padding: 1px;
+            cursor: pointer;
+        }
+
+        .titulo {
+            display: flex;
+            align-items: center;
+        }
+
+        .titulo span {
+            margin-left: 20px;
+            font-size: 30px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { createRoot } = ReactDOM
+        const { useState, useEffect } = React
+
+        const Editar = ({ producto, alGuardar, alCancelar }) => {
+            let [nombre, setNombre] = useState(producto.nombre || '')
+            let [codigo, setCodigo] = useState(producto.codigo || '')
+            let [cantidad, setCantidad] = useState(producto.cantidad || '')
+
+            let guardar = (e) => {
+                e.preventDefault()
+                if (!nombre || !codigo || !cantidad) {
+                    alert('Todos los campos son obligatorios')
+                    return
+                }
+                else if (codigo.toString().length !== 13) {
+                    alert('El codigo tiene que ser de 13 digitos')
+                    return
+                }
+                alGuardar({ ...producto, nombre, codigo, cantidad })
+            }
+            let cancelar = (e) => {
+                e.preventDefault()
+                e.stopPropagation()
+                alCancelar()
+            }
+            return (
+                <form className="card">
+                    <div className="inputs">
+                        <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
+                        <input type="number" value={codigo} onChange={(e) => setCodigo(e.target.value)} />
+                        <input type="number" value={cantidad} onChange={(e) => setCantidad(e.target.value)} />
+                    </div>
+                    <div className="accionesBoton">
+                        <button onClick={guardar} >Aceptar</button>
+                        <button onClick={cancelar} >Cancelar</button>
+                    </div>
+                </form>
+            )
+        }
+
+        const Producto = ({ productos, alEditar, alBorrar, alTocar, alGuardar, alCancelar }) => {
+            const [editando, setEditando] = useState(false)
+            const editar = () => {
+                setEditando(true)
+            }
+            const cancelar = () => {
+                setEditando(false)
+                alCancelar()
+            }
+            return (
+                <>
+                    {editando
+                        ?
+                        <Editar producto={productos} alGuardar={(p) => { alGuardar(p); setEditando(false); }} alCancelar={cancelar} />
+                        :
+                        <div className="card" onClick={(e) => alTocar()}>
+                            <div className="izquierda">
+                                <h2>{productos.cantidad}</h2>
+                            </div>
+                            <div className="medio">
+                                <h3>{productos.nombre}</h3>
+                                <p>{productos.codigo}</p>
+                            </div>
+
+                            <div className="derecha">
+                                <span onClick={(e) => { e.stopPropagation(); editar(); }}>
+                                    {<i className="fa-regular fa-pen-to-square"></i>}
+                                </span>
+                                <span onClick={(e) => { e.stopPropagation(); alBorrar(); }}>
+                                    {<i className="fa-solid fa-trash"></i>}
+                                </span>
+                            </div>
+                        </div>
+                    }
+                </>
+            )
+        }
+
+        const Deposito = ({ productos, alEditar, alBorrar, alAgregar, alTocar, alGuardar, alCancelar }) => {
+            const [mostrarFormulario, setMostrarFormulario] = useState(false)
+
+            const agregar = () => {
+                setMostrarFormulario(!mostrarFormulario)
+                alAgregar()
+            }
+
+            const cancelar = () => {
+                setMostrarFormulario(false)
+                alCancelar()
+            }
+            return (
+                <div className="deposito">
+                    <div className="titulo">
+                        <h1>Control Deposito</h1>
+                        <span onClick={agregar}>
+                            {<i className="fa-regular fa-square-plus"></i>}
+                        </span>
+                    </div>
+                    {mostrarFormulario && <Editar producto={{}} alGuardar={(p) => { alGuardar(p); setMostrarFormulario(false); }} alCancelar={cancelar} />}
+                    {productos.map(p =>
+                        <Producto
+                            key={p.id}
+                            productos={p}
+                            alEditar={() => alEditar(p.id)}
+                            alBorrar={() => alBorrar(p.id)}
+                            alTocar={() => alTocar(p.id)}
+                            alGuardar={alGuardar}
+                            alCancelar={alCancelar}
+                        />
+                    )}
+                </div>
+            )
+        }
+
+        const App = () => {
+            const [producto, setProducto] = useState({})
+            const [productos, setProductos] = useState([])
+
+            const guardar = (producto) => {
+                let codigoExistente = productos.some(p => p.codigo === producto.codigo && p.id !== producto.codigo)
+                if (codigoExistente) {
+                    alert("Producto ya existente")
+                    
+                    return;
+                }
+                if (producto.id) {
+                    setProductos(productos.map(p => p.id === producto.id ? producto : p))
+                }
+                else {
+                    let id = productos.length === 0 ? 1 : Math.max(...productos.map(p => p.id)) + 1;
+                    setProductos([...productos, { ...producto, id }])
+                }
+            }
+            const cancelar = (producto) => {
+                setProducto({})
+            }
+            const editar = (id) => {
+                setProducto(productos.find(p => p.id === id));
+            }
+            const borrar = (id) => {
+                setProductos(productos.filter(p => p.id !== id))
+                console.log("Borrrar ID: ", id)
+            }
+            const agregar = () => {
+                setProducto({})
+            }
+            const sumar = (id) => {
+                setProductos(productos.map(p => p.id === id ? { ...p, cantidad: parseInt(p.cantidad) + 1 } : p))
+            }
+
+            useEffect(() => {
+                const storedProductos = JSON.parse(localStorage.getItem('productos'))
+                if (storedProductos) {
+                    setProductos(storedProductos)
+                }
+            }, [])
+
+            useEffect(() => {
+                localStorage.setItem('productos', JSON.stringify(productos))
+            }, [productos])
+
+            productos.sort((a, b) => a.nombre.localeCompare(b.nombre))
+
+            return (
+                <Deposito
+                    productos={productos}
+                    alEditar={editar}
+                    alBorrar={borrar}
+                    alAgregar={agregar}
+                    alTocar={sumar}
+                    alGuardar={guardar}
+                    alCancelar={cancelar}
+                />
+
+            )
+        }
+
+        const root = createRoot(document.getElementById('root'))
+        root.render(<App />);
+    </script>
+</body>
+
+</html>

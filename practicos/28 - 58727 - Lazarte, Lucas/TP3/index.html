@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState } = React;
+
+        const productosIniciales = [
+            { id: 1, nombre: "Azúcar", codigo: "7791234567001", cantidad: 50 },
+            { id: 2, nombre: "Arroz", codigo: "7791234567002", cantidad: 30 },
+            { id: 3, nombre: "Pepsi", codigo: "7791234567003", cantidad: 20 },
+            { id: 4, nombre: "Golosina", codigo: "7791234567004", cantidad: 45 }
+        ];
+
+        function MostrarProducto({ item, alGuardar, alEliminar, alAumentar }) {
+            const [editando, setEditando] = useState(item.nombre === '');
+            const [nombre, setNombre] = useState(item.nombre);
+            const [codigo, setCodigo] = useState(item.codigo);
+            const [cantidad, setCantidad] = useState(item.cantidad);
+            const [error, setError] = useState(false);
+
+            const modificar = (e) => {
+                e.stopPropagation();
+                setEditando(true);
+                setCantidad(item.cantidad);
+            };
+
+            const rechazar = (e) => {
+                e.stopPropagation();
+                if (item.nombre === '') {
+                    alEliminar(item.id);
+                } else {
+                    setEditando(false);
+                    setNombre(item.nombre);
+                    setCodigo(item.codigo);
+                    setCantidad(item.cantidad);
+                    setError(false);
+                }
+            };
+
+            const aceptar = (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                if (nombre === '' || codigo === '' || cantidad === '' || cantidad < 0 || cantidad > 100) {
+                    setError(true);
+                    return;
+                }
+                alGuardar({ ...item, nombre, codigo, cantidad });
+                setEditando(false);
+            };
+
+            const eliminar = (e) => {
+                e.stopPropagation();
+                alEliminar(item.id);
+            };
+
+            return (
+                <div className="tarjeta" onClick={() => alAumentar(item.id)}>
+                    {editando ? (
+                        <form className="formularioEditar" onSubmit={aceptar}>
+                                <div className="inputs">
+                                    <input type="text" value={nombre} onChange={e => setNombre(e.target.value)} placeholder="Nombre del producto" />
+                                    <input type="text" value={codigo} onChange={e => setCodigo(e.target.value)} placeholder="EAN" />
+                                    <input type="text" value={cantidad} onChange={e => setCantidad(e.target.value)} placeholder="Cantidad" />
+                                    {error && <p className="error"> Cantidad inválida</p>}
+                                </div>
+                                <div className="btnSetEditando">
+                                    <button className="btnAceptar">Aceptar</button>
+                                    <button type="button" className="btnRechazar" onClick={rechazar}>Cancelar</button>
+                                </div>
+                        </form>
+                    ) : (
+                        <>
+                            <div className="cantidad"> {item.cantidad} </div>
+                            <div className="detalles">
+                                <p className="nombre-producto"> {item.nombre} </p>
+                                <p className="codigo"> {item.codigo} </p>
+                            </div>
+                            <div className="botones">
+                                <button className="btnModificar" onClick={modificar}><i className="fa-solid fa-edit"></i></button>
+                                <button className="btnEliminar" onClick={eliminar}><i className="fa-solid fa-trash"></i></button>
+                            </div>
+                        </>
+                    )}
+                </div>
+            );
+        }
+
+        function ListaDeProductos({ listaProductos, alAgregar, alGuardar, alEliminar, alAumentar }) {
+            const productosOrdenados = [...listaProductos].sort((a, b) => a.nombre.localeCompare(b.nombre));
+            return (
+                <>
+                    <div className="encabezado">
+                        <h1>Control Depósito<button className="btnAgregar" onClick={alAgregar}><i className="fa-solid fa-plus"></i></button></h1>
+                    </div>
+                    {productosOrdenados.map(item => (
+                        <MostrarProducto
+                            key={item.id}
+                            item={item}
+                            alGuardar={alGuardar}
+                            alEliminar={alEliminar}
+                            alAumentar={alAumentar}
+                        />
+                    ))}
+                </>
+            );
+        }
+
+        function App() {
+            const [productos, setProductos] = useState(() => {
+                const productosGuardados = localStorage.getItem('productos');
+                return productosGuardados ? JSON.parse(productosGuardados) : productosIniciales;
+            });
+
+            const guardarLocalStorage = (productosActualizados) => {
+                localStorage.setItem('productos', JSON.stringify(productosActualizados));
+            };
+
+            const guardarProducto = (productoEditado) => {
+                const nuevosProductos = productos.map(item => item.id === productoEditado.id ? productoEditado : item);
+                setProductos(nuevosProductos);
+                guardarLocalStorage(nuevosProductos);
+            };
+
+            const agregarProducto = () => {
+                const id = productos.length > 0 ? Math.max(...productos.map(item => item.id)) + 1 : 1;
+                const nuevoProducto = { id, nombre: '', codigo: '', cantidad: '' };
+                const nuevosProductos = [nuevoProducto, ...productos];
+                setProductos(nuevosProductos);
+                guardarLocalStorage(nuevosProductos);
+            };
+
+            const eliminarProducto = (id) => {
+                const nuevosProductos = productos.filter(item => item.id !== id);
+                setProductos(nuevosProductos);
+                guardarLocalStorage(nuevosProductos);
+            };
+
+            const aumentarCantidad = (id) => {
+                const producto = productos.find(item => item.id === id);
+                if (producto.cantidad >= 100) {
+                    setError({...error, [id]: true});
+                    return;
+                }
+                const nuevosProductos = productos.map(item => {
+                    if (item.id === id) {
+                        return { ...item, cantidad: parseInt(item.cantidad) + 1 };
+                    }
+                    return item;
+                });
+                setProductos(nuevosProductos);
+                guardarLocalStorage(nuevosProductos);
+            };
+
+            return (
+                <ListaDeProductos
+                    listaProductos={productos}
+                    alAgregar={agregarProducto}
+                    alGuardar={guardarProducto}
+                    alEliminar={eliminarProducto}
+                    alAumentar={aumentarCantidad}
+                />
+            );
+        }
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+<style>
+    
+    body{
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .tarjeta{
+        background-color: #ffff;
+        border-radius: 10px;
+        padding: 30px 40px;
+        margin: 20px;
+        width: 450px;
+        height: 150px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .cantidad{
+        font-size: 60px;
+        margin: 50px;
+        color: blue;
+    }
+
+    .detalles{
+        flex-grow: 1;
+        margin-left: 10px;
+    }
+
+    .nombre-producto{
+        font-size: 30px;
+    }
+
+    .btnAgregar{
+        height: 60px;
+        border-radius: 10px;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        margin-left: 20px;
+        padding: 10px 20px;
+
+    }
+
+    .btnEliminar, .btnModificar{
+        background: none;
+        border: none;
+        font-size: 30px;
+        color: black;
+        cursor: pointer;
+        margin: 50px;
+        margin-left: 90%;
+    }
+
+    .encabezado{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .encabezado h1{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin-right: 20px;
+    }
+
+    .formularioEditar{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .formularioEditar {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        gap: 5px;
+    }
+
+    .formularioEditar, input{
+        padding: 10px ;
+        margin: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        display: block;
+        font-size: 16px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .btnAceptar, .btnRechazar{
+        padding: 6px 6px;
+        margin: 2px;
+        border-radius: 10px;
+        background-color: #fff;
+        width: 100px;
+        font-size: 15px;
+        cursor: pointer;
+        margin-left: 100px;
+    }
+   
+</style>
+</html>
+

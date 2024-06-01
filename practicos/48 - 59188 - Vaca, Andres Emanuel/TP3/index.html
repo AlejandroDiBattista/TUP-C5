@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>59188</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+        }
+        #root {
+            width: 70%;
+            max-width: 800px;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 25px;
+            text-align: center;
+            position: relative;
+        }
+        .agregar {
+            background: none;
+            border: 2px solid #000;
+            cursor: pointer;
+            font-size: 24px;
+            position: absolute;
+            top: 0;
+            right: -50px;
+            border-radius: 5px;
+        }
+        .agregar .fas {
+            color: #000;
+        }
+        .panel {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50%;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+        .cantidad {
+            font-size: 48px;
+            color: blue;
+            font-weight: bold;
+        }
+        .detalles {
+            flex-grow: 1;
+            margin-left: 10px;
+        }
+        .acciones {
+            display: flex;
+            gap: 10px;
+        }
+        .acciones button {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .acciones button .fas {
+            font-size: 24px;
+            color: #000;
+        }
+        form.panel {
+            flex-direction: column;
+        }
+        label {
+            display: block;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 50%;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+       
+  
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+const { useState, useEffect } = React;
+
+
+
+function Editar({ producto, alGuardar, alCancelar }) {
+    const [nombre, setNombre] = useState(producto.nombre || '');
+    const [ean, setEan] = useState(producto.ean || '');
+    const [cantidad, setCantidad] = useState(producto.cantidad || '');
+    const [error, setError] = useState(false);
+
+    const cambiarNombre = (e) => {
+        setNombre(e.target.value);
+        setError(false);
+    };
+
+    const cambiarEan = (e) => {
+        setEan(e.target.value);
+        setError(false);
+    };
+
+    const cambiarCantidad = (e) => {
+        setCantidad(e.target.value);
+        setError(false);
+    };
+
+    const guardar = (e) => {
+        e.preventDefault();
+        if (nombre.trim() === '' || ean.trim() === '' || cantidad.toString().trim() === '') {
+            setError(true);
+            return;
+        }
+        alGuardar({ ...producto, nombre, ean, cantidad: parseInt(cantidad, 10) });
+    };
+
+    const cancelar = (e) => {
+        e.preventDefault();
+        alCancelar();
+    };
+
+    return (
+        <form className="panel">
+            <label>Nombre</label>
+            <input type="text" value={nombre} onChange={cambiarNombre} />
+            <label>EAN</label>
+            <input type="text" value={ean} onChange={cambiarEan} />
+            <label>Cantidad</label>
+            <input type="number" value={cantidad} onChange={cambiarCantidad} />
+            {error && <p className="error">Todos los campos son obligatorios</p>}
+            <div className="acciones">
+                <button onClick={guardar}>Aceptar</button>
+                <button onClick={cancelar}>Cancelar</button>
+            </div>
+        </form>
+    );
+}
+
+function Mostrar({ producto, alGuardar, alBorrar, alAumentar }) {
+    const [editando, setEditando] = useState(false);
+    const [nombre, setNombre] = useState(producto.nombre);
+    const [ean, setEan] = useState(producto.ean);
+    const [cantidad, setCantidad] = useState(producto.cantidad);
+    const [error, setError] = useState(false);
+
+    const cambiarNombre = (e) => {
+        setNombre(e.target.value);
+        setError(false);
+    };
+
+    const cambiarEan = (e) => {
+        setEan(e.target.value);
+        setError(false);
+    };
+
+    const cambiarCantidad = (e) => {
+        setCantidad(e.target.value);
+        setError(false);
+    };
+
+    const guardar = (e) => {
+        e.preventDefault();
+        if (nombre.trim() === '' || ean.trim() === '' || cantidad.toString().trim() === '') {
+            setError(true);
+            return;
+        }
+        alGuardar({ ...producto, nombre, ean, cantidad: parseInt(cantidad, 10) });
+        setEditando(false);
+    };
+
+    const cancelar = (e) => {
+        e.preventDefault();
+        setEditando(false);
+    };
+
+    return (
+        <div className="panel" onClick={() => alAumentar(producto.id)}>
+            {editando ? (
+                <form onClick={(e) => e.stopPropagation()}>
+                    <label>Nombre</label>
+                    <input type="text" value={nombre} onChange={cambiarNombre} />
+                    <label>EAN</label>
+                    <input type="text" value={ean} onChange={cambiarEan} />
+                    <label>Cantidad</label>
+                    <input type="number" value={cantidad} onChange={cambiarCantidad} />
+                    {error && <p className="error">Todos los campos son obligatorios</p>}
+                    <div className="acciones">
+                        <button onClick={guardar}>Aceptar</button>
+                        <button onClick={cancelar}>Cancelar</button>
+                    </div>
+                </form>
+            ) : (
+                <>
+                    <span className="cantidad">{producto.cantidad}</span>
+                    <div className="detalles">
+                        <h2>{producto.nombre}</h2>
+                        <p>{producto.ean}</p>
+                    </div>
+                    <div className="acciones">
+                        <button onClick={(e) => { e.stopPropagation(); setEditando(true); }}><i className="fas fa-edit"></i></button>
+                        <button onClick={(e) => { e.stopPropagation(); alBorrar(); }}><i className="fas fa-trash-alt"></i></button>
+                    </div>
+                </>
+            )}
+        </div>
+    );
+}
+
+function Agenda({ productos, alAgregar, alGuardar, alBorrar, alAumentar }) {
+    return (
+        <>
+            <h1>Control de Depósito <button className="agregar" onClick={alAgregar}><i className="fas fa-plus"></i></button></h1>
+            {productos.map(producto => (
+                
+                <Mostrar
+                
+                    key={producto.id}
+                    producto={producto}
+                    alGuardar={alGuardar}
+                    alBorrar={() => alBorrar(producto.id)}
+                    alAumentar={alAumentar}
+                />
+            ))}
+        </>
+    );
+}
+
+function App() {
+    const [producto, setProducto] = useState({});
+    const [agregando, setAgregando] = useState(false);
+    const [productos, setProductos] = useState([]);
+
+    useEffect(() => {
+        const datosGuardados = localStorage.getItem('productos');
+        if (datosGuardados) {
+            setProductos(JSON.parse(datosGuardados));
+        } else {
+            setProductos(ProductosIniciales);
+        }
+    }, []);
+
+    useEffect(() => {
+    localStorage.setItem('productos', JSON.stringify(productos));
+    console.log('Productos:', productos);
+}, [productos]);
+
+
+    const guardar = (producto) => {
+        if (producto.id) {
+            const copia = productos.map(c => c.id === producto.id ? producto : c);
+            setProductos(copia);
+        } else {
+            const id = productos.length ? Math.max(...productos.map(c => c.id)) + 1 : 1;
+            setProductos([...productos, { ...producto, id }]);
+        }
+        setAgregando(false);
+    };
+
+    const cancelar = () => {
+        setProducto({});
+        setAgregando(false);
+    };
+
+    const agregar = () => {
+        setProducto({});
+        setAgregando(true);
+    };
+
+    const borrar = (id) => {
+        const copia = productos.filter(c => c.id !== id);
+        setProductos(copia);
+    };
+
+    const aumentarCantidad = (id) => {
+    const copia = productos.map(c => c.id === id ? { ...c, cantidad: parseInt(c.cantidad) + 1 } : c);
+    setProductos(copia);
+};
+
+    return (
+        <>
+        {agregando && <Editar producto={producto} alGuardar={guardar} alCancelar={cancelar} />}
+            <Agenda
+            agregando
+                productos={productos}
+                alAgregar={agregar}
+                alGuardar={guardar}
+                alBorrar={borrar}
+                alAumentar={aumentarCantidad}
+            />
+            
+        </>
+    );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

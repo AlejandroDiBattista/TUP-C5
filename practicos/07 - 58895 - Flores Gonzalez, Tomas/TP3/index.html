@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Depósito-flores</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .contenedor {
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding-top: 20px;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+            white-space: nowrap;
+            margin-left: 32%;
+        }
+        .agregar {
+            cursor: pointer;
+            font-size: 2rem;
+            margin-right: 31%;
+        }
+        .producto,
+        .editar-producto,
+        .agregar-producto {
+            background-color: white;
+            padding: 10px 20px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 50%;
+            margin-left: 22%;
+        }
+        .producto-info {
+            display: flex;
+            align-items: center;
+        }
+        .producto-numero {
+            font-size: 50px;
+            color: blue;
+            margin-right: 20px;
+        }
+        .producto-nombre {
+            font-weight: bold;
+            font-size: 24px;
+            margin-bottom: 23%;
+        }
+        .producto-codigo {
+            color: gray;
+        }
+        .acciones {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .acciones i {
+            cursor: pointer;
+            margin: 5px 0;
+            font-size: 20px;
+            margin-bottom: 50%;
+        }
+        .editar-producto input,
+        .agregar-producto input {
+            margin-bottom: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: calc(100% - 40px);
+            margin-left: 10px;
+            font-size: 0.8rem;
+        }
+        .editar-producto button,
+        .agregar-producto button {
+            border: 1px solid #000;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            background-color: white;
+            padding: 5px 10px;
+            margin-left: 5px;
+        }
+        .aceptar {
+            background-color: white;
+            color: black;
+        }
+        .cancelar {
+            background-color: white;
+            color: black;
+        }
+        .formulario {
+            display: flex;
+            flex-direction: column;
+            width: calc(100% - 120px);
+        }
+        .botones {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            margin-left: 10px;
+        }
+        .botones button {
+            margin-bottom: 5px;
+            padding: 5px 15px;
+            border-radius: 15px;
+            border: 1px solid black;
+            width: 100px;
+        }
+        .editar-producto,
+        .agregar-producto {
+            flex-direction: row;
+            align-items: flex-start;
+        }
+        .formulario input {
+            margin-bottom: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: calc(100% - 20px);
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+        const App = () => {
+            const [productos, setProductos] = React.useState(JSON.parse(localStorage.getItem('productos')) || []);
+            const [productosEditando, setProductosEditando] = React.useState({});
+            const [nuevoProducto, setNuevoProducto] = React.useState(null);
+
+            React.useEffect(() => {
+                localStorage.setItem('productos', JSON.stringify(productos));
+            }, [productos]);
+
+            const añadirProducto = (e) => {
+                e.preventDefault();
+                if (nuevoProducto.nombre && nuevoProducto.codigo && nuevoProducto.cantidad) {
+                    setProductos([...productos, nuevoProducto]);
+                    setNuevoProducto(null);
+                } else {
+                    alert('Todos los campos son obligatorios');
+                }
+            };
+
+            const editarProducto = (codigo, e) => {
+                e.preventDefault();
+                const productoEditar = productosEditando[codigo];
+                if (productoEditar.nombre && productoEditar.codigo && productoEditar.cantidad) {
+                    setProductos(productos.map(producto =>
+                        producto.codigo === codigo
+                            ? productoEditar
+                            : producto
+                    ));
+                    setProductosEditando(prev => {
+                        const { [codigo]: _, ...rest } = prev;
+                        return rest;
+                    });
+                } else {
+                    alert('Todos los campos son obligatorios');
+                }
+            };
+
+            const eliminarProducto = (codigo) => {
+                setProductos(productos.filter(producto => producto.codigo !== codigo));
+                setProductosEditando(prev => {
+                    const { [codigo]: _, ...rest } = prev;
+                    return rest;
+                });
+            };
+
+            const seleccionarProductoEditar = (producto) => {
+                setProductosEditando(prev => ({
+                    ...prev,
+                    [producto.codigo]: producto
+                }));
+            };
+
+            const cancelarEdicion = (codigo) => {
+                setProductosEditando(prev => {
+                    const { [codigo]: _, ...rest } = prev;
+                    return rest;
+                });
+            };
+
+            const mostrarFormularioAgregar = () => {
+                setNuevoProducto({ nombre: '', codigo: '', cantidad: '' });
+            };
+
+            const cancelarAgregar = () => {
+                setNuevoProducto(null);
+            };
+
+            const incrementarCantidad = (codigo) => {
+                setProductos(productos.map(producto =>
+                    producto.codigo === codigo
+                        ? { ...producto, cantidad: parseInt(producto.cantidad) + 1 }
+                        : producto
+                ));
+            };
+
+            return (
+                <div className="contenedor">
+                    <header>
+                        <h1>Control Depósito</h1>
+                        <div className="agregar" onClick={mostrarFormularioAgregar}>+</div>
+                    </header>
+
+                    {nuevoProducto && (
+                        <form className="agregar-producto" onSubmit={añadirProducto}>
+                            <div className="formulario">
+                                <input
+                                    type="text"
+                                    placeholder="Nombre"
+                                    value={nuevoProducto.nombre}
+                                    onChange={(e) => setNuevoProducto({ ...nuevoProducto, nombre: e.target.value })}
+                                />
+                                <input
+                                    type="text"
+                                    placeholder="Código"
+                                    value={nuevoProducto.codigo}
+                                    onChange={(e) => setNuevoProducto({ ...nuevoProducto, codigo: e.target.value })}
+                                />
+                                <input
+                                    type="number"
+                                    placeholder="Cantidad"
+                                    value={nuevoProducto.cantidad}
+                                    onChange={(e) => setNuevoProducto({ ...nuevoProducto, cantidad: e.target.value })}
+                                />
+                            </div>
+                            <div className="botones">
+                                <button type="submit" className="aceptar">Aceptar</button>
+                                <button type="button" className="cancelar" onClick={cancelarAgregar}>Cancelar</button>
+                            </div>
+                        </form>
+                    )}
+
+                    {productos
+                        .sort((a, b) => a.nombre.localeCompare(b.nombre))
+                        .map(producto => (
+                            <div key={producto.codigo}>
+                                {productosEditando[producto.codigo] ? (
+                                    <form className="editar-producto" onSubmit={(e) => editarProducto(producto.codigo, e)}>
+                                        <div className="formulario">
+                                            <input
+                                                type="text"
+                                                placeholder="Nombre"
+                                                value={productosEditando[producto.codigo].nombre}
+                                                onChange={(e) => setProductosEditando({
+                                                    ...productosEditando,
+                                                    [producto.codigo]: { ...productosEditando[producto.codigo], nombre: e.target.value }
+                                                })}
+                                            />
+                                            <input
+                                                type="text"
+                                                placeholder="Código"
+                                                value={productosEditando[producto.codigo].codigo}
+                                                onChange={(e) => setProductosEditando({
+                                                    ...productosEditando,
+                                                    [producto.codigo]: { ...productosEditando[producto.codigo], codigo: e.target.value }
+                                                })}
+                                            />
+                                            <input
+                                                type="number"
+                                                placeholder="Cantidad"
+                                                value={productosEditando[producto.codigo].cantidad}
+                                                onChange={(e) => setProductosEditando({
+                                                    ...productosEditando,
+                                                    [producto.codigo]: { ...productosEditando[producto.codigo], cantidad: e.target.value }
+                                                })}
+                                            />
+                                        </div>
+                                        <div className="botones">
+                                            <button type="submit" className="aceptar">Aceptar</button>
+                                            <button type="button" className="cancelar" onClick={() => cancelarEdicion(producto.codigo)}>Cancelar</button>
+                                        </div>
+                                    </form>
+                                ) : (
+                                    <div className="producto" onClick={() => incrementarCantidad(producto.codigo)}>
+                                        <div className="producto-info">
+                                            <div className="producto-numero">{producto.cantidad}</div>
+                                            <div>
+                                                <div className="producto-nombre">{producto.nombre}</div>
+                                                <div className="producto-codigo">{producto.codigo}</div>
+                                            </div>
+                                        </div>
+                                        <div className="acciones">
+                                            <i className="fas fa-edit" onClick={(e) => {e.stopPropagation(); seleccionarProductoEditar(producto);}}></i>
+                                            <i className="fas fa-trash" onClick={(e) => {e.stopPropagation(); eliminarProducto(producto.codigo);}}></i>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                </div>
+            );
+        };
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+
+    </script>
+</body>
+
+</html>

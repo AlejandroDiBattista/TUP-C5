@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Depósito</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        .container {
+            width: 400px;
+        }
+        h1 {
+            text-align: center;
+            position: relative;
+        }
+        .add-button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5em;
+        }
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin: 10px 0;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .card input {
+            width: calc(100% - 40px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .card .number {
+            font-size: 2em;
+            color: blue;
+            margin-right: 20px;
+        }
+        .card .content {
+            flex-grow: 1;
+        }
+        .card .actions {
+            display: flex;
+            flex-direction: column;
+        }
+        .card .actions button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin: 5px 0;
+        }
+        .card .actions button img {
+            width: 20px;
+            height: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Control Depósito
+            <button class="add-button" onclick="showAddCard()"><img src="https://img.icons8.com/ios-filled/50/000000/plus.png" alt="add" width="30"></button>
+        </h1>
+        <div class="card hidden" id="newCard">
+            <input type="text" id="newName" placeholder="Nombre"><br>
+            <input type="text" id="newPhone" placeholder="Codigo AEN"><br>
+            <input type="text" id="newNumber" placeholder="Cantidad">
+            <div class="actions">
+                <button onclick="addCard()">Aceptar</button>
+                <button onclick="hideAddCard()">Cancelar</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="number">7</div>
+            <div class="content">
+                <strong>7up</strong><br>
+                7799876543210
+            </div>
+            <div class="actions">
+                <button onclick="editCard(this)"><img src="https://img.icons8.com/ios-glyphs/30/000000/edit.png" alt="edit"></button>
+                <button onclick="deleteCard(this)"><img src="https://img.icons8.com/ios-glyphs/30/000000/delete.png" alt="delete"></button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="number">92</div>
+            <div class="content">
+                <strong>Cola Cola</strong><br>
+                7791234567890
+            </div>
+            <div class="actions">
+                <button onclick="editCard(this)"><img src="https://img.icons8.com/ios-glyphs/30/000000/edit.png" alt="edit"></button>
+                <button onclick="deleteCard(this)"><img src="https://img.icons8.com/ios-glyphs/30/000000/delete.png" alt="delete"></button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="number">5</div>
+            <div class="content">
+                <strong>Fanta</strong><br>
+                7793219876540
+            </div>
+            <div class="actions">
+                <button onclick="editCard(this)"><img src="https://img.icons8.com/ios-glyphs/30/000000/edit.png" alt="edit"></button>
+                <button onclick="deleteCard(this)"><img src="https://img.icons8.com/ios-glyphs/30/000000/delete.png" alt="delete"></button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="number">6</div>
+            <div class="content">
+                <strong>Mirinda</strong><br>
+                7797894561230
+            </div>
+            <div class="actions">
+                <button onclick="editCard(this)"><img src="https://img.icons8.com/ios-glyphs/30/000000/edit.png" alt="edit"></button>
+                <button onclick="deleteCard(this)"><img src="https://img.icons8.com/ios-glyphs/30/000000/delete.png" alt="delete"></button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="number">4</div>
+            <div class="content">
+                <strong>Sprite</strong><br>
+                7796543219870
+            </div>
+            <div class="actions">
+                <button onclick="editCard(this)"><img src="https://img.icons8.com/ios-glyphs/30/000000/edit.png" alt="edit"></button>
+                <button onclick="deleteCard(this)"><img src="https://img.icons8.com/ios-glyphs/30/000000/delete.png" alt="delete"></button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showAddCard() {
+            document.getElementById('newCard').classList.remove('hidden');
+        }
+
+        function hideAddCard() {
+            document.getElementById('newCard').classList.add('hidden');
+        }
+
+        function addCard() {
+            const name = document.getElementById('newName').value;
+            const phone = document.getElementById('newPhone').value;
+            const number = document.getElementById('newNumber').value;
+
+            if (name && phone && number) {
+                const container = document.querySelector('.container');
+                const newCard = document.createElement('div');
+                newCard.className = 'card';
+                newCard.innerHTML = `
+                    <div class="number">${number}</div>
+                    <div class="content">
+                        <strong>${name}</strong><br>
+                        ${phone}
+                    </div>
+                    <div class="actions">
+                        <button onclick="editCard(this)"><img src="https://img.icons8.com/ios
+                            -glyphs/30/000000/edit.png" alt="edit"></button>
+                        <button onclick="deleteCard(this)"><img src="https://img.icons8.com/ios-glyphs/30/000000/delete.png" alt="delete"></button>
+                    </div>
+                `;
+                container.appendChild(newCard);
+                hideAddCard();
+            } else {
+                alert('Please fill in all fields');
+            }
+        }
+
+        function editCard(button) {
+            const card = button.closest('.card');
+            const number = card.querySelector('.number').innerText;
+            const name = card.querySelector('.content strong').innerText;
+            const phone = card.querySelector('.content').innerText.split('\n')[1].trim();
+
+            card.innerHTML = `
+                <input type="text" value="${name}" class="editName"><br>
+                <input type="text" value="${phone}" class="editPhone"><br>
+                <input type="text" value="${number}" class="editNumber">
+                <div class="actions">
+                    <button onclick="saveEdit(this)"><img src="https://img.icons8.com/ios-glyphs/30/000000/checkmark.png" alt="save"></button>
+                    <button onclick="cancelEdit(this)"><img src="https://img.icons8.com/ios-glyphs/30/000000/delete.png" alt="cancel"></button>
+                </div>
+            `;
+        }
+
+        function saveEdit(button) {
+            const card = button.closest('.card');
+            const name = card.querySelector('.editName').value;
+            const phone = card.querySelector('.editPhone').value;
+            const number = card.querySelector('.editNumber').value;
+
+            if (name && phone && number) {
+                card.innerHTML = `
+                    <div class="number">${number}</div>
+                    <div class="content">
+                        <strong>${name}</strong><br>
+                        ${phone}
+                    </div>
+                    <div class="actions">
+                        <button onclick="editCard(this)"><img src="https://img.icons8.com/ios-glyphs/30/000000/edit.png" alt="edit"></button>
+                        <button onclick="deleteCard(this)"><img src="https://img.icons8.com/ios-glyphs/30/000000/delete.png" alt="delete"></button>
+                    </div>
+                `;
+            } else {
+                alert('Please fill in all fields');
+            }
+        }
+
+        function cancelEdit(button) {
+            const card = button.closest('.card');
+            const number = card.querySelector('.editNumber').value;
+            const name = card.querySelector('.editName').value;
+            const phone = card.querySelector('.editPhone').value;
+
+            card.innerHTML = `
+                <div class="number">${number}</div>
+                <div class="content">
+                    <strong>${name}</strong><br>
+                    ${phone}
+                </div>
+                <div class="actions">
+                    <button onclick="editCard(this)"><img src="https://img.icons8.com/ios-glyphs/30/000000/edit.png" alt="edit"></button>
+                    <button onclick="deleteCard(this)"><img src="https://img.icons8.com/ios-glyphs/30/000000/delete.png" alt="delete"></button>
+                </div>
+            `;
+        }
+
+        function deleteCard(button) {
+            button.closest('.card').remove();
+        }
+    </script>
+</body>
+</html>
