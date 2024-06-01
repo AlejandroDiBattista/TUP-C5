@@ -130,10 +130,11 @@ const Aplicacion = () => {
             return;
         }
 
-        if (!verificarProducto(item.nombre, item.cantidad, item.ean)) {
+        //if (!verificarProducto(item.nombre, item.cantidad, item.ean)) {
+            if (item.nombre === '' || item.cantidad === null || item.ean === '') {
             eliminarProducto(item.id);
-            return;
-        }
+           // return;
+         }
 
         setIdsEditando(idsEditando.filter(editId => editId !== id));
     };
@@ -178,6 +179,9 @@ const FormularioProducto = ({ id, nombre: nombreInicial, ean: eanInicial, cantid
 
         onGuardarProducto({ id, nombre, ean, cantidad });
     };
+    const manejarCancelar = () => {
+        onCancelar(id);
+    }
 
     return (
         <div className="formulario-producto">
