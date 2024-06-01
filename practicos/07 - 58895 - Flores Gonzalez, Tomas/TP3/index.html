@@ -1,325 +1,348 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <title>TP3-FloresTomas</title>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Depósito</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        * {
+         body {
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            color: rgb(3, 3, 3);
+            background-color: #f4f4f4;
         }
-        body {
-            font-family: 'Space Grotesk', sans-serif;
-            background-color: #ffffff;
+
+        .contenedor {
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding-top: 20px;
         }
-        h1 {
-            font-family: 'Montserrat', sans-serif;
-            text-align: center;
-            margin: 30px 0px;
-            color: rgb(0, 0, 0);
-        }
+
         header {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 70px;
-            width: 100%;
-        }
-        .contenedor {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin: 50px auto 45px auto;
-            width: 90%;
-            flex-wrap: wrap;
-            gap: 40px;
-        }
-        .contenedor > div {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            background-color: #dfdddd;
-            height: 400px;
-            width: 400px;
-            border-radius: 20px;
-            flex-direction: column;
-            padding-top: 35px;
-            gap: 25px;
-            flex: 1 1 300px;
-        }
-        .contenedor > div > form {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-        .contenedor > div > form > input,
-        select {
-            border-radius: 5px;
-            border: none;
-            padding: 5px;
-            color: black;
-        }
-        .contenedor .button {
-            margin-top: 20px;
-            height: 30px;
-            border-radius: 7px;
-            border: none;
-            color: black;
-            background-color: #a5a4a4;
-        }
-        .contenedorProductos h2 {
-            text-align: center;
-            padding-bottom: 20px;
-            font-weight: 300;
-            font-size: 40px;
-        }
-        .mostrarProductos {
-            width: 90%;
-            margin: auto;
-            display: flex;
-            justify-content: flex-start;
-            align-items: flex-start;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .producto {
-            display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #fcfcfc;
-            border-radius: 20px;
+            margin-bottom: 20px;
             width: 100%;
-            padding: 20px;
-            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-        }
-        .producto .nombre {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 20px;
-            font-weight: bold;
-            color: black;
-        }
-        .producto .codigo {
-            font-size: 16px;
-            color: grey;
-        }
-        .producto .cantidad {
-            font-size: 25px;
-            font-weight: bold;
-            color: blue;
-        }
-        .producto .acciones {
-            display: flex;
-            gap: 10px;
-        }
-        .producto .acciones .editar,
-        .producto .acciones .eliminar {
-            cursor: pointer;
-        }
-        .mensaje {
-            color: red;
-            text-align: center;
-            margin: 10px 0;
         }
 
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+            white-space: nowrap;
+            margin-left: 32%;
+        }
+
+        .agregar {
+            cursor: pointer;
+            font-size: 2rem;
+            margin-right: 31%;
+        }
+
+        .producto,
+        .editar-producto,
+        .agregar-producto {
+            background-color: white;
+            padding: 10px 20px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 50%;
+            margin-left: 22%;
+        }
+
+        .producto-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .producto-numero {
+            font-size: 50px;
+            color: blue;
+            margin-right: 20px;
+        }
+
+        .producto-nombre {
+            font-weight: bold;
+            font-size: 24px;
+            margin-bottom: 23%;
+        }
+
+        .producto-codigo {
+            color: gray;
+        }
+
+        .acciones {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .acciones i {
+            cursor: pointer;
+            margin: 5px 0;
+            font-size: 20px;
+            margin-bottom: 50%;
+        }
+
+        .editar-producto input,
+        .agregar-producto input {
+            margin-bottom: 10px;
+            padding: 5px; /* Reducir el padding */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: calc(100% - 40px);
+            margin-left: 10px;
+            font-size: 0.8rem; /* Reducir el tamaño de fuente */
+        }
+
+        .editar-producto button,
+        .agregar-producto button {
+            border: 1px solid #000;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            background-color: white;
+            padding: 5px 10px;
+            margin-left: 5px;
+        }
+
+        .aceptar {
+            background-color: white;
+            color: black;
+        }
+
+        .cancelar {
+            background-color: white;
+            color: black;
+        }
+
+        .formulario {
+            display: flex;
+            flex-direction: column;
+            width: calc(100% - 120px);
+        }
+
+        .botones {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            margin-left: 10px;
+        }
+
+        .botones button {
+            margin-bottom: 5px;
+            padding: 5px 15px;
+            border-radius: 15px;
+            border: 1px solid black;
+            width: 100px;
+        }
+
+        .editar-producto,
+        .agregar-producto {
+            flex-direction: row;
+            align-items: flex-start;
+        }
+
+        .formulario input {
+            margin-bottom: 10px;
+            padding: 5px; /* Reducir el padding */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: calc(100% - 20px);
+            font-size: 0.8rem; /* Reducir el tamaño de fuente */
+        }
     </style>
 </head>
+
 <body>
     <div id="root"></div>
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <script type="text/babel">
-        const { useState, useEffect } = React;
-
-        const AddProduct = ({ añadirProducto }) => {
-            const [nombre, setNombre] = useState('');
-            const [valor, setValor] = useState('');
-            const [existencia, setExistencia] = useState('');
-
-            const handleSubmit = (e) => {
-                e.preventDefault();
-                añadirProducto(nombre, valor, existencia);
-                setNombre('');
-                setValor('');
-                setExistencia('');
-            };
-            return (
-                <div className="añadir">
-                    <h2>Añadir</h2>
-                    <form onSubmit={handleSubmit}>
-                        <label>Nombre del producto</label>
-                        <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
-
-                        <label>Código</label>
-                        <input type="number" value={valor} onChange={(e) => setValor(e.target.value)} />
-
-                        <label>Cantidad</label>
-                        <input type="number" value={existencia} onChange={(e) => setExistencia(e.target.value)} />
-
-                        <input className="button" type="submit" value="Añadir" />
-                    </form>
-                </div>
-            );
-        };
-        const EditProduct = ({ producto, editarProducto, cancelarEdicion }) => {
-            const [nombre, setNombre] = useState(producto ? producto.nombre : '');
-            const [valor, setValor] = useState(producto ? producto.valor : '');
-            const [existencia, setExistencia] = useState(producto ? producto.existencia : '');
-
-            const handleSubmit = (e) => {
-                e.preventDefault();
-                editarProducto(producto.nombre, nombre, valor, existencia);
-                cancelarEdicion();
-            };
-            useEffect(() => {
-                if (producto) {
-                    setNombre(producto.nombre);
-                    setValor(producto.valor);
-                    setExistencia(producto.existencia);
-                }
-            }, [producto]);
-            return (
-                <div className="editar">
-                    <h2>Editar</h2>
-                    <form onSubmit={handleSubmit}>
-                        <label>Nombre del producto</label>
-                        <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
-
-                        <label>Código</label>
-                        <input type="number" value={valor} onChange={(e) => setValor(e.target.value)} />
-
-                        <label>Cantidad</label>
-                        <input type="number" value={existencia} onChange={(e) => setExistencia(e.target.value)} />
-
-                        <input className="button" type="submit" value="Guardar cambios" />
-                        <button type="button" className="button" onClick={cancelarEdicion}>Cancelar</button>
-                    </form>
-                </div>
-            );
-        };
-        const DeleteProduct = ({ producto, eliminarProducto, cancelarEliminacion }) => {
-            const handleSubmit = (e) => {
-                e.preventDefault();
-                eliminarProducto(producto.nombre);
-                cancelarEliminacion();
-            };
-
-            return (
-                <div className="eliminar">
-                    <h2>Eliminar</h2>
-                    <form onSubmit={handleSubmit}>
-                        <p>¿Está seguro de que desea eliminar {producto.nombre}?</p>
-                        <input className="button" type="submit" value="Eliminar" />
-                        <button type="button" className="button" onClick={cancelarEliminacion}>Cancelar</button>
-                    </form>
-                </div>
-            );
-        };
-        const ProductList = ({ productos, seleccionarProductoEditar, seleccionarProductoEliminar }) => (
-            <div className="contenedorProductos">
-                <h2>Productos</h2>
-                <div className="mostrarProductos">
-                    {productos.map(producto => (
-                        <div key={producto.nombre} className="producto">
-                            <div className="cantidad">{producto.existencia}</div>
-                            <div>
-                                <div className="nombre">{producto.nombre}</div>
-                                <div className="codigo">{producto.valor}</div>
-                            </div>
-                            <div className="acciones">
-                                <i className='bx bx-edit editar' onClick={() => seleccionarProductoEditar(producto)}></i>
-                                <i className='bx bx-trash eliminar' onClick={() => seleccionarProductoEliminar(producto)}></i>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        );
         const App = () => {
-            const [productos, setProductos] = useState(() => {
-                const productosGuardados = localStorage.getItem('productos');
-                return productosGuardados ? JSON.parse(productosGuardados) : [
-                    { nombre: "Producto1", valor: 1, existencia: 100 },
-                    { nombre: "Producto2", valor: 2, existencia: 200 },
-                ];
-            });
-            const [mensaje, setMensaje] = useState('');
-            const [productoEditar, setProductoEditar] = useState(null);
-            const [productoEliminar, setProductoEliminar] = useState(null);
+            const [productos, setProductos] = React.useState(JSON.parse(localStorage.getItem('productos')) || []);
+            const [productosEditando, setProductosEditando] = React.useState({});
+            const [nuevoProducto, setNuevoProducto] = React.useState(null);
 
-            useEffect(() => {
+            React.useEffect(() => {
                 localStorage.setItem('productos', JSON.stringify(productos));
             }, [productos]);
-            const añadirProducto = (nombre, valor, existencia) => {
-                const productoExistente = productos.find(producto => producto.nombre === nombre || producto.valor === valor);
-                if (productoExistente) {
-                    setMensaje('El producto o código ya existe. Intente con otro nombre o código.');
-                    setTimeout(() => setMensaje(''), 3000);
-                    return;
-                }
 
-                const nuevoProducto = { nombre, valor, existencia: parseInt(existencia) };
-                setProductos([...productos, nuevoProducto]);
-                setMensaje('Producto añadido correctamente.');
-                setTimeout(() => setMensaje(''), 3000);
+            const añadirProducto = (e) => {
+                e.preventDefault();
+                if (nuevoProducto.nombre && nuevoProducto.codigo && nuevoProducto.cantidad) {
+                    setProductos([...productos, nuevoProducto]);
+                    setNuevoProducto(null);
+                } else {
+                    alert('Todos los campos son obligatorios');
+                }
             };
-            const editarProducto = (nombreAntiguo, nombreNuevo, valor, existencia) => {
-                if (productos.some(producto => producto.nombre === nombreNuevo && producto.nombre !== nombreAntiguo)) {
-                    setMensaje('El nuevo nombre ya está en uso. Intente con otro nombre.');
-                    setTimeout(() => setMensaje(''), 3000);
-                    return;
-                }
 
-                const nuevosProductos = productos.map(producto => {
-                    if (producto.nombre === nombreAntiguo) {
-                        return { nombre: nombreNuevo, valor, existencia: parseInt(existencia) };
-                    }
-                    return producto;
+            const editarProducto = (codigo, e) => {
+                e.preventDefault();
+                const productoEditar = productosEditando[codigo];
+                if (productoEditar.nombre && productoEditar.codigo && productoEditar.cantidad) {
+                    setProductos(productos.map(producto =>
+                        producto.codigo === codigo
+                            ? productoEditar
+                            : producto
+                    ));
+                    setProductosEditando(prev => {
+                        const { [codigo]: _, ...rest } = prev;
+                        return rest;
+                    });
+                } else {
+                    alert('Todos los campos son obligatorios');
+                }
+            };
+
+            const eliminarProducto = (codigo) => {
+                setProductos(productos.filter(producto => producto.codigo !== codigo));
+                setProductosEditando(prev => {
+                    const { [codigo]: _, ...rest } = prev;
+                    return rest;
                 });
-                setProductos(nuevosProductos);
-                setMensaje('Producto editado correctamente.');
-                setTimeout(() => setMensaje(''), 3000);
             };
-            const eliminarProducto = (nombre) => {
-                const nuevosProductos = productos.filter(producto => producto.nombre !== nombre);
-                setProductos(nuevosProductos);
-                setMensaje('Producto eliminado correctamente.');
-                setTimeout(() => setMensaje(''), 3000);
-            };
+
             const seleccionarProductoEditar = (producto) => {
-                setProductoEditar(producto);
+                setProductosEditando(prev => ({
+                    ...prev,
+                    [producto.codigo]: producto
+                }));
             };
-            const cancelarEdicion = () => {
-                setProductoEditar(null);
+
+            const cancelarEdicion = (codigo) => {
+                setProductosEditando(prev => {
+                    const { [codigo]: _, ...rest } = prev;
+                    return rest;
+                });
             };
-            const seleccionarProductoEliminar = (producto) => {
-                setProductoEliminar(producto);
+
+            const mostrarFormularioAgregar = () => {
+                setNuevoProducto({ nombre: '', codigo: '', cantidad: '' });
             };
-            const cancelarEliminacion = () => {
-                setProductoEliminar(null);
+
+            const cancelarAgregar = () => {
+                setNuevoProducto(null);
             };
+
+            const incrementarCantidad = (codigo) => {
+                setProductos(productos.map(producto =>
+                    producto.codigo === codigo
+                        ? { ...producto, cantidad: parseInt(producto.cantidad) + 1 }
+                        : producto
+                ));
+            };
+
             return (
-                <div>
+                <div className="contenedor">
                     <header>
                         <h1>Control Depósito</h1>
+                        <div className="agregar" onClick={mostrarFormularioAgregar}>+</div>
                     </header>
-                    {mensaje && <div className="mensaje">{mensaje}</div>}
-                    <div className="contenedor">
-                        <AddProduct añadirProducto={añadirProducto} />
-                        {productoEditar && <EditProduct producto={productoEditar} editarProducto={editarProducto} cancelarEdicion={cancelarEdicion} />}
-                        {productoEliminar && <DeleteProduct producto={productoEliminar} eliminarProducto={eliminarProducto} cancelarEliminacion={cancelarEliminacion} />}
-                    </div>
-                    <ProductList productos={productos} seleccionarProductoEditar={seleccionarProductoEditar} seleccionarProductoEliminar={seleccionarProductoEliminar} />
+
+                    {nuevoProducto && (
+                        <form className="agregar-producto" onSubmit={añadirProducto}>
+                            <div className="formulario">
+                                <input
+                                    type="text"
+                                    placeholder="Nombre"
+                                    value={nuevoProducto.nombre}
+                                    onChange={(e) => setNuevoProducto({ ...nuevoProducto, nombre: e.target.value })}
+                                />
+                                <input
+                                    type="text"
+                                    placeholder="Código"
+                                    value={nuevoProducto.codigo}
+                                    onChange={(e) => setNuevoProducto({ ...nuevoProducto, codigo: e.target.value })}
+                                />
+                                <input
+                                    type="number"
+                                    placeholder="Cantidad"
+                                    value={nuevoProducto.cantidad}
+                                    onChange={(e) => setNuevoProducto({ ...nuevoProducto, cantidad: e.target.value })}
+                                />
+                            </div>
+                            <div className="botones">
+                                <button type="submit" className="aceptar">Aceptar</button>
+                                <button type="button" className="cancelar" onClick={cancelarAgregar}>Cancelar</button>
+                            </div>
+                        </form>
+                    )}
+
+                    {productos
+                        .sort((a, b) => a.nombre.localeCompare(b.nombre))
+                        .map(producto => (
+                            <div key={producto.codigo}>
+                                {productosEditando[producto.codigo] ? (
+                                    <form className="editar-producto" onSubmit={(e) => editarProducto(producto.codigo, e)}>
+                                        <div className="formulario">
+                                            <input
+                                                type="text"
+                                                placeholder="Nombre"
+                                                value={productosEditando[producto.codigo].nombre}
+                                                onChange={(e) => setProductosEditando({
+                                                    ...productosEditando,
+                                                    [producto.codigo]: { ...productosEditando[producto.codigo], nombre: e.target.value }
+                                                })}
+                                            />
+                                            <input
+                                                type="text"
+                                                placeholder="Código"
+                                                value={productosEditando[producto.codigo].codigo}
+                                                onChange={(e) => setProductosEditando({
+                                                    ...productosEditando,
+                                                    [producto.codigo]: { ...productosEditando[producto.codigo], codigo: e.target.value }
+                                                })}
+                                            />
+                                            <input
+                                                type="number"
+                                                placeholder="Cantidad"
+                                                value={productosEditando[producto.codigo].cantidad}
+                                                onChange={(e) => setProductosEditando({
+                                                    ...productosEditando,
+                                                    [producto.codigo]: { ...productosEditando[producto.codigo], cantidad: e.target.value }
+                                                })}
+                                            />
+                                        </div>
+                                        <div className="botones">
+                                            <button type="submit" className="aceptar">Aceptar</button>
+                                            <button type="button" className="cancelar" onClick={() => cancelarEdicion(producto.codigo)}>Cancelar</button>
+                                        </div>
+                                    </form>
+                                ) : (
+                                    <div className="producto" onClick={() => incrementarCantidad(producto.codigo)}>
+                                        <div className="producto-info">
+                                            <div className="producto-numero">{producto.cantidad}</div>
+                                            <div>
+                                                <div className="producto-nombre">{producto.nombre}</div>
+                                                <div className="producto-codigo">{producto.codigo}</div>
+                                            </div>
+                                        </div>
+                                        <div className="acciones">
+                                            <i className="fas fa-edit" onClick={(e) => {e.stopPropagation(); seleccionarProductoEditar(producto);}}></i>
+                                            <i className="fas fa-trash" onClick={(e) => {e.stopPropagation(); eliminarProducto(producto.codigo);}}></i>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        ))}
                 </div>
             );
         };
-        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+
     </script>
 </body>
+
 </html>
