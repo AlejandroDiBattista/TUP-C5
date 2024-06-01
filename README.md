@@ -1,27 +1,44 @@
-# Trabajo Práctico 3
+# TP4 
 
-Este trabajo se considera como el primer parcial.
+## App: Consultar Clima
+---
 
-## Requerimientos
-Usted trabaja en una pequeña empresa y debe llevar a cabo el control de cuántas unidades de cada producto hay en el depósito.
+Hacer una aplicacion que permita mostrar el clima actual en la ciudad elegida.
+- Debe tener enlaces para acceder directamente a las ciudades de "Tucuman", "Salta" y "Buenos Aires"
+- Debe permitir buscar cualquier ciudad
+- Debe mostrar 
+    - El nombre de la ciudad completo
+    - La temperatura actual, minima y maxima 
+    - La humedad actual
+    - Una imagen que represente el clima 
 
-El depósito no está bien organizado y aunque no tiene una gran variedad, aproximadamente 30 productos distintos, sí cuenta con un número considerable de unidades, estimando no más de 100 por producto. Algunos productos están agrupados, mientras que otros se encuentran dispersos en diferentes habitaciones. Incluso hay productos en exhibición para la venta que también deben ser contabilizados.
+Para hacer la aplicación recomendamos usar los siguientes recursos:
+- https://openweathermap.org/ 
+    Para consultar el API del clima
+    API -> "Current weather data" -> "Built-in API request by city name"
 
-Una opción sería hacerlo con lápiz y papel para luego transferir los datos a una hoja de cálculo de Excel, pero recientemente ha completado un curso de programación en ReactJS. Por lo tanto, decide poner a prueba sus habilidades recién adquiridas desarrollando una aplicación web que facilite el control del inventario del depósito.
+- https://picocss.com/
+    Para dar formato a la pagina
 
-Tras reflexionar, se da cuenta de que solo necesita dos datos de cada producto: el nombre y el código EAN, el número que se encuentra justo debajo del código de barras.
+- https://bas.dev/work/meteocons 
+    Para los iconos animados que representa el clima actual.
+    (bajar archivo y buscar los iconos para openweathermap)
 
-Dado que no dispone de un listado de productos, opta por la posibilidad de agregar productos a medida que los va encontrando. Si localiza un producto que ya está en la lista, con solo seleccionarlo, incrementaría la cantidad en una unidad.
+![Diseño](./practicos/00%20-%20Enunciados/clima.jpg)
+---
 
-Para su comodidad, y siendo el usuario final, decide que debe ser posible editar cualquier producto en cualquier momento; esto incluye corregir el nombre, el código o la cantidad, o incluso eliminarlo directamente. La edición se realizará en el mismo lugar donde se encuentra la información. Aunque pueda parecer excesivo, es una oportunidad para poner a prueba sus habilidades, y por ello, le resulta un desafío interesante.
-
-Finalmente, considera que lo más práctico es que los productos se muestren ordenados alfabéticamente.
-
-Con las ideas claras, procede a realizar un diseño gráfico rápido, con la intención de que el resultado final sea lo más fiel posible al diseño propuesto.
-
-![Diseño](control-deposito.png)
-
-Se trata de un ABM (Alta, Baja, Modificación) simple, ni siquiera va a tener que hacer un servidor ni conectarse a una base de datos, solo va guardar los datos en el almacenamiento local de navegador. 
-
-Tiene que salir perfecto!! al fin y al cabo es para lucirse asi que se va a tomar una semana para completar el trabajo.
-
+> [!NOTE]
+>
+> **Instrucciones para la presentación del trabajo**
+> 
+> 1. Cambiar a la rama principal (main).
+> 2. Descargar la última versión del repositorio del curso (fetch).
+> 3. Crear una nueva rama para tus cambios (new branch) (TP4-{alumno}).
+> 4. Abrir la carpeta correspondiente a tu nombre de usuario (practicos/{alumno}/TP4).
+> 5. Realizar las modificaciones dentro de la carpeta TP4 (sin alterar ninguna otra carpeta).
+> 6. Confirmar los cambios (commit).
+> 7. Realizar una solicitud de publicación (pull request).
+> 8. Revisar que el pull request esté subido (solapa pull request en GitHub).
+> 9. Volver a la rama principal (main) para actualizar (fetch) el repositorio.
+>
+> *Los cambios no aparecerán en el repositorio principal hasta que se acepte el pull request el día del vencimiento del plazo para entregar el trabajo.*

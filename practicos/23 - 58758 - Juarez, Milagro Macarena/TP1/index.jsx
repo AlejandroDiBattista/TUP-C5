@@ -9,8 +9,6 @@ const App = () => {
 
   return (
     <div>
-      <h1>¡Hola, mundo!</h1>
-      <p>¡Bienvenidos a React!</p>
       <div className="agenda">
         <h2>Agenda de Contactos</h2>
         {contactos.map(contacto => (

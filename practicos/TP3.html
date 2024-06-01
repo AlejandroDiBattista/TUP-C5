@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
 
     <!-- Enlaces a React, ReactDOM y Babel -->
-    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <title>TP1</title>
     <style>
@@ -26,11 +26,13 @@
             border-radius: 5px;
             align-items: center;
         }
+
         h2 {
             font-size: 1.5rem;
+            font-weight: normal;
             color: #333;
             margin: 0;
-            padding: 0;
+            padding: 10px 0;
         }
 
         h2 span {
@@ -42,23 +44,40 @@
 
         .alumno {
             background-color: #fff;
-            padding: 5px;
+            padding: 10px 5px;
             border-radius: 5px;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-            width: 400px;
+            width: 500px;
             margin: 10px auto;
+
+            h2 {
+                font-size: 32px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+
+            span {
+                font-size: 20px;
+                padding-top: 15px;
+                text-align: center;
+                color: #999;
+            }
         }
 
         .ver {
             font-size: 1rem;
             color: #333;
             padding-left: 45px;
+            margin: 15px 5px;
+
+            a {
+                display: inline-block;
+                text-decoration: none;
+                font-size: 20px;
+            }
         }
 
-        .ver a {
-            display: inline-block;
-            text-decoration: none;
-        }
 
         .falta {
             color: red;
@@ -68,6 +87,38 @@
             float: right;
             font-size: 0.8rem;
             color: #999;
+        }
+
+        table {
+            width: calc(100% - 10px);
+            margin: 20px auto;
+            border-collapse: collapse;
+            font-family: sans-serif;
+            font-size: 20px;
+        }
+
+        caption {
+            caption-side: top;
+            padding: 10px;
+            font-weight: bold;
+        }
+
+        thead {
+            background-color: rgb(228 240 245);
+        }
+
+        th,
+        td {
+            padding: 8px 10px;
+        }
+
+        th {
+            text-align: left;
+        }
+
+        td {
+            padding: 0 10px;
+            text-align: right;
         }
     </style>
     <script>
@@ -81,7 +132,7 @@
     "inicial": "MBB",
     "TP1": true,
     "cambio": false,
-    "ubicacion": "./01 - 55680 - Bustos, Mauricio Benjamin/TP3/index.html",
+    "ubicacion": "./01 - 55680 - Bustos, Mauricio Benjamin",
     "TP2": true,
     "TP3": false
   },
@@ -94,7 +145,7 @@
     "inicial": "JCA",
     "TP1": false,
     "cambio": false,
-    "ubicacion": "./02 - 55457 - Carranza, Javier/TP3/index.html",
+    "ubicacion": "./02 - 55457 - Carranza, Javier",
     "TP2": false,
     "TP3": false
   },
@@ -107,7 +158,7 @@
     "inicial": "GES",
     "TP1": false,
     "cambio": false,
-    "ubicacion": "./03 - 58773 - Elli Salazar, Gerónimo/TP3/index.html",
+    "ubicacion": "./03 - 58773 - Elli Salazar, Gerónimo",
     "TP2": true,
     "TP3": false
   },
@@ -120,7 +171,7 @@
     "inicial": "PFD",
     "TP1": false,
     "cambio": false,
-    "ubicacion": "./04 - 55578 - Fernandez Dumit, Patricio/TP3/index.html",
+    "ubicacion": "./04 - 55578 - Fernandez Dumit, Patricio",
     "TP2": true,
     "TP3": false
   },
@@ -131,9 +182,9 @@
     "legajo": 58735,
     "nombre": "Fernandez Gomez, Manuel",
     "inicial": "MFG",
-    "TP1": true,
     "cambio": false,
-    "ubicacion": "./05 - 58735 - Fernandez Gomez, Manuel/TP3/index.html",
+    "ubicacion": "./05 - 58735 - Fernandez Gomez, Manuel",
+    "TP1": true,
     "TP2": true,
     "TP3": false
   },
@@ -146,7 +197,7 @@
     "inicial": "SIF",
     "TP1": false,
     "cambio": false,
-    "ubicacion": "./06 - 58723 - Figueroa, Santiago Isaac/TP3/index.html",
+    "ubicacion": "./06 - 58723 - Figueroa, Santiago Isaac",
     "TP2": true,
     "TP3": false
   },
@@ -159,7 +210,7 @@
     "inicial": "TFG",
     "TP1": true,
     "cambio": false,
-    "ubicacion": "./07 - 58895 - Flores Gonzalez, Tomas/TP3/index.html",
+    "ubicacion": "./07 - 58895 - Flores Gonzalez, Tomas",
     "TP2": true,
     "TP3": false
   },
@@ -172,7 +223,7 @@
     "inicial": "FFA",
     "TP1": false,
     "cambio": false,
-    "ubicacion": "./08 - 58781 - Frias Armengol, Facundo/TP3/index.html",
+    "ubicacion": "./08 - 58781 - Frias Armengol, Facundo",
     "TP2": false,
     "TP3": false
   },
@@ -185,7 +236,7 @@
     "inicial": "VMG",
     "TP1": true,
     "cambio": false,
-    "ubicacion": "./09 - 58734 - Galvan, Victor Mateo/TP3/index.html",
+    "ubicacion": "./09 - 58734 - Galvan, Victor Mateo",
     "TP2": true,
     "TP3": false
   },
@@ -198,7 +249,7 @@
     "inicial": "MGA",
     "TP1": true,
     "cambio": false,
-    "ubicacion": "./10 - 59154 - Garcia, Máximo/TP3/index.html",
+    "ubicacion": "./10 - 59154 - Garcia, Máximo",
     "TP2": true,
     "TP3": false
   },
@@ -211,7 +262,7 @@
     "inicial": "SMGA",
     "TP1": false,
     "cambio": false,
-    "ubicacion": "./11 - 58740 - Garcia, Sergio Martín/TP3/index.html",
+    "ubicacion": "./11 - 58740 - Garcia, Sergio Martín",
     "TP2": false,
     "TP3": false
   },
@@ -224,7 +275,7 @@
     "inicial": "MGM",
     "TP1": true,
     "cambio": false,
-    "ubicacion": "./12 - 59076 - Gomez Martinez, Matias/TP3/index.html",
+    "ubicacion": "./12 - 59076 - Gomez Martinez, Matias",
     "TP2": true,
     "TP3": false
   },
@@ -237,7 +288,7 @@
     "inicial": "FMG",
     "TP1": false,
     "cambio": false,
-    "ubicacion": "./13 - 59135 - Gomez, Facundo Matias/TP3/index.html",
+    "ubicacion": "./13 - 59135 - Gomez, Facundo Matias",
     "TP2": false,
     "TP3": false
   },
@@ -250,7 +301,7 @@
     "inicial": "FGN",
     "TP1": false,
     "cambio": false,
-    "ubicacion": "./14 - 58894 - Gonzalez Nacusse, Flavia/TP3/index.html",
+    "ubicacion": "./14 - 58894 - Gonzalez Nacusse, Flavia",
     "TP2": false,
     "TP3": false
   },
@@ -263,7 +314,7 @@
     "inicial": "MEG",
     "TP1": true,
     "cambio": false,
-    "ubicacion": "./15 - 59488 - Gonzalez, Mariano Emanuel/TP3/index.html",
+    "ubicacion": "./15 - 59488 - Gonzalez, Mariano Emanuel",
     "TP2": false,
     "TP3": false
   },
@@ -276,7 +327,7 @@
     "inicial": "MNG",
     "TP1": true,
     "cambio": false,
-    "ubicacion": "./16 - 58720 - Gonzalez, Martín Natanael/TP3/index.html",
+    "ubicacion": "./16 - 58720 - Gonzalez, Martín Natanael",
     "TP2": true,
     "TP3": false
   },
@@ -289,7 +340,7 @@
     "inicial": "SMGO",
     "TP1": true,
     "cambio": false,
-    "ubicacion": "./17 - 59068 - Gonzalez, Silvina Mariela/TP3/index.html",
+    "ubicacion": "./17 - 59068 - Gonzalez, Silvina Mariela",
     "TP2": true,
     "TP3": false
   },
@@ -302,7 +353,7 @@
     "inicial": "APG",
     "TP1": true,
     "cambio": false,
-    "ubicacion": "./18 - 58786 - Gutierrez, Augusto Pedro/TP3/index.html",
+    "ubicacion": "./18 - 58786 - Gutierrez, Augusto Pedro",
     "TP2": false,
     "TP3": false
   },
@@ -315,7 +366,7 @@
     "inicial": "CALG",
     "TP1": false,
     "cambio": false,
-    "ubicacion": "./19 - 58880 - Gutierrez, Cecilia Ana Lu/TP3/index.html",
+    "ubicacion": "./19 - 58880 - Gutierrez, Cecilia Ana Lu",
     "TP2": true,
     "TP3": false
   },
@@ -328,7 +379,7 @@
     "inicial": "SNJ",
     "TP1": true,
     "cambio": false,
-    "ubicacion": "./20 - 58687 - Jadur, Sofia Nahir/TP3/index.html",
+    "ubicacion": "./20 - 58687 - Jadur, Sofia Nahir",
     "TP2": true,
     "TP3": false
   },
@@ -341,7 +392,7 @@
     "inicial": "LDJH",
     "TP1": false,
     "cambio": false,
-    "ubicacion": "./21 - 58736 - Juarez Hindi, Lucas David/TP3/index.html",
+    "ubicacion": "./21 - 58736 - Juarez Hindi, Lucas David",
     "TP2": true,
     "TP3": false
   },
@@ -354,7 +405,7 @@
     "inicial": "LAJ",
     "TP1": true,
     "cambio": false,
-    "ubicacion": "./22 - 58761 - Juarez, Lautaro Andres/TP3/index.html",
+    "ubicacion": "./22 - 58761 - Juarez, Lautaro Andres",
     "TP2": true,
     "TP3": false
   },
@@ -367,7 +418,7 @@
     "inicial": "MMJ",
     "TP1": false,
     "cambio": false,
-    "ubicacion": "./23 - 58758 - Juarez, Milagro Macarena/TP3/index.html",
+    "ubicacion": "./23 - 58758 - Juarez, Milagro Macarena",
     "TP2": true,
     "TP3": false
   },
@@ -380,7 +431,7 @@
     "inicial": "GSJ",
     "TP1": true,
     "cambio": false,
-    "ubicacion": "./24 - 58721 - Juncos, Gonzalo Sebastian/TP3/index.html",
+    "ubicacion": "./24 - 58721 - Juncos, Gonzalo Sebastian",
     "TP2": true,
     "TP3": false
   },
@@ -393,7 +444,7 @@
     "inicial": "MAL",
     "TP1": true,
     "cambio": false,
-    "ubicacion": "./25 - 59070 - Ladina, Maia Agostina/TP3/index.html",
+    "ubicacion": "./25 - 59070 - Ladina, Maia Agostina",
     "TP2": true,
     "TP3": false
   },
@@ -406,7 +457,7 @@
     "inicial": "MLA",
     "TP1": false,
     "cambio": false,
-    "ubicacion": "./26 - 58737 - Lasagna, Manuel/TP3/index.html",
+    "ubicacion": "./26 - 58737 - Lasagna, Manuel",
     "TP2": false,
     "TP3": false
   },
@@ -419,7 +470,7 @@
     "inicial": "AML",
     "TP1": false,
     "cambio": false,
-    "ubicacion": "./27 - 58756 - Lazarte, Agustina Milagro/TP3/index.html",
+    "ubicacion": "./27 - 58756 - Lazarte, Agustina Milagro",
     "TP2": false,
     "TP3": false
   },
@@ -432,7 +483,7 @@
     "inicial": "LLA",
     "TP1": false,
     "cambio": false,
-    "ubicacion": "./28 - 58727 - Lazarte, Lucas/TP3/index.html",
+    "ubicacion": "./28 - 58727 - Lazarte, Lucas",
     "TP2": true,
     "TP3": false
   },
@@ -445,7 +496,7 @@
     "inicial": "ALC",
     "TP1": true,
     "cambio": false,
-    "ubicacion": "./29 - 59152 - Lopez Chipoloni, Agustin/TP3/index.html",
+    "ubicacion": "./29 - 59152 - Lopez Chipoloni, Agustin",
     "TP2": true,
     "TP3": false
   },
@@ -458,7 +509,7 @@
     "inicial": "MJLG",
     "TP1": false,
     "cambio": false,
-    "ubicacion": "./30 - 58724 - Lopez Garcia, Marcos Juli/TP3/index.html",
+    "ubicacion": "./30 - 58724 - Lopez Garcia, Marcos Juli",
     "TP2": true,
     "TP3": false
   },
@@ -471,7 +522,7 @@
     "inicial": "FAL",
     "TP1": false,
     "cambio": false,
-    "ubicacion": "./31 - 58726 - Lopez, Fausto Agustin/TP3/index.html",
+    "ubicacion": "./31 - 58726 - Lopez, Fausto Agustin",
     "TP2": true,
     "TP3": false
   },
@@ -484,7 +535,7 @@
     "inicial": "MEL",
     "TP1": false,
     "cambio": false,
-    "ubicacion": "./32 - 58729 - Lovey, Mathias Exequiel/TP3/index.html",
+    "ubicacion": "./32 - 58729 - Lovey, Mathias Exequiel",
     "TP2": true,
     "TP3": false
   },
@@ -497,7 +548,7 @@
     "inicial": "DMM",
     "TP1": true,
     "cambio": false,
-    "ubicacion": "./33 - 59071 - Medina, Daiana Micaela/TP3/index.html",
+    "ubicacion": "./33 - 59071 - Medina, Daiana Micaela",
     "TP2": true,
     "TP3": false
   },
@@ -510,7 +561,7 @@
     "inicial": "TLMB",
     "TP1": false,
     "cambio": false,
-    "ubicacion": "./34 - 59099 - Moyano Berrondo, Tahiel L/TP3/index.html",
+    "ubicacion": "./34 - 59099 - Moyano Berrondo, Tahiel L",
     "TP2": false,
     "TP3": false
   },
@@ -523,7 +574,7 @@
     "inicial": "MHP",
     "TP1": true,
     "cambio": false,
-    "ubicacion": "./35 - 58805 - Prieto, Matias Hernan/TP3/index.html",
+    "ubicacion": "./35 - 58805 - Prieto, Matias Hernan",
     "TP2": true,
     "TP3": false
   },
@@ -536,7 +587,7 @@
     "inicial": "RRR",
     "TP1": true,
     "cambio": false,
-    "ubicacion": "./36 - 59054 - Rahman Rintoul, Ramiro/TP3/index.html",
+    "ubicacion": "./36 - 59054 - Rahman Rintoul, Ramiro",
     "TP2": true,
     "TP3": false
   },
@@ -549,7 +600,7 @@
     "inicial": "LGR",
     "TP1": true,
     "cambio": false,
-    "ubicacion": "./37 - 58766 - Reinoso, Lisandro Gabriel/TP3/index.html",
+    "ubicacion": "./37 - 58766 - Reinoso, Lisandro Gabriel",
     "TP2": true,
     "TP3": false
   },
@@ -562,7 +613,7 @@
     "inicial": "LRI",
     "TP1": true,
     "cambio": false,
-    "ubicacion": "./38 - 58753 - Rivadeneira, Lautaro/TP3/index.html",
+    "ubicacion": "./38 - 58753 - Rivadeneira, Lautaro",
     "TP2": true,
     "TP3": false
   },
@@ -575,7 +626,7 @@
     "inicial": "GRO",
     "TP1": true,
     "cambio": false,
-    "ubicacion": "./39 - 58686 - Rodriguez, Gustavo/TP3/index.html",
+    "ubicacion": "./39 - 58686 - Rodriguez, Gustavo",
     "TP2": true,
     "TP3": false
   },
@@ -588,7 +639,7 @@
     "inicial": "CAR",
     "TP1": true,
     "cambio": false,
-    "ubicacion": "./40 - 58806 - Rojas, Carlos Augusto/TP3/index.html",
+    "ubicacion": "./40 - 58806 - Rojas, Carlos Augusto",
     "TP2": true,
     "TP3": false
   },
@@ -601,7 +652,7 @@
     "inicial": "MJRS",
     "TP1": true,
     "cambio": false,
-    "ubicacion": "./41 - 58692 - Rosello Salas, Maia Josef/TP3/index.html",
+    "ubicacion": "./41 - 58692 - Rosello Salas, Maia Josef",
     "TP2": true,
     "TP3": false
   },
@@ -614,7 +665,7 @@
     "inicial": "EGS",
     "TP1": true,
     "cambio": false,
-    "ubicacion": "./42 - 58873 - Salazar, Enzo Gabriel/TP3/index.html",
+    "ubicacion": "./42 - 58873 - Salazar, Enzo Gabriel",
     "TP2": true,
     "TP3": false
   },
@@ -627,7 +678,7 @@
     "inicial": "EST",
     "TP1": true,
     "cambio": false,
-    "ubicacion": "./43 - 55870 - Stemberger, Emiliano/TP3/index.html",
+    "ubicacion": "./43 - 55870 - Stemberger, Emiliano",
     "TP2": true,
     "TP3": false
   },
@@ -640,7 +691,7 @@
     "inicial": "ADT",
     "TP1": true,
     "cambio": false,
-    "ubicacion": "./44 - 58845 - Terrera, Augusto Dante/TP3/index.html",
+    "ubicacion": "./44 - 58845 - Terrera, Augusto Dante",
     "TP2": true,
     "TP3": false
   },
@@ -653,7 +704,7 @@
     "inicial": "LBT",
     "TP1": false,
     "cambio": false,
-    "ubicacion": "./45 - 59052 - Teseira, Lucas Benjamin/TP3/index.html",
+    "ubicacion": "./45 - 59052 - Teseira, Lucas Benjamin",
     "TP2": false,
     "TP3": false
   },
@@ -666,7 +717,7 @@
     "inicial": "FTO",
     "TP1": true,
     "cambio": false,
-    "ubicacion": "./46 - 57543 - Touceda, Federico/TP3/index.html",
+    "ubicacion": "./46 - 57543 - Touceda, Federico",
     "TP2": true,
     "TP3": false
   },
@@ -679,7 +730,7 @@
     "inicial": "JPU",
     "TP1": false,
     "cambio": false,
-    "ubicacion": "./47 - 59064 - Urbani, Juan Pablo/TP3/index.html",
+    "ubicacion": "./47 - 59064 - Urbani, Juan Pablo",
     "TP2": true,
     "TP3": false
   },
@@ -692,7 +743,7 @@
     "inicial": "AEV",
     "TP1": false,
     "cambio": false,
-    "ubicacion": "./48 - 59188 - Vaca, Andres Emanuel/TP3/index.html",
+    "ubicacion": "./48 - 59188 - Vaca, Andres Emanuel",
     "TP2": true,
     "TP3": false
   },
@@ -705,7 +756,7 @@
     "inicial": "JGV",
     "TP1": true,
     "cambio": false,
-    "ubicacion": "./49 - 58899 - Villagra, Juan Gabriel/TP3/index.html",
+    "ubicacion": "./49 - 58899 - Villagra, Juan Gabriel",
     "TP2": true,
     "TP3": false
   },
@@ -719,7 +770,7 @@
     "TP1": false,
     "cambio": false,
     "antes": "C9-11",
-    "ubicacion": "./50 - 59001 - Peralta, Axel Rubens/TP3/index.html",
+    "ubicacion": "./50 - 59001 - Peralta, Axel Rubens",
     "TP2": false,
     "TP3": false
   },
@@ -733,7 +784,7 @@
     "TP1": true,
     "cambio": false,
     "antes": "C3-45",
-    "ubicacion": "./51 - 58951 - Robles, Ezequiel/TP3/index.html",
+    "ubicacion": "./51 - 58951 - Robles, Ezequiel",
     "TP2": true,
     "TP3": false
   },
@@ -747,7 +798,7 @@
     "TP1": false,
     "cambio": false,
     "antes": "C3-37",
-    "ubicacion": "./52 - 55751 - Jeréz, Francisco David/TP3/index.html",
+    "ubicacion": "./52 - 55751 - Jeréz, Francisco David",
     "TP2": false,
     "TP3": false
   },
@@ -760,7 +811,7 @@
     "inicial": "BW",
     "TP1": false,
     "cambio": false,
-    "ubicacion": "./53 - 59909 - Wierna, Belén/TP3/index.html",
+    "ubicacion": "./53 - 59909 - Wierna, Belén",
     "TP2": true,
     "TP3": false
   }
@@ -768,36 +819,70 @@
     </script>
 
     <script type="text/babel">
-
+        const { createRoot } = ReactDOM
         const comision = datos[0].comision
+        const practicos = ['TP1', 'TP2', 'TP3']
 
-        const Ver = ({ alumno }) =>
-            <span className="ver">
-                {alumno.cambio ? 
-                    <a href={alumno.ubicacion}>Ver Entrega</a> : 
-                    <span class="falta">No entregado</span>}
-                {alumno.copia && <span className="copia">😲 {alumno.copia}</span>}
-            </span>
-        
-        const Alumno = ({ alumno }) => (
-            <div className="alumno">
-                <h2><span>{alumno.orden}</span> {alumno.nombre}</h2>
-                <Ver alumno={alumno} />
+        function contarEntrega(practico) {
+            const si = datos.filter(alumno => alumno[practico]).length
+            const no = datos.filter(alumno => !alumno[practico]).length
+
+            return { si, no }
+        }
+
+        function ubicar(origen, practico) {
+            return `${origen}/${practico}/index.html`
+        }
+
+        const Ver = ({ alumno, entrega }) =>
+            <div className="ver">
+                {alumno[entrega] ?
+                    <a href={ubicar(alumno.ubicacion, entrega)}>Ver {entrega}</a> :
+                    <span class="falta">{entrega} ❌</span>}
             </div>
-        )
 
+        const Alumno = ({ alumno }) => {
+            const [apellido, nombre] = alumno.nombre.split(', ')
+            return (
+                <div className="alumno">
+                    <h2><span>{alumno.orden}</span> <b>{apellido}</b>, <i>{nombre}</i></h2>
+                    {practicos.map(practico => <Ver alumno={alumno} entrega={practico} />)}
+                </div>
+            )
+        }
+
+        const Estadistica = () => {
+            return (
+                <div className="alumno">
+                    <table>
+                        <thead>
+                            <th>Prácticos</th>
+                            {practicos.map(practico => <th>{practico}</th>)}
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>Entregó</th>
+                                {practicos.map(practico => <td>{contarEntrega(practico).si}</td>)}
+                            </tr>
+                            <tr>
+                                <th>Falta</th>
+                                {practicos.map(practico => <td>{contarEntrega(practico).no}</td>)}
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            )
+        }
         const App = () => (
             <div id="main">
                 <h1>| {comision} | Listado de alumnos</h1>
-                <div>
-                    <div>Entregó: {datos.filter(alumno => alumno.cambio).length}</div>
-                    <div>Falta entregar: {datos.filter(alumno => !alumno.cambio).length}</div>
-                </div>
+                <Estadistica />
                 {datos.map(alumno => <Alumno key={alumno.id} alumno={alumno} />)}
             </div>
         )
 
-        ReactDOM.render(<App />, document.getElementById('root'))
+        const root = createRoot(document.getElementById('root'))
+        root.render(<App />);
     </script>
 </head>
 
