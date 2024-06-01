@@ -8,41 +8,55 @@ h1 {
     text-align: center;
     color: #333;
 }
-h3{
+h3 {
     text-align: center;
     font-size: 200%;
 }
 .panel {
+    position: relative;
     background: rgb(252, 252, 252);
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+    margin: 0 auto;
     padding: 10px;
-    width: 250px;
-    flex-shrink: 0;
-
-}
-.panel h2 {
-    margin: 1px;
-    margin-bottom: 2px;
-    font-size: 50px;
-    color: rgb(0, 64, 255);
-}
-.panel p {
-    margin: 3px ;
-    font-size: x-large;
-    color: black;
-    margin-bottom: 2px;
-}
-.acciones {
-    margin-top: 10px;
+    width: 1000px;
     display: flex;
+    align-items: center;
     justify-content: space-between;
 }
+.cantidad {
+    font-size: 50px;
+    color: rgb(0, 64, 255);
+    margin-right: 20px;
+    margin-left: 10px;
+    font-weight: 600;
+}
+.panel-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-left: 20px;
+}
+.panel-info p {
+    margin: 2px 200px;
+    font-size: x-large;
+    color: rgb(3, 3, 3);
+    
+}
+.acciones {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 10px; 
+}
+.acciones .borrar {
+    align-self: flex-end; 
+}
 .acciones button {
-    background-color: transparent; 
+    background-color: transparent;
     border: none;
-    color: rgb(0, 64, 255); 
+    color: rgb(0, 64, 255);
     padding: 10px;
     cursor: pointer;
     border-radius: 5px;
@@ -51,7 +65,6 @@ h3{
 .acciones button:hover {
     background-color: rgba(0, 64, 255, 0.1);
 }
-
 .acciones button i {
     font-size: 20px;
 }
@@ -61,31 +74,25 @@ h3{
 }
 form {
     display: flex;
-    flex-direction: column;
     width: 250px;
-}
-label {
-    margin-top: 10px;
-    font-weight: bold;
 }
 input[type="text"],
 input[type="number"] {
-    padding: 10px;
-    margin-top: 5px;
+    padding: 5px;
+    margin-top: 2px;
+    margin-left: 50px;
     border: 1px solid rgb(209, 209, 209);
-    border-radius: 5px;
+    border-radius: 20px;
     font-size: 16px;
 }
-.bottonagregar{
-    background-color: rgb(0, 64, 255);
-    border: none;
-    color: white;
+.bottonagregar {
+    background-color: transparent;
+    border-color: black;
+    color: rgb(8, 8, 8);
     padding: 10px 20px;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
     font-size: 16px;
-    margin: 10px 2px;
+    margin: 10px 162px;
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s;
