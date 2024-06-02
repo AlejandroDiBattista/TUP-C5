@@ -1,9 +1,74 @@
 body {
     background-color: #ccc;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
 #root {
     margin: 0 auto;
     max-width: 500px;
+    padding: 20px;
+}
+.weather-container {
+    background: white;
+    border-radius: 3px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    max-width: 300px;
+}
+.weather-container h2 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #44474F;
+    margin-right: 200px;
+    white-space: nowrap;
+}
+.weather-container img {
+    width: 200px;
+    height: 200px;
+    margin: 20px 0;
+}
+.weather-details p {
+    margin: 5px 0;
+    font-size: 12px;
+    color: #44474F;
+    margin-right: 200px;
+    white-space: nowrap;
+}
+.weather-details .temperature {
+    font-weight: bold;
+    font-size: 18px;
+    color: #44474F;
+}
+nav a {
+    margin-right: 15px;
+    color: #007bff;
+    text-decoration: none;
+}
+nav a:hover {
+    text-decoration: underline;
+}
+.tituloclima {
+    font-size: 33px;
+    color: #44474F;
+}
+.provincias {
+    font-size: 12px;
+    gap: 50px;
+    margin: 0;
+    padding: 0;
+}
+input[type="search"] {
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 10px;
+    border-radius: 30px;
 }
