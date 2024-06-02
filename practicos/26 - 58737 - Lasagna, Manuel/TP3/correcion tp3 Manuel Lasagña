@@ -1,0 +1,297 @@
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+   <style>
+
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0; 
+            background-color: floralwhite;
+            
+        }
+
+        
+       .container { 
+        width: 300px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0,1);
+       }
+
+
+          
+        .panel {
+            width: 200px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px;
+        }
+
+        label {
+            display: block;
+        }
+
+        input {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .acciones {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .acciones button{
+            display: flex;
+            align-items: center;
+        }
+        
+        .acciones button i { 
+            margin-right: 5px;
+        }
+
+        .letra {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+        
+        .header{ 
+            text-align: center;
+        }
+
+        .cantidad { 
+            color: blueviolet;
+            font-weight: bold;
+        }
+ 
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState, useEffect } = React
+
+        const ContactosIniciales = [ 
+            { id: 1, producto: 'Juan', codigo: 'Perez', cantidad: '(381) 456-1234' },
+            { id: 2, producto: 'Maria', codigo: 'Gomez', cantidad: '(381) 456-5678' },
+            { id: 3, producto: 'Pedro', codigo: 'Gonzalez', cantidad: '(381) 456-9012' },
+            { id: 4, producto: 'Ana', codigo: 'Fernandez', cantidad: '(381) 456-3456' }
+        ]
+        function Editar({ contacto, alGuardar }) {
+            let [producto, setproducto] = useState(contacto.producto)
+            let [codigo, setcodigo] = useState(contacto.codigo)
+            let [cantidad, setcantidad] = useState(contacto.cantidad)
+            let [criterio, setCriterio] = useState('producto');
+
+
+            const cambiarproducto = (e) => setproducto(e.target.value)
+            const cambiarcodigo = (e) => setcodigo(e.target.value)
+            const cambiarcantidad = (e) => setcantidad(e.target.value)
+
+            const aceptar = (e) => {
+                e.preventDefault()
+                contacto.producto = producto
+                contacto.codigo = codigo
+                alGuardar({...contacto, producto, codigo, cantidad})
+            }
+            const cancelar = (e) => {
+                e.preventDefault()
+                alGuardar(null)
+            }
+
+            return <>
+                <form className="panel">
+                    <label>producto:</label>
+                    <input type="text" value={producto}
+                        onChange={cambiarproducto}
+                    />
+
+                    <label>codigo:</label>
+                    <input type="text" value={codigo}
+                        onChange={cambiarcodigo}
+                    />
+
+                    <label>cantidad:</label>
+                    <input type="text" value={cantidad}
+                        onChange={cambiarcantidad}
+                    />
+
+                    <div className="acciones">
+                        <button onClick={aceptar}>Aceptar</button>
+                        <button onClick={cancelar}>Cancelar</button>
+                    </div>
+                </form>
+            </>
+        }
+
+        function Mostrar({ contacto, alEditar, alBorrar }) {
+            return <>
+                <div className="panel">
+                    <h2>{contacto.producto} {contacto.codigo}</h2>
+                    <p>{contacto.cantidad}</p>
+                    <div className="acciones">
+                        <button onClick={alEditar}><i class="fa-regular fa-pen-to-square"></i>Editar</button>
+                        <button onClick={alBorrar}> <i class="fa-solid fa-trash"></i>Borrar</button>
+                    </div>
+                </div>
+            </>
+        }
+        
+
+
+        function Agenda({ datos, alAgregar, alEditar, alBorrar }) {
+    
+    const agruparPorLetra = (contactos) => {
+        return contactos.reduce((acc, contacto) => {
+            const primeraLetra = contacto.producto[0].toUpperCase();
+            if (!acc[primeraLetra]) {
+                acc[primeraLetra] = [];
+            }
+            acc[primeraLetra].push(contacto);
+            return acc;
+        }, {});
+    };
+
+    const contactosAgrupados = agruparPorLetra(datos);
+
+    return (
+        <>
+            <h3>STOCK DE BEBIDA</h3>
+            <button onClick={() => alAgregar()}> <i class="fa-regular fa-plus"></i>Agregar</button>
+            {Object.keys(contactosAgrupados).sort().map(letra => (
+                <div key={letra}>
+                    <h4>{letra}</h4>
+                    {contactosAgrupados[letra].map(contacto => (
+                        <Mostrar
+                            key={contacto.id}
+                            contacto={contacto}
+                            alEditar={() => alEditar(contacto.id)}
+                            alBorrar={() => alBorrar(contacto.id)}
+                        />
+                    ))}
+                </div>
+            ))}
+        </>
+    );
+}
+
+       
+
+
+
+
+
+
+        function proximoId(contactos){
+            return Math.max(...contactos.map(c => c.id))+1
+        }
+
+        function leerContactos(){
+            return JSON.parse(localStorage.getItem('contactos'))
+        }
+
+        function guardarContactos(contactos){
+            localStorage.setItem('contactos', JSON.stringify(contactos))
+        }
+
+
+        
+     function App() {
+       let [editando, setEditando] = useState(false);
+       let [contacto, setContacto] = useState({});
+       let [contactos, setContactos] = useState([]);
+
+        useEffect(() => {
+          let datos = leerContactos();
+          setContactos(datos);
+        }, []);
+
+        useEffect(() => {
+          guardarContactos(contactos);
+        }, [contactos]);
+
+         const agregar = () => {
+          setContacto({ producto: "", codigo: "", cantidad: "" });
+          setEditando(true);
+        };
+
+        const editar = (id) => {
+         const contacto = contactos.find(c => c.id === id);
+         setContacto(contacto);
+         setEditando(true);
+        };
+
+        const borrar = (id) => {
+         const copia = contactos.filter(c => c.id !== id);
+         setContactos(copia);
+         setContacto({});
+         };
+
+        const guardar = (contacto) => {
+         if (contacto) {
+            if (contacto.id) {
+                let copia = contactos.map(
+                    c => c.id === contacto.id ? contacto : c
+                );
+                setContactos(copia);
+            } else {
+                const id = proximoId(contactos);
+                const copia = [...contactos, { ...contacto, id }];
+                setContactos(copia);
+            }
+        }
+        setEditando(false);
+    };
+
+    const ordenarContactos = (contactos) => {
+        return [...contactos].sort((a, b) => {
+            if (a.producto.toLowerCase() < b.producto.toLowerCase()) return -1;
+            if (a.producto.toLowerCase() > b.producto.toLowerCase()) return 1;
+            return 0;
+        });
+    };
+
+    const contactosOrdenados = ordenarContactos(contactos);
+
+    return (
+        <>
+         <div className='container'></div>
+          <div className='header'></div>
+            <h1> LISTA </h1>
+            {
+                editando
+                    ? <Editar
+                        contacto={contacto}
+                        alGuardar={guardar} />
+                    : <Agenda
+                        datos={contactosOrdenados}
+                        alAgregar={agregar}
+                        alEditar={editar}
+                        alBorrar={borrar} />
+            }
+        </>
+    );
+}
+
+
+
+        const root = ReactDOM.createRoot(document.getElementById('root'))
+        root.render(<App />);
+    </script>
+</body>
+</html>

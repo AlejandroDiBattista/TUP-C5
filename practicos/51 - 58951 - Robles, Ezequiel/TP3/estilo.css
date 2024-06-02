@@ -6,18 +6,33 @@ body {
 }
 
 #root {
-    max-width: 500px;
+    max-width: 600px;
     margin: 0 auto;
     padding: 20px;
 }
+
 .header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     margin-bottom: 20px;
-    margin-left: 120px;
+    text-align: center;
+    width: 100%;
+    
 }
-.producto-listado {
+
+.header h1 {
+    font-size: 32px;
+    margin: 0;
+}
+
+.header .add-icon {
+    font-size: 32px;
+    cursor: pointer;
+    color: black;
+    margin-right: 150px;   
+}
+
+.listado-prod {
     list-style: none;
     padding: 0;
 }
@@ -25,70 +40,76 @@ body {
 .productos {
     position: relative;
     padding: 16px;
-    margin-bottom: 15px;
-    border-radius: 15px;
+    margin-bottom: 16px;
+    border-radius: 12px;
     background-color: #ffffff;
-    box-shadow: 0px 0px 6px 0px rgba(65, 63, 63, 0.5);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 140px;
+    border: 1px solid #ccc;
+    height: 120px;
+    width: 420px;
+}
+
+.productos .number {
+    font-size: 50px;
+    font-weight: bold;
+    color: blue;
+    margin-right: 10px;
+    margin-left: 30px;
 }
 
 .productos .info {
-    margin-top: 10px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    margin-right: 10px;
+    flex: 1;
 }
+
 .productos .info .name {
-    font-size: 30px;
+    font-size: 25px;
     font-weight: bold;
-    margin-left: 0%;
+    margin-bottom: 4px;
+    margin-left: 15px;
 }
 
 .productos .info .code {
+    margin-top: 15px;
     color: black;
     font-size: 18px;
+    margin-left: 15px;
 }
+
 .productos .actions {
     display: flex;
     flex-direction: column;
-    gap: 70px;
-    margin-left: 180px;
-    margin-right: 0%;
-    font-size: 25px;
+    gap: 60px;
+    
 }
 
 .productos .actions i {
+    font-size: 25px;
     cursor: pointer;
-    color: #121213;
+    color: black;
+
 }
 
-.productos .actions i:hover {
-    color: #0056b3;
-}
-.productos .number {
-    font-size: 80px;
-    font-weight: bold;
-    color: blue;
-    margin-left: 40px;
-  }
-    
-.agregar-prod{
+.agregar-product {
     position: relative;
     padding: 16px;
-    margin-bottom: 15px;
-    border-radius: 15px;
+    margin-bottom: 16px;
+    border-radius: 12px;
     background-color: #ffffff;
-    box-shadow: 0px 0px 6px 0px rgba(65, 63, 63, 0.5);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 140px;
-    gap: 10px;  
+    border: 1px solid #ccc;
+    height: 120px;
+    width: 420px;
+    
 }
+
 .agregar-prod input {
     padding:10px ;
     border: 1px solid #ccc;
@@ -96,10 +117,12 @@ body {
     display: flex;
     justify-content: space-between;
     margin-top: 5px;
-    width: 350px;
+    width: 300px;
 }
-.agregar-prod button {
-    font-size: 16px;
+    
+
+.agregar-product button {
+    font-size: 14px;
     padding: 6px;
     border-color: #121213;
     background-color: white;
@@ -107,27 +130,31 @@ body {
     border-radius: 8px;
     cursor: pointer;
     height: 30px;
-    margin-top: 5px;
-    margin-right: 10px;
+    width: 80px;
+    margin-top: 8px;
+
 }
-.agregar-prod button:hover {
-    background-color: #0056b3;
+.add-btn{
+    margin-left: 20px;
 }
-.edit-product-form{
-    height: 140px;
-    display: flex;  
-}
-#form-de-productos input {
-    padding:10px ;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+
+.edit-product-form {
     display: flex;
     justify-content: space-between;
-    margin-top: 5px;
-    width: 350px;
 }
-.edit-btn button {
+
+.edit-product-form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
     font-size: 16px;
+    width: 300px;
+    margin-top: 5px;
+    height: 15px;
+}
+
+.edit-product-form button {
+    font-size: 14px;
     padding: 6px;
     border-color: #121213;
     background-color: white;
@@ -135,15 +162,16 @@ body {
     border-radius: 8px;
     cursor: pointer;
     height: 30px;
-    margin-top: 5px;
+    width: 80px;
 }
-.edit-btn{
-    margin-top: 3px;
+
+.Edit-btn {
    display: flex;
    flex-direction: column;
-   margin-left: 20px;
-}   
-.edit-product-form button:hover {
-    background-color: gray;
-    color: white;
+   align-items: center;
+}
+
+.Edit-btn button{
+    margin-top: 6px;
+
 }

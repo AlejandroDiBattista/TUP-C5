@@ -188,9 +188,9 @@
             const cancelar = (e) => {
                 e.preventDefault();
                 if (
-                    producto.descripcion === null ||
-                    producto.cantidad === null ||
-                    producto.codigo === null
+                    producto.descripcion === '' ||
+                    producto.cantidad === '' ||
+                    producto.codigo === ''
                 ) {
                     alBorrar(producto.id);
                 } else {

@@ -1,207 +1,194 @@
 const { useState, useEffect } = React;
 
-const productosIniciales = [];
+        const ProductosIniciales = [
+            { id: 1, producto: '7up', EAN: '7799876543210', cantidad: 7 },
+            { id: 2, producto: 'Coca Cola', EAN: '7798765432109', cantidad: 10 },
+            { id: 3, producto: 'Pepsi', EAN: '7797654321098', cantidad: 5 },
+            { id: 4, producto: 'Fanta', EAN: '7796543210987', cantidad: 12 },
+            { id: 5, producto: 'Sprite', EAN: '7795432109876', cantidad: 8 }
+        ];
 
-const validacionProducto = (nombre, cantidad, ean) => {
-    if (nombre === '' || nombre === null || cantidad === null || cantidad === '') {
-        alert("Debes completar todos los campos.");
-        return false;
-    }
+        function Editar({ producto, alGuardar, alCancelar }) {
+            const [nombre, setNombre] = useState(producto.producto);
+            const [EAN, setEAN] = useState(producto.EAN);
+            const [cantidad, setCantidad] = useState(producto.cantidad);
+            const [error, setError] = useState(false);
 
-    if (cantidad < 0) {
-        alert("La cantidad no puede ser negativa.");
-        return false;
-    }
+            const cambiarNombre = e => {
+                setNombre(e.target.value);
+                setError(false);
+            };
+            const cambiarEAN = e => {
+                setEAN(e.target.value);
+                setError(false);
+            };
+            const cambiarCantidad = e => {
+                setCantidad(Math.min(Math.max(0, e.target.value), 100)); // Limitar la cantidad a un máximo de 100 unidades
+                setError(false);
+            };
 
-    if (cantidad > 100) {
-        alert("Excedió la cantidad de unidades.");
-        return false;
-    }
+            const guardar = e => {
+                e.preventDefault();
+                if (nombre.trim() === '' || EAN.trim() === '' || cantidad === '') {
+                    alert('Todos los campos son necesarios');
+                    return;
+                }
+                alGuardar({ ...producto, producto: nombre, EAN, cantidad });
+            };
 
-    if (cantidad === 0) {
-        alert("Debes establecer una cantidad.");
-        return false;
-    }
+            const cancelar = e => {
+                e.preventDefault();
+                alCancelar();
+            };
 
-    if (ean <= 7790000000000 || ean >= 7799999999999) {
-        alert("El código debe tener 13 dígitos y empezar con 779.");
-        return false;
-    }
-    return true;
-}
+            return (
+                <form className="panel formulario-edicion">
+                    <div>
+                        <input type="text" value={nombre} onChange={cambiarNombre} placeholder="Producto" />
+                        <input type="text" value={EAN} onChange={cambiarEAN} placeholder="EAN" />
+                        <input type="number" value={cantidad} onChange={cambiarCantidad} placeholder="Cantidad" />
+                    </div>
+                    <div className="acciones">
+                        <button className="general" onClick={guardar}>Aceptar</button>
+                        <button className="general" onClick={cancelar}>Cancelar</button>
+                    </div>
+                </form>
+            );
+        }
 
-const Titulo = ({ onAgregarProducto }) => (
-    <div className="titulo">
-        <div className="titulo1">
-            <h1>Control Depósito</h1>
-        </div>
-        <button className="boton3" onClick={onAgregarProducto}>
-            <img className="iconoAgregaR" src="./imagenes/iconoAgrega.png" alt="boton_agregar" />
-        </button>
-    </div>
-);
+        function Producto({ producto, alEditar, alBorrar, alGuardar, alCancelar, alIncrementar }) {
+            const [editando, setEditando] = useState(producto.editando);
 
-const Contenido = ({ productos, productosEditandoId, onEditarProducto, onEliminarProducto, onGuardarProducto, onCancelarEdicion }) => (
-    <div id="contenido" className="contenido">
-        {productos.map(producto => (
-            <Producto
-                key={producto.id}
-                {...producto}
-                estaEditando={productosEditandoId.includes(producto.id)}
-                onEditarProducto={() => onEditarProducto(producto.id)}
-                onEliminarProducto={() => onEliminarProducto(producto.id)}
-                onGuardarProducto={onGuardarProducto}
-                onCancelar={onCancelarEdicion}
-            />
-        ))}
-    </div>
-);
+            const handleEditar = (e) => {
+                e.stopPropagation();
+                setEditando(true);
+            };
 
-const Producto = ({ id, ean, nombre, cantidad, estaEditando, onEditarProducto, onEliminarProducto, onGuardarProducto, onCancelar }) => (
-    <div>
-        {
-            estaEditando ? (
-                <FormularioProducto
-                    id={id}
-                    nombre={nombre}
-                    ean={ean}
-                    cantidad={cantidad}
-                    onGuardarProducto={onGuardarProducto}
-                    onCancelar={onCancelar}
-                />
+            const handleGuardar = (productoActualizado) => {
+                alGuardar(productoActualizado);
+                setEditando(false);
+            };
+
+            const handleCancelar = () => {
+                setEditando(false);
+                alCancelar();
+            };
+
+            return editando ? (
+                <Editar producto={producto} alGuardar={handleGuardar} alCancelar={handleCancelar} />
             ) : (
-                <div className="producto">
-                    <div className="producto-item">
-                        <h2>{cantidad}</h2>
+                <div className="panel" onClick={() => alIncrementar(producto.id)}>
+                    <div className="cantidad">{producto.cantidad}</div>
+                    <div className="info">
+                        <p><strong>{producto.producto}</strong></p>
+                        <p>{producto.EAN}</p>
                     </div>
-                    <div className="producto-item">
-                        <h4>{nombre}</h4>
-                        <p>{ean}</p>
-                    </div>
-                    <div className="botones">
-                        <button className="boton" onClick={onEditarProducto}>
-                            <img src="./imagenes/iconoEdita.png" alt="boton_editar" />
+                    <div className="acciones">
+                        <button className="icono" onClick={handleEditar}>
+                            <img src="imagenes/iconoEdita.png" alt="Editar" />
                         </button>
-                        <button className="boton" onClick={onEliminarProducto}>
-                            <img src="./imagenes/iconoBorra.png" alt="boton_borrar" />
+                        <button className="icono" onClick={(e) => {
+                            e.stopPropagation();
+                            alBorrar(producto.id);
+                        }}>
+                            <img src="imagenes/iconoBorra.png" alt="Borrar" />
                         </button>
                     </div>
                 </div>
-            )
-        }
-    </div>
-);
-
-const App = () => {
-    const [productos, setProductos] = useState(() => {
-        const productosGuardados = localStorage.getItem('productos');
-        return productosGuardados ? JSON.parse(productosGuardados).sort((a, b) => a.nombre.localeCompare(b.nombre, undefined, { sensitivity: 'base' })) : productosIniciales;
-    });
-    const [productosEditandoId, setProductosEditandoId] = useState([]);
-
-    const min = 7790000000000;
-    const max = 7799999999999;
-    const randomInt = Math.floor(Math.random() * (max - min + 1)) + min;
-
-    useEffect(() => {
-        localStorage.setItem('productos', JSON.stringify(productos));
-    }, [productos]);
-
-    const agregarProducto = () => {
-        const nuevoProducto = { id: Date.now(), ean: randomInt, nombre: '', cantidad: null };
-
-        setProductos([...productos, nuevoProducto]);
-        setProductosEditandoId([...productosEditandoId, nuevoProducto.id]);
-    };
-
-    const editarProducto = (id) => {
-        setProductosEditandoId([...productosEditandoId, id]);
-    };
-
-    const eliminarProducto = (id) => {
-        setProductos(productos.filter(producto => producto.id !== id));
-        if (productosEditandoId === id) {
-            setProductosEditandoId(null);
-        }
-    };
-
-    const guardarProducto = (productoActualizado) => {
-        if (productos.length > 29) {
-            alert('Excedió la cantidad de productos.');
-            return;
+            );
         }
 
-        setProductos(
-            productos.map(producto => producto.id === productoActualizado.id ? productoActualizado : producto));
-        setProductosEditandoId(productosEditandoId.filter(id => id !== productoActualizado.id));
-    };
-
-    const cancelarEdicion = (id) => {
-        const producto = productos.find(producto => producto.id === id);
-        if (!producto) {
-            return;
+        function Agenda({ productos, alAgregar, alGuardar, alBorrar, alCancelar, alIncrementar }) {
+            return (
+                <>
+                    <div className="nav">
+                        <h1>Control Depósito</h1>
+                        {productos.length < 30 &&  <img src="imagenes/iconoAgrega.png" class="Agrega" alt="" onClick={alAgregar}/>}
+                    </div>
+                    {productos.length === 0 && <h2>No hay productos</h2>}
+                    {productos.map(producto => (
+                        <Producto
+                            key={producto.id}
+                            producto={producto}
+                            alEditar={() => alGuardar(producto.id)}
+                            alBorrar={alBorrar}
+                            alGuardar={alGuardar}
+                            alCancelar={alCancelar}
+                            alIncrementar={alIncrementar}
+                        />
+                    ))}
+                </>
+            );
         }
 
-        if (!validacionProducto(producto.nombre, producto.cantidad, producto.ean)) {
-            eliminarProducto(producto.id);
-            return;
+        function App() {
+            const [productos, setProductos] = useState([]);
+
+            useEffect(() => {
+                const productosGuardados = localStorage.getItem('productos');
+                if (productosGuardados) {
+                    setProductos(JSON.parse(productosGuardados));
+                } else {
+                    setProductos(ProductosIniciales);
+                }
+            }, []);
+
+            useEffect(() => {
+                localStorage.setItem('productos', JSON.stringify(productos));
+            }, [productos]);
+
+            const guardarProducto = (productoActualizado) => {
+                const productosActualizados = productos.map(p => p.id === productoActualizado.id ? productoActualizado : p);
+                setProductos(productosActualizados.sort((a, b) => a.producto.localeCompare(b.producto)));
+            };
+
+            const cancelarEdicion = () => {};
+
+            const agregarProducto = () => {
+                if (productos.length < 30) {
+                    const nuevoProducto = {
+                        id: Date.now(),
+                        producto: '',
+                        EAN: '',
+                        cantidad: 0,
+                        editando: true
+                    };
+                    const productosActualizados = [...productos, nuevoProducto];
+                    // Validar que no haya productos con campos vacíos antes de agregar el nuevo producto
+                    if (productos.every(p => p.producto.trim() !== '' && p.EAN.trim() !== '' && p.cantidad !== '')) {
+                        setProductos(productosActualizados.sort((a, b) => a.producto.localeCompare(b.producto)));
+                    } else {
+                        alert('Complete todos los campos antes de agregar un nuevo producto.');
+                    }
+                }
+            };
+
+            const borrarProducto = (id) => {
+                setProductos(productos.filter(p => p.id !== id));
+            };
+
+            const incrementarCantidad = (id) => {
+                const productosActualizados = productos.map(p=> {
+                    if (p.id === id && p.cantidad < 100) { // Verificar si la cantidad es menor a 100
+                        return { ...p, cantidad: p.cantidad + 1 };
+                    }
+                    return p;
+                });
+                setProductos(productosActualizados);
+            };
+
+            return (
+                <Agenda
+                    productos={productos}
+                    alAgregar={agregarProducto}
+                    alGuardar={guardarProducto}
+                    alBorrar={borrarProducto}
+                    alCancelar={cancelarEdicion}
+                    alIncrementar={incrementarCantidad}
+                />
+            );
         }
 
-        setProductosEditandoId(productosEditandoId.filter(editandoId => editandoId !== id));
-    };
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
 
-    return (
-        <div className="main">
-            <Titulo onAgregarProducto={agregarProducto} />
-            <Contenido
-                productos={productos}
-                productosEditandoId={productosEditandoId}
-                onEditarProducto={editarProducto}
-                onEliminarProducto={eliminarProducto}
-                onGuardarProducto={guardarProducto}
-                onCancelarEdicion={cancelarEdicion}
-            />
-        </div>
-    );
-}
-
-const FormularioProducto = ({ id, nombre: nombreInicial, ean: eanInicial, cantidad: cantidadInicial, onGuardarProducto, onCancelar }) => {
-    const [nombre, setNombre] = useState(nombreInicial);
-    const [ean, setEan] = useState(eanInicial);
-    const [cantidad, setCantidad] = useState(cantidadInicial);
-
-    const handleCantidadChange = (e) => {
-        const valor = e.target.value;
-        setCantidad(valor === '' ? null : Number(valor));
-    };
-
-    const handleGuardar = () => {
-        if (!validacionProducto(nombre, cantidad, ean)) {
-            return;
-        }
-
-        onGuardarProducto({ id, nombre, ean, cantidad });
-    };
-
-    return (
-        <div className="formulario-producto">
-            <div className="formulario-input">
-                <div>
-                    <input type="text" value={nombre} onChange={e => setNombre(e.target.value)} placeholder="Nombre" />
-                </div>
-                <div>
-                    <input type="number" value={ean} onChange={e => setEan(e.target.value)} placeholder="EAN" />
-                </div>
-                <div>
-                    <input type="number" value={cantidad} onChange={handleCantidadChange} placeholder="Cantidad" />
-                </div>
-            </div>
-            <div className="botones2">
-                <button className="botonForm" onClick={handleGuardar}>Aceptar</button>
-                <button className="botonForm" onClick={() => onCancelar(id)}>Cancelar</button>
-            </div>
-        </div>
-    );
-};
-
-ReactDOM.render(<App />, document.getElementById('root'));

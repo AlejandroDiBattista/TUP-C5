@@ -34,7 +34,7 @@
 
         h2 {
             font-size: 48px;
-            color: blue;
+            color: #000fff;
             margin: 5px;
         }
 
@@ -51,26 +51,28 @@
             height: 100%;
             font-size: large;
         }
-        .derecha span{
+
+        .derecha span {
             cursor: pointer;
         }
 
         form {
             display: flex;
+
         }
 
         .inputs {
-            margin: 10px;
+            margin: 2px;
             display: grid;
             gap: 5px;
         }
 
         .accionesBoton {
-            margin-top: 8px;
+            margin-bottom: 35px;
         }
 
         .inputs input {
-            width: 190px;
+            width: 220px;
             border: 1px solid #ddd;
             border-radius: 5px;
             padding: 4px;
@@ -108,9 +110,9 @@
         const { useState, useEffect } = React
 
         const Editar = ({ producto, alGuardar, alCancelar }) => {
-            let [nombre, setNombre] = useState(producto.nombre)
-            let [codigo, setCodigo] = useState(producto.codigo)
-            let [cantidad, setCantidad] = useState(producto.cantidad)
+            let [nombre, setNombre] = useState(producto.nombre || '')
+            let [codigo, setCodigo] = useState(producto.codigo || '')
+            let [cantidad, setCantidad] = useState(producto.cantidad || '')
 
             let guardar = (e) => {
                 e.preventDefault()
@@ -130,56 +132,89 @@
                 alCancelar()
             }
             return (
+                <form className="card">
+                    <div className="inputs">
+                        <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
+                        <input type="number" value={codigo} onChange={(e) => setCodigo(e.target.value)} />
+                        <input type="number" value={cantidad} onChange={(e) => setCantidad(e.target.value)} />
+                    </div>
+                    <div className="accionesBoton">
+                        <button onClick={guardar} >Aceptar</button>
+                        <button onClick={cancelar} >Cancelar</button>
+                    </div>
+                </form>
+            )
+        }
+
+        const Producto = ({ productos, alEditar, alBorrar, alTocar, alGuardar, alCancelar }) => {
+            const [editando, setEditando] = useState(false)
+            const editar = () => {
+                setEditando(true)
+            }
+            const cancelar = () => {
+                setEditando(false)
+                alCancelar()
+            }
+            return (
                 <>
-                    <form className="card">
-                        <div className="inputs">
-                            <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
-                            <input type="number" value={codigo} onChange={(e) => setCodigo(e.target.value)} />
-                            <input type="number" value={cantidad} onChange={(e) => setCantidad(e.target.value)} />
+                    {editando
+                        ?
+                        <Editar producto={productos} alGuardar={(p) => { alGuardar(p); setEditando(false); }} alCancelar={cancelar} />
+                        :
+                        <div className="card" onClick={(e) => alTocar()}>
+                            <div className="izquierda">
+                                <h2>{productos.cantidad}</h2>
+                            </div>
+                            <div className="medio">
+                                <h3>{productos.nombre}</h3>
+                                <p>{productos.codigo}</p>
+                            </div>
+
+                            <div className="derecha">
+                                <span onClick={(e) => { e.stopPropagation(); editar(); }}>
+                                    {<i className="fa-regular fa-pen-to-square"></i>}
+                                </span>
+                                <span onClick={(e) => { e.stopPropagation(); alBorrar(); }}>
+                                    {<i className="fa-solid fa-trash"></i>}
+                                </span>
+                            </div>
                         </div>
-                        <div className="accionesBoton">
-                            <button onClick={guardar} >Aceptar</button>
-                            <button onClick={cancelar} >Cancelar</button>
-                        </div>
-                    </form>
+                    }
                 </>
             )
         }
 
-        const Producto = ({ productos, alEditar, alBorrar, alTocar}) => {
-            return (
-                <div className="card" onClick={(e) => alTocar()}>
-                    <div className="izquierda">
-                        <h2>{productos.cantidad}</h2>
-                    </div>
-                    <div className="medio">
-                        <h3>{productos.nombre}</h3>
-                        <p>{productos.codigo}</p>
-                    </div>
+        const Deposito = ({ productos, alEditar, alBorrar, alAgregar, alTocar, alGuardar, alCancelar }) => {
+            const [mostrarFormulario, setMostrarFormulario] = useState(false)
 
-                    <div className="derecha">
-                        <span onClick={(e) => { e.stopPropagation(); alEditar(); }}>
-                            {<i className="fa-regular fa-pen-to-square"></i>}
-                        </span>
-                        <span onClick={(e) => { e.stopPropagation(); alBorrar(); }}>
-                            {<i className="fa-solid fa-trash"></i>}
-                        </span>
-                    </div>
-                </div>
-            )
-        }
+            const agregar = () => {
+                setMostrarFormulario(!mostrarFormulario)
+                alAgregar()
+            }
 
-        const Deposito = ({ productos, alEditar, alBorrar, alAgregar, alTocar}) => {
+            const cancelar = () => {
+                setMostrarFormulario(false)
+                alCancelar()
+            }
             return (
                 <div className="deposito">
                     <div className="titulo">
                         <h1>Control Deposito</h1>
-                        <span onClick={() => alAgregar()}>
+                        <span onClick={agregar}>
                             {<i className="fa-regular fa-square-plus"></i>}
                         </span>
                     </div>
+                    {mostrarFormulario && <Editar producto={{}} alGuardar={(p) => { alGuardar(p); setMostrarFormulario(false); }} alCancelar={cancelar} />}
                     {productos.map(p =>
-                        <Producto key={p.id} productos={p} alEditar={() => alEditar(p.id)} alBorrar={() => alBorrar(p.id)} alTocar={() => alTocar(p.id)}/>
+                        <Producto
+                            key={p.id}
+                            productos={p}
+                            alEditar={() => alEditar(p.id)}
+                            alBorrar={() => alBorrar(p.id)}
+                            alTocar={() => alTocar(p.id)}
+                            alGuardar={alGuardar}
+                            alCancelar={alCancelar}
+                        />
                     )}
                 </div>
             )
@@ -187,10 +222,15 @@
 
         const App = () => {
             const [producto, setProducto] = useState({})
-            const [editando, setEditando] = useState(false)
             const [productos, setProductos] = useState([])
 
             const guardar = (producto) => {
+                let codigoExistente = productos.some(p => p.codigo === producto.codigo && p.id !== producto.codigo)
+                if (codigoExistente) {
+                    alert("Producto ya existente")
+                    
+                    return;
+                }
                 if (producto.id) {
                     setProductos(productos.map(p => p.id === producto.id ? producto : p))
                 }
@@ -198,26 +238,22 @@
                     let id = productos.length === 0 ? 1 : Math.max(...productos.map(p => p.id)) + 1;
                     setProductos([...productos, { ...producto, id }])
                 }
-                setEditando(false)
             }
             const cancelar = (producto) => {
                 setProducto({})
-                setEditando(false)
             }
             const editar = (id) => {
                 setProducto(productos.find(p => p.id === id));
-                setEditando(true);
             }
             const borrar = (id) => {
                 setProductos(productos.filter(p => p.id !== id))
-                console.log("Borrrar ID: " , id)
+                console.log("Borrrar ID: ", id)
             }
             const agregar = () => {
                 setProducto({})
-                setEditando(true)
             }
             const sumar = (id) => {
-                setProductos(productos.map(p => p.id === id ? {...p, cantidad: parseInt(p.cantidad) + 1} : p))
+                setProductos(productos.map(p => p.id === id ? { ...p, cantidad: parseInt(p.cantidad) + 1 } : p))
             }
 
             useEffect(() => {
@@ -234,12 +270,16 @@
             productos.sort((a, b) => a.nombre.localeCompare(b.nombre))
 
             return (
-                <>
-                    {editando
-                        ? <Editar producto={producto} alGuardar={guardar} alCancelar={cancelar} />
-                        : <Deposito productos={productos} alEditar={editar} alBorrar={borrar} alAgregar={agregar} alTocar={sumar}/>
-                    }
-                </>
+                <Deposito
+                    productos={productos}
+                    alEditar={editar}
+                    alBorrar={borrar}
+                    alAgregar={agregar}
+                    alTocar={sumar}
+                    alGuardar={guardar}
+                    alCancelar={cancelar}
+                />
+
             )
         }
 

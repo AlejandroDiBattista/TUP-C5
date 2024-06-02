@@ -1,228 +1,420 @@
+<!DOCTYPE html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
+
+  <body>
     <style>
-        h1 {
-            text-align: center;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      #root {
+        padding: 20px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .Titulo {
+        display: flex;
+        align-items: self-end;
+
+        span {
+          margin-left: 30px;
+          margin-bottom: 20px;
+          scale: 3;
+        }
+      }
+
+      h1 {
+        font-size: 46px;
+        margin-bottom: 10px;
+      }
+
+      .tarjeta {
+        width: 400px;
+        height: 100px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 10px;
+        margin: 10px 0;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        display: flex;
+        justify-content: space-between;
+      }
+
+      label {
+        display: block;
+        font-size: 12px;
+        color: #666;
+        margin-bottom: 5px;
+      }
+
+      input {
+        width: 100%;
+        padding: 5px 0 5px 5px;
+        margin-bottom: 5px;
+        font-size: 14px;
+      }
+
+      .stock {
+        width: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: blue;
+        cursor: default;
+
+        p {
+          font-size: 65px;
+        }
+      }
+
+      .descripcion {
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+        cursor: default;
+      }
+
+      .acciones {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+
+        span:nth-child(1) {
+          margin-top: 5px;
+          margin-right: 5px;
         }
 
-        h3 {
-            text-align: center;
-            font-size: x-large;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        span:nth-child(2) {
+          margin-bottom: 5px;
+          margin-right: 5px;
         }
+      }
 
-        button {
-            font-size: large;
-            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            background-color:thistle;
-            border-radius: 8px;
-            margin: 4px;
-            padding: 10px;
-        }
+      span {
+        cursor: pointer;
+        scale: 1.7;
+      }
 
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: cadetblue;
-        }
+      .error {
+        color: rgb(218, 13, 13);
+        font-size: 12px;
+        margin: 0;
+      }
 
-        .panel {
-            width: 180px;
-            border: 1px solid #ccc;
-            padding: 30px;
-            border-radius: 10px;
-            margin: 10px;
-            background-color: color(srgb red green blue);
-            text-align: start;
-            font-size: large;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-           
-        }
+      .tarjetaEditar {
+        width: 400px;
+        height: 100px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 10px;
+        margin: 10px 0;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        display: flex;
+        justify-content: space-between;
+      }
 
-        .formulario {
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        label {
-            display: grid;
-            align-self: center;
-        }
+      .descripcionEdicion {
+        width: 70%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
 
         input {
-            width: 100%;
-            margin-bottom: 10px;
+          border-color: #ccc;
+          border-style: solid;
+          border-radius: 5px;
+        }
+      }
+
+      .accionesEdicion {
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        button {
+          height: calc(100 / 3);
+          margin: 0 10px;
+          background-color: transparent;
+          border-color: black;
+          border-style: solid;
+          border-radius: 5px;
+          font-size: 18px;
+          cursor: pointer;
         }
 
-        .acciones {
-            display: flex;
-            justify-content: start;
-            grid-column: span 2;
+        p {
+          margin: 0 10px;
+          text-align: center;
         }
+      }
 
-        .cantidad {
-            color: rgb(0, 17, 199);
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            font-size: 50px;
-        }
-
-        .accion-img {
-            cursor: pointer;
-            margin: 0 35px;
-            height: 40px;
-            width: 40px;
-        }
-
-        .agregar-img {
-            cursor: pointer;
-            height: 40px;
-            width: 40px;
-            margin: 10px;
-        }
+      .tarjeta .tarjetaEditar {
+        margin: 0;
+        padding: 0;
+        border: none;
+        box-shadow: none;
+      }
     </style>
-</head>
-
-<body>
+    <!---------------------------------------------------------------------------------------------------->
     <div id="root"></div>
+    <!---------------------------------------------------------------------------------------------------->
     <script type="text/babel">
-        const { useState } = React
-        const ProductosIniciales = []
-        function Editar({ producto, alGuardar, AlCancelar }) {
-            let [nombre, setNombre] = useState(producto.nombre);
-            let [ean, setEan] = useState(producto.ean)
-            let [cantidad, setCantidad] = useState(producto.cantidad)
+      const { useState } = React;
 
-            const cambiarNombre = (e) => {
-                setNombre(e.target.value);
-            }
-            const cambiarEan = (e) => {
-                setEan(e.target.value);
-            }
-            const cambiarCantidad = (e) => {
-                setCantidad(e.target.value);
-            }
-            const guardar = e => {
-                e.preventDefault()
-                alGuardar({ ...producto, nombre, ean, cantidad })
-            }
-            const borrar = (e) => {
-                e.preventDefault()
-                AlCancelar()
-            }
-            return <>
-                <form className="panel">
-                    <label>Nombre</label>
-                    <input type="text" value={nombre} onChange={cambiarNombre} />
+      const ProductosIniciales = [
+        { id: "1", nombre: "Manaos", codigo: "7799574543110", stock: 89 },
+        { id: "2", nombre: "Fantoche", codigo: "7795846532211", stock: 40 },
+        { id: "3", nombre: "Fanta", codigo: "7797875543213", stock: 12 },
+      ];
 
-                    <label>Ean</label>
-                    <input type="text" value={ean} onChange={cambiarEan} />
+      function Editar({ producto, alGuardar, alCancelar }) {
+        const [nombre, setNombre] = useState(producto.nombre);
+        const [codigo, setCodigo] = useState(producto.codigo);
+        const [stock, setStock] = useState(producto.stock);
+        const [error, setError] = useState(false);
 
-                    <label>Cantidad</label>
-                    <input type="text" value={cantidad} onChange={cambiarCantidad} />
+        const editarNombre = (e) => {
+          setNombre(e.target.value);
+          setError(false);
+        };
+        const editarCodigo = (e) => {
+          setCodigo(e.target.value);
+          setError(false);
+        };
+        const editarStock = (e) => {
+          setStock(e.target.value);
+          setError(false);
+        };
 
-                    <div className="acciones">
-                        <button onClick={guardar}>Guardar</button>
-                        <button onClick={borrar}>Cancelar</button>
-                    </div>
-                </form>
-            </>
-        }
+        const guardar = (e) => {
+          e.preventDefault();
+          if (nombre === "" || codigo === "" || stock <= 0 || stock > 99) {
+            setError(true);
+            return;
+          } else if (
+            nombre !== producto.nombre ||
+            codigo !== producto.codigo ||
+            stock !== producto.stock
+          ) {
+            alGuardar({ ...producto, nombre, codigo, stock: parseInt(stock) });
+          }
+        };
+        const cancelar = (e) => {
+          e.preventDefault();
+          alCancelar();
+        };
 
-        function Mostrar({ producto, alEditar, alBorrar }) {
-            const editar = (e) => alEditar()
-            const borrar = (e) => alBorrar(producto.id)
-            const cambiarCantidad = (e) => setCantidad(e.target.value);
-            const incrementarCantidad = () => setCantidad(prev => Number(prev) + 1);
-            const decrementarCantidad = () => setCantidad(prev => (Number(prev) > 0 ? Number(prev) - 1 : 0)) //
+        return (
+          <form className="tarjetaEditar">
+            <div className="descripcionEdicion">
+              <input
+                type="text"
+                value={nombre}
+                onChange={editarNombre}
+                placeholder="Producto"
+              />
+              <input
+                type="text"
+                value={codigo}
+                onChange={editarCodigo}
+                placeholder="Codigo EAN"
+              />
+              <input
+                type="number"
+                value={stock}
+                onChange={editarStock}
+                placeholder="Stock"
+              />
+            </div>
+            <div className="accionesEdicion">
+              <button onClick={guardar}>Guardar</button>
+              <button onClick={cancelar}>Cancelar</button>
+              {error && (
+                <p className="error">Todos los campos son obligatorios</p>
+              )}
+            </div>
+          </form>
+        );
+      }
 
-            return <>
-            
-                <div className="panel">
-                    <p><strong>Nombre:</strong>{producto.nombre}</p>
-                    <p><strong>Ean:</strong> {producto.ean}</p>
-                    <p><strong>Cantidad:</strong> {producto.cantidad}</p>
+      const IconoEditar = ({ onClick }) => {
+        return (
+          <span onClick={onClick}>
+            {" "}
+            <i className="fa-regular fa-pen-to-square"></i>
+          </span>
+        );
+      };
+
+      const IconoEliminar = ({ onClick }) => {
+        return (
+          <span onClick={onClick}>
+            {" "}
+            <i className="fa-regular fa-trash-can"></i>
+          </span>
+        );
+      };
+
+      const IconoAñadir = ({ onClick }) => {
+        return (
+          <span onClick={onClick}>
+            {" "}
+            <i className="fa-regular fa-square-plus"></i>
+          </span>
+        );
+      };
+
+      function Mostrar({ producto, alGuardar, alEliminar, incrementarStock }) {
+        const [editando, setEditando] = useState(false);
+
+        const editar = () => {
+          setEditando(true);
+        };
+
+        const cancelar = () => {
+          setEditando(false);
+        };
+
+        const incrementar = () => {
+          incrementarStock(producto.codigo);
+        };
+
+        return (
+          <div className="tarjeta">
+            {editando ? (
+              <Editar
+                producto={producto}
+                alGuardar={(productoEditado) => {
+                  alGuardar(productoEditado);
+                  setEditando(false);
+                }}
+                alCancelar={cancelar}
+              />
+            ) : (
+              <>
+                <div className="stock" onClick={incrementar}>
+                  <p>
+                    <b>{producto.stock}</b>
+                  </p>
                 </div>
-                
+                <div className="descripcion" onClick={incrementar}>
+                  <p className="nombreProducto">
+                    <b>{producto.nombre}</b>
+                  </p>
+                  <p>{producto.codigo}</p>
+                </div>
                 <div className="acciones">
-                    <button onClick={editar}>Editar</button>
-                    <button onClick={borrar}>Borrar</button>
+                  <IconoEditar onClick={editar} />
+                  <IconoEliminar onClick={() => alEliminar(producto.codigo)} />
                 </div>
-            </>
-        }
+              </>
+            )}
+          </div>
+        );
+      }
 
-        function Inventario({ producto, alAgregar, alEditar, alBorrar }) {
-            return <>
-            <h1></h1>
-                <h2>Inventario/Deposito</h2>
-                <button onClick={()=> alAgregar()}>Agregar</button>
-                {producto.map(producto =>
-                    <Mostrar producto={producto}
-                        alEditar={() => alEditar(producto.id)}
-                        alBorrar={() => alBorrar(producto.id)} />)}
-            </>
-        }
-        function App() {
-    let [producto, setProducto] = useState({});
-    let [editando, setEditando] = useState(false);
-    let [productos, setProductos] = useState(ProductosIniciales);
+      function Agenda({
+        productos,
+        alAgregar,
+        alGuardar,
+        alEliminar,
+        incrementarStock,
+      }) {
+        return (
+          <>
+            {productos.map((producto) => (
+              <Mostrar
+                key={producto.codigo}
+                producto={producto}
+                alGuardar={alGuardar}
+                alEliminar={alEliminar}
+                incrementarStock={incrementarStock}
+              />
+            ))}
+          </>
+        );
+      }
 
-    const guardar = (producto) => {
-        if (producto.id) {
-            // Actualiza el producto existente
-            const copia = productos.map(p => p.id === producto.id ? producto : p);
-            setProductos(copia);
-        } else {
-            // Crea un nuevo producto con un ID único
-            producto.id = productos.length ? Math.max(...productos.map(p => p.id)) + 1 : 1;
-            setProductos([...productos, producto]);
-        }
-        setEditando(false);
-    }
+      function App() {
+        const [productos, setProductos] = useState(
+          ProductosIniciales.map((producto) => ({ ...producto }))
+        );
+        const [mostrarTarjetaEditar, setMostrarTarjetaEditar] = useState(false);
 
-    const cancelar = () => {
-        setProducto({});
-        setEditando(false);
-    }
+        const guardar = (productoEditado) => {
+          setProductos(
+            productos.map((producto) =>
+              producto.id === productoEditado.id ? productoEditado : producto
+            )
+          );
+        };
+        const agregar = () => {
+          setMostrarTarjetaEditar(true);
+        };
+        const cancelar = () => {
+          setMostrarTarjetaEditar(false);
+        };
+        const borrar = (codigo) => {
+          setProductos(
+            productos.filter((producto) => producto.codigo !== codigo)
+          );
+        };
+        const incrementarStock = (codigo) => {
+          setProductos(
+            productos.map((producto) =>
+              producto.codigo === codigo && producto.stock < 99
+                ? { ...producto, stock: producto.stock + 1 }
+                : producto
+            )
+          );
+        };
 
-    const editar = (id) => {
-        let producto = productos.find(p => p.id === id);
-        setProducto(producto);
-        setEditando(true);
-    }
+        productos.sort((a, b) => a.nombre.localeCompare(b.nombre));
 
-    const borrar = (id) => {
-        const copia = productos.filter(p => p.id !== id);
-        setProductos(copia);
-    };
+        return (
+          <>
+            <div className="Titulo">
+              <h1>Control Depósito</h1>
+              <IconoAñadir onClick={agregar} />
+            </div>
+            {mostrarTarjetaEditar && (
+              <Editar
+                producto={{ nombre: "", codigo: "", stock: "" }}
+                alGuardar={(nuevoProducto) => {
+                  setProductos([...productos, { ...nuevoProducto }]);
+                  setMostrarTarjetaEditar(false);
+                }}
+                alCancelar={cancelar}
+              />
+            )}
+            <Agenda
+              productos={productos}
+              alGuardar={guardar}
+              alEliminar={borrar}
+              incrementarStock={incrementarStock}
+            />
+          </>
+        );
+      }
 
-    const agregar = () => {
-        setProducto({});  // Inicia la edición de un nuevo producto
-        setEditando(true);
-    }
-
-    return (
-        <>
-            {editando
-                ? <Editar producto={producto} alGuardar={guardar} AlCancelar={cancelar} />
-                : <Inventario producto={productos} alEditar={editar} alBorrar={borrar} alAgregar={agregar} />
-            }
-        </>
-    );
-}
-
-        const root = ReactDOM.createRoot(document.getElementById('root'))
-        root.render(<App />);
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<App />);
     </script>
-</body>
-
+  </body>
 </html>

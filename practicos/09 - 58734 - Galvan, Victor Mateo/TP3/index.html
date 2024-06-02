@@ -24,7 +24,8 @@
         }
 
         .titulo-inventario {
-            font-size: 24px;
+            font-size: 36px;
+            font-weight: bold;
             margin-bottom: 20px;
             color: #000;
             text-align: center;
@@ -85,9 +86,59 @@
             color: #007bff;
         }
 
-        .acciones button svg {
+        .acciones button img {
             width: 20px;
             height: 20px;
+        }
+
+        form.panel {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        form.panel label {
+            font-weight: bold;
+        }
+
+        form.panel input {
+            padding: 8px;
+            font-size: 14px;
+            width: calc(100% - 16px);
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        form.panel .acciones {
+            flex-direction: row;
+            gap: 10px;
+        }
+
+        .producto-cantidad {
+            font-size: 36px;
+            font-weight: bold;
+            color: blue;
+            margin: 0;
+        }
+
+        .producto-nombre {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .producto-codigo {
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .agregar-botones {
+            text-align: center;
+        }
+
+        .agregar-botones img {
+            width: 50px;
+            height: 50px;
         }
     </style>
 </head>
@@ -100,7 +151,7 @@
             return Math.floor(100000000000 + Math.random() * 900000000000).toString();
         }
 
-        function Editar({ producto, alGuardar }) {
+        function Editar({ producto, alGuardar, alCancelar, esNuevo }) {
             const [nombre, setNombre] = useState(producto.nombre);
             const [codigoBarras, setCodigoBarras] = useState(producto.codigoBarras);
             const [cantidad, setCantidad] = useState(producto.cantidad);
@@ -113,7 +164,11 @@
 
             const handleSubmit = (e) => {
                 e.preventDefault();
-                alGuardar({ ...producto, nombre, codigoBarras, cantidad });
+                if (nombre.trim() === "" && codigoBarras.trim() === "") {
+                    alCancelar(producto.id, esNuevo);
+                } else {
+                    alGuardar({ ...producto, nombre, codigoBarras, cantidad });
+                }
             };
 
             return (
@@ -129,14 +184,14 @@
 
                     <div className="acciones">
                         <button type="submit">Aceptar</button>
-                        <button type="button" onClick={() => alGuardar(null)}>Cancelar</button>
+                        <button type="button" onClick={() => alCancelar(producto.id, esNuevo)}>Cancelar</button>
                     </div>
                 </form>
             );
         }
 
-        function Mostrar({ producto, alEditar, alBorrar }) {
-            const [editando, setEditando] = useState(false);
+        function Mostrar({ producto, alEditar, alBorrar, alCancelar }) {
+            const [editando, setEditando] = useState(producto.editando);
 
             const handleGuardar = (nuevoProducto) => {
                 setEditando(false);
@@ -152,19 +207,17 @@
             };
 
             return editando ? (
-                <Editar producto={producto} alGuardar={handleGuardar} />
+                <Editar producto={producto} alGuardar={handleGuardar} alCancelar={alCancelar} esNuevo={producto.editando} />
             ) : (
                 <div className="panel" onClick={incrementarCantidad}>
-                    <h2 style={{ fontSize: '30px', color: 'blue', margin: '0' }}>{producto.cantidad}</h2>
+                    <h2 className="producto-cantidad">{producto.cantidad}</h2>
                     <div>
-                        <h3 style={{ margin: '0' }}>{producto.nombre}</h3>
-                        <p style={{ margin: '0' }}>{producto.codigoBarras}</p>
+                        <h3 className="producto-nombre">{producto.nombre}</h3>
+                        <p className="producto-codigo">{producto.codigoBarras}</p>
                     </div>
                     <div className="acciones">
                         <button onClick={(e) => { e.stopPropagation(); setEditando(true); }}>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M12 4.5c-4.142 0-7.5 3.358-7.5 7.5s3.358 7.5 7.5 7.5 7.5-3.358 7.5-7.5-3.358-7.5-7.5-7.5zm-1 11h-1v-1h1v1zm0-2h-1v-4h1v4z"/>
-                            </svg>
+                            <img src="https://w7.pngwing.com/pngs/388/107/png-transparent-write-modify-tool-edit-pen-document-multimedia-solid-px-icon-thumbnail.png" alt="Editar" />
                         </button>
                         <button onClick={(e) => { e.stopPropagation(); alBorrar(producto.id); }}>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -176,19 +229,22 @@
             );
         }
 
-        function Inventario({ datos, alAgregar, alEditar, alBorrar }) {
+        function Inventario({ datos, alAgregar, alEditar, alBorrar, alCancelar }) {
+            const datosOrdenados = datos.sort((a, b) => a.nombre.localeCompare(b.nombre));
+
             return (
                 <div className="inventario">
                     <h1 className="titulo-inventario">Control Depósito</h1>
                     <div className="agregar-botones">
-                        <button onClick={alAgregar}>Agregar</button>
+                        <img src="https://cdn-icons-png.flaticon.com/512/1004/1004759.png" onClick={alAgregar} alt="Agregar" />
                     </div>
-                    {datos.sort((a, b) => b.cantidad - a.cantidad).map((producto) =>
+                    {datosOrdenados.map((producto) =>
                         <Mostrar
                             key={producto.id}
                             producto={producto}
                             alEditar={alEditar}
                             alBorrar={alBorrar}
+                            alCancelar={alCancelar}
                         />
                     )}
                 </div>
@@ -208,54 +264,61 @@
         }
 
         function App() {
-            const productosIniciales = [
-                { id: 1, nombre: "7up", codigoBarras: "7799876543210", cantidad: 7 },
-                { id: 2, nombre: "Cola Cola", codigoBarras: "7791234567890", cantidad: 92 },
-                { id: 3, nombre: "Fanta", codigoBarras: "7793219876540", cantidad: 5 },
-                { id: 4, nombre: "Mirinda", codigoBarras: "7797894561230", cantidad: 6 },
-                { id: 5, nombre: "Sprite", codigoBarras: "7796543219870", cantidad: 4 }
-            ];
-            const [productos, setProductos] = useState(productosIniciales);
-
-            useEffect(() => {
-                const datos = leerProductos();
-                if (datos.length > 0) {
-                    setProductos(datos);
-                } else {
-                    guardarProductos(productosIniciales);
-                }
-            }, []);
+            const [productos, setProductos] = useState(leerProductos);
+            const [agregando, setAgregando] = useState(false);
 
             useEffect(() => {
                 guardarProductos(productos);
             }, [productos]);
 
-            const agregar = () => {
-                const nuevoProducto = { id: proximoId(productos), nombre: "", codigoBarras: generarCodigoBarras(), cantidad: 1 };
+            const agregarProducto = () => {
+                if (agregando) return; 
+                const nuevoProducto = {
+                    id: proximoId(productos),
+                    nombre: "",
+                    codigoBarras: generarCodigoBarras(),
+                    cantidad: 0,
+                    editando: true
+                };
                 setProductos([...productos, nuevoProducto]);
+                setAgregando(true);
             };
 
-            const editar = (productoActualizado) => {
-                const copia = productos.map(p => p.id === productoActualizado.id ? productoActualizado : p);
-                setProductos(copia);
+            const editarProducto = (productoActualizado) => {
+                setProductos(productos.map(p =>
+                    p.id === productoActualizado.id ? { ...productoActualizado, editando: false } : p
+                ));
+                setAgregando(false);
             };
 
-            const borrar = (id) => {
-                const copia = productos.filter(p => p.id !== id);
-                setProductos(copia);
+            const borrarProducto = (id) => {
+                setProductos(productos.filter(p => p.id !== id));
+                setAgregando(false);
+            };
+
+            const cancelarEdicion = (id, esNuevo) => {
+                if (esNuevo) {
+                    setProductos(productos.filter(p => p.id !== id));
+                } else {
+                    setProductos(productos.map(p =>
+                        p.id === id ? { ...p, editando: false } : p
+                    ));
+                }
+                setAgregando(false);
             };
 
             return (
                 <Inventario
                     datos={productos}
-                    alAgregar={agregar}
-                    alEditar={editar}
-                    alBorrar={borrar}
+                    alAgregar={agregarProducto}
+                    alEditar={editarProducto}
+                    alBorrar={borrarProducto}
+                    alCancelar={cancelarEdicion}
                 />
             );
         }
 
-        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+        ReactDOM.render(<App />, document.getElementById('root'));
     </script>
 </body>
 </html>

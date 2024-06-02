@@ -63,9 +63,11 @@
 }
 
 .unidades {
-    font-size: 3em;
+    font-size: 75px;
     font-weight: bold;
     color: blue;
+    margin-left: 30px;
+    margin-right: 20px;
 }
 
 .productos-detalles {
@@ -100,8 +102,12 @@
     height: 24px;
 }
 .form-control {
+    height: 40px;
     margin-right: 10px;
-    width: calc(70% - 20px);
+    width: 90%;
+    margin: 3px;
+    border: 1px solid ;
+    border-radius: 6px;
 }
 
 .btn-aceptar,
@@ -157,6 +163,18 @@
     width: 24px;
     height: 24px;
     background-size: cover;
+    margin-top: 22px;
+    margin-bottom: 25px;
+}
+
+.btn-agregar-arriba{
+  margin-left: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.productos-mover{
+  margin-bottom: 30px;
+  margin-top: -28px;
 }
 
     </style>
@@ -211,17 +229,17 @@
           }
         
         return (
-          <div className="productos-card">
+          <div className="productos-card" onClick={sumar}>
             <div className="unidades">
-              <p onClick={sumar}>{cantidad}</p>
+              <p>{cantidad}</p>
               </div>
               <div className="productos-detalles">
                 <span className="productos-names"> <h3>{nombre}</h3></span>
-                <p>Código de barra: {codigoEan}</p>
+                <span className="productos-mover">{codigoEan}</span>
                 </div>
                 <div className="productos-accion">
-                  <span onClick={()=>cambiar()}><img className="editar" src="./edit.svg" /></span>
-                  <span onClick={()=>borrar()}><img className="eliminar" src="./trash.svg"/> </span>
+                  <span onClick={(e)=>{ e.stopPropagation(); cambiar();}}><img className="editar" src="./edit.svg" /></span>
+                  <span onClick={(e)=>{ e.stopPropagation(); borrar();}}><img className="eliminar" src="./trash.svg"/> </span>
                   </div>
           </div>
         );
@@ -331,10 +349,10 @@
         const [visible,setVisible] =useState(false)
         const [productos, setProductos] = useState([]);
        useEffect(()=>{ 
-        if(localStorage.getItem('productos')===null){
-        localStorage.setItem('productos', JSON.stringify(listaProductos))
+        if(localStorage.getItem('productosLocales')===null){
+        localStorage.setItem('productosLocales', JSON.stringify(listaProductos))
         }
-        const productosInciales = localStorage.getItem('productos');
+        const productosInciales = localStorage.getItem('productosLocales');
         
         if(productosInciales){
           setProductos(JSON.parse(productosInciales))
@@ -346,8 +364,8 @@
           if(producto.cantidad>=0 && producto.cantidad<=100){
               if(producto.codigoEan.length==13){
                   let copia = productos.map(p=> p.codigoEan === ean ? {...p, ...producto} :p)
-                  localStorage.setItem('productos', JSON.stringify(copia))
-                  const copiadelacopia = localStorage.getItem('productos')
+                  localStorage.setItem('productosLocales', JSON.stringify(copia))
+                  const copiadelacopia = localStorage.getItem('productosLocales')
                   setProductos(JSON.parse(copiadelacopia))
               }
                 else{
@@ -364,7 +382,7 @@
         const eliminar=(codigoEan)=>{
             let copia = productos.filter(p=>p.codigoEan != codigoEan)
             setProductos(copia)
-            localStorage.setItem('productos',JSON.stringify(copia))
+            localStorage.setItem('productosLocales',JSON.stringify(copia))
              
         }
 
@@ -378,7 +396,7 @@
               else{
                 if (window.confirm("¿Estás seguro de que deseas realizar los cambios?")){
                   const copia = [...productos, {...producto}]
-                  localStorage.setItem('productos', JSON.stringify(copia))
+                  localStorage.setItem('productosLocales', JSON.stringify(copia))
                   setProductos(copia)
                 }
               }
@@ -396,8 +414,8 @@
         return (
           <>
           <div className="header">
-            <h2>Inventario</h2>
-            <button onClick={() => setVisible(true)}><img src="./plus-square.svg"/></button>
+            <h1>Control Deposito</h1>
+            <button className="btn-agregar-arriba" onClick={() => setVisible(true)}><img src="./plus-square.svg"/></button>
               </div>
               { visible && <Agregar agregar={agregar} estado={setVisible} />}
             {productos.map(p=>

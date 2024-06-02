@@ -1,309 +1,42 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <title>Control Depósito</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .panel {
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 10px 0;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: #f9f9f9;
-        }
-        .product-info {
-            flex-grow: 1;
-        }
-        .product-stock {
-            font-size: 3em;
-            color: blue;
-            margin: 0;
-            margin-right: 10px;
-        }
-        .product-name {
-            font-size: 1.5em;
-            margin: 0;
-        }
-        .product-number {
-            font-size: 1em;
-            color: gray;
-        }
-        .acciones {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .acciones button {
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 0;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-        .acciones button i {
-            margin: 0;
-        }
-        .boton {
-            background-color: #4CAF50;
-        }
-        .boton-borrar {
-            background-color: #f44336; /* Rojo */
-        }
-        .error {
-            color: red;
-            font-style: italic;
-        }
-        .form-container {
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 20px;
-            background-color: #f9f9f9;
-            width: 300px;
-            margin: 20px auto;
-        }
-        .form-container label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-        .form-container input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-        .form-container .acciones {
-            display: flex;
-            justify-content: space-between;
-        }
-        .form-container .boton {
-            background-color: #4CAF50;
-            padding: 10px 20px;
-        }
-        .form-container .boton-cancelar {
-            background-color: #555;
-            padding: 10px 20px;
-        }
-        .product-container {
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 20px;
-            background-color: #f9f9f9;
-            width: 300px;
-            margin: 20px auto;
-            text-align: center;
-        }
-        .product-container .product-stock {
-            font-size: 2em;
-            color: blue;
-            margin: 0;
-        }
-        .product-container .product-name {
-            font-size: 1.5em;
-            margin: 10px 0;
-        }
-        .product-container .product-number {
-            font-size: 1em;
-            color: gray;
-        }
-        .product-container .acciones {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-        .product-container .boton {
-            background-color: #4CAF50;
-            padding: 10px 20px;
-        }
-        .product-container .boton-borrar {
-            background-color: #f44336;
-            padding: 10px 20px;
-        }
-        .add-button-container {
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
-        }
-        .add-button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 15px 30px;
-            font-size: 18px;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-        }
-    </style>
-</head>
-<body>
-    <div id="root"></div>
-    <script type="text/babel">
-        const { useState } = React;
 
-        const stockdisponible = [
-            { id: 1, numeroProducto: '7799876543220', gaseosa: '7up', stock: '46' },
-            { id: 2, numeroProducto: '7791234567890', gaseosa: 'Coca Cola', stock: '46' },
-            { id: 3, numeroProducto: '7799876541234', gaseosa: 'Manaos', stock: '46' },
-            { id: 4, numeroProducto: '7791234498765', gaseosa: 'Secco Tradicional', stock: '46' }
-        ];
-
-        function Editar({ producto, alGuardar, alCancelar }) {
-            let [gaseosa, setGaseosa] = useState(producto.gaseosa);
-            let [stock, setStock] = useState(producto.stock);
-            let [error, setError] = useState(false);
-
-            const cambiarGaseosa = (e) => {
-                setGaseosa(e.target.value);
-                setError(false);
-            };
-            const cambiarStock = (e) => {
-                setStock(e.target.value);
-                setError(false);
             };
 
-            const guardar = e => {
-                e.preventDefault();
-                if (gaseosa.trim() === '' || stock.trim() === '') {
-                    setError(true);
-                    return;
-                }
-                alGuardar({ ...producto, gaseosa, stock });
-            };
-            const cancelar = e => {
-                e.preventDefault();
-                alCancelar();
-            };
-
-            return (
-                <form className="form-container">
-                    <label>Gaseosa</label>
-                    <input type="text" value={gaseosa} onChange={cambiarGaseosa} />
-                    
-                    <label>Stock</label>
-                    <input type="number" value={stock} onChange={cambiarStock} />
-                    {error && <p className='error'>Todos los campos son obligatorios</p>}
-
-                    <div className="acciones">
-                        <button className="boton" onClick={guardar}>Guardar</button>
-                        <button className="boton-cancelar" onClick={cancelar}>Cancelar</button>
-                    </div>
-                </form>
-            );
-        }
-
-        function Mostrar({ producto, alEditar, alBorrar }) {
-            const editar = () => alEditar(producto.id);
-            const borrar = () => alBorrar(producto.id);
-            return (
-                <div className="product-container">
-                    <div className="product-info">
-                        <p className="product-stock">{producto.stock}</p>
-                        <p className="product-name">{producto.gaseosa}</p>
-                        <p className="product-number">{producto.numeroProducto}</p>
-                    </div>
-                    <div className="acciones">
-                        <button className="boton" onClick={editar}><i className="fas fa-edit"></i></button>
-                        <button className="boton-borrar" onClick={borrar}><i className="fas fa-trash"></i></button>
-                    </div>
-                </div>
-            );
-        }
-
-        function Lista({ productos, alAgregar, alEditar, alBorrar }) {
-            return (
-                <>
-                    <h1>Control del Stock</h1>
-                    <div className="add-button-container">
-                        <button className="add-button" onClick={alAgregar}>Agregar</button>
-                    </div>
-                    {productos.length === 0 && <h2>No hay productos</h2>}
-                    {productos.map(producto => 
-                        <Mostrar 
-                            key={producto.id}
-                            producto={producto} 
-                            alEditar={alEditar} 
-                            alBorrar={alBorrar} 
-                        />
-                    )}
-                </>
-            );
-        }
-
-        function App() {
-            let [producto, setProducto] = useState({});
-            let [editando, setEditando] = useState(false);
-            let [productos, setProductos] = useState(stockdisponible);
-
-            const guardar = (producto) => {
-                if(producto.id){
-                    let copia = productos.map(c => c.id === producto.id ? producto : c);
-                    setProductos(copia);
-                } else {
-                    let id = Math.max(...productos.map(c => c.id)) + 1;
-                    producto.id = id;
-                    let copia = [...productos, producto];
-                    setProductos(copia);
+            const guardar = (nuevoProducto) => {
+                if (nuevoProducto) {
+                    if (!nuevoProducto.id) {
+                        const id = proximoId(productos);
+                        setProductos(ordenarProductos([...productos, { ...nuevoProducto, id }]));
+                    } else {
+                        const copia = productos.map(c => c.id === nuevoProducto.id ? nuevoProducto : c);
+                        setProductos(ordenarProductos(copia));
+                    }
                 }
                 setEditando(false);
-                console.log("Mostrar", producto);
             };
 
-            const cancelar = () => {
-                setProducto({});
-                setEditando(false);
-                console.log("Cancelar");
-            };
-
-            const agregar = () => {
-                setProducto({});
-                setEditando(true);
-            };
-
-            const editar = (id) => {
-                let producto = productos.find(c => c.id === id);
-                setProducto(producto);
-                setEditando(true);
-            };
-
-            const borrar = (id) => {
-                let copia = productos.filter(c => c.id !== id);
-                setProductos(copia);
+            const ordenarProductos = (productos) => {
+                return productos.sort((a, b) => a.nombre.localeCompare(b.nombre));
             };
 
             return (
                 <>
-                    {editando
-                        ? <Editar producto={producto} alGuardar={guardar} alCancelar={cancelar} />
-                        : <Lista 
-                            productos={productos} 
-                            alAgregar={agregar} 
-                            alEditar={editar} 
-                            alBorrar={borrar} 
-                        />
+                    {
+                        editando
+                            ? <Editar producto={producto} alGuardar={guardar} productosDisponibles={productosIniciales} />
+                            : <Inventario
+                                datos={productos}
+                                alAgregar={agregar}
+                                alEditar={editar}
+                                alBorrar={borrar}
+                            />
                     }
                 </>
             );
         }
 
-        ReactDOM.render(<App />, document.getElementById('root'));
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
     </script>
 </body>
 </html>
+

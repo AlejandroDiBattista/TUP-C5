@@ -12,33 +12,46 @@ h1 {
 }
 
 button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  border-color: #000000;
+  padding: 5px 15px;
   margin: 5px;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 15px;
 }
 
 button:hover {
-  background-color: #0056b3;
+  color: #007bff;
+  border-color: #007bff;
 }
 
 .panel {
   background-color: rgb(255, 255, 255);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  padding: 25px;
   margin-bottom: 20px;
   position: relative;
-  width: 300px; 
-  margin:20px auto; 
+  width: 300px;
+  margin: 15px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
+.panelagregar {
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  margin-bottom: 20px;
+  position: relative;
+  width: 300px;
+  margin: 15px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .agregar {
   width: 2rem;
   height: 2rem;
@@ -62,16 +75,24 @@ button:hover {
   margin: 10px 0;
 }
 
-.panel strong {
-  color: #333;
-}
-
 .acciones {
   position: absolute;
+  margin-left: 20px;
   top: 20px;
   right: 20px;
   display: flex;
   gap: 10px;
+  flex-direction: column;
+}
+.accioneseditar {
+  position: absolute;
+  margin-left: 20px;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  margin-top: 2%;
 }
 
 .acciones img {
@@ -88,11 +109,11 @@ label {
 
 input[type="text"],
 input[type="number"] {
-  width: calc(100% - 20px);
   padding: 10px;
   margin-top: 5px;
+  margin-right: 120px;
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .error {
@@ -106,15 +127,3 @@ input[type="number"] {
   margin-top: 20px;
   font-weight: 550;
 }
-.formulario-edicion.editando {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.formulario-edicion .acciones {
-  position: static;
-  margin-top: 10px;
-  display: flex;
-}
-

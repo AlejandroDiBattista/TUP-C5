@@ -1,28 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
     <meta charset="UTF-8">
-    
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    
     <script src="https://kit.fontawesome.com/c401c9ee47.js" crossorigin="anonymous"></script>
-    
     <title>55870</title>
-
-<style>
-    body {
-        background-color: #fff;
-
+    <style>
+        body {
             font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            width: 100%;
-        }
-        .container {
-            width: 100%;
-            max-width: 400px;
         }
         .card {
             font-size: 20px;
@@ -30,29 +22,27 @@
             padding: 16px;
             margin-bottom: 20px;
             border-radius: 10px;
-            border: #000 5px;
+            box-shadow: 0 0 3px rgba(0,0,0,0.5);
+            border: #b1b0b0 1.5px solid;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 10px;
         }
         .titulo {
             display:flex;
             align-items: center;
             margin-bottom: 20px;
         }
-        .titulo h1 {
-            margin: 0;
-        }
         .card2 {
             display: block;
-            width: 310px;
+            width: 311px;
+            height: 135px;
             border: 1px solid #ccc;
-            background-color: #eee;
+            background-color: white;
             border-radius: 10px;
             padding: 10px;
-            margin-bottom: 10px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            box-shadow: 0 0 3px rgba(0,0,0,0.5);
         }
         .errores {
             color: red;
@@ -60,12 +50,12 @@
             text-align: center;
         }
         .errores2 {
-            color: rgb(184, 52, 52);
+            color: red;
             font-weight: bold;
             text-align: center;
         }
         .errores4 {
-            color: rgb(184, 52, 52);
+            color: red;
             font-size: 12px;
             font-weight: bold;
             text-align: center;
@@ -79,7 +69,6 @@
         button {
             padding: 5px 10px;
             font-size: 14px;
-            font-weight: bold;
             border-radius: 10px;
             cursor: pointer;
             margin-right: 5px;
@@ -87,14 +76,6 @@
         .edit-buttons button:hover {
             background-color: gray;
             color: white;
-        }
-        .inputHijo {
-            display: block;
-            padding: 5px;
-        }
-        .inputPadre {
-            margin-bottom: 5px;
-            display: flex;
         }
         .bt1 {
             margin-bottom: 10px;
@@ -108,16 +89,23 @@
             justify-content: space-between;
         }
         input {
-            margin-bottom: 10px;
+            margin-bottom: 6.5px;
             border-radius: 10px;
             height: 20px;
-            border: none;
+            border-color:rgba(145, 143, 143, 0.5);
+            padding: 2.5px;
+        }
+        .inputHijo {
+            display: block;
             padding: 5px;
+        }
+        .inputPadre {
+            margin-bottom: 5px;
+            display: flex;
         }
         .btn {
             padding: 5px 15px;
         }
-        
         .cantidad {
             font-size: 40px;
             color: blue;
@@ -127,12 +115,13 @@
         }
         .codigo {
             font-size: 15px;
-            margin-top: 5px;
+            margin: 5px 0;
+            padding: 5px 0;
         }
         .nombre {
             font-size: 20px;
-            text-align: left;
-            padding: 5px;
+            margin: 5px 0;
+            padding: 5px 0;            
         }
         .agregarProd {
             background-color: white;
@@ -162,7 +151,7 @@
     </div>
     <script type="text/babel">
         const { useState, useEffect } = React;
-        
+
         const productosIniciales = [
             { id: 1, nombre: '7up', codigo: '7791237894560', cantidad: 10, editando: false },
             { id: 2, nombre: 'Cola Cola', codigo: '7797891234560', cantidad: 20, editando: false },
@@ -171,7 +160,7 @@
             { id: 5, nombre: 'Mirinda', codigo: '7791238934560', cantidad: 50, editando: false },
             { id: 6, nombre: 'Pepsi Cola', codigo: '7799876543210', cantidad: 60, editando: false },
             { id: 7, nombre: 'Sprite', codigo: '7791234567890', cantidad: 70, editando: false }
-        ]
+        ];
 
         function EditarAgenda({ producto, productos, alGuardar, alCancelar }) {
             const [nombre, setNombre] = useState(producto.nombre);
@@ -192,14 +181,21 @@
                 setError(false);
                 setError3(false);
                 setError4(false);
-                if (codigo.length > 12) return setCodigo(codigo.substring(0, codigo.length - 1));
+                if (e.target.value.length > 13) {
+                    setCodigo(e.target.value.substring(0, 13));
+                }
             };
 
             const cambiarCantidad = (e) => {
-                setCantidad(e.target.value);
+                const value = parseInt(e.target.value);
+                if (!isNaN(value) && value > 0) {
+                    setCantidad(value);
+                    setError2(false);
+                } else {
+                    setCantidad(1);
+                    setError2(true);
+                }
                 setError(false);
-                setError2(false);
-                if (parseInt(cantidad) <= 0) return setCantidad(1);
             };
 
             const CodigoDuplicado = (codigo) => {
@@ -212,7 +208,7 @@
                     setError(true);
                     return;
                 }
-                if (parseInt(cantidad) < 0) {
+                if (cantidad < 0) {
                     setError2(true);
                     return;
                 }
@@ -260,14 +256,14 @@
                 return (
                     <div className="Productos-">
                         <h1>No se encuentran productos.</h1>
-                        <button className="agregarProd"><i className="fa-regular fa-square-plus" onClick={alAgregar}></i></button>
+                        <button className="agregarProd" onClick={alAgregar}><i className="fa-regular fa-square-plus"></i></button>
                     </div>
                 );
             }
 
             function ordenAlfabetico(a, b) {
                 if (a.nombre < b.nombre) return -1;
-                if (a.nombre > b.nombre) return +1;
+                if (a.nombre > b.nombre) return 1;
                 return 0;
             }
 
@@ -277,7 +273,7 @@
                 <div className="agenda">
                     <div className="titulo">
                         <h1>Control Depósito</h1>
-                        <button className="agregarProd"><i className="fa-regular fa-square-plus" onClick={alAgregar}></i></button>
+                        <button className="agregarProd" onClick={alAgregar}><i className="fa-regular fa-square-plus"></i></button>
                     </div>
                     {productos.map(producto => (
                         <div key={producto.id}>
@@ -333,8 +329,6 @@
             );
         }
 
-        
-
         function App() {
             const [productos, setProductos] = useState(() => {
                 const savedProductos = localStorage.getItem('productos');
@@ -362,7 +356,7 @@
             };
 
             const idNuevo = () => {
-                let ids = [...productos].map(p => p.id);
+                let ids = productos.map(p => p.id);
                 return ids.length > 0 ? Math.max(...ids) + 1 : 1;
             };
 
@@ -394,3 +388,4 @@
     </script>
 </body>
 </html>
+

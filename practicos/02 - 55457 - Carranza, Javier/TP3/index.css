@@ -1,148 +1,143 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+#root {
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 450px;
+}
 
-        #root {
-            padding: 20px;
-            margin: 0 auto;
-            max-width: 600px;
-        }
+h1 {
+  font-size: 34px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
 
-        h1 {
-            font-size: 34px;
-            margin-bottom: 10px;
-            display: inline-block;
-        }
+.add-button {
+  background-image: url(agregar.png);
+  background-size: cover;
+  width: 25px;
+  height: 25px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-left: 10px;
+}
 
-        .add-button {
-            background-image: url(agregar.png);
-            background-size: cover;
-            width: 25px;
-            height: 25px;
-            border: none;
-            cursor: pointer;
-            margin-top: 10px;
-            margin-left: 10px;
-        }
+.formulario {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  height: 120px;
+}
 
-        .formulario {
-            width: 100%;
-            border: 1px solid #c1bebe;
-            background-color: #f3f1f1;
-            border-radius: 10px;
-            padding: 10px;
-            margin-bottom: 10px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-        }
+.formulario input {
+  flex: 1;
+  margin: 2px;
+  margin-right: 5px;
+  font-size: 14px;
+  width: 30cap;
+  height: 25px;
+}
 
-        label {
-            display: block;
-            font-size: 12px;
-            color: #666;
-            margin-bottom: 5px;
-        }
+.acciones {
+  display: flex;
+  flex: 0 0 auto;
+}
 
-        input {
-            width: 98%;
-            padding: 5px;
-            margin-bottom: 10px;
-            font-size: 14px;
-        }
+.acciones button {
+  padding: 4px 8px;
+  font-size: 14px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  color: #000000;
+  cursor: pointer;
+}
 
-        .acciones {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-        }
+.producto {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  height: 120px;
+}
 
-        .acciones button {
-            padding: 5px 10px;
-            font-size: 14px;
-            border: none;
-            border-radius: 4px;
-            background-color: #717982;
-            color: #fff;
-            cursor: pointer;
-        }
+.img-editar {
+  background-image: url(editar.png);
+  background-size: cover;
+  width: 25px;
+  height: 25px;
+  border: none;
+  cursor: pointer;
+}
 
-        .producto {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 80%;
-            border: 1px solid #ccc;
-            background-color: #f9f9f9;
-            border-radius: 10px;
-            padding: 10px;
-            margin-bottom: 10px;
-            margin-left: 35px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-            height: 120px;
-        }
+.img-borrar {
+  background-image: url(eliminar.png);
+  background-size: cover;
+  width: 25px;
+  height: 25px;
+  border: none;
+  cursor: pointer;
+}
 
-        .img-editar{
-            background-image: url(editar.png);
-            background-size: cover;
-            width: 25px;
-            height: 25px;
-            border: none;
-            cursor: pointer;
-        }
+.numero {
+  font-size: 90px;
+  color: #007bff;
+  margin-right: 10px;
+}
 
-        .img-borrar{
-                background-image: url(eliminar.png);
-                background-size: cover;
-                width: 25px;
-                height: 25px;
-                border: none;
-                cursor: pointer;
-        }
+.detalles {
+  flex-grow: 1;
+  margin-left: 5px;
+}
 
-        .numero {
-            font-size: 90px;
-            color: #007bff;
-            margin-right: 10px;
-            margin-left: 30px;
-        }
+.nombre {
+  font-weight: bold;
+  font-size: 25px;
+}
 
-        .detalles {
-            /* display: flex;
-            flex-direction: column; */
-            flex-grow: 1;
-            margin-left: 5px;
-        }
+.ean {
+  font-size: 16px;
+}
 
-        .nombre {
-            font-weight: bold;
-            font-size: 25px;
-        }
+.botones {
+  display: flex;
+  flex-direction: column;
+  height: 20vh;
+}
 
-        .ean {
-            font-size: 16px;
-        }
+.botonesEdit {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 20vh;
+}
 
-        .botones {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start; 
-            justify-content: space-between;
-            height: 20vh;
-        }
+.botones button {
+  margin-bottom: 6px;
+}
 
-        .botones button {
-            margin-bottom: 5px;
-        }
-
-        .error {
-            color: red;
-            font-size: 12px;
-        }
-
-        .centrado {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+.centrado {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

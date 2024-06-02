@@ -27,6 +27,17 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 1px 3px 10px #8a8787;
+        }
+
+        .botones {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .agenda {
+            display: grid;
+            justify-content: center;
             gap: 10px;
         }
 
@@ -44,10 +55,9 @@
             display: block;
             width: 310px;
             border: 1px solid #ccc;
-            background-color: #eee;
             border-radius: 10px;
             padding: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
         }
 
@@ -59,7 +69,7 @@
             color: rgb(184, 52, 52);
         }
 
-        .errores4{
+        .errores4 {
             color: rgb(184, 52, 52);
             font-size: 12px;
         }
@@ -74,39 +84,36 @@
         button {
             padding: 5px 10px;
             font-size: 14px;
-            border: none;
             border-radius: 10px;
-            background-color: #062644;
             color: white;
             cursor: pointer;
-            margin-right: 5px;
+            margin-right: 0px;
         }
 
-        button:hover {
-            background-color: #0e3a64;
-        }
+
 
         .edit-buttons button {
-            background-color: #062644;
-            color: white;
+            color: rgb(15, 15, 15);
+            background-color: white;
+            border: 1px 1px black;
+            padding-top: 3px;
+            padding-bottom: 3px;
         }
 
         .edit-buttons button:hover {
-            background-color: #0e3a64;
+            background-color: #ebf0f3;
         }
 
         .inputhijo {
             display: block;
-            margin-bottom: 5px;
         }
 
         .inputpapa {
-            margin-bottom: 5px;
             display: flex;
         }
 
         .bt1 {
-            margin-bottom: 25px;
+            margin-bottom: 5px;
         }
 
         i {
@@ -128,14 +135,17 @@
         }
 
         input {
-            margin-bottom: 10px;
-            border-radius: 20px;
-            height: 20px;
+            padding-top: 3px;
+            padding-left: 3px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            height: 15px;
             border: none;
-
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
         }
 
         .btn {
+
             padding-right: 16px;
         }
 
@@ -163,18 +173,31 @@
         }
 
         .agregarProd {
-            background-color: #cac5c5;
+            background-color: #ffffff;
             color: #000;
             font-size: 30px;
             border-color: #000;
+            padding: 1px 10px;
         }
-        .Productos0{
+
+        .Productos0 {
             display: grid;
             justify-content: center;
         }
 
         .agregarProd:hover {
-            background-color: #a5a1a1
+            background-color: #e7dfdf
+        }
+
+        .imagenes {
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .imagenesb {
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
         }
 
         .fa-plus {
@@ -202,7 +225,7 @@
             { id: 5, nombre: 'Sprite', codigo: '7796543219870', cantidad: 4, editando: false }
         ]
 
-        function Agenda({ productos, alEditar, alCancelarEdicion, alBorrar, alAgregar, alAgregarCant}) {
+        function Agenda({ productos, alEditar, alCancelarEdicion, alBorrar, alAgregar, alAgregarCant }) {
             if (productos.length === 0) {
                 return (
                     <div className="Productos0">
@@ -273,14 +296,14 @@
                         <p className="codigo">{producto.codigo}</p>
                     </div>
                     <div className="botones-mostrar">
-                        <div><i className="fas fa-pencil-alt" onClick={handleEditClick}></i></div>
-                        <div><i className="fas fa-trash" onClick={handleDeleteClick}></i></div>
+                        <div><img className="imagenes" src="./img/editar.jpeg" alt="editar" onClick={handleEditClick} /></div>
+                        <div><img className="imagenesb" src="./img/borrar.jpeg" alt="borrar" onClick={handleDeleteClick} /></div>
                     </div>
                 </div>
             );
         }
 
-        function EditarAgenda({ producto, productos, alGuardar, alCancelar}) {
+        function EditarAgenda({ producto, productos, alGuardar, alCancelar }) {
             const [nombre, setNombre] = useState(producto.nombre)
             const [codigo, setCodigo] = useState(producto.codigo)
             const [cantidad, setCantidad] = useState(producto.cantidad)
@@ -358,11 +381,11 @@
 
         function App() {
             const [productos, setProductos] = useState(() => {
-                const savedProductos = localStorage.getItem('productos')
+                const savedProductos = localStorage.getItem('productosMartinGonzalez')
                 return savedProductos ? JSON.parse(savedProductos) : productosIniciales
             })
             useEffect(() => {
-                localStorage.setItem('productos', JSON.stringify(productos))
+                localStorage.setItem('productosMartinGonzalez', JSON.stringify(productos))
             }, [productos])
 
             const editar = (producto) => {
@@ -383,17 +406,22 @@
                 return ids.length > 0 ? Math.max(...ids) + 1 : 1
             }
             const agregar = () => {
-                const nuevoProducto = { id: idNuevo(), nombre: '', codigo: '', cantidad: '', editando: true }
-                setProductos([...productos,nuevoProducto])
+                let prod = productos.filter(p => p.nombre === "")
+                if (!prod.length > 0) {
+                    const nuevoProducto = { id: idNuevo(), nombre: '', codigo: '', cantidad: '', editando: true }
+                    setProductos([...productos, nuevoProducto])
+                }
+                return
+
             }
             const agregarCan = (producto) => {
                 setProductos(productos.map(p => p.id === producto.id ? { ...producto, cantidad: parseInt(producto.cantidad) + 1 } : p))
             }
-           
+
 
             return (
                 <div>
-                    <Agenda                        
+                    <Agenda
                         productos={productos}
                         alEditar={editar}
                         alCancelarEdicion={cancelarEdicion}
@@ -408,4 +436,5 @@
         root.render(<App />)
     </script>
 </body>
+
 </html>

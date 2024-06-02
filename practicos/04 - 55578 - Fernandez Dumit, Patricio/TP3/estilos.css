@@ -1,0 +1,124 @@
+.form {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.tarjetas {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 13.5px;
+    margin: 8px;
+    width: 500px;
+    min-height: 130px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0.1, 0.1);
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+body {
+    background-color: #fff;
+}
+
+body,
+h1,
+.tarjetas,
+.form,
+.contenedor,
+.contenedor input,
+.contenedor button,
+.msj-error {
+    font-family: Arial, sans-serif;
+}
+
+.msj-error {
+    color: red;
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 40px;
+    margin: 0;
+}
+
+.cantidad {
+    color: blue;
+    font-size: 70px;
+    font-weight: bold;
+    margin-left: 25px;
+}
+
+.cod-ean {
+    font-size: 20px;
+    margin-left: 40px;
+    text-align: start;
+}
+
+.cod-ean span:first-child {
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.iconos {
+    font-size: 1.5em;
+    position: absolute;
+    align-items: center;
+    cursor: pointer;
+}
+
+.iconoEditar {
+    top: 12px;
+    right: 12px;
+}
+
+.iconoBorrar {
+    bottom: 12px;
+    right: 12px;
+}
+
+.fa-regular:hover {
+    background-color: blue;
+}
+
+.contenedor {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    margin: 0;
+    border-radius: 10px;
+    display: flex;
+    width: 450px;
+}
+
+.contenedor input {
+    width: 88%;
+    margin: 5px 0;
+    padding: 5px;
+    border-radius: 6px;
+}
+
+.contenedor button {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.contenedor button:hover {
+    background-color: blue;
+}
+
+.btns-form {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    border-radius: 10px;
+}
