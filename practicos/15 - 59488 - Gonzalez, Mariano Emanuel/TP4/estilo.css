@@ -1,9 +1,96 @@
 body {
     background-color: #ccc;
-    height: 100vh;
+    font-family:Helvetica, sans-serif;
 }
 
-#root {
+.container {
+    max-width: 400px;
     margin: 0 auto;
-    max-width: 500px;
+}
+
+.Clima {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-icon {
+    position: absolute;
+    left: 10px;
+    font-size: 1.2em;
+    color: #888;
+}
+
+header h1 {
+    margin: 0;
+}
+
+.ciudades ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.ciudades a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.ciudades a:hover {
+    color: #004b9c;
+}
+
+.busqueda-form {
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.busqueda-input {
+    padding: 16px 16px 16px 40px; /* ajusta el padding izquierdo para dejar espacio para el icono */
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    width: 100%;
+    outline: none;
+    box-sizing: border-box; /* incluye el padding en el tamaño total del input */
+}
+
+.tarjeta {
+    width: 100%;
+    background-color: #f9f9f9;
+    padding: 16px;
+    margin-top: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.tarjeta img {
+    width: 100px;
+    height: 100px;
+    background-color: #9ccebb;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+}
+
+.tarjeta p {
+    margin: 10px 0;
+}
+
+.NombreCiudad {
+    font-size: 28px;
+    margin: 5px;
+}
+
+.TempCiudad {
+    font-size: 22px;
+    font-family:Helvetica, sans-serif;
 }
