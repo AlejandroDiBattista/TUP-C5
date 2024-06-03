@@ -1,9 +1,85 @@
 body {
     background-color: #ccc;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    font-family: Arial, sans-serif;
 }
 
-#root {
-    margin: 0 auto;
+.container {
     max-width: 500px;
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    text-align: center;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 10px;
+    padding-left: 10px;
+    margin-top: 5px;
+
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    margin: 10px;
+    
+}
+
+nav button {
+    background-color: #5895d7;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+    border: none;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    flex: 1;
+    background-color: #fff;
+    color: #000;
+}
+
+.weather-card {
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.weather-card img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+.pTemperatura{
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+}
+.error {
+    color: red;
+    text-align: center;
+    margin-bottom: 20px;
 }
