@@ -1,7 +1,6 @@
 const { useState, useEffect } = React
 
 const ComunicacionConLaApi = ({ ciudad, setJsonCiudad }) => {
-
     const API_KEY = "450e95f6498095d16f7b2786b1d89f88"
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${API_KEY}`
     useEffect(() => {
