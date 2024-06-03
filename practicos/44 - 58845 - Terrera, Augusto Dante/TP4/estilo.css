@@ -7,3 +7,38 @@ body {
     margin: 0 auto;
     max-width: 500px;
 }
+
+.encabezado {
+    display: flex;
+    justify-content: space-between;
+    height: 55px;
+}
+
+.enlaces {
+    display: flex;
+    align-items: flex-end;
+}
+
+.enlaces a {
+    text-decoration: none;
+    margin: 5px;
+}
+h1, header{
+    color: rgb(80, 80, 80);
+}
+input {
+    background-color: white;
+    color: black;
+    margin-top: 10px;
+    border: none;
+}
+
+section{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(154, 205, 223);
+    border-radius: 10px;
+}
+section img{
+    width: 65%;
+}
