@@ -7,3 +7,33 @@ body {
     margin: 0 auto;
     max-width: 500px;
 }
+
+.input-search {
+     width: 100px;
+}
+
+h1 {
+    margin-left: 30px;
+    margin-top: 12px;
+}
+
+nav {
+   position: relative;
+   right: 20px;
+}
+
+header {
+    font-size: 35px;
+}
+
+
+img {
+    background-color: rgb(12, 100, 129);
+    height: 500px;
+    border-radius: 10px;
+}
+
+h4 {
+    text-align: center;
+    color: black;
+}
