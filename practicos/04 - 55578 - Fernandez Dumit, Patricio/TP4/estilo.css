@@ -7,3 +7,61 @@ body {
     margin: 0 auto;
     max-width: 500px;
 }
+
+html {
+    background-color: #ccc;
+}
+
+.titulo {
+    font-size: 40px;
+    color: #393d44f4;
+}
+
+.ciudad {
+    text-decoration: none;
+    font-size: 23px;
+    color: #008dc4f4;
+}
+
+.ciudades {
+    align-items: flex-end;
+}
+
+.buscar-ciudad {
+    background-color: #fff;
+    border: none;
+    color: #393d44f4;
+}
+
+.iconos {
+    background-color: lightblue;
+    border-radius: 10px;    
+}
+
+.contenedor {
+    background-color: #fff;
+}
+
+.contenedor h2, p {
+    color: #393d44f4;
+}
+
+.msj-error {
+    color: red;
+    text-align: center;
+    font-size: 21px;
+}
+
+.contenedor header {
+    border-bottom: 0.05px solid #edeef0f7;
+    background-color: #fff;
+}
+
+.contenedor footer {
+    border-top: 1px solid #edeef0f7;
+    background-color: #fff;
+}
+
+p {
+    font-size: 20px;
+}
