@@ -7,3 +7,83 @@ body {
     margin: 0 auto;
     max-width: 500px;
 }
+h1 {
+    color: #333;
+    font-size: 3em;
+    text-align: center;
+}
+article {
+    background: #eff1f4;
+    width: 100%;
+}
+p,h2 {
+    color: #333;
+    text-align: left;
+}
+.navegador {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.navegador ul li a {
+    color: #007bff;
+    text-decoration: none;
+}
+.navegador ul li a:hover {
+    text-decoration: underline;
+}
+.search-container {
+    position: relative;
+    background-color: white;
+}
+.search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+}
+input[type="search"] {
+    padding-left: 30px; 
+    width: 200px; 
+    
+}
+
+.search-form {
+    text-align: center;
+}
+.search-form input[type="search"] {
+    padding: 10px;
+    font-size: 1em;
+    color:black;
+    width: 80%;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+.clima-info {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+.clima-info header {
+    text-align: left;
+    font-size: 1.5em;
+    font-style: initial;
+    background-color: whitesmoke;
+    margin-bottom: 20px;
+    color: #646b79;
+    font-weight: 900;
+}
+.clima-info p {
+    margin: 10px 0;
+    font-size: 1.2em;
+    color: #666;
+}
+.clima-icono {
+    width: 40%;
+    height: auto;
+    margin: 0 auto 20px;
+}
