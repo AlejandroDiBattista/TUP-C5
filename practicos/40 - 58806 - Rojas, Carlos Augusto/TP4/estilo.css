@@ -1,9 +1,60 @@
 body {
     background-color: #ccc;
-    height: 100vh;
+    height: 150vh;
 }
 
 #root {
     margin: 0 auto;
     max-width: 500px;
+}
+
+.buscador{
+    background-color: #fbfcfd;
+    color: black;
+}
+.card{
+    background-color: #ffffff;
+    height: 560px;
+    
+}
+.card header{
+    background-color: #fff8f8;
+    border-color: #fff8f8;
+    color: black;
+    font-size: 30px;
+    font-weight: bold;
+}
+.card footer {
+    background-color: #fff8f8;
+    border-color: #fff8f8;
+}
+.card img {
+    border-radius: 3%;
+    margin-left: 17px;
+    width: 430px;
+    height: 430px;
+    background-color: #ADD8E6; 
+  }
+.temp{
+    color: black;
+    font-weight: bold;
+}
+.max{
+    color: black;
+}
+.min{
+    color: black;
+    margin-top: 15px;
+}
+.clima{
+    color: black;
+    font-weight: bold;
+    font-size: 30px;
+}
+.lista{
+    color: #2a72ee;
+    cursor: pointer;
+}
+.nav{
+    margin-top: -10px;
 }
