@@ -1,9 +1,51 @@
-body {
-    background-color: #ccc;
-    height: 100vh;
+html{
+    background-color: rgb(204, 204, 204);
 }
-
 #root {
     margin: 0 auto;
     max-width: 500px;
+}
+a{
+    color: rgb(53, 149, 184);
+}
+p{
+    color: rgb(68, 66, 66);
+}
+.titu{
+    color: rgb(58, 54, 54);
+}
+.colorParrafo{
+    color: rgb(53, 60, 70);
+    font-size: 38px;
+    font-weight: bold;
+}
+.error1{
+    color: brown;
+}
+.imagenes{
+    display: grid;
+    justify-content: center;
+    background-color: rgb(58, 126, 172);
+    border-radius: 10px;
+    height: 300px;
+}
+.titulos{
+    display: grid;
+    justify-content: center;
+}
+input{
+    background-color: aliceblue;
+    border: none;
+    color: black;
+}
+article{
+    background-color: aliceblue;
+}
+.header{
+    background-color: aliceblue;
+    border: none;
+}
+.footer{
+    background-color: aliceblue;
+    border: none;
 }
