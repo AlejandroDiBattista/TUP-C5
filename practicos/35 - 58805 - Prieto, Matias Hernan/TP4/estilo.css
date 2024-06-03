@@ -1,9 +1,79 @@
 body {
     background-color: #ccc;
-    height: 100vh;
+    height: 120vh;
 }
 
 #root {
     margin: 0 auto;
     max-width: 500px;
+}
+.boton-buscar{
+    display: none;
+}
+.nombre-nav {
+    color: black;
+    font-size: 40px;
+}
+.nombre {
+    background-color: #f8f9fa; 
+    color: #333333; 
+    font-size: 30px;
+    font-weight: bold;
+    padding: 16px;
+    border-color: gainsboro;
+}
+.lista-nav{
+    cursor: pointer;
+    color: blue;
+}
+.fuera-div{
+    width: 100%; 
+    max-width: 500px; 
+    height: auto;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.dentro-div{
+    width: 95%;
+    height: auto;
+    border-radius: 3%;
+    background-color: #bde0fa;
+}
+.img-icono{
+    margin-left: 50px;
+    width: 70%;
+    height: auto;
+}
+.card{
+    background-color: #ffffff;
+    width: 100%;
+    height: auto;
+    max-width: 500px;
+}
+.footer{
+    background-color: #f8f9fa; 
+    color: #333333; 
+    padding: 10px;
+    font-size: 16px;
+    border-color: gainsboro;
+}
+.footer span{
+    margin: 5px 0;
+}
+.buscador{
+    background-color: rgb(242, 240, 236);
+    color:#333333;
+}
+.temperatura{
+    font-size: 30px;
+    font-weight: bold;
+}
+.minima-maxima, .humedad{
+    font-size: 20px;
+}
+.nav-contenedor{
+    margin-top: -25px;
 }
