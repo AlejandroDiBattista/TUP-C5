@@ -1,9 +1,23 @@
-body {
+html, body {
     background-color: #ccc;
     height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 
 #root {
     margin: 0 auto;
     max-width: 500px;
 }
+
+.imagen {
+    background-color: #A0DEFF;
+    margin-bottom: 20px;
+}
+
+.temperatura {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+
