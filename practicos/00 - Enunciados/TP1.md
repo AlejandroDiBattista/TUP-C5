@@ -2,7 +2,7 @@
 
 ## Material de soporte para el dictado de clases 
 
-Este respositorio contiene el material de soporte para el dictado de las clases.
+Este repositorio contiene el material de soporte para el dictado de las clases.
 
 Contiene código fuente, material de lectura, enunciados y el contenido de los trabajos prácticos.
 
@@ -10,21 +10,21 @@ Contiene código fuente, material de lectura, enunciados y el contenido de los t
 
 # Trabajo Práctico Nº 1
 
-Hacer una app en react que muestre una agenda de contactos
+Hacer una app en React que muestre una agenda de contactos
 
-1. La lista de contacto debe estar ingresado como una lista de objetos.
-2. Los contactos deben tener id, nombre, apellido y teléfono
-3. Los contactos se deben mostrar como una tarjeta de presentación
+1. La lista de contactos debe estar ingresada como una lista de objetos.
+2. Los contactos deben tener id, nombre, apellido y teléfono.
+3. Los contactos se deben mostrar como una tarjeta de presentación.
 4. Para presentar el trabajo debe:
 
-    a. Bajar el repositorio del curso (clone)
+    a. Descargar el repositorio del curso (clone).
 
-    b. Crear una nueva rama (new branch)
+    b. Crear una nueva rama (new branch).
 
-    c. Abrir la carpeta que le corresponda a cada alumno (practicos/{alumno}/tp1)
+    c. Abrir la carpeta que le corresponda a cada alumno (practicos/{alumno}/tp1).
 
-    d. Realizar los cambios en los archivos de muestra (no debe cambiar ninguna otra carpeta)
+    d. Realizar los cambios en los archivos de muestra (no debe cambiar ninguna otra carpeta).
 
-    e. Confirmar los cambios (commit)
+    e. Confirmar los cambios (commit).
 
-    f. Realizar un solicitud de publicacion (pull request)
+    f. Realizar una solicitud de publicación (pull request).
