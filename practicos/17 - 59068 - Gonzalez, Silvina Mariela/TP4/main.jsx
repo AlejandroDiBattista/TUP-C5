@@ -45,7 +45,7 @@ const Clima = ({ datos }) => {
         <article className="clima-tarjeta">
             <header><h1>{datos.name}</h1></header>
             <div className="clima-icono">
-                <img src={`weather-icons-master/production/line/openweathermap/${iconoDelClima}.svg`} alt="Icono_del_clima" />
+                <img src={`weather-icons-master/${iconoDelClima}.svg`} alt="Icono_del_clima" />
             </div>
             <footer>
                 <h3>Temperatura: {datos.main.temp}°C</h3>
