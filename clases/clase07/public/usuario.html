@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+
+  <!-- Enlaces a React, ReactDOM y Babel -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <title>Gestión Usuario</title>
+
+  <script type="text/babel">
+    const { createRoot } = ReactDOM
+    const { useState, useEffect } = React
+
+    async function get(path) {
+      let response = await fetch(`http://localhost:3000${path}`, {
+        method: 'GET',
+        credentials: 'include',
+      })
+      return response.ok
+    }
+  
+    async function post(path, datos = {}) {
+      let response = await fetch(`http://localhost:3000${path}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify(datos)
+      })
+      let data = await response.json()
+      return data
+    }
+
+    const App = () => {
+      let [logeado, setLogeado] = useState(false)
+      let [verificar, setVerificar] = useState(null)
+
+      async function registrar({ email, clave }) {
+        let data = await post("/registrar", { email, clave })
+        if (data.ok) {
+          setVerificar(data.verificar)
+        } else {
+          setVerificar(null)
+        }
+        setLogeado(false)
+      }
+
+      async function verificarRegistro(e) {
+        e.preventDefault()
+        await get("/verificar")
+      }
+
+      async function ingresar(email, clave) {
+        let data = post("/ingresar", { email, clave })
+        setLogeado(data.ok)
+        setVerificar(null)
+      }
+
+      async function salir() {
+        let data = post("/salir")
+        if (data.ok) setLogeado(false)
+        setVerificar(null)
+      }
+
+      return (
+        <>
+          <h1>Probar Registracion</h1>
+          {!logeado && 
+            <div>
+              <button onClick={() => registrar("ale@gmail.com", "1234")}>Registrar ALE</button>
+              {verificar && <div><a href="#" onClick={verificarRegistro}>Verificar registro<br/>{verificar}</a></div>}
+            </div>
+          }
+          <div>
+            {logeado
+              ? <button onClick={() => salir()}>Salir</button>
+              : <div>
+                <button onClick={() => ingresar("ale@gmail.com", "1234")}>Ingresar ALE</button>
+                <button onClick={() => ingresar("otro@gmail.com", "1234")}>Ingresar OTRO</button>
+                </div>
+            }
+            </div>
+        </>
+      )
+    }
+
+    const root = createRoot(document.getElementById('root'))
+    root.render(<App />);
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+
+</html>
