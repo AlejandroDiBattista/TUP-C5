@@ -1,0 +1,1 @@
+Instale las dependencias con `npm install` y corra el programa con `npm run test`
