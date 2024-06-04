@@ -1,9 +1,51 @@
 body {
-    background-color: #ccc;
-    height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.buscar {
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+    font-size: 1em;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #root {
-    margin: 0 auto;
-    max-width: 500px;
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.weather-icon {
+    width: 100px;
+    height: 100px;
+    margin: 20px 0;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.temp {
+    font-size: 2em;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+@media (max-width: 600px) {
+    .temp {
+        font-size: 1.5em;
+    }
 }
