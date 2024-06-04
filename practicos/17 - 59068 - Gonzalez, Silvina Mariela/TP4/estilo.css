@@ -1,9 +1,54 @@
 body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
     background-color: #ccc;
-    height: 100vh;
+    color: black;
+    margin: 0;
+    padding: 0;
 }
 
 #root {
     margin: 0 auto;
     max-width: 500px;
+}
+
+.clima-tarjeta {
+    background-color: white;
+    width: 100%;
+}
+
+.clima-icono {
+    background-color: rgb(150, 196, 255);
+    border-radius: .5rem;
+}
+
+.navegacion-titulo {
+    font-size: 2.5rem;
+}
+
+.navegacion-y-busqueda {
+    display: flex;
+    flex-direction: column;
+    width: 25rem;
+}
+
+.navegacion {
+    display: flex;
+}
+
+.navegador {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 100%;
+}
+
+.navegador-item {
+    padding: 0 .5rem;
+    cursor: pointer;
+    text-decoration: none;
+    background-color: unset;
+    border: none;
 }

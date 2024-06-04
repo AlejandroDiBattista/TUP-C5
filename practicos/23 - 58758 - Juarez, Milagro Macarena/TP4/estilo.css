@@ -1,9 +1,95 @@
 body {
-    background-color: #ccc;
+    background-color: #ffffff; 
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    color: #000;
 }
 
 #root {
-    margin: 0 auto;
+    width: 100%;
     max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #d4d0d0; 
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.container {
+    text-align: center;
+    
+   
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+    list-style-type: none;
+}
+
+nav ul li a {
+    margin: 5px;
+    color: #007bff; 
+    cursor: pointer;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.search-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.search-box input {
+    width: 70%;
+    background-color: #ffffff; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+
+
+.weather-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color: #000000; 
+}
+
+.weather-card img {
+    width: 200px;
+    height: 200px;
+    background-color: rgb(157, 185, 236);
+}
+
+.temperature {
+    margin-top: 10px;
+    color: #000000;
+    
+}
+h2 {
+    --pico-color: #181c25;
+}
+h1 {
+    --pico-color: #181c25;
+}
+
+p {
+    color: #000;
+}
+input{
+    --pico-color: #48536b;
 }
