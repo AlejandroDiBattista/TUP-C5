@@ -1,21 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <title>TP3-Parcial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        .control-deposito {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        .control-deposito h1 {
+            font-size: 24px;
+            margin: 0 0 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .target {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        .numero {
+            font-size: 24px;
+            font-weight: bold;
+            color: blue;
+            margin-right: 10px;
+        }
+        .info-producto {
+            flex-grow: 1;
+        }
+        .nombre-producto {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .codigo-producto {
+            font-size: 12px;
+            color: #555;
+        }
+        .acciones1, .acciones .fa-edit, .acciones .fa-trash {
+            cursor: pointer;
+            margin-left: 10px;
+            color: #888;
+        }
+        .acciones1:hover, .acciones .fa-edit:hover, .acciones .fa-trash:hover {
+            color: #333;
+        }
+        .form-container {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-container input, .form-container select {
+            margin-bottom: 10px;
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .acciones1 button {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        const productosIniciales = [
+            { id: 1, nombre: '7up', codigoEAN: '7799876543210', cantidad: 7 },
+            { id: 2, nombre: 'Coca Cola', codigoEAN: '7791234567890', cantidad: 92 },
+            { id: 3, nombre: 'Fanta', codigoEAN: '7793219876540', cantidad: 5 },
+            { id: 4, nombre: 'Manaos', codigoEAN: '7794567891230', cantidad: 1 },
+            { id: 5, nombre: 'Mirinda', codigoEAN: '7797894561230', cantidad: 6 },
+            { id: 6, nombre: 'Pepsi', codigoEAN: '7799876543211', cantidad: 3 },
+            { id: 7, nombre: 'Sprite', codigoEAN: '7796543219870', cantidad: 4 }
+        ];
 
+        function Inventario({ datos, alAgregar, alEditar, alBorrar }) {
+            const productosOrdenados = datos.sort((a, b) => a.nombre.localeCompare(b.nombre));
+            return (
+                <div className="control-deposito">
+                    <h1>Control Depósito <i className="fa-regular fa-square-plus" onClick={alAgregar}></i></h1>
+                    {productosOrdenados.map((producto) => (
+                        <Mostrar
+                            key={producto.id}
+                            producto={producto}
+                            alEditar={alEditar}
+                            alBorrar={alBorrar}
+                        />
+                    ))}
+                </div>
+            );
+        }
+
+        function Editar({ producto, alGuardar, productosDisponibles }) {
+            let [nombre, setNombre] = useState(producto.nombre);
+            let [codigoEAN, setCodigoEAN] = useState(producto.codigoEAN);
+            let [cantidad, setCantidad] = useState(producto.cantidad);
+
+            const cambiarNombre = (e) => {
+                const nuevoNombre = e.target.value;
+                setNombre(nuevoNombre);
+                const productoSeleccionado = productosDisponibles.find(p => p.nombre === nuevoNombre);
+                if (productoSeleccionado) {
+                    setCodigoEAN(productoSeleccionado.codigoEAN);
+                }
+            };
+
+            const cambiarCantidad = (e) => {
+                const nuevoValor = Math.max(0, parseInt(e.target.value)); // Asegura que el valor sea al menos 0
+                setCantidad(nuevoValor);
+            };
+
+            const aceptar = (e) => {
+                e.preventDefault();
+                if (cantidad < 0) {
+                    alert("La cantidad no puede ser negativa");
+                    return;
+                }
+                alGuardar({ ...producto, nombre, codigoEAN, cantidad });
+            };
+
+            const cancelar = (e) => {
+                e.preventDefault();
+                alGuardar(null);
+            };
+
+            return (
+                <form className="target form-container">
+                    <select value={nombre} onChange={cambiarNombre}>
+                        <option value="">Seleccione un producto</option>
+                        {productosDisponibles.map(p => (
+                            <option key={p.id} value={p.nombre}>{p.nombre}</option>
+                        ))}
+                    </select>
+                    <input type="text" value={codigoEAN} placeholder="Código EAN" disabled />
+                    <input type="number" value={cantidad} onChange={cambiarCantidad} placeholder="Cantidad" min="0" />
+                    <div className="acciones1">
+                        <button onClick={aceptar}>Aceptar</button>
+                        <button onClick={cancelar}>Cancelar</button>
+                    </div>
+                </form>
+            );
+        }
+
+        function Mostrar({ producto, alEditar, alBorrar }) {
+            const [editando, setEditando] = useState(false);
+            const toggleEditar = () => setEditando(!editando);
+
+            return (
+                <div className="target">
+                    {editando ? (
+                        <Editar producto={producto} alGuardar={(nuevoProducto) => {
+                            setEditando(false);
+                            if (nuevoProducto) {
+                                alEditar(nuevoProducto);
+                            }
+                        }} productosDisponibles={productosIniciales} />
+                    ) : (
+                        <>
+                            <div className="numero">{producto.cantidad}</div>
+                            <div className="info-producto">
+                                <div className="nombre-producto">{producto.nombre}</div>
+                                <div className="codigo-producto">{producto.codigoEAN}</div>
+                            </div>
+                            <div className="acciones">
+                                <i className="fas fa-edit acciones1" onClick={toggleEditar}></i>
+                                <i className="fas fa-trash acciones1" onClick={() => alBorrar(producto.id)}></i>
+                            </div>
+                        </>
+                    )}
+                </div>
+            );
+        }
+
+        function proximoId(productos) {
+            return productos.length ? Math.max(...productos.map(c => c.id)) + 1 : 1;
+        }
+
+        function leerProductos() {
+            return JSON.parse(localStorage.getItem('productos')) || productosIniciales;
+        }
+
+        function guardarProductos(productos) {
+            localStorage.setItem('productos', JSON.stringify(productos));
+        }
+
+        function App() {
+            let [editando, setEditando] = useState(false);
+            let [producto, setProducto] = useState({});
+            let [productos, setProductos] = useState([]);
+
+            useEffect(() => {
+                let datos = leerProductos();
+                setProductos(datos);
+            }, []);
+
+            useEffect(() => {
+                guardarProductos(productos);
+            }, [productos]);
+
+            const agregar = () => {
+                setProducto({ nombre: "", codigoEAN: "", cantidad: "" });
+                setEditando(true);
+            };
+
+            const editar = (nuevoProducto) => {
+                const copia = productos.map(c => c.id === nuevoProducto.id ? nuevoProducto : c);
+                setProductos(copia);
+                setEditando(false);
+            };
+
+            const borrar = (id) => {
+                const copia = productos.filter(c => c.id !== id);
+                setProductos(copia);
             };
 
             const guardar = (nuevoProducto) => {
                 if (nuevoProducto) {
-                    if (!nuevoProducto.id) {
-                        const id = proximoId(productos);
-                        setProductos(ordenarProductos([...productos, { ...nuevoProducto, id }]));
+                    const productoExistente = productos.find(p => p.nombre === nuevoProducto.nombre);
+                    if (productoExistente) {
+                        const copia = productos.map(p => 
+                            p.nombre === nuevoProducto.nombre 
+                                ? { ...p, cantidad: p.cantidad + nuevoProducto.cantidad } 
+                                : p
+                        );
+                        setProductos(copia);
                     } else {
-                        const copia = productos.map(c => c.id === nuevoProducto.id ? nuevoProducto : c);
-                        setProductos(ordenarProductos(copia));
+                        const id = proximoId(productos);
+                        setProductos([...productos, { ...nuevoProducto, id }]);
                     }
                 }
                 setEditando(false);
-            };
-
-            const ordenarProductos = (productos) => {
-                return productos.sort((a, b) => a.nombre.localeCompare(b.nombre));
             };
 
             return (
@@ -39,4 +277,3 @@
     </script>
 </body>
 </html>
-
