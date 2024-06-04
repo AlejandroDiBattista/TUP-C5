@@ -183,6 +183,7 @@
       }
 
       const Estadistica = ({datos, practicos}) => {
+          let abandonos = datos.filter(a => abandono(a)).length
           return (
               <div className="alumno">
                   <table>
@@ -196,8 +197,8 @@
                               {practicos.map(practico => <td key={practico}>{contarEntrega(datos,practico).si}</td>)}
                           </tr>
                           <tr>
-                              <th>Falta</th>
-                              {practicos.map(practico => <td key={practico}>{contarEntrega(datos,practico).no}</td>)}
+                              <th>Falta (-{abandonos})</th>
+                              {practicos.map(practico => <td key={practico}>{contarEntrega(datos,practico).no-abandonos}</td>)}
                           </tr>
                       </tbody>
                   </table>
@@ -224,6 +225,15 @@
         return palabras.every(palabra => texto.includes(palabra));
       }
 
+      function calcularPracticos(alumno){
+        return Object.keys(alumno).filter(k => k.startsWith("TP"))
+      }
+
+      function abandono(alumno){
+        let practicos = calcularPracticos(alumno)
+        return !practicos.some(p => alumno[p])
+      }
+    
       const App = () => {
         let [datos, setDatos] = useState([])
         let [filtro, setFiltro] = useState("")
@@ -240,9 +250,11 @@
           setFiltro(e.target.value.toLowerCase())
         }
 
-        let mostrar = datos.filter(a => incluir(a, filtro) )          
-        const comision = datos.length > 0 ? datos[0].comision : ''
-        const practicos = datos.length > 0 ? Object.keys(datos[0]).filter(k => k.startsWith("TP")) : [] 
+        const comision  = datos.length > 0 ? datos[0].comision : ''
+        const practicos = datos.length > 0 ? calcularPracticos(datos[0]) : []
+        
+        let mostrar = datos.filter(a => incluir(a, filtro) )    
+        mostrar = mostrar.filter(a => !abandono(a))
 
         return (
           <div id="main">
