@@ -1,9 +1,32 @@
 body {
-    background-color: #ccc;
+    background-color: #04001b;
     height: 100vh;
 }
 
 #root {
     margin: 0 auto;
     max-width: 500px;
+}
+
+h1 {
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+nav a {
+    cursor: pointer;
+}
+
+.weather-container {
+    text-align: center;
+}
+
+.weather-container img {
+    width: 100px;
+    height: 100px;
 }

@@ -14,7 +14,7 @@ let datos = [
 app.use(morgan('dev'))
 app.use(express.json())
 
-app.use("/productos", express.json(), productos)
+app.use("/productos", productos)
 
 app.get("/home")
 app.listen(3000, () => {

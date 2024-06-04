@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+
+  <!-- Enlaces a React, ReactDOM y Babel -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <title>TP1</title>
+
+  <script type="text/babel">
+    const { createRoot } = ReactDOM
+    const { useState, useEffect } = React
+
+    function traerNormal() {
+      console.log("1. Antes del fetch")
+      fetch('http://localhost:3000/traer')
+        .then(response => {
+          console.log("2. En el then", response)
+          return response.json()
+        })
+        .then(data => console.log("3. En el fetch", data))
+      console.log("4. Despues del fetch")
+    } 
+    
+    async function traer() {
+      console.log("1. Antes del fetch")
+      let response = await fetch('http://localhost:3000/traer')
+      console.log("2.", response)
+      let data = await response.json()
+      console.log("3.", data)
+      console.log("4. Despues del fetch")
+    }
+
+    function enviar() {
+      fetch('http://localhost:3000/guardar', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'mi-token': '123456'
+        },
+        body: JSON.stringify({
+          nombre: 'Juan',
+          edad: 30
+        })
+      })
+        .then(response => {
+          console.log("2. En el then", response.headers)
+          return response.json()}
+        )
+        .then(data => console.log(data))
+        .catch(error => console.error('Error:', error));
+    }
+
+    const App = () => {
+      return (
+        <>
+          <h1>Probar Fetch</h1>
+          <button onClick={traer}>Traer</button>
+          <button onClick={enviar}>Enviar</button>
+        </>
+      )
+    }
+
+    const root = createRoot(document.getElementById('root'))
+    root.render(<App />);
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+
+</html>

@@ -1,6 +1,107 @@
 body {
-    background-color: #ccc;
-    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titulo {
+    font-size: 1.5em;
+    margin: 0;
+    color: #333;
+}
+
+.provincias {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+}
+
+.ciudad {
+    cursor: pointer;
+    font-weight: bold;
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.ciudad:hover {
+    text-decoration: underline;
+}
+
+.buscar {
+    background-color: white;
+    margin: 20px 0;
+    width: 80%;
+    max-width: 400px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: black;
+}
+
+.Provincias {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 90%;
+    max-width: 600px;
+}
+
+.Header{
+    background-color: #fff;
+}
+
+.Footer{
+    background-color: #fff;
+}
+
+.Footer h2{
+    color: black;
+}
+
+.Footer p{
+    color: black;
+}
+
+.Info_del_clima header h2 {
+    margin: 0 0 10px;
+    color: #333;
+}
+
+.iconos img {
+    width: 100px;
+    margin: 20px 0;
+}
+
+.Info_del_clima footer {
+    color: #555;
+}
+
+.Info_del_clima footer h2 {
+    margin: 10px 0;
+}
+
+.Info_del_clima footer p {
+    margin: 5px 0;
 }
 
 #root {
