@@ -56,20 +56,20 @@ describe("Crear una persona", () => {
         expect(res.body.id).toBeDefined()
     })
 
-    test("3. Crear una persona (debe haber uno mas)", async () => {
-        const persona = { nombre: "Juan", apellido: "Perez", edad: 30 }
+   test("3. Crear una persona (debe haber uno mas)", async () => {
+       const persona = { nombre: "Juan", apellido: "Perez", edad: 30 }
 
-        const leer = await request(app).get("/personas").send()
-        const antes = leer.body.length
+const leer = await request(app).get("/personas").send()
+       const antes = leer.body.length
 
         const crear = await request(app).put("/personas").send(persona)
-        expect(crear.body.id).toBeDefined()
+      expect(crear.body.id).toBeDefined()
 
-        const leer2 = await request(app).get("/personas").send()
-        const despues = leer2.body.length
+    const leer2 = await request(app).get("/personas").send()
+       const despues = leer2.body.length
 
         expect(despues).toBe(antes + 1)
-    })
+  })
 
 })
 
