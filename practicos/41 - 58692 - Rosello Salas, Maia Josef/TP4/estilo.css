@@ -1,9 +1,70 @@
 body {
-    background-color: #ccc;
-    height: 100vh;
+    background-color: rgb(183, 183, 183);
+    height: 1000px;
+    display: flex;
 }
 
 #root {
-    margin: 0 auto;
+    margin-left: 400px;
     max-width: 500px;
+}
+
+h1{
+    color: black;
+}
+
+.navegador{
+    display: flex;
+    height: 60px;
+}
+
+.nav{
+    margin-left: 50px;
+    margin-bottom: 30px;
+}
+
+.nav button {
+    background: none;
+    border: none;
+    color: #007BFF;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+input{
+    background-color: white;
+    color: black;
+}
+
+.weather-card{
+    background-color: white;
+    width: 500px;
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.weather-card h2{
+    color: black;
+    margin-top: 10px;
+}
+ 
+.weather-card img{
+    height: 400px;
+    width: 400px;
+    margin-left: 30px;
+    margin-top: 10px;
+    background-color:rgb(170, 227, 234);
+    border-radius: 15px;
+}
+
+.weather-card .pTemperatura{
+    margin-top: 20px;
+    color: black;
+    font-size: 25px;
+}
+
+.weather-card p{
+    color: gray;
+    font-size: 20px;
 }

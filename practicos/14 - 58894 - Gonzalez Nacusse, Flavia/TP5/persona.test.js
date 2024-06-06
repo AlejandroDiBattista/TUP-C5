@@ -4,27 +4,27 @@ import { expect, describe, test } from "@jest/globals";
 import app from "./app.js";
 
 describe("GET All", () => {
-    test("Debe responder con un status 200", async () => {
+    test("1. Debe responder con un status 200", async () => {
         const res = await request(app).get("/personas").send()
         expect(res.statusCode).toBe(200)
     })
 
-    test("Debe retornar un JSON", async () => {
+    test("2. Debe retornar un JSON", async () => {
         const res = await request(app).get("/personas").send()
         expect(res.type).toBe("application/json")
     })
 
-    test("Debe responder con un array", async () => {
+    test("3. Debe responder con un array", async () => {
         const res = await request(app).get("/personas").send()
         expect(Array.isArray(res.body)).toBe(true)
     })
 
-    test("Debe tener al menos 5 personas", async () => {
+    test("4. Debe tener al menos 5 personas", async () => {
         const res = await request(app).get("/personas").send()
         expect(res.body.length).toBeGreaterThanOrEqual(5)
     })
 
-    test("Debe retornar un array de personas", async () => {
+    test("5. Debe retornar un array de personas", async () => {
         const res = await request(app).get("/personas").send()
         expect(res.body).toEqual(
             expect.arrayContaining([
@@ -43,20 +43,20 @@ describe("GET All", () => {
 
 describe("Crear una persona", () => {
 
-    test("Crear una persona (retorna codigo)", async () => {
+    test("1. Crear una persona (retorna codigo)", async () => {
         const persona = { nombre: "Juan", apellido: "Perez", edad: 30 }
         const res = await request(app).put("/personas").send(persona)
         expect(res.statusCode).toBe(201)
     })
 
-    test("Crear una persona (y retorna su id)", async () => {
+    test("2. Crear una persona (y retorna su id)", async () => {
         const persona = { nombre: "Juan", apellido: "Perez", edad: 30 }
 
         const res = await request(app).put("/personas").send(persona)
         expect(res.body.id).toBeDefined()
     })
 
-    test("Crear una persona (debe haber uno mas)", async () => {
+    test("3. Crear una persona (debe haber uno mas)", async () => {
         const persona = { nombre: "Juan", apellido: "Perez", edad: 30 }
 
         const leer = await request(app).get("/personas").send()
@@ -74,19 +74,19 @@ describe("Crear una persona", () => {
 })
 
 describe("Actualizar una persona", () => {
-    test("Actualizar una persona (retorna codigo)", async () => {
+    test("1. Actualizar una persona (retorna codigo)", async () => {
         const persona = { id: 2, nombre: "Juan", apellido: "Perez", edad: 30 }
         const res = await request(app).put("/personas").send(persona)
         expect(res.statusCode).toBe(201)
     })
 
-    test("Si no existe la persona, no se actualiza", async () => {
+    test("2. Si no existe la persona, no se actualiza", async () => {
         const persona = { id: 100, nombre: "Juan", apellido: "Perez", edad: 30 }
         const res = await request(app).put("/personas").send(persona)
         expect(res.statusCode).toBe(404)
     })
 
-    test("Actualizar una persona (y retorna la persona actualizada)", async () => {
+    test("3. Actualizar una persona (y retorna la persona actualizada)", async () => {
         const persona = { id: 2, nombre: "JuanXX", apellido: "Perez", edad: 30 }
 
         const res = await request(app).put("/personas").send(persona)
@@ -99,20 +99,20 @@ describe("Actualizar una persona", () => {
 })
 
 describe("Borrar una persona", () => {
-    test("Borrar una persona (retorna codigo)", async () => {
+    test("1. Borrar una persona (retorna codigo)", async () => {
         const persona = { id: 2 }
         const res = await request(app).put("/personas").send(persona)
         expect(res.statusCode).toBe(201)
     })
 
-    test("Si no existe la persona, no se borra", async () => {
+    test("2. Si no existe la persona, no se borra", async () => {
         const persona = { id: 100 }
         const res = await request(app).put("/personas").send(persona)
         expect(res.statusCode).toBe(404)
     })
 
 
-    test("Borrar una persona (y retorna la persona borrada)", async () => {
+    test("3. Borrar una persona (y retorna la persona borrada)", async () => {
         const persona = { id: 3, borrado: true }
 
         const res = await request(app).put("/personas").send(persona)
@@ -121,7 +121,7 @@ describe("Borrar una persona", () => {
         expect(res.body.id).toBe(persona.id)
     })
 
-    test("Borrar una persona (debe haber uno menos)", async () => {
+    test("4. Borrar una persona (debe haber uno menos)", async () => {
         const persona = { id: 4, borrado: true }
 
         const leerAntes = await request(app).get("/personas").send()
