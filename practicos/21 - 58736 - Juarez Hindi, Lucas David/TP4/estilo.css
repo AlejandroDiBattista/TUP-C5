@@ -1,9 +1,112 @@
 body {
-    background-color: #ccc;
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
+    margin: 0;
 }
 
-#root {
-    margin: 0 auto;
-    max-width: 500px;
+.card {
+    position: relative;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.card-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.city-name {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.temp {
+    font-size: 2rem;
+    margin: 10px 0;
+}
+
+.icon {
+    width: 100px;
+    height: 100px;
+    margin: 20px 0;
+}
+
+.card-footer {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 20px;
+}
+
+.temp-max-min {
+    font-size: 1rem;
+    color: #555;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    margin: 10px 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+nav {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    margin-top: 0;
+}
+
+.header {
+    text-align: center;
+    width: 100%;
+}
+
+.city-name {
+    margin-top: 20px;
+    font-size: 20px;
 }
