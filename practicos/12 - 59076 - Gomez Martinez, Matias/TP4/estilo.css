@@ -1,9 +1,55 @@
 body {
-    background-color: #ccc;
-    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background-color: #ced7eb;
+    color: black;
+    margin: 0;
+    padding: 0;
 }
 
 #root {
     margin: 0 auto;
     max-width: 500px;
+}
+
+.navYsearch {
+    display: flex;
+    flex-direction: column;
+    width: 25rem
+}
+
+.clima {
+    background-color: white;
+    width: 100%;
+}
+
+.climaIcono {
+    background-color: rgb(150, 196, 255);
+    border-radius: .5rem;
+}
+
+.nav {
+    display: flex;
+}
+
+.tituloNav {
+    font-size: 2.5rem;
+    color: rgb(23, 21, 126);
+}
+
+.navegador {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 100%;
+}
+
+.ciudadNav {
+    padding: 0 .5rem;
+    cursor: pointer;
+    text-decoration: none;
+    background-color: unset;
+    border: none;
 }
