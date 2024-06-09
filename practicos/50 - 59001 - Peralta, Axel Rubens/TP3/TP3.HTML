@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <title>Control Depósito</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+
+        .container {
+            width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            position: relative;
+        }
+
+        .editaar {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .add-button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5em;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 10px 0;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .card input {
+            width: calc(100% - 40px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .card .number {
+            font-size: 2em;
+            color: blue;
+            margin-right: 20px;
+        }
+
+        .card .content {
+            flex-grow: 1;
+        }
+
+        .card .actions {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card .actions button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin: 5px 0;
+        }
+
+        .card .actions button img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #newCard input {
+            width: calc(100% - 40px);
+            margin: 5px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        #newCard .actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #newCard .actions button {
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px 0;
+        }
+
+        #newCard .actions button:first-of-type {
+            margin-bottom: 5px;
+        }
+
+        .form-container input {
+            margin-bottom: 10px;
+        }
+
+        .form-container button {
+            padding: 5px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-container button:first-of-type {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Control Depósito
+            <button class="add-button" onclick="toggleNewCard()"><img src="https://img.icons8.com/ios-filled/50/000000/plus.png" alt="add" width="30"></button>
+        </h1>
+        <div class="card hidden" id="newCard">
+            <div class="editaar">
+                <input type="text" id="newName" placeholder="PRODUCTO" value="">
+                <input type="text" id="newPhone" placeholder="CODIGO EAN" value="">
+                <input type="text" id="newNumber" placeholder="CANTIDAD" value="">
+            </div>
+            <div class="actions">
+                <button onclick="addCard()">Aceptar</button>
+                <button onclick="hideNewCard()">Cancelar</button>
+            </div>
+        </div>
+        <div id="cardsContainer"></div>
+    </div>
+
+    <script>
+        let cards = [
+            { name: '7up', phone: '7799876543210', number: 7 },
+            { name: 'Cola Cola', phone: '7791234567890', number: 92 },
+            { name: 'Fanta', phone: '7793219876540', number: 5 },
+            { name: 'Mirinda', phone: '7797894561230', number: 6 },
+        ];
+
+        document.addEventListener('DOMContentLoaded', loadCards);
+
+        function loadCards() {
+            cards.sort((a, b) => a.name.localeCompare(b.name)); // Ordenar alfabéticamente
+            const cardsContainer = document.getElementById('cardsContainer');
+            cardsContainer.innerHTML = '';
+
+            cards.forEach(card => {
+                const newCard = document.createElement('div');
+                newCard.className = 'card';
+                newCard.onclick = (event) => increaseQuantity(event, newCard);
+                newCard.innerHTML = `
+                    <div class="number">${card.number}</div>
+                    <div class="content">
+                        <strong>${card.name}</strong><br>
+                        ${card.phone}
+                    </div>
+                    <div class="actions">
+                        <button onclick="editCard(event, this);"><img src="https://img.icons8.com/ios-glyphs/30/000000/edit.png" alt="edit"></button>
+                        <button onclick="deleteCard(event, this);"><img src="https://img.icons8.com/ios-glyphs/30/000000/delete.png" alt="delete"></button>
+                    </div>
+                `;
+                cardsContainer.appendChild(newCard);
+            });
+        }
+
+        function toggleNewCard() {
+            const newCard = document.getElementById('newCard');
+            newCard.classList.toggle('hidden');
+        }
+
+        function hideNewCard() {
+            const newCard = document.getElementById('newCard');
+            newCard.classList.add('hidden');
+        }
+
+        function addCard() {
+            const name = document.getElementById('newName').value;
+            const phone = document.getElementById('newPhone').value;
+            const number = document.getElementById('newNumber').value;
+
+            if (name && phone && number) {
+                if (isNaN(number) || isNaN(phone)) {
+                    alert('Cantidad y Código EAN deben ser números.');
+                    return;
+                }
+                cards.push({ name, phone, number: parseInt(number) });
+                loadCards();
+
+                document.getElementById('newName').value = '';
+                document.getElementById('newPhone').value = '';
+                document.getElementById('newNumber').value = '';
+
+                hideNewCard();
+            } else {
+                alert('Por favor, complete todos los campos.');
+            }
+        }
+
+        function editCard(event, button) {
+            event.stopPropagation();
+            const card = button.closest('.card');
+            const number = card.querySelector('.number').innerText;
+            const name = card.querySelector('.content strong').innerText;
+            const phone = card.querySelector('.content').innerText.split('\n')[1].trim();
+
+            card.innerHTML = `
+                <div class="editaar">
+                    <input type="text" value="${name}" class="editName"><br>
+                    <input type="text" value="${phone}" class="editPhone"><br>
+                    <input type="text" value="${number}" class="editNumber">
+                </div>
+                <div class="actions">
+                    <button onclick="saveEdit(event, this);">Aceptar</button>
+                    <button onclick="cancelEdit(event);">Cancelar</button>
+                </div>
+            `;
+        }
+
+        function saveEdit(event, button) {
+            event.stopPropagation();
+            const card = button.closest('.card');
+            const name = card.querySelector('.editName').value;
+            const phone = card.querySelector('.editPhone').value;
+            const number = card.querySelector('.editNumber').value;
+
+            if (name && phone && number) {
+                if (isNaN(number) || isNaN(phone)) {
+                    alert('Cantidad y Código EAN deben ser números.');
+                    return;
+                }
+                const index = Array.from(card.parentElement.children).indexOf(card);
+                cards[index] = { name, phone, number: parseInt(number) };
+
+                loadCards();
+            } else {
+                alert('Por favor, complete todos los campos.');
+            }
+        }
+
+        function cancelEdit(event) {
+            event.stopPropagation();
+            loadCards();
+        }
+
+        function deleteCard(event, button) {
+            event.stopPropagation();
+            const card = button.closest('.card');
+            const index = Array.from(card.parentElement.children).indexOf(card);
+
+            cards.splice(index, 1);
+
+            loadCards();
+        }
+
+        function increaseQuantity(event, card) {
+            event.stopPropagation();
+            const numberElement = card.querySelector('.number');
+            const number = parseInt(numberElement.innerText) + 1;
+            numberElement.innerText = number;
+
+            const index = Array.from(card.parentElement.children).indexOf(card);
+            cards[index].number = number;
+        }
+    </script>
+</body>
+
+</html>
