@@ -7,3 +7,45 @@ body {
     margin: 0 auto;
     max-width: 500px;
 }
+
+.tarjeta{
+    background-color:#fcfcfc;
+    width: 400px;
+    height: 540px;
+    margin-left: 70px;
+    border-radius: 5px;
+}
+
+.tarjeta header{
+    color:#373b46;
+    font-weight: bold;
+    font-size: 25px;
+    padding: 20px 15px;
+    border-bottom: 2px solid #eaeaec;
+}
+
+.tarjeta img{
+    display: block;
+    margin: auto;
+    height: 300px;
+    width: 400px;
+    padding: 5px;
+    border-bottom:2px solid #eaeaec ;
+}
+
+.tarjeta h2{
+    font-weight: bold;
+    font-size: 25px;
+    margin-left: 15px;
+    padding: 10px;
+}
+
+.tarjeta p{
+    font-size: 18px;
+    margin-top: -10px;
+    margin-left: 25px;
+}
+.buscador input{
+ margin-left: 60px;
+ width: 420px; 
+}

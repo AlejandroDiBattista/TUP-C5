@@ -1,9 +1,39 @@
 body {
-    background-color: #ccc;
-    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #909497;
 }
-
+.buscar{
+    border-radius: 100px;
+}
 #root {
-    margin: 0 auto;
-    max-width: 500px;
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.weather-icon {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    background-color: rgb(155, 225, 239);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+}
+.chart-image {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+}
+.temp{
+    font-size: 2em; /* Ajusta el tamaño según tus necesidades */
+    font-weight: bold;
 }
