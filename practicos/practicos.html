@@ -1,277 +1,304 @@
 <!DOCTYPE html>
 <html lang="es">
+	<head>
+		<meta charset="UTF-8" />
 
-<head>
-    <meta charset="UTF-8">
+        <script src="https://unpkg.com/react@18.3.1/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone@7.24.7/babel.min.js"></script>
 
-    <!-- Enlaces a React, ReactDOM y Babel -->
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+		<title>Resultados Prácticos</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				margin: 0;
+				padding: 0;
+				background-color: #f0f0f0;
+			}
 
-    <title>TP1</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-        }
+			#main {
+				margin: 0 auto;
+				width: 450px;
+				padding: 20px;
+				background-color: #f0f0f0;
+				border-radius: 5px;
+				align-items: center;
+			}
 
-        #main {
-            margin: 0 auto;
-            width: 450px;
-            padding: 20px;
-            background-color: #f0f0f0;
-            border-radius: 5px;
-            align-items: center;
-        }
+			h1 small {
+				font-size: 0.5em;
+				font-weight: normal;
+				color: #999;
+				vertical-align: middle;
+			}
 
-        h1 small {
-            font-size: 0.5em;
-            font-weight: normal;
-            color: #999;
-            vertical-align: middle;
-        }
-        
-        h2 {
-            font-size: 1.5rem;
-            font-weight: normal;
-            color: #333;
-            margin: 0;
-            padding: 10px 0;
-        }
+			h2 {
+				font-size: 1.5rem;
+				font-weight: normal;
+				color: #333;
+				margin: 0;
+				padding: 10px 0;
+			}
 
-        h2 span {
-            font-size: 2rem;
-            display: inline-block;
-            color: #999;
-            width: 40px;
-        }
+			h2 span {
+				font-size: 2rem;
+				display: inline-block;
+				color: #999;
+				width: 40px;
+			}
 
-        .alumno {
-            background-color: #fff;
-            padding: 10px 5px;
-            border-radius: 5px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-            width: 500px;
-            margin: 10px auto;
+			.alumno {
+				background-color: #fff;
+				padding: 10px 5px;
+				border-radius: 5px;
+				box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+				width: 500px;
+				margin: 10px auto;
 
-            h2 {
-                font-size: 32px;
-                overflow: hidden;
-                white-space: nowrap;
-                text-overflow: ellipsis;
+				h2 {
+					font-size: 32px;
+					overflow: hidden;
+					white-space: nowrap;
+					text-overflow: ellipsis;
+				}
+
+				span {
+					font-size: 20px;
+					padding-top: 15px;
+					text-align: center;
+					color: #999;
+				}
+			}
+
+			.ver {
+				font-size: 1rem;
+				color: #333;
+				padding-left: 45px;
+				margin: 15px 5px;
+
+				a {
+					display: inline-block;
+					text-decoration: none;
+					font-size: 20px;
+				}
+			}
+
+			.falta {
+				color: red;
+			}
+
+			.alumno .ver .copia {
+				float: right;
+				font-size: 0.8rem;
+				color: #999;
+			}
+
+			table {
+                margin: 0;
+				border-collapse: collapse;
+				font-family: sans-serif;
+				font-size: 20px;
+			}
+
+			caption {
+				caption-side: top;
+				font-weight: bold;
+			}
+
+			thead {
+				background-color: rgb(228 240 245);
+			}
+
+			th,
+			td {
+				padding: 8px 10px;
+			}
+
+			th {
+				text-align: left;
+			}
+
+			td {
+				padding: 0 10px;
+				text-align: right;
+			}
+
+			input {
+				width: 510px;
+				padding: 12px 24px;
+				border-radius: 100px;
+				font-size: 24px;
+				font-weight: bold;
+			}
+
+			body {
+				overflow-x: hidden; /* Deshabilita el desplazamiento horizontal */
+				overflow-y: scroll; /* Habilita el desplazamiento vertical */
+			}
+		</style>
+
+		<script type="text/babel">
+			const { createRoot } = ReactDOM;
+			const { useState, useEffect } = React;
+
+			function ubicar(origen, practico) {
+				return `${origen}/${practico}/index.html`;
+			}
+			
+            function contarEntrega(datos, practico) {
+				const si = datos.filter((alumno) => alumno[practico]).length;
+				const no = datos.filter((alumno) => !alumno[practico]).length;
+				return { si, no };
+			}
+
+			const Ver = ({ alumno, entrega }) => {
+				const nota = alumno['nota_tp3'];
+				const comentario = alumno['comentario_tp3'];
+
+				return (
+					<div className='ver'>
+						{alumno[entrega] ? (
+							<a href={ubicar(alumno.ubicacion, entrega)}>
+								{entrega} | Ver Trabajo{' '}
+								{entrega == 'TP3' && nota && <b>(nota {nota})</b>}
+							</a>
+						) : <span className='falta'>{entrega} ❌</span>}
+					</div>
+				);
+			};
+
+			const Alumno = ({ alumno, practicos }) => {
+				const [apellido, nombre] = alumno.nombre.split(', ');
+				return (
+					<div className='alumno'>
+						<h2>
+							<span>{alumno.orden}</span> <b>{apellido}</b>,{' '}
+							<i>{nombre}</i>
+						</h2>
+						{practicos.map(practico => <Ver key={practico} alumno={alumno} entrega={practico} />)}
+					</div>
+				);
+			};
+
+			const Estadistica = ({ datos, practicos }) => {
+				let abandonos = datos.filter((a) => cantidadPresentados(a) == 0).length;
+				return (
+                    <table className='alumno'>
+                        <thead>
+                            <tr>
+                                <th>Prácticos</th>
+                                {practicos.map((practico) => <th key={practico}>{practico}</th>)}
+                            </tr>   
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>Entregó</th>
+                                {practicos.map((practico) => <td key={practico}>{contarEntrega(datos, practico).si}</td>)}
+                            </tr>
+                            <tr>
+                                <th>Falta (-{abandonos})</th>
+                                {practicos.map((practico) => <td key={practico}>{contarEntrega(datos, practico).no - abandonos}</td>)}
+                            </tr>
+                        </tbody>
+                    </table>
+				);
+			};
+
+			function normalizar(texto) { // Elimina tildes, espacios innecearios y convierte a minúsculas
+				return texto
+					.trim()
+					.toLowerCase()
+					.normalize('NFD')
+					.replace(/[\u0300-\u036f]/g, '');
+			}
+
+            function esPractico(palabra) {
+                return /^-?tp\d{1,2}$/.test(palabra)
             }
 
-            span {
-                font-size: 20px;
-                padding-top: 15px;
-                text-align: center;
-                color: #999;
+            function esCantidad(palabra) {
+                return /^-?cp\d{1,2}$/.test(palabra)
             }
-        }
 
-        .ver {
-            font-size: 1rem;
-            color: #333;
-            padding-left: 45px;
-            margin: 15px 5px;
-
-            a {
-                display: inline-block;
-                text-decoration: none;
-                font-size: 20px;
+            function incluyePractico(alumno, palabra){
+                let incluir = !palabra.startsWith('-');
+                let practico = palabra.toUpperCase().replace('-', '');
+                return incluir == alumno[practico];
             }
-        }
 
+            function incluyeCantidad(alumno, palabra){
+                let negar = palabra.startsWith('-');
+                let cantidad = +palabra.replace(/[^0-9]/g, '');
+                let presentados = cantidadPresentados(alumno);
+                return negar ? presentados <= cantidad : presentados >= cantidad;
+            }
 
-        .falta {
-            color: red;
-        }
+            function incluyePalabra(alumno, palabra){
+                let texto = normalizar(`${alumno.ubicacion} ${alumno.comentario_tp3} ${alumno.nota_tp3}`)
+                return texto.includes(palabra);
+            }
 
-        .alumno .ver .copia {
-            float: right;
-            font-size: 0.8rem;
-            color: #999;
-        }
+			function incluir(alumno, filtro) {
+				let palabras  = normalizar(filtro).split(' ');
 
-        table {
-            width: calc(100% - 10px);
-            margin: 20px auto;
-            border-collapse: collapse;
-            font-family: sans-serif;
-            font-size: 20px;
-        }
+				for (let palabra of palabras) {
+                    let incluir = 
+                        esPractico(palabra) && incluyePractico(alumno, palabra) ||
+                        esCantidad(palabra) && incluyeCantidad(alumno, palabra) ||
+                        incluyePalabra(alumno, palabra);
+                    if  (!incluir) return false;
+				}
+                return true
+			}
 
-        caption {
-            caption-side: top;
-            padding: 10px;
-            font-weight: bold;
-        }
+			function calcularPracticos(alumno) {
+				return Object.keys(alumno).filter((k) => k.startsWith('TP'));
+			}
 
-        thead {
-            background-color: rgb(228 240 245);
-        }
+			function cantidadPresentados(alumno) {
+				let practicos = calcularPracticos(alumno);
+				return practicos.filter((p) => alumno[p]).length;
+			}
 
-        th,
-        td {
-            padding: 8px 10px;
-        }
+			const App = () => {
+				let [datos, setDatos] = useState([]);
+				let [filtro, setFiltro] = useState('');
 
-        th {
-            text-align: left;
-        }
+				useEffect(() => {
+					traerDatos();
+				}, []);
 
-        td {
-            padding: 0 10px;
-            text-align: right;
-        }
+				async function traerDatos() {
+					const res = await fetch('datos.json');
+					const json = await res.json();
+					setDatos(json);
+				}
 
-        input {
-            width: 510px;
-            padding: 12px 24px;
-            border-radius:100px;
-            font-size: 24px;
-            font-weight: bold;
-        }
+				function filtrar(e) {
+					setFiltro(e.target.value.toLowerCase());
+				}
 
-        body {
-          overflow-x: hidden; /* Deshabilita el desplazamiento horizontal */
-          overflow-y: scroll; /* Habilita el desplazamiento vertical */
-        }
+				const comision  = datos.length > 0 ? datos[0].comision : '';
+				const practicos = datos.length > 0 ? calcularPracticos(datos[0]) : [];
 
-    </style>
+				let mostrar = datos.filter((a) => incluir(a, filtro));
+                // mostrar = mostrar.filter((a) => cantidadPresentados(a) > 1);
+				return (
+					<div id='main'>
+						<h1> | {comision} | Listado de alumnos{' '} <small>({mostrar.length})</small></h1>
+						<input type='search' onChange={filtrar} />
+						<Estadistica datos={datos} practicos={practicos} />
+						{mostrar.map((alumno) => <Alumno key={alumno.id} alumno={alumno} practicos={practicos}/>)}
+					</div>
+				);
+			};
 
-    <script type="text/babel">
-      const { createRoot } = ReactDOM
-      const { useState, useEffect } = React 
+			const root = createRoot(document.getElementById('root'));
+			root.render(<App />);
+		</script>
+	</head>
 
-      function contarEntrega(datos, practico) {
-        const si = datos.filter(alumno => alumno[practico]).length
-        const no = datos.filter(alumno => !alumno[practico]).length
-        return { si, no }
-      }
-
-      function ubicar(origen, practico) {
-          return `${origen}/${practico}/index.html`
-      }
-
-      const Ver = ({ alumno, entrega }) => {
-          const nota = alumno["nota_tp3"]
-          const comentario = alumno["comentario_tp3"]
-
-          return (
-              <div className="ver">
-                  {
-                  alumno[entrega] 
-                      ? <a href={ubicar(alumno.ubicacion, entrega)}>{entrega} | Ver Trabajo {(entrega == "TP3") && nota && <b>(nota {nota})</b>}</a> 
-                      : <span className="falta">{entrega} ❌</span>
-                  }
-              </div>
-          )
-      }
-
-      const Alumno = ({ alumno, practicos }) => {
-          const [apellido, nombre] = alumno.nombre.split(', ')
-          return (
-              <div className="alumno">
-                  <h2><span>{alumno.orden}</span> <b>{apellido}</b>, <i>{nombre}</i></h2>
-                  {practicos.map(practico => <Ver alumno={alumno} entrega={practico} />)}
-              </div>
-          )
-      }
-
-      const Estadistica = ({datos, practicos}) => {
-          let abandonos = datos.filter(a => abandono(a)).length
-          return (
-              <div className="alumno">
-                  <table>
-                      <thead>
-                          <th>Prácticos</th>
-                          {practicos.map(practico => <th key={practico}>{practico}</th>)}
-                      </thead>
-                      <tbody>
-                          <tr>
-                              <th>Entregó</th>
-                              {practicos.map(practico => <td key={practico}>{contarEntrega(datos,practico).si}</td>)}
-                          </tr>
-                          <tr>
-                              <th>Falta (-{abandonos})</th>
-                              {practicos.map(practico => <td key={practico}>{contarEntrega(datos,practico).no-abandonos}</td>)}
-                          </tr>
-                      </tbody>
-                  </table>
-              </div>
-          )
-      }
-
-      function normalizar(texto){
-        return texto.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-      }
-
-      function incluir(alumno, filtro){
-        filtro = normalizar(filtro)
-        
-        let palabras = filtro.split(" ")
-        let negar    = filtro.startsWith("-")
-        let practico = filtro.toUpperCase().replace("-","")
-        
-        if (palabras.length == 1 && practico.startsWith("TP")){
-            return practico.length >= 3 ? negar != alumno[practico] : true
-        }
-        
-        let texto = normalizar(`${alumno.ubicacion} ${alumno.comentario_tp3} ${alumno.nota_tp3}`)
-        return palabras.every(palabra => texto.includes(palabra));
-      }
-
-      function calcularPracticos(alumno){
-        return Object.keys(alumno).filter(k => k.startsWith("TP"))
-      }
-
-      function abandono(alumno){
-        let practicos = calcularPracticos(alumno)
-        return !practicos.some(p => alumno[p])
-      }
-    
-      const App = () => {
-        let [datos, setDatos] = useState([])
-        let [filtro, setFiltro] = useState("")
-
-        useEffect(() => { traerDatos() }, [])
-
-        async function traerDatos() {
-          const res = await fetch('datos.json')
-          const json = await res.json()
-          setDatos(json)
-        }
-
-        function filtrar(e){
-          setFiltro(e.target.value.toLowerCase())
-        }
-
-        const comision  = datos.length > 0 ? datos[0].comision : ''
-        const practicos = datos.length > 0 ? calcularPracticos(datos[0]) : []
-        
-        let mostrar = datos.filter(a => incluir(a, filtro) )    
-        mostrar = mostrar.filter(a => !abandono(a))
-
-        return (
-          <div id="main">
-              <h1>| {comision} | Listado de alumnos <small>({mostrar.length})</small></h1>
-              <input type="search" onChange={filtrar} />
-              <Estadistica datos={datos} practicos={practicos}/>
-              {mostrar.map(alumno => <Alumno key={alumno.id} alumno={alumno} practicos={practicos}/>)}
-          </div>
-      )}
-
-      const root = createRoot(document.getElementById('root'))
-      root.render(<App />);
-    </script>
-</head>
-
-<body>
-    <div id="root"></div>
-</body>
-
+	<body>
+		<div id="root"></div>
+	</body>
 </html>
