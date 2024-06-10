@@ -1,7 +1,10 @@
-# Videos ReactJS
+# Videos de Clases 
+## TUP - Laboratorio de Computación 3
+
+*Autor: Alejandro Di Battista*
 
 ---
-### 1. Introducción a ReatJS
+### 1. Introducción a ReactJS
 https://youtu.be/yMOxRZfvcfI
 
 ### 2. Sintaxis JSX
@@ -13,5 +16,8 @@ https://youtu.be/rYLy6VBBivw
 ### 4. Componentes con Estados
 https://youtu.be/rYLy6VBBivw
 
-### 5. Ejemplo de ABM de Contactos
+### 5. Ejemplo de un ABM con React
 https://youtu.be/GBcBm-MU9hY
+
+### 6. Creación de un Servidor con Express
+https://youtu.be/1fjAqX4DadQ
