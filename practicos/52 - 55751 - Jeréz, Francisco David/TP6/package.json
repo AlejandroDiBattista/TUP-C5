@@ -1,0 +1,19 @@
+{
+  "name": "tp6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "servidor.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon servidor.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "express": "^4.19.2",
+    "morgan": "^1.10.0"
+  }
+}
