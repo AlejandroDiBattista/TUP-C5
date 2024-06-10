@@ -1,14 +1,22 @@
 # Trabajo Práctico 6
 
+
+Este trabajo se considera como el *segundo parcial*.
+
+> Les recuerdo que para regularizar la materia deben tener un 75% de asistencias y los parciales aprobados.
+> El control de la asistencia se realiza con la presentación de los trabajos prácticos.
+
+> Aquellos que no han presentado alguno de los prácticos anteriores pueden hacerlo como última oportunidad hasta el **viernes 21 de junio**. Luego de esa fecha, no podrán recuperar las inasistencias.
+
 ## Gestión de sesiones
 
 El objetivo de este trabajo es realizar la gestión básica de una sesión.
 
 Debe hacer:
-- Register: Un formulario que permita registrar un usuario y contraseña.
-- Login: Un formulario que permita ingresar usuario y contraseña y verifique que es un usuario válido. En cuyo caso, debe quedar logueado.
-- Logout: Un botón que permita cerrar la sesión.
-- Info: Una página que solo permita ver la información si está logueado.
+- **Registrar**: Un formulario que permita registrar un usuario y contraseña.
+- **Login**: Un formulario que permita ingresar usuario y contraseña y verifique que es un usuario válido. En cuyo caso, debe quedar logueado.
+- **Logout**: Un botón que permita cerrar la sesión.
+- **Info**: Una página que solo permita ver la información si está logueado.
 
 > [!TIP]
 >
@@ -28,4 +36,5 @@ Debe hacer:
 
 > [!NOTE]
 > Fecha de entrega: 
-> - *Viernes 21 de Julio hasta las 23:59hs*
+> - *Viernes 21 de JUNIO hasta las 23:00hs*
+
