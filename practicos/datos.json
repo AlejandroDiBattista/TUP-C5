@@ -15,7 +15,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": false,
-    "TP6": false
+    "TP6": false,
+    "TP5": false
   },
   {
     "id": "C5-02",
@@ -33,7 +34,8 @@
     "comentario_tp3": "",
     "tp4": false,
     "tp5": true,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-03",
@@ -49,7 +51,8 @@
     "tp3": true,
     "tp4": true,
     "tp5": true,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-04",
@@ -67,7 +70,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": true,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-05",
@@ -85,7 +89,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": true,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-06",
@@ -103,7 +108,8 @@
     "comentario_tp3": "",
     "tp4": false,
     "tp5": false,
-    "TP6": false
+    "TP6": false,
+    "TP5": false
   },
   {
     "id": "C5-07",
@@ -121,7 +127,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": true,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-08",
@@ -139,7 +146,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": false,
-    "TP6": false
+    "TP6": false,
+    "TP5": false
   },
   {
     "id": "C5-09",
@@ -157,7 +165,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": true,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-10",
@@ -175,7 +184,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": true,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-11",
@@ -193,7 +203,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": true,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-12",
@@ -211,7 +222,8 @@
     "comentario_tp3": "",
     "tp4": false,
     "tp5": false,
-    "TP6": false
+    "TP6": false,
+    "TP5": false
   },
   {
     "id": "C5-13",
@@ -229,7 +241,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": false,
-    "TP6": false
+    "TP6": false,
+    "TP5": false
   },
   {
     "id": "C5-14",
@@ -247,7 +260,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": true,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-15",
@@ -263,7 +277,8 @@
     "tp3": true,
     "tp4": true,
     "tp5": false,
-    "TP6": false
+    "TP6": false,
+    "TP5": false
   },
   {
     "id": "C5-16",
@@ -281,7 +296,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": true,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-17",
@@ -299,7 +315,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": true,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-18",
@@ -317,7 +334,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": false,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-19",
@@ -335,7 +353,8 @@
     "comentario_tp3": "",
     "tp4": false,
     "tp5": false,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-20",
@@ -353,7 +372,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": true,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-52",
@@ -370,7 +390,8 @@
     "tp3": false,
     "tp4": false,
     "tp5": false,
-    "TP6": false
+    "TP6": false,
+    "TP5": false
   },
   {
     "id": "C5-21",
@@ -388,7 +409,8 @@
     "comentario_tp3": "",
     "tp4": false,
     "tp5": false,
-    "TP6": false
+    "TP6": false,
+    "TP5": false
   },
   {
     "id": "C5-22",
@@ -406,7 +428,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": false,
-    "TP6": false
+    "TP6": false,
+    "TP5": false
   },
   {
     "id": "C5-23",
@@ -424,7 +447,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": true,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-24",
@@ -442,7 +466,8 @@
     "comentario_tp3": "",
     "tp4": false,
     "tp5": true,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-25",
@@ -460,7 +485,8 @@
     "comentario_tp3": "",
     "tp4": false,
     "tp5": true,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-26",
@@ -478,7 +504,8 @@
     "comentario_tp3": "",
     "tp4": false,
     "tp5": false,
-    "TP6": false
+    "TP6": false,
+    "TP5": false
   },
   {
     "id": "C5-27",
@@ -496,7 +523,8 @@
     "comentario_tp3": "",
     "tp4": false,
     "tp5": false,
-    "TP6": false
+    "TP6": false,
+    "TP5": false
   },
   {
     "id": "C5-28",
@@ -514,7 +542,8 @@
     "comentario_tp3": "",
     "tp4": false,
     "tp5": false,
-    "TP6": false
+    "TP6": false,
+    "TP5": false
   },
   {
     "id": "C5-29",
@@ -532,7 +561,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": true,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-30",
@@ -550,7 +580,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": false,
-    "TP6": false
+    "TP6": false,
+    "TP5": false
   },
   {
     "id": "C5-31",
@@ -568,7 +599,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": true,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-32",
@@ -586,7 +618,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": true,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-33",
@@ -604,7 +637,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": true,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-34",
@@ -622,7 +656,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": false,
-    "TP6": false
+    "TP6": false,
+    "TP5": false
   },
   {
     "id": "C5-50",
@@ -639,7 +674,8 @@
     "tp3": false,
     "tp4": true,
     "tp5": true,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-35",
@@ -657,7 +693,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": true,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-36",
@@ -675,7 +712,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": true,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-37",
@@ -693,7 +731,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": true,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-38",
@@ -711,7 +750,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": true,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-51",
@@ -730,7 +770,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": true,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-39",
@@ -748,7 +789,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": true,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-40",
@@ -766,7 +808,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": true,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-41",
@@ -784,7 +827,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": true,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-42",
@@ -802,7 +846,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": true,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-43",
@@ -820,7 +865,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": true,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-44",
@@ -838,7 +884,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": true,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-45",
@@ -856,7 +903,8 @@
     "comentario_tp3": "",
     "tp4": false,
     "tp5": false,
-    "TP6": false
+    "TP6": false,
+    "TP5": false
   },
   {
     "id": "C5-46",
@@ -874,7 +922,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": true,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-47",
@@ -892,7 +941,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": true,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-48",
@@ -908,7 +958,8 @@
     "tp3": true,
     "tp4": true,
     "tp5": true,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-49",
@@ -926,7 +977,8 @@
     "comentario_tp3": "",
     "tp4": true,
     "tp5": true,
-    "TP6": false
+    "TP6": false,
+    "TP5": true
   },
   {
     "id": "C5-53",
@@ -944,6 +996,7 @@
     "comentario_tp3": "",
     "tp4": false,
     "tp5": false,
-    "TP6": false
+    "TP6": false,
+    "TP5": false
   }
 ]
