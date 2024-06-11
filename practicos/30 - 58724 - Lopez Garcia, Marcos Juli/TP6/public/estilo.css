@@ -5,6 +5,10 @@ html {
     box-sizing:content-box;
 }
 
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
 #root {
     width: 400px;
     margin: 0 auto;
@@ -23,6 +27,10 @@ button {
     border: 0.5px solid #bbb;
     border-radius: 5px;
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background-color: #ddd;
 }
 
 form {
@@ -80,4 +88,11 @@ section {
     border: 0.5px solid #bbb;
     border-radius: 15px;
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+ul {
+    list-style-type: none;
+    li {
+        padding: 5px 0;
+    }
 }

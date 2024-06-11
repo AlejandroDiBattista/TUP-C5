@@ -221,8 +221,8 @@
             }
 
             function incluyePractico(alumno, palabra){
-                let incluir = !palabra.startsWith('-');
-                let practico = palabra.toUpperCase().replace('-', '');
+                let incluir  = !palabra.startsWith('-');
+                let practico = palabra.replace('-', '');
                 return incluir == alumno[practico];
             }
 
