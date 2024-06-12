@@ -154,16 +154,19 @@
 			const Ver = ({ alumno, entrega }) => {
 				const nota = alumno['nota_tp3'];
 				const comentario = alumno['comentario_tp3'];
-				const conIndex = entrega <= 'tp3'
+				
+				const conIndex = entrega <= 'tp4'
+				const conNota = entrega == 'tp3' && nota;
+				
 				const link = conIndex ? ubicar(alumno.ubicacion, entrega) : null;
 				return (
 					<div className='ver'>
 						{alumno[entrega] ? (
 							<a href={link}>
-								{entrega} | {conIndex ? "Ver Trabajo" : "✔"}
-								{entrega == 'TP3' && nota && <b>(nota {nota})</b>}
+								{entrega} | 🟢 {conIndex && "Ver Trabajo"}
+								{conNota && <b>(nota {nota})</b>}
 							</a>
-						) : <span className='falta'>{entrega} ❌</span>}
+						) : <span className='falta'>{entrega} | 🔴</span>}
 					</div>
 				);
 			};
