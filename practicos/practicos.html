@@ -166,7 +166,7 @@
 								{entrega} | 🟢 {conIndex && "Ver Trabajo"}
 								{conNota && <b>(nota {nota})</b>}
 							</a>
-						) : <span className='falta'>{entrega} | 🔴</span>}
+						) : <span className='falta'>{entrega} | 🔴 </span>}
 					</div>
 				);
 			};
@@ -238,7 +238,7 @@
             }
 
             function incluyePalabra(alumno, palabra){
-                let texto = normalizar(`${alumno.ubicacion} ${alumno.comentario_tp3} ${alumno.nota_tp3}`)
+                let texto = normalizar(`${alumno.ubicacion} ${alumno.comentario_tp3} ${alumno.nota_tp3} ${alumno.inicial}`)
                 return texto.includes(palabra);
             }
 
