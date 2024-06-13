@@ -173,7 +173,7 @@
 
 			const Alumno = ({ alumno, practicos }) => {
 				const [apellido, nombre] = alumno.nombre.split(', ');
-				const verificar = alumno.inicial.include('verificar')
+				const verificar = alumno.inicial.includes('verificar')
 
 				return (
 					<div className='alumno'>
