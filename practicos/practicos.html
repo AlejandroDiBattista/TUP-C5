@@ -157,7 +157,6 @@
 				
 				const conIndex = entrega <= 'tp4'
 				const conNota = entrega == 'tp3' && nota;
-				const verificar = alumno["inicial"][/verificar/]
 				const link = conIndex ? ubicar(alumno.ubicacion, entrega) : null;
 				return (
 					<div className='ver'>
@@ -167,17 +166,19 @@
 								{conNota && <b>(nota {nota})</b>}
 							</a>
 						) : <span className='falta'>{entrega} | 🔴 </span>}
-						{verificar && <span>🤔</span>}
+						
 					</div>
 				);
 			};
 
 			const Alumno = ({ alumno, practicos }) => {
 				const [apellido, nombre] = alumno.nombre.split(', ');
+				const verificar = alumno.inicial.include('verificar')
+
 				return (
 					<div className='alumno'>
 						<h2>
-							<span>{alumno.orden}</span> {nombre} <b>{apellido}</b>,{' '}
+							<span>{alumno.orden}</span> {nombre} <b>{apellido}</b>{verificar && <span>🤔</span>}
 						</h2>
 						{practicos.map(practico => <Ver key={practico} alumno={alumno} entrega={practico} />)}
 					</div>
