@@ -2,10 +2,12 @@ html {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 24px;
     background-color: #eee;
-    box-sizing:content-box;
+    box-sizing: content-box;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
     box-sizing: inherit;
 }
 
@@ -15,7 +17,12 @@ html {
     padding: 10px;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     color: #333;
     margin: 8px 0;
 }
@@ -33,17 +40,20 @@ button:hover {
     background-color: #ddd;
 }
 
-form {
+.form {
     width: 100%;
+
     button[type='submit'] {
         font-weight: bold;
     }
+
     label {
         display: block;
         margin: 8px 0;
         font-size: 14px;
         color: #666;
         width: 100%;
+
         input {
             display: block;
             width: calc(100% - 20px);
@@ -56,10 +66,12 @@ form {
             font-weight: bold;
         }
     }
+
     h3 {
         margin: -5px 0 0 0;
         padding: 0;
     }
+
     span:has(> button) {
         padding-top: 10px;
     }
@@ -92,6 +104,7 @@ section {
 
 ul {
     list-style-type: none;
+
     li {
         padding: 5px 0;
     }
