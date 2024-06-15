@@ -1,19 +1,93 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="index.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agenda de Contactos</title>
+  <style>
+    .App {
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
 
-    <!-- Enlaces a React, ReactDOM y Babel -->
-    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    .contacto {
+      margin: 20px;
+      cursor: pointer;
+    }
 
-    <script src="index.jsx" type="text/babel"></script>
-    <title>TP1</title>
+    h3 {
+      color: #333;
+    }
+
+    p {
+      color: #666;
+    }
+  </style>
 </head>
 <body>
-    <!-- Reemplazar title por el número de legajo y borrar esta línea -->
-    <div id="root"></div>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script type="text/babel">
+
+    const contactos = [
+      { id: 1, nombre: 'Victoria', apellido: "Pérez", teléfono: '123-456-7890' },
+      { id: 2, nombre: 'María', apellido: "Gómez", teléfono: '987-654-3210' },
+      { id: 3, nombre: 'Pedro', apellido: "García", teléfono: '545-001-9815' },
+      { id: 4, nombre: 'Julieta', apellido: "Ponce", teléfono: '198-010-1910' },
+      { id: 5, nombre: 'Gabriel', apellido: "Fernández", teléfono: '391-088-6510' },
+      { id: 6, nombre: 'Nicolás', apellido: "Guzmán", teléfono: '381-416-9412' },
+    ];
+
+    const Contacto = ({ id, nombre, apellido, telefono, onClick }) => (
+      <div className="contacto" onClick={onClick}>
+        <h3>{nombre} {apellido}</h3>
+        {telefono && <p>Teléfono: {telefono}</p>}
+      </div>
+    );
+
+    class Agenda extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+          selectedContactId: null
+        };
+      }
+
+      handleClick = (id) => {
+        this.setState({ selectedContactId: id });
+      }
+
+      render() {
+        return (
+          <div className="contacto">
+            {contactos.map(contacto => (
+              <Contacto
+                key={contacto.id}
+                id={contacto.id}
+                nombre={contacto.nombre}
+                apellido={contacto.apellido}
+                telefono={this.state.selectedContactId === contacto.id ? contacto.teléfono : null}
+                onClick={() => this.handleClick(contacto.id)}
+              />
+            ))}
+          </div>
+        );
+      }
+    }
+
+    const App = () => (
+      <div className="App">
+        <h1>AGENDA</h1>
+        <p>Lista de contactos</p>
+        <Agenda />
+      </div>
+    );
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+
+  </script>
 </body>
 </html>
+
