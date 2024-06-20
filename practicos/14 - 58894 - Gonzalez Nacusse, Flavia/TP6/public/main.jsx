@@ -1,6 +1,6 @@
 function App() {
     let [mensaje, setMensaje] = React.useState('');
-    let [logeado, setLogeado] = React.useState(false);
+    let [logueado, setlogueado] = React.useState(false);
     let [token, setToken] = React.useState('');
     let [user, setUser] = React.useState('');
     let [password, setPassword] = React.useState('');
@@ -36,7 +36,7 @@ function App() {
         let data = await res.text();
         setMensaje(data);
         if (res.ok) {
-            setLogeado(true);
+            setlogueado(true);
             setToken(data.token);
         }
         setUser('');
@@ -44,27 +44,26 @@ function App() {
     }
 
     async function logout() {
-        if (logeado) {
+        if (logueado) {
             let res = await fetch('/logout', {
                 method: 'PUT',
                 credentials: 'include'
             });
             let data = await res.text();
             setMensaje(data);
-            setLogeado(false);
+            setlogueado(false);
         } else {
-            alert("NO PUEDE CERRAR SESION SI NO SE LOGEO");
+            setMensaje("No puede usar este botón, ya que no está logueado");
         }
     }
 
     async function info() {
-        if (logeado) {
-            window.location.href = "https://www.google.com/?hl=es";
+        if (logueado) {
+            window.location.href = "https://www.frt.utn.edu.ar/";
         } else {
-            setMensaje("Debe estar logueado para ver esta página.");
+            setMensaje("No puede acceder a está info sin LOGUEARSE antes.");
         }
     }
-
     return (
         <div>
             <h2>Gestión de sesiones</h2>
@@ -127,15 +126,16 @@ function App() {
                             required
                         />
                     </label>
-                    <span>
-                        <button type="submit">Login</button>
-                    </span>
+                        <span>
+                            <button type="submit">Login</button>
+                        </span>
+                    
                     </section>
                     
                 </form>
             )}
             <pre>{mensaje}</pre>
-            <p>{logeado ? 'Usuario logueado' : 'No logueado'}</p>
+            <p>{token}</p>
         </div>
     );
 }
