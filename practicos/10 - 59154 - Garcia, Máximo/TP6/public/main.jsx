@@ -1,19 +1,23 @@
 function App() {
   const [mensaje, setMensaje] = useState("");
   const [formData, setFormData] = useState({ usuario: "", contraseña: "" });
-  const [esRegistro, setEsRegistro] = useState(false);
+  const [registro, setRegistro] = useState(false);
+  const [logueado, setLogueado] = useState(false);
+  const [nombreUsuario, setNombreUsuario] = useState("");
+
   function validarCampos() {
     if (!formData.usuario || !formData.contraseña) {
-      setMensaje("Todos los campos son obligatorios.");
+      setMensaje("Por favor completa todos los campos.");
       return false;
     }
     return true;
   }
+
   async function manejarSubmit(e) {
     e.preventDefault();
     if (!validarCampos()) return;
 
-    const endpoint = esRegistro ? "/registrar" : "/login";
+    const endpoint = registro ? "/registrar" : "/login";
     try {
       let res = await fetch(endpoint, {
         method: "POST",
@@ -29,16 +33,22 @@ function App() {
       setMensaje(data);
       if (res.ok) {
         setFormData({ usuario: "", contraseña: "" });
-        if (esRegistro) setEsRegistro(false);
+        if (registro) {
+          setRegistro(false);
+        } else {
+          setLogueado(true);
+          setNombreUsuario(formData.usuario);
+        }
       }
     } catch (error) {
       console.error(
-        `Error al ${esRegistro ? "registrar" : "iniciar sesión"}:`,
+        `Error al ${registro ? "registrar" : "iniciar sesión"}:`,
         error
       );
-      setMensaje(`Error al ${esRegistro ? "registrar" : "iniciar sesión"}`);
+      setMensaje(`Error al ${registro ? "registrar" : "iniciar sesión"}`);
     }
   }
+
   async function cerrarSesion() {
     try {
       let res = await fetch("/logout", {
@@ -49,12 +59,15 @@ function App() {
       setMensaje(data);
       if (res.ok) {
         setFormData({ usuario: "", contraseña: "" });
+        setLogueado(false);
+        setNombreUsuario("");
       }
     } catch (error) {
       console.error("Error al cerrar sesión:", error);
       setMensaje("Error al cerrar sesión");
     }
   }
+
   async function obtenerInfo() {
     try {
       let res = await fetch("/info", {
@@ -62,56 +75,64 @@ function App() {
         credentials: "include",
       });
       if (res.ok) {
-        alert("Usuario logueado");
+        setMensaje(`Bienvenido ${nombreUsuario}! Estás logueado.`);
       } else {
-        alert("Usuario no encontrado");
+        setMensaje("¡Usuario no encontrado!");
       }
     } catch (error) {
       console.error("Error al obtener información:", error);
       setMensaje("Error al obtener información");
     }
   }
+
   return (
     <div className="container">
-      <h1 className="hder">Acciones</h1>
-      <button className="btns" onClick={() => setEsRegistro(!esRegistro)}>
-        {esRegistro ? "Iniciar Sesión" : "Registrarse"}
-      </button>
-      <button className="btns" onClick={cerrarSesion}>
-        Cerrar sesion
-      </button>
-      <button className="btns" onClick={obtenerInfo}>
-        Informacion
-      </button>
+      {logueado ? (
+        <>
+          <button className="btns" onClick={cerrarSesion}>
+            Cerrar Sesión
+          </button>
+          <button className="btns" onClick={obtenerInfo}>
+            Mensaje
+          </button>
+        </>
+      ) : (
+        <>
+          <form onSubmit={manejarSubmit} autoComplete="off">
+            <h2 className="hder">
+              {registro ? "Registrar" : "Iniciar Sesión"}
+            </h2>
+            <input
+              className="input"
+              type="text"
+              placeholder="Usuario"
+              value={formData.usuario}
+              onChange={(e) =>
+                setFormData({ ...formData, usuario: e.target.value })
+              }
+              autoComplete="username"
+            />
+            <input
+              className="input"
+              type="password"
+              placeholder="Contraseña"
+              value={formData.contraseña}
+              onChange={(e) =>
+                setFormData({ ...formData, contraseña: e.target.value })
+              }
+              autoComplete={registro ? "new-password" : "current-password"}
+            />
+            <button type="submit" className="btns">
+              {registro ? "Registrar" : "Iniciar Sesión"}
+            </button>
+          </form>
+          <button className="btns2" onClick={() => setRegistro(!registro)}>
+            {registro ? "Iniciar Sesión" : "Registrarse"}
+          </button>
+        </>
+      )}
 
-      <form onSubmit={manejarSubmit} autoComplete="off">
-        <h2>{esRegistro ? "Registrar" : "Iniciar Sesión"}</h2>
-        <input
-          className="input"
-          type="text"
-          placeholder="Usuario"
-          value={formData.usuario}
-          onChange={(e) =>
-            setFormData({ ...formData, usuario: e.target.value })
-          }
-          autoComplete="username"
-        />
-        <input
-          className="input"
-          type="password"
-          placeholder="Contraseña"
-          value={formData.contraseña}
-          onChange={(e) =>
-            setFormData({ ...formData, contraseña: e.target.value })
-          }
-          autoComplete={esRegistro ? "new-password" : "current-password"}
-        />
-        <button type="submit">
-          {esRegistro ? "Registrar" : "Iniciar Sesión"}
-        </button>
-      </form>
-
-      <pre>{mensaje}</pre>
+      <div id="mensaje">{mensaje}</div>
     </div>
   );
 }
