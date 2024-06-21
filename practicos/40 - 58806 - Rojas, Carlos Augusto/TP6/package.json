@@ -12,10 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bootstrap": "^5.3.3",
     "cookie-parser": "^1.4.6",
     "express": "^4.19.2",
-    "js-cookie": "^3.0.5",
     "morgan": "^1.10.0"
   }
 }
