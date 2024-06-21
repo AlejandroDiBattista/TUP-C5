@@ -12,7 +12,7 @@ app.use(express.static('public'));
 let usuarios = [];
 
 
-function validaUsuario(req, res, next) {
+function validarUsuario(req, res, next) {
   let id = req.cookies.id;
   let usuario = usuarios.find(u => u.id === id);
 
@@ -25,7 +25,7 @@ function validaUsuario(req, res, next) {
 }
 
 
-function generarId() {
+function genId() {
   return Math.random().toString().substring(2);
 }
 
@@ -56,7 +56,7 @@ app.post('/login', (req, res) => {
 
   let usuario = usuarios.find(u => u.user === user && u.password === password);
   if (usuario) {
-    let id = generarId();
+    let id = genId();
     usuario.id = id;
     res.cookie('id', id, { httpOnly: true });
     return res.send("¡Bienvenido de vuelta! Has iniciado sesión correctamente.");
@@ -66,14 +66,14 @@ app.post('/login', (req, res) => {
 });
 
 
-app.put('/logout', validaUsuario, (req, res) => {
+app.put('/logout', validarUsuario, (req, res) => {
   let usuario = req.usuario;
   delete usuario.id;
   res.send('Has cerrado sesión correctamente.');
 });
 
 
-app.get('/info', validaUsuario, (req, res) => {
+app.get('/info', validarUsuario, (req, res) => {
   let usuario = req.usuario;
   res.send(`Bienvenido ${usuario.user}! Estás logueado.`);
 });
