@@ -4,14 +4,14 @@ import morgan from 'morgan';
 
 const app = express();
 
-app.use(morgan('dev')); // Loggea cada request en consola
-app.use(cookieParser()); // Para leer cookies
-app.use(express.json()); // Para leer JSONs
-app.use(express.static('public')); // Para servir archivos estáticos
+app.use(morgan('dev')); 
+app.use(cookieParser()); 
+app.use(express.json()); 
+app.use(express.static('public')); 
 
 let usuarios = [];
 
-// Middleware para validar usuario autenticado
+
 function validaUsuario(req, res, next) {
   let id = req.cookies.id;
   let usuario = usuarios.find(u => u.id === id);
@@ -24,12 +24,12 @@ function validaUsuario(req, res, next) {
   }
 }
 
-// Función para generar ID aleatorio
+
 function generarId() {
   return Math.random().toString().substring(2);
 }
 
-// Endpoint para registro de usuarios
+
 app.post('/registrar', (req, res) => {
   let { user, password } = req.body;
 
@@ -46,7 +46,7 @@ app.post('/registrar', (req, res) => {
   res.send('¡Registro exitoso! Ahora puedes iniciar sesión.');
 });
 
-// Endpoint para inicio de sesión
+
 app.post('/login', (req, res) => {
   let { user, password } = req.body;
 
@@ -65,14 +65,14 @@ app.post('/login', (req, res) => {
   res.status(401).send('Usuario y/o contraseña incorrectos. Por favor intenta nuevamente.');
 });
 
-// Endpoint para cierre de sesión
+
 app.put('/logout', validaUsuario, (req, res) => {
   let usuario = req.usuario;
   delete usuario.id;
   res.send('Has cerrado sesión correctamente.');
 });
 
-// Endpoint para obtener información del usuario
+
 app.get('/info', validaUsuario, (req, res) => {
   let usuario = req.usuario;
   res.send(`Bienvenido ${usuario.user}! Estás logueado.`);
