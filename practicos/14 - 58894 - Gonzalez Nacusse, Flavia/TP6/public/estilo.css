@@ -34,7 +34,7 @@ button:hover {
 }
 
 form {
-    width: 100%;
+    width: 70%;
     justify-content: center;
     button[type='submit'] {
         font-weight: bold;
