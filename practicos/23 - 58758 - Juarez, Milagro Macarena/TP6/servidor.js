@@ -1,15 +1,24 @@
 import express from 'express';
+import morgan from 'morgan';
+import Usuario from './controllers/usuario.js';
 import cookieParser from 'cookie-parser';
-import morgan
- from 'morgan';
+
 const app = express();
 
-app.use(morgan('dev'));     // Loggea cada request en consola
-app.use(cookieParser());    // Para leer cookies
-app.use(express.json());    // Para leer JSONs
+// Middleware para parsear el body
 app.use(express.static('public'));  // Para servir archivos estáticos
+app.use(express.json());
+app.use(cookieParser());
+app.use(morgan('dev'));
 
-// Implementar las rutas necesarias
-app.listen(3000, () => {
-    console.log('Servidor iniciado en http://localhost:3000');
+// API 
+app.get('/usuarios', Usuario.getUsuarios); // SOLO DESARROLLO
+
+app.post('/registrar', Usuario.registrarUsuario);
+app.post('/login', Usuario.loginUsuario);
+app.put('/logout', Usuario.validarUsuario, Usuario.logoutUsuario);
+app.get('/info', Usuario.validarUsuario, Usuario.getInfo);
+
+app.listen(3800, () => {
+    console.log('Servidor en http://localhost:3800');
 });
