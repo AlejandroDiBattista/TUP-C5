@@ -1,6 +1,6 @@
 let usuarios = [
     { user: 'admin', password: '1234' },
-    { user: 'FlaviaGN', password: '1234' }
+    { user: 'FlaviaGN', password: '1234'}
 ];
 
 function validarUsuario(req, res, next) {
