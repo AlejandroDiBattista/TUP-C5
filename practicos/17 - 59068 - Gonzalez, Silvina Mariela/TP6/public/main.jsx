@@ -38,36 +38,46 @@ function App() {
     const handleLogin = async (event) => {
         event.preventDefault();
 
-        const response = await fetch(`${url}/usuarios/login`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ username: loginUsername, contrasena: loginPassword })
-        });
+        try {
+            const response = await fetch(`${url}/usuarios/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username: loginUsername, contrasena: loginPassword })
+            });
 
-        const data = await response.json();
-        if (response.ok) {
-            setMessage(`Sesión iniciada con éxito.`);
-            setUserData(data);
-            setLoggedIn(true);
-        } else {
-            setMessage(data.error);
+            const data = await response.json();
+            if (response.ok) {
+                setMessage(`Sesión iniciada con éxito.`);
+                setUserData(data);
+                setLoggedIn(true);
+            } else {
+                setMessage(data.error);
+            }
+        } catch (error) {
+            setMessage('Error al iniciar sesión.');
         }
+
     };
 
     const handleLogout = async () => {
-        const response = await fetch(`${url}/usuarios/logout`, {
-            method: 'POST',
-        });
+        try {
+            const response = await fetch(`${url}/usuarios/logout`, {
+                method: 'POST',
+            });
 
-        const data = await response.json();
-        if (response.ok) {
-            setMessage('Sesión cerrada con éxito');
-            setLoggedIn(false);
-            setUserData(null);
-        } else {
-            setMessage(data.error);
+            const data = await response.json();
+
+            if (response.ok) {
+                setMessage('Sesión cerrada con éxito');
+                setLoggedIn(false);
+                setUserData(null);
+            } else {
+                setMessage(data.error);
+            }
+        } catch (error) {
+            setMessage('Error al cerrar sesión.');
         }
     };
 
