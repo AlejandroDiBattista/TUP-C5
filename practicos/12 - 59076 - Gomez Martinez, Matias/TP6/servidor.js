@@ -16,18 +16,10 @@ app.use(express.static('public'));  // Para servir archivos estáticos
 
 // Implementar las rutas necesarias
 
-app.post('/login', Cosas.login);;
-
-// app.get('/formulario', (req, res) => {
-//     console.log('params', req.query);
-//     res.send('Get funciona');
-// });
-
-// app.post('/formulario', (req, res) => {
-//     console.log('body', req.body);
-//     res.send('POST funciona');
-//     res.end();
-// });
+app.put('/login', Cosas.login);
+app.post('/registrar', Cosas.registrar);
+app.put('/logout', Cosas.validarUsuario, Cosas.logout);
+app.put('/info', Cosas.info);
 
 app.listen(3000, () => {
     console.log('Servidor iniciado en http://localhost:3000');

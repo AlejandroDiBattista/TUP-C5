@@ -1,7 +1,7 @@
 html {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 24px;
-    background-color: #eee;
+    background-color: #424242;
     box-sizing: content-box;
 }
 
@@ -25,6 +25,7 @@ h5,
 h6 {
     color: #333;
     margin: 8px 0;
+    text-align: center;
 }
 
 button {
@@ -32,15 +33,16 @@ button {
     min-width: 100px;
     cursor: pointer;
     border: 0.5px solid #bbb;
+    background-color: #edbfbf;
     border-radius: 5px;
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
 }
 
 button:hover {
-    background-color: #ddd;
+    background-color: #d4abab;
 }
 
-.form {
+form {
     width: 100%;
 
     button[type='submit'] {
@@ -50,8 +52,8 @@ button:hover {
     label {
         display: block;
         margin: 8px 0;
-        font-size: 14px;
-        color: #666;
+        font-size: 18px;
+        color: #333;
         width: 100%;
 
         input {
@@ -60,6 +62,7 @@ button:hover {
             padding: 5px 10px;
             margin-top: 5px;
             border: 0.5px solid #bbb;
+            background-color: #edbfbf;
             border-radius: 5px;
             box-shadow: inset 0 0 4px 0 rgba(0, 0, 0, 0.2);
             font-size: 20px;
@@ -96,7 +99,7 @@ div:has(> button) {
 section {
     padding: 10px;
     margin: 10px 0;
-    background-color: #fff;
+    background-color: #a34848;
     border: 0.5px solid #bbb;
     border-radius: 15px;
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);

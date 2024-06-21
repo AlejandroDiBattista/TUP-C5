@@ -1,7 +1,0 @@
-@url = http://localhost:3000
-
-GET {{url}}/principal.html
-
-###
-
-POST {{url}}/formulario
