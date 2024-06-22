@@ -30,11 +30,16 @@ button {
 }
 
 button:hover {
-    background-color: #ddd;
+    background-color: #474747;
+    color: black;
+    
 }
 
 form {
     width: 100%;
+    background-color: rgb(124, 124, 124);
+    border-radius: 25px;
+    padding: 20px;
     button[type='submit'] {
         font-weight: bold;
     }
@@ -42,7 +47,7 @@ form {
         display: block;
         margin: 8px 0;
         font-size: 14px;
-        color: #666;
+        color: #ffffff;
         width: 100%;
         input {
             display: block;
@@ -95,4 +100,10 @@ ul {
     li {
         padding: 5px 0;
     }
+}  
+
+.info{
+    background-color: rgb(125, 118, 146);
+    border-radius: 20px;
+    padding: 10px;
 }

@@ -1,63 +1,24 @@
-body {
-    background-color:#05161A;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.agenda {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
 }
 
-
-.contact-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-.column {
-    
+.contacto-card {
+    padding: 30px;
     margin: 10px;
-}
-
-.contact-card {
-    background-color: #0c7075;
-    border: 1px solid #0f172a;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 20px;
-    width: 400px;
-    height: 100px;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-
-    
-    
-}
-
-h1{
-    color: #6da5c0;
-    font-size: 50px;
-}
-
-p{
-    color: white;
-}
-
-.contact-card {
-    transition: transform 0.3s;
-    border: 2px solid #ddd; 
-    border-radius: 5px; 
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 5px  5px 5px rgba(0, 0, 0, 0.1);
    
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.contact-card:hover, .contact-card:focus {
-    transform: scale(1.1);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    
-    
+.contacto-card h1 {
+    margin-bottom: 10px;
+    font-size: 1.5em;
 }
 
-
-
+.contacto-card p {
+    font-size: 1.2em;
+}

@@ -21,8 +21,9 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 button {
-    padding: 4px 6px;
-    min-width: 100px;
+    padding: 10px 0 10px 0;
+    margin: 5px 0 5px 0;
+    width: 400px;
     cursor: pointer;
     border: 0.5px solid #bbb;
     border-radius: 5px;
@@ -95,4 +96,12 @@ ul {
     li {
         padding: 5px 0;
     }
+}
+
+.container{
+    text-align: center;
+}
+
+.inputBtn{
+    margin: 0 10px 15px 10px;
 }

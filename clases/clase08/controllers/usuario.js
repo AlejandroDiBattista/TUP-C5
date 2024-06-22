@@ -59,10 +59,10 @@ const loginUsuario = (req, res) => {
             usuario.token = token;
             res.set('token', token) //Envia el token
             res.cookie('token', token) //Guarda el token en la cookie
-            res.send("usuario logeado");
+            res.status(201).send("usuario logeado");
         } else {
-            res.status(401)
-            res.send('Usuario o contraseña incorrectos');
+            res.status(401).send('Usuario o contraseña incorrectos');
+            
         }
     }
 }

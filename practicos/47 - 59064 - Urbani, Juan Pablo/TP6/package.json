@@ -1,7 +1,6 @@
 {
   "name": "tp6",
   "version": "1.0.0",
-  "description": "",
   "main": "servidor.js",
   "type": "module",
   "scripts": {
@@ -12,8 +11,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "cookie-parser": "^1.4.6",
     "express": "^4.19.2",
+    "joi": "^17.13.3",
+    "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0"
+  },
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^3.1.4"
   }
 }
