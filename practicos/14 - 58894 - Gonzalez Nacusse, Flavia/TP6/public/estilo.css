@@ -10,7 +10,7 @@ html {
 }
 
 #root {
-    width: 400px;
+    width: 500px;
     margin: 0 auto;
     padding: 10px;
 }
@@ -30,13 +30,15 @@ button {
 }
 
 button:hover {
-    background-color: #ddd;
+    background-color: #bfbad1;
 }
 
 form {
-    width: 100%;
+    width: 70%;
+    justify-content: center;
     button[type='submit'] {
         font-weight: bold;
+        background-color: #bfbad1;
     }
     label {
         display: block;
@@ -56,7 +58,7 @@ form {
             font-weight: bold;
         }
     }
-    h3 {
+    h2 {
         margin: -5px 0 0 0;
         padding: 0;
     }
@@ -68,7 +70,7 @@ form {
 span:has(> button) {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     margin-top: 16px;
     gap: 10px;
 }
@@ -92,7 +94,9 @@ section {
 
 ul {
     list-style-type: none;
+    padding: inherit;
     li {
         padding: 5px 0;
+        display: contents;
     }
 }
