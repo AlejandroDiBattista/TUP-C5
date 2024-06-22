@@ -1,9 +1,16 @@
 body {
-    background-color: #ccc;
-    height: 100vh;
+  text-align: center;
+  padding: 20px;
 }
 
-#root {
-    margin: 0 auto;
-    max-width: 500px;
+header {
+  margin-bottom: 20px;
+}
+
+footer {
+  margin-top: 20px;
+}
+
+.weather-icon {
+  font-size: 48px;
 }

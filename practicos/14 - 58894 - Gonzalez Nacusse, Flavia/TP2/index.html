@@ -12,7 +12,6 @@
 
     <title>Demo 1</title>
     <style>
-        /* reset */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -34,6 +33,16 @@
             border-radius: 8px;
             background-color: #ffffff;
             box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .card span {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            font-size: 20px;
+            cursor: pointer;
+            color: gold;
         }
 
         .agenda {
@@ -41,29 +50,23 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: start;
+        }
 
-            >div {
-                text-align: center;
-                width: 240px;
-                height: 96px;
-                position: relative;
+        .agenda > div {
+            text-align: center;
+            width: 240px;
+            height: 96px;
+            position: relative;
+        }
 
-                span {
-                    position: absolute;
-                    top: 8px;
-                    right: 8px;
-                }
+        .agenda > div div {
+            margin-top: 25px;
+            font-size: 20px;
+        }
 
-                div {
-                    margin-top: 25px;
-                    font-size: 20px;
-                }
-
-                div:last-child {
-                    text-align: right;
-                    font-size: 14px;
-                }
-            }
+        .agenda > div div:last-child {
+            text-align: right;
+            font-size: 14px;
         }
 
         form {
@@ -71,35 +74,38 @@
             padding: 16px;
             margin: 8px;
             border-radius: 8px;
+            background-color: #ffffff;
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+        }
 
-            label {
-                display: block;
-                font-size: 12px;
-                color: #aaa;
-            }
+        form label {
+            display: block;
+            font-size: 12px;
+            color: #aaa;
+            margin-bottom: 4px;
+        }
 
-            input {
-                width: calc(100% - 8px);
-                border-radius: 4px;
-                margin: 4px 0;
-                border: 1px solid #ccc;
-                padding: 4px;
-                font-size: 16px;
-            }
+        form input {
+            width: calc(100% - 8px);
+            border-radius: 4px;
+            margin: 4px 0;
+            border: 1px solid #ccc;
+            padding: 4px;
+            font-size: 16px;
+        }
 
-            div {
-                display: flex;
-                justify-content: space-between;
-                margin-top: 16px;
+        form div {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 16px;
+        }
 
-                button {
-                    padding: 8px 16px;
-                    border: none;
-                    border-radius: 4px;
-                    font-size: 14px;
-                    cursor: pointer;
-                }
-            }
+        form div button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -132,26 +138,55 @@
     </script>
 
     <script type="text/babel">
-        const { createRoot } = ReactDOM
+        const { createRoot } = ReactDOM;
+        const { useState } = React;
 
-        const Contacto = ({ nombre, apellido, telefono }) =>
+        const Contacto = ({ id, nombre, apellido, telefono, favorito, toggleFavorite }) => (
             <div className="card">
+                <span onClick={() => toggleFavorite(id)}>
+                    {favorito ? <i className="fa-solid fa-star"></i> : <i className="fa-regular fa-star"></i>}
+                </span>
                 <div>{nombre} <b>{apellido}</b></div>
                 <div>{telefono}</div>
             </div>
+        );
 
-        const Agenda = ({ datos }) =>
+        const Agenda = ({ datos, toggleFavorite }) => (
             <div className="agenda">
-                {datos.map(contacto => <Contacto key={contacto.id} {...contacto} />)}
+                {datos.map(contacto => (
+                    <Contacto key={contacto.id} {...contacto} toggleFavorite={toggleFavorite} />
+                ))}
             </div>
+        );
 
-        const App = () =>
-            <div>
-                <h1>Agenda</h1>
-                <Agenda datos={datos} />
-            </div>
+        const App = () => {
+            const [contactos, setContactos] = useState(datos);
 
-        const root = createRoot(document.getElementById('root'))
+            const toggleFavorite = (id) => {
+                setContactos(contactos.map(contacto =>
+                    contacto.id === id ? { ...contacto, favorito: !contacto.favorito } : contacto
+                ));
+            };
+
+            const ordenarContactos = [...contactos].sort((a, b) => {
+                if (a.favorito === b.favorito) {
+                    if (a.apellido === b.apellido) {
+                        return a.nombre.localeCompare(b.nombre);
+                    }
+                    return a.apellido.localeCompare(b.apellido);
+                }
+                return b.favorito - a.favorito;
+            });
+
+            return (
+                <div>
+                    <h1>Agenda</h1>
+                    <Agenda datos={ordenarContactos} toggleFavorite={toggleFavorite} />
+                </div>
+            );
+        };
+
+        const root = createRoot(document.getElementById('root'));
         root.render(<App />);
     </script>
 </body>

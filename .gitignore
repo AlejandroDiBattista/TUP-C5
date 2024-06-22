@@ -22,4 +22,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-clases/clase08/package-lock.json
+package-lock.json
+.env
