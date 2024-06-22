@@ -12,57 +12,35 @@ let contactos = [
     { id: 11, nombre: "Carolina", apellido: "Gómez", telefono: 3811112233 },
     { id: 12, nombre: "Alejandro", apellido: "Fernández", telefono: 3812223344 }
 ];
+const Contacto = ({ nombre, apellido, telefono }) => (
+    <div className="contacto-card">
+        <h1>{nombre} {apellido}</h1>
+        <p>Teléfono: {telefono}</p>
+    </div>
+);
 
-function App() {
-    const [mostrarContactos, setMostrarContactos] = React.useState(false);
-    const [tarjetaAmpliada, setTarjetaAmpliada] = React.useState(null);
+const Agenda = () => (
+    <div className="agenda">
+        {
+            contactos.map(contacto => (
+                <Contacto 
+                    key={contacto.id}
+                    nombre={contacto.nombre}
+                    apellido={contacto.apellido}
+                    telefono={contacto.telefono}
+                />
+            ))
+        }
+    </div>
+);
 
-    const handleClick = () => {
-        setMostrarContactos(!mostrarContactos);
-    };
+const App = () => (
+    <div>
+        <Agenda />
+    </div>
+);
 
-    const handleTarjetaClick = (id) => {
-        setTarjetaAmpliada(tarjetaAmpliada === id ? null : id);
-    };
-
-    return (
-        <div>
-            <h1 className="text-4xl text-center mb-4">Lista de Contactos</h1>
-
-            <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-                <button onClick={handleClick} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                    {mostrarContactos ? 'Ocultar Lista de Contactos' : 'Mostrar Lista de Contactos'}
-                </button>
-            </div>
-            <div className="contact-list">
-                <div className="column">
-                    {contactos.slice(0, 6).map(contacto => (
-                        <div className={`contact-card ${mostrarContactos ? 'scale-100' : 'scale-0'} transition-transform duration-1000 relative`} key={contacto.id} onClick={() => handleTarjetaClick(contacto.id)}>
-                            <p><b>Nombre:</b> {contacto.nombre} {contacto.apellido}</p>
-                            <p><b>Teléfono:</b> {contacto.telefono}</p>
-                        </div>
-                    ))}
-                </div>
-                <div className="column">
-                    {contactos.slice(6, 12).map(contacto => (
-                        <div className={`contact-card ${mostrarContactos ? 'scale-100' : 'scale-0'} transition-transform duration-1000 relative`} key={contacto.id} onClick={() => handleTarjetaClick(contacto.id)}>
-                            <p><b>Nombre:</b> {contacto.nombre} {contacto.apellido}</p>
-                            <p><b>Teléfono:</b> {contacto.telefono}</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </div>
-    );
-}
-
-ReactDOM.render(<App />, document.getElementById("root"));
-
-
-
-
-
-
+ReactDOM.render(<App />, document.getElementById('root'));
 
 
 
