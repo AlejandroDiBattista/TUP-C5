@@ -1,6 +1,7 @@
 const { useState, useEffect } = React;
 
 function App() {
+    const [showRegisterForm, setShowRegisterForm] = useState(false);
     const [registerUsername, setRegisterUsername] = useState('');
     const [registerPassword, setRegisterPassword] = useState('');
     const [loginUsername, setLoginUsername] = useState('');
@@ -22,6 +23,7 @@ function App() {
                 alert('Registro exitoso');
                 setRegisterUsername('');
                 setRegisterPassword('');
+                setShowRegisterForm(false); // Ocultar el formulario de registro después de registrar
             } else {
                 alert('Error durante el registro');
             }
@@ -97,20 +99,6 @@ function App() {
             <h1>TP6 - Sesiones</h1>
             {!loggedIn ? (
                 <div>
-                    <h2>Registro</h2>
-                    <input
-                        type="text"
-                        placeholder="Usuario"
-                        value={registerUsername}
-                        onChange={(e) => setRegisterUsername(e.target.value)}
-                    />
-                    <input
-                        type="password"
-                        placeholder="Contraseña"
-                        value={registerPassword}
-                        onChange={(e) => setRegisterPassword(e.target.value)}
-                    />
-                    <button onClick={handleRegister}>Registrarse</button>
                     <h2>Iniciar Sesión</h2>
                     <input
                         type="text"
@@ -125,6 +113,25 @@ function App() {
                         onChange={(e) => setLoginPassword(e.target.value)}
                     />
                     <button onClick={handleLogin}>Iniciar Sesión</button>
+                    <button onClick={() => setShowRegisterForm(true)}>Registrarse</button>
+                    {showRegisterForm && (
+                        <div>
+                            <h2>Registro</h2>
+                            <input
+                                type="text"
+                                placeholder="Usuario"
+                                value={registerUsername}
+                                onChange={(e) => setRegisterUsername(e.target.value)}
+                            />
+                            <input
+                                type="password"
+                                placeholder="Contraseña"
+                                value={registerPassword}
+                                onChange={(e) => setRegisterPassword(e.target.value)}
+                            />
+                            <button onClick={handleRegister}>Registrar</button>
+                        </div>
+                    )}
                 </div>
             ) : (
                 <div>
