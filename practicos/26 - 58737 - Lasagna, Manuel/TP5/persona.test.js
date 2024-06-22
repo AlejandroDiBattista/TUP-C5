@@ -111,7 +111,6 @@ describe("Borrar una persona", () => {
         expect(res.statusCode).toBe(404)
     })
 
-
     test("3. Borrar una persona (y retorna la persona borrada)", async () => {
         const persona = { id: 3, borrado: true }
 
