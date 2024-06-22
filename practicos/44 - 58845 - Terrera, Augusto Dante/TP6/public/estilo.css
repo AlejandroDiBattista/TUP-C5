@@ -35,6 +35,10 @@ button:hover {
 
 form {
     width: 100%;
+    background-color: #333;
+    text-align: center;
+    padding: 50px;
+    border-radius: 10px;
     button[type='submit'] {
         font-weight: bold;
     }
@@ -44,17 +48,6 @@ form {
         font-size: 14px;
         color: #666;
         width: 100%;
-        input {
-            display: block;
-            width: calc(100% - 20px);
-            padding: 5px 10px;
-            margin-top: 5px;
-            border: 0.5px solid #bbb;
-            border-radius: 5px;
-            box-shadow: inset 0 0 4px 0 rgba(0, 0, 0, 0.2);
-            font-size: 20px;
-            font-weight: bold;
-        }
     }
     h3 {
         margin: -5px 0 0 0;
@@ -62,6 +55,11 @@ form {
     }
     span:has(> button) {
         padding-top: 10px;
+    }
+    input{
+        border: solid gray 1px;
+        border-radius: 5px;
+        padding: 5px;     
     }
 }
 
