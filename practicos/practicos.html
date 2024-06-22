@@ -157,7 +157,7 @@
 				const comentario = alumno['comentario_tp3'];
 				
 				const conIndex = entrega <= 'tp4'
-				const conNota = entrega == 'tp3' && nota;
+				const conNota = entrega == 'tp3' && nota && nota != '0';
 				const link = conIndex ? ubicar(alumno.ubicacion, entrega) : null;
 				return (
 					<div className='ver'>
