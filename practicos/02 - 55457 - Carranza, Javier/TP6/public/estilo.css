@@ -21,8 +21,8 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 button {
-    padding: 4px 6px;
-    min-width: 100px;
+    padding: 8px 12px;
+    min-width: 120px;
     cursor: pointer;
     border: 0.5px solid #bbb;
     border-radius: 5px;
@@ -31,6 +31,16 @@ button {
 
 button:hover {
     background-color: #ddd;
+}
+
+button.logout-btn {
+    background-color: #c50000; 
+    color: white;
+    font-weight: bold;
+}
+
+button.logout-btn:hover {
+    background-color: #a30000; 
 }
 
 form {
@@ -52,7 +62,7 @@ form {
             border: 0.5px solid #bbb;
             border-radius: 5px;
             box-shadow: inset 0 0 4px 0 rgba(0, 0, 0, 0.2);
-            font-size: 20px;
+            font-size: 18px;
             font-weight: bold;
         }
     }
