@@ -8,14 +8,92 @@
     <script src="https://unpkg.com/@babel/standalone@7.24.7/babel.min.js"></script>
     <link rel="stylesheet" href="estilo.css">
     <script type="text/babel" src="main.jsx"></script>
-    <title></title>
+    <title>Formulario de Registro e Inicio de Sesión</title>
 </head>
 
 <body>
     <div id="root"></div>
     <script type="text/babel">
-        const { useState, useEffect } = React
-        const root = ReactDOM.createRoot(document.getElementById('root'))
+        const { useState } = React;
+
+        function App() {
+            const [formType, setFormType] = useState('');
+
+            const handleRegisterClick = () => setFormType('register');
+            const handleLoginClick = () => setFormType('login');
+
+            return (
+                <div>
+                    <h1>Bienvenido</h1>
+                    <div>
+                        <button onClick={handleRegisterClick}>Registrarse</button>
+                        <button onClick={handleLoginClick}>Iniciar Sesión</button>
+                    </div>
+                    {formType === 'register' && <RegisterForm />}
+                    {formType === 'login' && <LoginForm />}
+                </div>
+            );
+        }
+
+        function RegisterForm() {
+            const [username, setUsername] = useState('');
+            const [password, setPassword] = useState('');
+            const [repeatPassword, setRepeatPassword] = useState('');
+            const [email, setEmail] = useState('');
+
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                if (password !== repeatPassword) {
+                    alert('Las contraseñas no coinciden');
+                    return;
+                }
+                window.location.href = 'https://librefutboltv.net/';
+            };
+
+            return (
+                <form onSubmit={handleSubmit}>
+                    <div>
+                        <label>Nombre de Usuario: </label>
+                        <input type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)} required />
+                    </div>
+                    <div>
+                        <label>Contraseña: </label>
+                        <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                    </div>
+                    <div>
+                        <label>Repetir Contraseña: </label>
+                        <input type="password" name="repeatPassword" value={repeatPassword} onChange={(e) => setRepeatPassword(e.target.value)} required />
+                    </div>
+                    <div>
+                        <label>Email: </label>
+                        <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                    </div>
+                    <div>
+                        <button type="submit">Registrarse</button>
+                    </div>
+                </form>
+            );
+        }
+
+        function LoginForm() {
+            return (
+                <form>
+                    <div>
+                        <label>Nombre de Usuario: </label>
+                        <input type="text" name="username" required />
+                    </div>
+                    <div>
+                        <label>Contraseña: </label>
+                        <input type="password" name="password" required />
+                    </div>
+                    <div>
+                        <button type="submit">Iniciar Sesión</button>
+                    </div>
+                </form>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
     </script>
 </body>
