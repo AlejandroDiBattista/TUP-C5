@@ -1,11 +1,11 @@
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuentes más minimalistas */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
-  background-color: rgb(228, 221, 193); /* Color de fondo de la página */
+  background-color: rgb(228, 221, 193); 
 }
 
 .container {
