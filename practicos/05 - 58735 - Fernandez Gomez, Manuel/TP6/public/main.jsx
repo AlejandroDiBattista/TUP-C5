@@ -1,110 +1,123 @@
 function App() {
-    const [user, setUser] = React.useState('');
-    const [password, setPassword] = React.useState('');
-    const [loginUser, setLoginUser] = React.useState('');
-    const [loginPassword, setLoginPassword] = React.useState('');
-    const [showRegister, setShowRegister] = React.useState(false);
-    const [showLogin, setShowLogin] = React.useState(false);
-    const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+    const [mensaje, setMensaje] = useState("");
+    const [formData, setFormData] = useState({ usuario: "", contraseña: "" });
+    const [registro, setRegistro] = useState(false);
+    const [logueado, setLogueado] = useState(false);
+    const [nombreUsuario, setNombreUsuario] = useState("");
 
-    React.useEffect(() => {
-        async function checkLoginStatus() {
-            let res = await fetch('/info', {
-                method: 'GET',
-                credentials: 'include',
+    const validarCampos = () => {
+        if (!formData.usuario || !formData.contraseña) {
+            setMensaje("Ingrese los datos necesarios");
+            return false;
+        }
+        return true;
+    };
+
+    const manejarSubmit = async (e) => {
+        e.preventDefault();
+        if (!validarCampos()) return;
+
+        const endpoint = registro ? "/registrar" : "/login";
+        try {
+            const res = await fetch(endpoint, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    user: formData.usuario,
+                    password: formData.contraseña,
+                }),
+            });
+            const data = await res.text();
+            setMensaje(data);
+            if (res.ok) {
+                setFormData({ usuario: "", contraseña: "" });
+                if (registro) {
+                    setRegistro(false);
+                } else {
+                    setLogueado(true);
+                    setNombreUsuario(formData.usuario);
+                }
+            }
+        } catch (error) {
+            console.error(`Error al ${registro ? "registrar" : "iniciar sesión"}:`, error);
+            setMensaje(`Error al ${registro ? "registrar" : "iniciar sesión"}`);
+        }
+    };
+
+    const cerrarSesion = async () => {
+        try {
+            const res = await fetch("/logout", {
+                method: "PUT",
+                credentials: "include",
+            });
+            const data = await res.text();
+            setMensaje(data);
+            if (res.ok) {
+                setFormData({ usuario: "", contraseña: "" });
+                setLogueado(false);
+                setNombreUsuario("");
+            }
+        } catch (error) {
+            console.error("Error al cerrar sesión:", error);
+            setMensaje("Error al cerrar sesión");
+        }
+    };
+
+    const obtenerInfo = async () => {
+        try {
+            const res = await fetch("/info", {
+                method: "GET",
+                credentials: "include",
             });
             if (res.ok) {
-                setIsLoggedIn(true);
+                setMensaje(`Bienvenido ${nombreUsuario}!`);
+            } else {
+                setMensaje("El usuario no existe");
             }
+        } catch (error) {
+            console.error("Error en la busqueda de datos:", error);
+            setMensaje("Error aen la busqueda de datos");
         }
-        checkLoginStatus();
-    }, []);
-
-    async function registrar(e) {
-        e.preventDefault();
-        let res = await fetch('/registrar', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ user, password }),
-        });
-        let data = await res.text();
-        alert(data);
-        if (res.ok) {
-            setUser('');
-            setPassword('');
-            setShowRegister(false);
-            setShowLogin(true);
-        }
-    }
-
-    async function login(e) {
-        e.preventDefault();
-        let res = await fetch('/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ user: loginUser, password: loginPassword }),
-        });
-        let data = await res.text();
-        alert(data);
-        if (res.ok) {
-            setShowLogin(false);
-            setIsLoggedIn(true);
-        }
-    }
-
-    async function logout() {
-        let res = await fetch('/logout', {
-            method: 'PUT',
-            credentials: 'include',
-        });
-        let data = await res.text();
-        alert(data);
-        if (res.ok) {
-            setLoginUser('');
-            setLoginPassword('');
-            setIsLoggedIn(false);
-        }
-    }
-
-    async function info() {
-        let res = await fetch('/info', {
-            method: 'GET',
-            credentials: 'include',
-        });
-
-        if (res.ok) {
-            alert('Inicio exitoso');
-        } else {
-            alert('Credenciales incorrectas');
-        }
-    }
+    };
 
     return (
-        <div class="wrapper">
-        <form class="form" onsubmit="return login()">
-            <h1 class="title">Inicio</h1>
-            <div class="inp">
-                <input type="text" id="username" class="input" placeholder="Usuario"></input>
-                <i class="fas fa-user"></i>
-            </div>
-            <div class="inp">
-                <input type="password" id="password" class="input" placeholder="Contraseña"></input>
-                <i class="fas fa-lock"></i>
-            </div>
-            <button type="submit" class="submit">Iniciar Sesión</button>
-            <p class="footer">No tienes cuenta? <a href="#" class="link" onclick="agregarUsuario()">Por favor, registrarse</a></p>
-        </form>
-        <div></div>
-        <div class="banner">
-            <h1 class="wel_text">BIENVENIDO</h1>
-        </div>
-    </div>
+<div className="container">
+    {logueado ? (
+        <>
+            <button className="btns" onClick={cerrarSesion}>
+                Cerrar Sesión
+            </button>
+            <button className="btns" onClick={obtenerInfo}>
+                Datos de Usuario
+            </button>
+        </>
+    ) : (
+        <>
+            <form onSubmit={manejarSubmit} autoComplete="off">
+                <h2 className="hder">
+                    {registro ? "Registrar" : "Iniciar Sesión"}
+                </h2>
+                <input className="input" type="text" placeholder="Usuario" value={formData.usuario} 
+                onChange={(e) => setFormData({ ...formData, usuario: e.target.value })} autoComplete="username"/>
+                <input className="input" type="password" placeholder="Contraseña"
+                    value={formData.contraseña} onChange={(e) => setFormData({ ...formData, contraseña: e.target.value })}
+                    autoComplete={registro ? "new-password" : "current-password"}/>
+                <button type="submit" className="btns">
+                    {registro ? "Registrar" : "Iniciar Sesión"}
+                </button>
+            </form>
+            <button className="btns2" onClick={() => setRegistro(!registro)}>
+                {registro ? "Iniciar Sesión" : "Registrarse"}
+            </button>
+        </>
+    )}
+
+    <div id="mensaje">{mensaje}</div>
+</div>
+
     );
 }
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
+export default App;
