@@ -1,10 +1,13 @@
 # Evaluación TP3 - C5
 
 ## 01 - 55680 - Bustos, Mauricio Benjamin
-- Aprobado: 
+- Aprobado: 10
+
 
 ## 02 - 55457 - Carranza, Javier
-- Aprobado: 
+- Aprobado: 8
+- Nota: Los iconos y los formulario no se muestra bien
+- No realiza la edicion en el lugar.
 
 ## 04 - 55578 - Fernandez Dumit, Patricio
 - Aprobado: 

@@ -1,0 +1,15 @@
+nav {
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    gap: 20px
+  }
+}
+
+.active {
+  background-color: #4CAF50;
+}	
