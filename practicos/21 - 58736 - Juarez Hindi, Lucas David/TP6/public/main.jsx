@@ -72,15 +72,35 @@ const App = () => {
         setDni("");
     };
 
-    const InfoPage = () => {
+    const InfoPage = ({ username, password, email, celular, dni }) => {
         const userInfo = { name: 'Nombre del Usuario' };
-
+    
         const [showWelcomeMessage, setShowWelcomeMessage] = useState(true);
-
+        const [showPersonalData, setShowPersonalData] = useState(false);
+        const [userData, setUserData] = useState(null);
+    
         const dismissWelcomeMessage = () => {
             setShowWelcomeMessage(false);
         };
-
+    
+        const togglePersonalData = () => {
+            setShowPersonalData(!showPersonalData);
+        };
+    
+        const fetchUserData = async () => {
+            try {
+                const response = await fetch('http://localhost:3000/userdata');
+                if (!response.ok) {
+                    throw new Error('Error al obtener los datos del usuario');
+                }
+                const data = await response.json();
+                setUserData(data);
+                setShowPersonalData(true); // Mostrar los datos cuando se obtienen
+            } catch (error) {
+                console.error('Error:', error.message);
+            }
+        };
+    
         return (
             <div>
                 {showWelcomeMessage && (
@@ -91,6 +111,31 @@ const App = () => {
                 )}
                 <h2>Información Confidencial</h2>
                 <p>Esta es información sensible que solo puede ser vista si estás logueado.</p>
+                <button onClick={togglePersonalData}>
+                    {showPersonalData ? 'Ocultar Datos Personales' : 'Mostrar Datos Personales'}
+                </button>
+                <button onClick={fetchUserData}>
+                    Mostrar Datos de Usuarios Registrados
+                </button>
+                {showPersonalData && (
+                    <div className="personal-data">
+                        <p><strong>Username:</strong> {username}</p>
+                        <p><strong>Password:</strong> {password}</p>
+                        <p><strong>Email:</strong> {email}</p>
+                        <p><strong>Celular:</strong> {celular}</p>
+                        <p><strong>DNI:</strong> {dni}</p>
+                    </div>
+                )}
+                {userData && (
+                    <div className="user-data">
+                        <h3>Datos de Usuarios Registrados</h3>
+                        <p><strong>Username:</strong> {userData.username}</p>
+                        <p><strong>Password:</strong> {userData.password}</p>
+                        <p><strong>Email:</strong> {userData.email}</p>
+                        <p><strong>Celular:</strong> {userData.celular}</p>
+                        <p><strong>DNI:</strong> {userData.dni}</p>
+                    </div>
+                )}
             </div>
         );
     };
@@ -203,4 +248,3 @@ xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" cl
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
-
