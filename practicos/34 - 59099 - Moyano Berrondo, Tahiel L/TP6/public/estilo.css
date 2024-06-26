@@ -1,98 +1,142 @@
-html {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 24px;
-    background-color: #eee;
-    box-sizing:content-box;
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #ffffff;
+    background-size: cover;
+    background-position: center;
+    color: #fff;
 }
 
-*, *:before, *:after {
-    box-sizing: inherit;
-}
-
-#root {
-    width: 400px;
-    margin: 0 auto;
-    padding: 10px;
-}
-
-h1,h2,h3,h4,h5,h6 {
-    color: #333;
-    margin: 8px 0;
-}
-
-button {
-    padding: 4px 6px;
-    min-width: 100px;
-    cursor: pointer;
-    border: 0.5px solid #bbb;
-    border-radius: 5px;
-    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
-}
-
-button:hover {
-    background-color: #ddd;
+.container {
+    width: 100%;
+    max-width: 50rem;
+    margin: 4rem;
+    background-color: #4a4a4a;
+    box-shadow: 0 .8rem 1.6rem rgba(0, 0, 0, 0.2);
+    border-radius: 1.2rem;
+    padding: 40px;
+    padding-right: 5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 form {
-    width: 100%;
-    button[type='submit'] {
-        font-weight: bold;
-    }
-    label {
-        display: block;
-        margin: 8px 0;
-        font-size: 14px;
-        color: #666;
-        width: 100%;
-        input {
-            display: block;
-            width: calc(100% - 20px);
-            padding: 5px 10px;
-            margin-top: 5px;
-            border: 0.5px solid #bbb;
-            border-radius: 5px;
-            box-shadow: inset 0 0 4px 0 rgba(0, 0, 0, 0.2);
-            font-size: 20px;
-            font-weight: bold;
-        }
-    }
-    h3 {
-        margin: -5px 0 0 0;
-        padding: 0;
-    }
-    span:has(> button) {
-        padding-top: 10px;
-    }
-}
-
-span:has(> button) {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 16px;
-    gap: 10px;
-}
-
-div:has(> button) {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    margin-top: 16px;
+    gap: 3rem;
+}
+
+label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    text-align: left;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #ffffff;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #4dd73e;
+    color: #000000;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #ffffff;
+    background-color: #ecedec;
+}
+
+.button-container {
+    display: flex;
     gap: 10px;
 }
 
-section {
-    padding: 10px;
-    margin: 10px 0;
-    background-color: #fff;
-    border: 0.5px solid #bbb;
-    border-radius: 15px;
-    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+button {
+    background-color: #1c2228;
+    color: #fff;
+    border: none;
+    margin: .5rem;
+    padding: 14px 32px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 30px;
+    transition: background-color 0.3s ease;
 }
 
-ul {
-    list-style-type: none;
-    li {
-        padding: 5px 0;
-    }
+button:hover {
+    background-color: #4dd73e;
+}
+
+.logout-button {
+    background-color: #1c2228;
+}
+
+.logout-button:hover {
+    background-color: #4dd73e;
+}
+
+p {
+    margin-top: 2rem;
+    font-size: 1.rem;
+    color: #ccc;
+}
+
+h2 {
+    color: #fff;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+}
+
+.details-container {
+    border: .2rem solid #007bff;
+    border-radius: 1.2rem;
+    padding: 2rem;
+    margin-top: 2rem;
+    max-width: 40rem;
+    background-color: #f0f0f0;
+    overflow: hidden;
+    position: relative;
+}
+
+.details-container.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.details-container p {
+    margin: 12px 0;
+    font-size: 16px;
+    color: #333;
+    opacity: 0;
+    animation: fadeInUp 0.5s forwards;
+    animation-delay: 0.2s;
+}
+
+
+
+.details-container .user-info {
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.details-container img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    margin-top: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    animation: fadeInUp 0.5s forwards;
+    animation-delay: 0.2s;
 }
