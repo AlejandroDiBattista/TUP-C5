@@ -1,9 +1,50 @@
 body {
-    background-color: #ccc;
-    height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
 #root {
-    margin: 0 auto;
-    max-width: 500px;
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+   border: solid 2px;
+}
+
+.buscar {
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+    font-size: 1em;
+    background-color: #f1eded;
+    border: solid 2px;
+}
+
+.weather-icon {
+    width: 100px;
+    height: 100px;
+    margin: 20px 0;
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+
+.temp {
+    font-size: 2em;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+@media (max-width: 600px) {
+    .temp {
+        font-size: 1.5em;
+    }
 }
