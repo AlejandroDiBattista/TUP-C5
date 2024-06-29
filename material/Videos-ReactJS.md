@@ -1,5 +1,4 @@
-# Videos de Clases 
-## TUP - Laboratorio de Computación 3
+# Material de apoyo al dictado de clase
 
 *Autor: Alejandro Di Battista*
 
@@ -21,3 +20,4 @@ https://youtu.be/GBcBm-MU9hY
 
 ### 6. Creación de un Servidor con Express
 https://youtu.be/1fjAqX4DadQ
+

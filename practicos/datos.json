@@ -8,7 +8,7 @@
     "inicial": "MBB",
     "cambio": false,
     "ubicacion": "./01 - 55681 - Bustos, Mauricio Benjamin",
-    "nota_tp3": 0,
+    "nota_tp3": 10,
     "comentario_tp3": "",
     "tp1": true,
     "tp2": true,
@@ -28,8 +28,8 @@
     "inicial": "JCA",
     "cambio": false,
     "ubicacion": "./02 - 55457 - Carranza, Javier",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 8,
+    "comentario_tp3": "Nota: Los iconos y los formulario no se muestra bien\nNo realiza la edicion en el lugar.",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -93,7 +93,7 @@
     "tp3": true,
     "tp4": true,
     "tp5": true,
-    "tp6": false
+    "tp6": true
   },
   {
     "id": "C5-06",
@@ -682,7 +682,7 @@
     "tp3": true,
     "tp4": true,
     "tp5": false,
-    "tp6": false
+    "tp6": true
   },
   {
     "id": "C5-50",
@@ -699,7 +699,7 @@
     "tp3": true,
     "tp4": true,
     "tp5": true,
-    "tp6": false
+    "tp6": true
   },
   {
     "id": "C5-35",
@@ -938,7 +938,7 @@
     "tp3": true,
     "tp4": true,
     "tp5": false,
-    "tp6": false
+    "tp6": true
   },
   {
     "id": "C5-46",
