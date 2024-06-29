@@ -218,7 +218,7 @@
 					.replace(/[\u0300-\u036f]/g, '');
 			}
 
-            function esPractico(palabra) {
+			function esPractico(palabra) {
                 return /^-?tp\d{1,2}$/.test(palabra)
             }
 
@@ -240,7 +240,8 @@
             }
 
             function incluyePalabra(alumno, palabra){
-                let texto = normalizar(`${alumno.ubicacion} ${alumno.comentario_tp3} ${alumno.nota_tp3} ${alumno.inicial}`)
+				const nota = alumno.nota_tp3 ? 'con-nota' : 'sin-nota';
+                let texto = normalizar(`${alumno.ubicacion} ${alumno.comentario_tp3} ${alumno.nota_tp3} ${alumno.inicial} ${nota}`)
                 return texto.includes(palabra);
             }
 
@@ -272,6 +273,7 @@
 
 				useEffect(() => {
 					traerDatos();
+					setFiltro('tp3 tp6 cp6 sin-nota')
 				}, []);
 
 				async function traerDatos() {
@@ -288,11 +290,11 @@
 				const practicos = datos.length > 0 ? calcularPracticos(datos[0]) : [];
 
 				let mostrar = datos.filter((a) => incluir(a, filtro));
-                // mostrar = mostrar.filter((a) => cantidadPresentados(a) > 1);
+                mostrar = mostrar.filter((a) => cantidadPresentados(a) > 0);
 				return (
 					<div id='main'>
 						<h1> | {comision} | Listado de alumnos{' '} <small>({mostrar.length})</small></h1>
-						<input type='search' onChange={filtrar} />
+						<input type='search' value={filtro} onChange={filtrar} />
 						<Estadistica datos={datos} practicos={practicos} />
 						{mostrar.map((alumno) => <Alumno key={alumno.id} alumno={alumno} practicos={practicos}/>)}
 					</div>

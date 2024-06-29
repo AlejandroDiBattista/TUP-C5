@@ -3,7 +3,6 @@
 ## 01 - 55680 - Bustos, Mauricio Benjamin
 - Aprobado: 10
 
-
 ## 02 - 55457 - Carranza, Javier
 - Aprobado: 8
 - Nota: Los iconos y los formulario no se muestra bien
