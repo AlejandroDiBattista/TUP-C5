@@ -153,11 +153,11 @@
 			}
 
 			const Ver = ({ alumno, entrega }) => {
-				const nota = alumno['nota_tp3'];
-				const comentario = alumno['comentario_tp3'];
+				const nota = alumno['nota_tp6'];
+				const comentario = alumno['comentario_tp6'];
 				
 				const conIndex = entrega <= 'tp4'
-				const conNota = entrega == 'tp3' && nota && nota != '0';
+				const conNota = entrega == 'tp6' && nota && nota != '0';
 				const link = conIndex ? ubicar(alumno.ubicacion, entrega) : null;
 				return (
 					<div className='ver'>
@@ -240,8 +240,8 @@
             }
 
             function incluyePalabra(alumno, palabra){
-				const nota = alumno.nota_tp3 ? 'con-nota' : 'sin-nota';
-                let texto = normalizar(`${alumno.ubicacion} ${alumno.comentario_tp3} ${alumno.nota_tp3} ${alumno.inicial} ${nota}`)
+				const nota = alumno.nota_tp6 ? 'con-nota' : 'sin-nota';
+                let texto = normalizar(`${alumno.ubicacion}  ${alumno.comentario_tp3} ${alumno.nota_tp3} ${alumno.comentario_tp6} ${alumno.nota_tp6} ${alumno.inicial} ${nota}`)
                 return texto.includes(palabra);
             }
 
@@ -273,7 +273,7 @@
 
 				useEffect(() => {
 					traerDatos();
-					setFiltro('tp3 tp6 cp6 sin-nota')
+					setFiltro('tp3 tp6 cp5 sin-nota')
 				}, []);
 
 				async function traerDatos() {
