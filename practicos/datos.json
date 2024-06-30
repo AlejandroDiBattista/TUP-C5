@@ -17,7 +17,8 @@
     "tp5": false,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-02",
@@ -28,8 +29,8 @@
     "inicial": "JCA",
     "cambio": false,
     "ubicacion": "./02 - 55457 - Carranza, Javier",
-    "nota_tp3": 8,
-    "comentario_tp3": "Nota: Los iconos y los formulario no se muestra bien\nNo realiza la edicion en el lugar.",
+    "nota_tp3": 10,
+    "comentario_tp3": "",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -37,7 +38,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-03",
@@ -55,7 +57,10 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "nota_tp3": 7,
+    "comentario_tp3": "",
+    "TP3": true
   },
   {
     "id": "C5-04",
@@ -66,8 +71,8 @@
     "inicial": "PFD",
     "cambio": false,
     "ubicacion": "./04 - 55578 - Fernandez Dumit, Patricio",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 7,
+    "comentario_tp3": "no manejal edicion en el lugar, id repetidos.;No incrementa la cantidad de productos.",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -75,7 +80,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-05",
@@ -86,14 +92,15 @@
     "inicial": "MFG",
     "cambio": false,
     "ubicacion": "./05 - 58735 - Fernandez Gomez, Manuel",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 7,
+    "comentario_tp3": "No hacer el agregado arriba;No incrementa la cantidad de productos.;No respeta el diseño original.",
     "tp1": true,
     "tp2": true,
     "tp3": true,
     "tp4": true,
     "tp5": true,
-    "tp6": true
+    "tp6": true,
+    "TP3": true
   },
   {
     "id": "C5-06",
@@ -104,8 +111,8 @@
     "inicial": "SIF",
     "cambio": false,
     "ubicacion": "./06 - 58723 - Figueroa, Santiago Isaac",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 10,
+    "comentario_tp3": "Diferencias menores del diseño",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -113,7 +120,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-07",
@@ -124,8 +132,8 @@
     "inicial": "TFG",
     "cambio": false,
     "ubicacion": "./07 - 58895 - Flores Gonzalez, Tomas",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 9,
+    "comentario_tp3": "Diferencia menor en el diseño",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -133,7 +141,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-08",
@@ -153,7 +162,8 @@
     "tp5": false,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-09",
@@ -164,8 +174,8 @@
     "inicial": "VMG",
     "cambio": false,
     "ubicacion": "./09 - 58734 - Galvan, Victor Mateo",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 6,
+    "comentario_tp3": "No cancela la edicion;No incrementa la cantidad de productos (1+1=11);Duplica el id de los productos",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -173,7 +183,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-10",
@@ -184,8 +195,8 @@
     "inicial": "MGA",
     "cambio": false,
     "ubicacion": "./10 - 59154 - Garcia, Máximo",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 10,
+    "comentario_tp3": "Diferencias menores en el diseño",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -193,7 +204,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-11",
@@ -204,8 +216,8 @@
     "inicial": "SMGA",
     "cambio": false,
     "ubicacion": "./11 - 58740 - Garcia, Sergio Martín",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 6,
+    "comentario_tp3": "No incrementa;No funciona la alta;No respeta el diseño",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -213,7 +225,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-12",
@@ -224,8 +237,8 @@
     "inicial": "MGM",
     "cambio": false,
     "ubicacion": "./12 - 59076 - Gomez Martinez, Matias",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 9,
+    "comentario_tp3": "Diferencias menores en el diseño",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -233,7 +246,8 @@
     "tp5": false,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-13",
@@ -244,8 +258,8 @@
     "inicial": "FMG",
     "cambio": false,
     "ubicacion": "./13 - 59135 - Gomez, Facundo Matias",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 8,
+    "comentario_tp3": "No incrementa la cantidad de productos.;Estan mal los botones",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -253,7 +267,8 @@
     "tp5": false,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-14",
@@ -264,8 +279,8 @@
     "inicial": "FGN",
     "cambio": false,
     "ubicacion": "./14 - 58894 - Gonzalez Nacusse, Flavia",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 10,
+    "comentario_tp3": "Muy pequeñas diferencias en el diseño",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -273,7 +288,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-15",
@@ -291,7 +307,10 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "nota_tp3": 10,
+    "comentario_tp3": "Perfecto",
+    "TP3": true
   },
   {
     "id": "C5-16",
@@ -302,8 +321,8 @@
     "inicial": "MNG",
     "cambio": false,
     "ubicacion": "./16 - 58720 - Gonzalez, Martín Natanael",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 10,
+    "comentario_tp3": "Muy pequeños detalles en el diseño",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -311,7 +330,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-17",
@@ -322,8 +342,8 @@
     "inicial": "SMGO",
     "cambio": false,
     "ubicacion": "./17 - 59068 - Gonzalez, Silvina Mariela",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 10,
+    "comentario_tp3": "Un solo problema, al cancelar muestra mensaje de validacion",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -331,7 +351,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-18",
@@ -342,8 +363,8 @@
     "inicial": "APG",
     "cambio": false,
     "ubicacion": "./18 - 58786 - Gutierrez, Augusto Pedro",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 10,
+    "comentario_tp3": "uso innecesario de librerias externas pero funciona",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -351,7 +372,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-19",
@@ -362,8 +384,8 @@
     "inicial": "CALG",
     "cambio": false,
     "ubicacion": "./19 - 58880 - Gutierrez, Cecilia Ana Lu",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 8,
+    "comentario_tp3": "No incrementa la cantidad de productos.;No respeta el diseño",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -371,7 +393,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-20",
@@ -382,8 +405,8 @@
     "inicial": "SNJ",
     "cambio": false,
     "ubicacion": "./20 - 58687 - Jadur, Sofia Nahir",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 9,
+    "comentario_tp3": "No permite cancelar la alta de producto;No respeta el diseño",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -391,7 +414,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-21",
@@ -402,8 +426,8 @@
     "inicial": "LDJH",
     "cambio": false,
     "ubicacion": "./21 - 58736 - Juarez Hindi, Lucas David",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 8,
+    "comentario_tp3": "No permite agregar cuando se esta editando;No respeta el diseño original",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -411,7 +435,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-22",
@@ -422,14 +447,15 @@
     "inicial": "LAJ",
     "cambio": false,
     "ubicacion": "./22 - 58761 - Juarez, Lautaro Andres",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 10,
+    "comentario_tp3": "Hay diferencias en el diseño pero no afectan la funcionalidad",
     "tp1": true,
     "tp2": true,
     "tp3": true,
     "tp4": true,
     "tp5": true,
-    "tp6": false
+    "tp6": false,
+    "TP3": true
   },
   {
     "id": "C5-23",
@@ -440,8 +466,8 @@
     "inicial": "MMJ",
     "cambio": false,
     "ubicacion": "./23 - 58758 - Juarez, Milagro Macarena",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 9,
+    "comentario_tp3": "No funciona el cancelar al agregar;Diferencia en el diseño, no reutiliza la edicion de productos",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -449,7 +475,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-24",
@@ -460,8 +487,8 @@
     "inicial": "GSJ",
     "cambio": false,
     "ubicacion": "./24 - 58721 - Juncos, Gonzalo Sebastian",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 8,
+    "comentario_tp3": "La alta de producto aunque cancele igual agrega un producto",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -469,7 +496,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-25",
@@ -480,8 +508,8 @@
     "inicial": "MAL",
     "cambio": false,
     "ubicacion": "./25 - 59070 - Ladina, Maia Agostina",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 8,
+    "comentario_tp3": "No mantine los productos ordenados alfabeticamente;Agrega al final de la lista en lugar de al comienzo",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -489,7 +517,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-26",
@@ -500,14 +529,15 @@
     "inicial": "MLA",
     "cambio": false,
     "ubicacion": "./26 - 58737 - Lasagna, Manuel",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 6,
+    "comentario_tp3": "No permite la edicion en el lugar.;No funciona el incremento de cantidad;No respeta el diseño;Al borrar un elemento se borran todos",
     "tp1": true,
     "tp2": true,
     "tp3": true,
     "tp4": true,
     "tp5": false,
-    "tp6": false
+    "tp6": false,
+    "TP3": true
   },
   {
     "id": "C5-27",
@@ -518,8 +548,8 @@
     "inicial": "AML",
     "cambio": false,
     "ubicacion": "./27 - 58756 - Lazarte, Agustina Milagro",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 5,
+    "comentario_tp3": "No esta hecho en react!!!;No incrementa automaticamente;No realiza la edicion con un formulario;No permite la edicion en el lugar",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -527,7 +557,8 @@
     "tp5": false,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-28",
@@ -538,8 +569,8 @@
     "inicial": "LLA",
     "cambio": false,
     "ubicacion": "./28 - 58727 - Lazarte, Lucas",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 9,
+    "comentario_tp3": "Diferencia en el diseño",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -547,7 +578,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-29",
@@ -558,8 +590,8 @@
     "inicial": "ALC",
     "cambio": false,
     "ubicacion": "./29 - 59152 - Lopez Chipoloni, Agustin",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 10,
+    "comentario_tp3": "Diferencias menores en el diseño",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -567,7 +599,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-30",
@@ -578,8 +611,8 @@
     "inicial": "MJLG",
     "cambio": false,
     "ubicacion": "./30 - 58724 - Lopez Garcia, Marcos Juli",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 10,
+    "comentario_tp3": "Diferencias muy pequeñas en el diseño",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -587,7 +620,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-31",
@@ -598,8 +632,8 @@
     "inicial": "FAL",
     "cambio": false,
     "ubicacion": "./31 - 58726 - Lopez, Fausto Agustin",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 9,
+    "comentario_tp3": "No tiene cancelar el agregar y cuando la validacion falla limpia los campos",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -607,7 +641,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-32",
@@ -618,8 +653,8 @@
     "inicial": "MEL",
     "cambio": false,
     "ubicacion": "./32 - 58729 - Lovey, Mathias Exequiel",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 9,
+    "comentario_tp3": "Falla la cancelacion al agregar",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -627,7 +662,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-33",
@@ -638,8 +674,8 @@
     "inicial": "DMM",
     "cambio": false,
     "ubicacion": "./33 - 59071 - Medina, Daiana Micaela",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 9,
+    "comentario_tp3": "Agrega al final de la lista",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -647,7 +683,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-34",
@@ -658,14 +695,15 @@
     "inicial": "TLMB",
     "cambio": false,
     "ubicacion": "./34 - 59099 - Moyano Berrondo, Tahiel L",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 10,
+    "comentario_tp3": "Diferencias mínimas en el diseño",
     "tp1": true,
     "tp2": false,
     "tp3": true,
     "tp4": true,
     "tp5": false,
-    "tp6": true
+    "tp6": true,
+    "TP3": true
   },
   {
     "id": "C5-35",
@@ -676,7 +714,7 @@
     "inicial": "MHP",
     "cambio": false,
     "ubicacion": "./35 - 58805 - Prieto, Matias Hernan",
-    "nota_tp3": 0,
+    "nota_tp3": 10,
     "comentario_tp3": "",
     "tp1": true,
     "tp2": true,
@@ -685,7 +723,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-36",
@@ -696,8 +735,8 @@
     "inicial": "RRR",
     "cambio": false,
     "ubicacion": "./36 - 59054 - Rahman Rintoul, Ramiro",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 10,
+    "comentario_tp3": "Diferencias menores en el diseño",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -705,7 +744,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-37",
@@ -716,8 +756,8 @@
     "inicial": "LGR",
     "cambio": false,
     "ubicacion": "./37 - 58766 - Reinoso, Lisandro Gabriel",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 9,
+    "comentario_tp3": "La alta la realiza en otra pagina",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -725,7 +765,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-38",
@@ -736,8 +777,8 @@
     "inicial": "LRI",
     "cambio": false,
     "ubicacion": "./38 - 58753 - Rivadeneira, Lautaro",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 9,
+    "comentario_tp3": "No reutiliza el formulario de agregar producto;No se puede cancelar el alta",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -745,7 +786,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-39",
@@ -756,8 +798,8 @@
     "inicial": "GRO",
     "cambio": false,
     "ubicacion": "./39 - 58686 - Rodriguez, Gustavo",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 9,
+    "comentario_tp3": "Permite realizar multiples altas simultaneas",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -765,7 +807,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-40",
@@ -776,8 +819,8 @@
     "inicial": "CAR",
     "cambio": false,
     "ubicacion": "./40 - 58806 - Rojas, Carlos Augusto",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 10,
+    "comentario_tp3": "Pequeñas diferencias en el diseño",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -785,7 +828,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-41",
@@ -796,8 +840,8 @@
     "inicial": "MJRS",
     "cambio": false,
     "ubicacion": "./41 - 58692 - Rosello Salas, Maia Josef",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 9,
+    "comentario_tp3": "No reutiliza el formulario de agregar producto",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -805,7 +849,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-42",
@@ -816,8 +861,8 @@
     "inicial": "EGS",
     "cambio": false,
     "ubicacion": "./42 - 58873 - Salazar, Enzo Gabriel",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 9,
+    "comentario_tp3": "No tiene el boton cancelar en la alta ",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -825,7 +870,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-43",
@@ -836,8 +882,8 @@
     "inicial": "EST",
     "cambio": false,
     "ubicacion": "./43 - 55870 - Stemberger, Emiliano",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 9,
+    "comentario_tp3": "Permite multiples altas de prodoctos",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -845,7 +891,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-44",
@@ -856,7 +903,7 @@
     "inicial": "ADT",
     "cambio": false,
     "ubicacion": "./44 - 58845 - Terrera, Augusto Dante",
-    "nota_tp3": 0,
+    "nota_tp3": 10,
     "comentario_tp3": "",
     "tp1": true,
     "tp2": true,
@@ -865,7 +912,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-45",
@@ -876,14 +924,15 @@
     "inicial": "LBT",
     "cambio": false,
     "ubicacion": "./45 - 59052 - Teseira, Lucas Benjamin",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 8,
+    "comentario_tp3": "No hace un formulario para dar la alta sino muestra siempre los campos.;Permit dar la alta sin tener en cuenta si se ingresaron los datos.",
     "tp1": true,
     "tp2": false,
     "tp3": true,
     "tp4": true,
     "tp5": false,
-    "tp6": true
+    "tp6": true,
+    "TP3": true
   },
   {
     "id": "C5-46",
@@ -894,8 +943,8 @@
     "inicial": "FTO",
     "cambio": false,
     "ubicacion": "./46 - 57543 - Touceda, Federico",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 10,
+    "comentario_tp3": "Diferencias menores en el diseño",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -903,7 +952,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-47",
@@ -914,8 +964,8 @@
     "inicial": "JPU",
     "cambio": false,
     "ubicacion": "./47 - 59064 - Urbani, Juan Pablo",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 8,
+    "comentario_tp3": "No hace la alta al comienzo de la lista;No cancela la alta",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -923,7 +973,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-48",
@@ -941,7 +992,10 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "nota_tp3": 9,
+    "comentario_tp3": "La alta la realiza antes de titulo;No respeta el diseño de la consigna",
+    "TP3": true
   },
   {
     "id": "C5-49",
@@ -952,8 +1006,8 @@
     "inicial": "JGV",
     "cambio": false,
     "ubicacion": "./49 - 58899 - Villagra, Juan Gabriel",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 10,
+    "comentario_tp3": "Diferencias menores en el diseño",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -961,7 +1015,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-50",
@@ -978,7 +1033,10 @@
     "tp3": true,
     "tp4": true,
     "tp5": true,
-    "tp6": true
+    "tp6": true,
+    "nota_tp3": 10,
+    "comentario_tp3": "Diferencias menores en el diseño",
+    "TP3": true
   },
   {
     "id": "C5-51",
@@ -990,8 +1048,8 @@
     "cambio": false,
     "antes": "C3-45",
     "ubicacion": "./51 - 58951 - Robles, Ezequiel",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 10,
+    "comentario_tp3": "Perfecto",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -999,7 +1057,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   },
   {
     "id": "C5-52",
@@ -1016,7 +1075,8 @@
     "tp3": false,
     "tp4": false,
     "tp5": false,
-    "tp6": false
+    "tp6": false,
+    "TP3": false
   },
   {
     "id": "C5-53",
@@ -1027,8 +1087,8 @@
     "inicial": "BW (verificar)",
     "cambio": false,
     "ubicacion": "./53 - 59909 - Wierna, Belén",
-    "nota_tp3": 0,
-    "comentario_tp3": "",
+    "nota_tp3": 9,
+    "comentario_tp3": "No hay forma de cancelar la alta",
     "tp1": true,
     "tp2": true,
     "tp3": true,
@@ -1036,6 +1096,7 @@
     "tp5": false,
     "tp6": true,
     "nota_tp6": 0,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "TP3": true
   }
 ]

@@ -172,9 +172,17 @@
 - Nota: 9
 - Permite realizar multiples altas simultaneas
 
+## 40 - 58806 - Rojas, Carlos Augusto
+- Nota: 10
+- Pequeñas diferencias en el diseño
+
 ## 41 - 58692 - Rosello Salas, Maia Josef
 - Nota: 9
 - No reutiliza el formulario de agregar producto
+
+## 42 - 58873 - Salazar, Enzo Gabriel
+- Nota: 9
+- No tiene el boton cancelar en la alta 
 
 ## 43 - 55870 - Stemberger, Emiliano
 - Nota: 9
