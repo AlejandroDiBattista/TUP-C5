@@ -1,148 +1,148 @@
 # Evaluación TP3 - C5
 
 ## 01 - 55680 - Bustos, Mauricio Benjamin
-- Aprobado: 10
+- Nota: 10
 
 ## 02 - 55457 - Carranza, Javier
-- Aprobado: 8
-- Nota: Los iconos y los formulario no se muestra bien
+- Nota: 8
+- Los iconos y los formulario no se muestra bien
 - No realiza la edicion en el lugar.
 
 ## 04 - 55578 - Fernandez Dumit, Patricio
-- Aprobado: 
+- Nota: 
 
 ## 05 - 58735 - Fernandez Gomez, Manuel
-- Aprobado: 
+- Nota: 
 
 ## 06 - 58723 - Figueroa, Santiago Isaac
-- Aprobado: 
+- Nota: 
 
 ## 07 - 58895 - Flores Gonzalez, Tomas
-- Aprobado: 
+- Nota: 
 
 ## 08 - 58781 - Frias Armengol, Facundo
-- Aprobado: 
+- Nota: 
 
 ## 09 - 58734 - Galvan, Victor Mateo
-- Aprobado: 
+- Nota: 
 
 ## 10 - 59154 - Garcia, Máximo
-- Aprobado: 
+- Nota: 
 
 ## 11 - 58740 - Garcia, Sergio Martín
-- Aprobado: 
+- Nota: 
 
 ## 12 - 59076 - Gomez Martinez, Matias
-- Aprobado: 
+- Nota: 
 
 ## 13 - 59135 - Gomez, Facundo Matias
-- Aprobado: 
+- Nota: 
 
 ## 14 - 58894 - Gonzalez Nacusse, Flavia
-- Aprobado: 
+- Nota: 
 
 ## 16 - 58720 - Gonzalez, Martín Natanael
-- Aprobado: 
+- Nota: 
 
 ## 17 - 59068 - Gonzalez, Silvina Mariela
-- Aprobado: 
+- Nota: 
 
 ## 18 - 58786 - Gutierrez, Augusto Pedro
-- Aprobado: 
+- Nota: 
 
 ## 19 - 58880 - Gutierrez, Cecilia Ana Lu
-- Aprobado: 
+- Nota: 
 
 ## 20 - 58687 - Jadur, Sofia Nahir
-- Aprobado: 
+- Nota: 
 
 ## 21 - 58736 - Juarez Hindi, Lucas David
-- Aprobado: 
+- Nota: 
 
 ## 22 - 58761 - Juarez, Lautaro Andres
-- Aprobado: 
+- Nota: 
 
 ## 23 - 58758 - Juarez, Milagro Macarena
-- Aprobado: 
+- Nota: 
 
 ## 24 - 58721 - Juncos, Gonzalo Sebastian
-- Aprobado: 
+- Nota: 
 
 ## 25 - 59070 - Ladina, Maia Agostina
-- Aprobado: 
+- Nota: 
 
 ## 26 - 58737 - Lasagna, Manuel
-- Aprobado: 
+- Nota: 
 
 ## 27 - 58756 - Lazarte, Agustina Milagro
-- Aprobado: 
+- Nota: 
 
 ## 28 - 58727 - Lazarte, Lucas
-- Aprobado: 
+- Nota: 
 
 ## 29 - 59152 - Lopez Chipoloni, Agustin
-- Aprobado: 
+- Nota: 
 
 ## 30 - 58724 - Lopez Garcia, Marcos Juli
-- Aprobado: 
+- Nota: 
 
 ## 31 - 58726 - Lopez, Fausto Agustin
-- Aprobado: 
+- Nota: 
 
 ## 32 - 58729 - Lovey, Mathias Exequiel
-- Aprobado: 
+- Nota: 
 
 ## 33 - 59071 - Medina, Daiana Micaela
-- Aprobado: 
+- Nota: 
 
 ## 34 - 59099 - Moyano Berrondo, Tahiel L
-- Aprobado: 
+- Nota: 
 
 ## 35 - 58805 - Prieto, Matias Hernan
-- Aprobado: 
+- Nota: 
 
 ## 36 - 59054 - Rahman Rintoul, Ramiro
-- Aprobado: 
+- Nota: 
 
 ## 37 - 58766 - Reinoso, Lisandro Gabriel
-- Aprobado: 
+- Nota: 
 
 ## 38 - 58753 - Rivadeneira, Lautaro
-- Aprobado: 
+- Nota: 
 
 ## 39 - 58686 - Rodriguez, Gustavo
-- Aprobado: 
+- Nota: 
 
 ## 40 - 58806 - Rojas, Carlos Augusto
-- Aprobado: 
+- Nota: 
 
 ## 41 - 58692 - Rosello Salas, Maia Josef
-- Aprobado: 
+- Nota: 
 
 ## 42 - 58873 - Salazar, Enzo Gabriel
-- Aprobado: 
+- Nota: 
 
 ## 43 - 55870 - Stemberger, Emiliano
-- Aprobado: 
+- Nota: 
 
 ## 44 - 58845 - Terrera, Augusto Dante
-- Aprobado: 
+- Nota: 
 
 ## 45 - 59052 - Teseira, Lucas Benjamin
-- Aprobado: 
+- Nota: 
 
 ## 46 - 57543 - Touceda, Federico
-- Aprobado: 
+- Nota: 
 
 ## 47 - 59064 - Urbani, Juan Pablo
-- Aprobado: 
+- Nota: 
 
 ## 49 - 58899 - Villagra, Juan Gabriel
-- Aprobado: 
+- Nota: 
 
 ## 51 - 58951 - Robles, Ezequiel
-- Aprobado: 
+- Nota: 
 
 ## 53 - 59909 - Wierna, Belén
-- Aprobado: 
+- Nota: 
 - 
