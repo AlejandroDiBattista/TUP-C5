@@ -136,6 +136,14 @@
 				overflow-x: hidden; /* Deshabilita el desplazamiento horizontal */
 				overflow-y: scroll; /* Habilita el desplazamiento vertical */
 			}
+
+			.filtros {
+				margin: 10px 0;
+				display: flex;
+				justify-content: space-between;
+				font-size: 24px;
+				padding: 3px;
+			}
 		</style>
 
 		<script type="text/babel">
@@ -152,22 +160,55 @@
 				return { si, no };
 			}
 
-			const Ver = ({ alumno, entrega }) => {
-				const nota = alumno['nota_tp6'];
-				const comentario = alumno['comentario_tp6'];
+			function promociona(alumno){
+				let n3 = alumno["nota_tp3"];
+				let n6 = alumno["nota_tp6"];
+				return n3 > 8 && n6 > 8 && cantidadPresentados(alumno) > 5;
+			}
+
+			function casiPromociona(alumno){
+				let n3 = alumno["nota_tp3"];
+				let n6 = alumno["nota_tp6"];
+
+				return (n3 == 8 && n6 > 8 || n3 > 8 && n6 == 8) && (cantidadPresentados(alumno) >= 5);
+			}
+
+			function debeRevisar(alumno, tp=""){
+				return alumno.comentario_tp3?.includes('iguales') && (tp == "tp3" || tp=="")||
+					   alumno.comentario_tp6?.includes('iguales') && (tp == "tp6" || tp=="");	
+			}
+
+			const Entrego = ({ alumno, entrega }) => {
+				const tp = entrega.toLowerCase();
+				const nota = alumno[`nota_${tp}`] ?? 0;
+				const comentario = alumno[`comentario_${tp}`] ?? "";
 				
 				const conIndex = entrega <= 'tp4'
-				const conNota = entrega == 'tp6' && nota && nota != '0';
+				const conNota = (tp == 'tp3' || tp == 'tp6') && nota != '0';
 				const link = conIndex ? ubicar(alumno.ubicacion, entrega) : null;
+				const iguales = debeRevisar(alumno, tp);
+					
+					return (
+					<>
+						<div>
+							<a href={link}>
+								{entrega} | {iguales ? '🟡' : '🟢'} {conIndex && "Ver Trabajo"} {conNota && <b> (nota {nota})</b>}
+							</a>
+						</div>
+						{comentario && <ul>{comentario.split(";").map((comentario,i) => <li key={i}>{comentario}</li>)}</ul>}
+					</>
+				);
+			};
+
+			const Falto = ({entrega}) => <span className='falta'> {entrega} | 🔴 No entregó</span>;
+
+			const Ver = ({ alumno, entrega }) => {
 				return (
 					<div className='ver'>
-						{alumno[entrega] ? (
-							<a href={link}>
-								{entrega} | 🟢 {conIndex && "Ver Trabajo"} 
-								{conNota && <b>(nota {nota})</b>}
-							</a>
-						) : <span className='falta'>{entrega} | 🔴 </span>}
-						
+						{alumno[entrega] ? 
+							<Entrego alumno={alumno} entrega={entrega} /> :
+						  	<Falto entrega={entrega} />
+						}
 					</div>
 				);
 			};
@@ -175,11 +216,12 @@
 			const Alumno = ({ alumno, practicos }) => {
 				const [apellido, nombre] = alumno.nombre.split(', ');
 				const verificar = alumno.inicial.includes('verificar')
-
+				const promocion = promociona(alumno)
+				
 				return (
 					<div className='alumno'>
 						<h2>
-							<span>{alumno.orden}</span> {nombre} <b>{apellido}</b>{verificar && <span>🤔</span>}
+							{promocion && '⭐'} <span>{alumno.orden}</span> {nombre} <b>{apellido}</b>{verificar && <span>🤔</span>}
 						</h2>
 						{practicos.map(practico => <Ver key={practico} alumno={alumno} entrega={practico} />)}
 					</div>
@@ -240,8 +282,11 @@
             }
 
             function incluyePalabra(alumno, palabra){
-				const nota = alumno.nota_tp6 ? 'con-nota' : 'sin-nota';
-                let texto = normalizar(`${alumno.ubicacion}  ${alumno.comentario_tp3} ${alumno.nota_tp3} ${alumno.comentario_tp6} ${alumno.nota_tp6} ${alumno.inicial} ${nota}`)
+				const nota = (alumno.nota_tp6 && alumno.nota_tp3) ? 'con-nota' : 'sin-nota';
+				const promocion = promociona(alumno) ? 'promociona' : '';
+				const casi = casiPromociona(alumno) ? 'casi' : '';
+				const revisar = debeRevisar(alumno) ? 'revisar' : '';
+                let texto = normalizar(`${alumno.ubicacion}  ${alumno.comentario_tp3} ${alumno.nota_tp3} ${alumno.comentario_tp6} ${alumno.nota_tp6} ${alumno.inicial} ${nota} ${promocion} ${casi} ${revisar}`)
                 return texto.includes(palabra);
             }
 
@@ -273,7 +318,7 @@
 
 				useEffect(() => {
 					traerDatos();
-					setFiltro('tp3 tp6 cp5 sin-nota')
+					setFiltro('tp3 tp6 sin-nota')
 				}, []);
 
 				async function traerDatos() {
@@ -286,6 +331,11 @@
 					setFiltro(e.target.value.toLowerCase());
 				}
 
+				function ponerFiltro(e){
+					e.preventDefault();
+					setFiltro(e.target.text.toLowerCase());
+				}
+
 				const comision  = datos.length > 0 ? datos[0].comision : '';
 				const practicos = datos.length > 0 ? calcularPracticos(datos[0]) : [];
 
@@ -295,6 +345,11 @@
 					<div id='main'>
 						<h1> | {comision} | Listado de alumnos{' '} <small>({mostrar.length})</small></h1>
 						<input type='search' value={filtro} onChange={filtrar} />
+						<div className="filtros">
+							<a href="#" onClick={(ponerFiltro)}>Promociona</a>
+							<a href="#" onClick={ponerFiltro}>Casi</a>
+							<a href="#" onClick={ponerFiltro}>Revisar</a>
+						</div>
 						<Estadistica datos={datos} practicos={practicos} />
 						{mostrar.map((alumno) => <Alumno key={alumno.id} alumno={alumno} practicos={practicos}/>)}
 					</div>
