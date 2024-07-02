@@ -12,25 +12,22 @@ const Login = ({ onLogin }) => {
             alert('Todos los campos son obligatorios')
             return
         }
-        else {
-            try {
-                const res = await fetch('http://localhost:3000/login', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        user: user,
-                        password: password
-                    })
-                })
-                const data = await res.json();
-                if (data) {
-                    onLogin(data);
-                } else {
-                    alert('Usuario o contraseña incorrecta');
-                }
-            } catch (error) {
-                alert('Error al conectar con el servidor')
+        try {
+            const res = await fetch('http://localhost:3000/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({user, password}),
+                credentials: 'include'
+            })
+            const data = await res.json()
+            if (res.ok) {
+                onLogin(data);
+            } else {
+                alert(data.message || 'Usuario o contraseña incorrecta');
             }
+        } catch (error) {
+            console.error('Error al conectar al servidor: ', error)
+            alert('Error al conectar con el servidor')
         }
     }
 
@@ -44,7 +41,7 @@ const Login = ({ onLogin }) => {
         <>
             {mostrar
                 ?
-                <Registrar />
+                <Registrar onLogin={onLogin} />
                 :
                 <div>
                     <h1>Login</h1>
@@ -62,7 +59,7 @@ const Login = ({ onLogin }) => {
     )
 }
 
-const Registrar = () => {
+const Registrar = ({onLogin}) => {
     const [user, setUser] = useState('')
     const [password, setPassword] = useState('')
     const [rPassword, setRPassword] = useState('')
@@ -70,43 +67,47 @@ const Registrar = () => {
 
     const registrarse = async (e) => {
         e.preventDefault()
-        if (!user || !password ) {
+        if (!user || !password) {
             alert('Todos los campos son necesarios!')
             return
         }
         else if (password.length < 4 || rPassword.length < 4) {
-            alert('La contraseña debe tener al menos 8 caracteres')
+            alert('La contraseña debe tener al menos 4 caracteres')
             return
         }
-        else if (rPassword != password) {
+        else if (rPassword !== password) {
             alert('Las contraseñas no coinciden')
             return
         }
-        else {
-            try {
-                const res = await fetch('http://localhost:3000/register', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ user, password })
-                });
-                const data = await res.json()
-                if (res.status === 201) {
-                    alert('Usuario registrado con éxito')
-                    setMostrar(true)
-                } else {
-                    alert('Error al registrar usuario: ')
-                }
-            } catch (error) {
-                alert('Error al conectar con el servidor')
+        try {
+            const res = await fetch('http://localhost:3000/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ user, password })
+            });
+            const data = await res.json()
+            if (res.status === 201) {
+                alert('Usuario registrado con éxito')
+                setMostrar(true)
+            } else {
+                alert('Error al registrar usuario: ' + data.message)
             }
-        }
+        } catch (error) {
+            alert('Error al conectar con el servidor')
+        } 
+
+    }
+
+    const ingresar = (e) => {
+        e.preventDefault()
+        setMostrar(true)
     }
 
     return (
         <>
             {mostrar
                 ?
-                <Login />
+                <Login onLogin={onLogin}/>
                 :
                 <div>
                     <h1>Registrar</h1>
@@ -117,6 +118,7 @@ const Registrar = () => {
                         <br />
                         <input type="password" placeholder="Repetir contraseña" onChange={(e) => setRPassword(e.target.value)} />
                         <br />
+                        <button onClick={ingresar}>Ingresar</button>
                         <button onClick={registrarse}>Registrarse</button>
                     </form>
                 </div>
@@ -128,6 +130,8 @@ const Registrar = () => {
 function App() {
     const [authenticated, setAuthenticated] = useState(false)
     const [user, setUser] = useState(null)
+
+    
 
     const handleLogin = (userData) => {
         setUser(userData)
@@ -149,7 +153,8 @@ function App() {
         } catch (error) {
             alert('Error al conectar con el servidor');
         }
-    };
+    }
+
 
     return (
         <div>
