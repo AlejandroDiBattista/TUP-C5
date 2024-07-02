@@ -156,8 +156,7 @@
 - Son iguales #30, #43
 
 ## 44 - 58845 - Terrera, Augusto Dante
-- Nota: 8
-- No funciona el login. Guarda como 'user' pero compara como 'usuario'
+- Nota: 9
 
 ## 45 - 59052 - Teseira, Lucas Benjamin
 - Nota: 7
