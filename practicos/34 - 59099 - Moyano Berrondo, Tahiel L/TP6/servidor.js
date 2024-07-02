@@ -7,19 +7,20 @@ const app = express();
 const PUERTO = process.env.PORT || 3000;
 
 app.use(cors({
-    origin: 'http://127.0.0.1:5500', // Asegúrate de que este sea el origen correcto de tu frontend
-    credentials: true
+    // origin: 'http://127.0.0.1:5500', // Asegúrate de que este sea el origen correcto de tu frontend
+    // credentials: true
 }));
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(express.json());
+app.use(express.static('public'));
 
 let usuarios = [
     { id: 1, nombreUsuario: 'Lisandro', contraseña: '1234' },
-    { id: 2, nombreUsuario: 'Lautaro', contraseña: 'Hola' },
-    { id: 3, nombreUsuario: 'Lucas', contraseña: 'zzz' },
-    { id: 4, nombreUsuario: 'Esteban', contraseña: 'Nose' },
-    { id: 5, nombreUsuario: 'Tahiel', contraseña: '4321' },
+    { id: 2, nombreUsuario: 'Lautaro',  contraseña: 'Hola' },
+    { id: 3, nombreUsuario: 'Lucas',    contraseña: 'zzz' },
+    { id: 4, nombreUsuario: 'Esteban',  contraseña: 'Nose' },
+    { id: 5, nombreUsuario: 'Tahiel',   contraseña: '4321' },
 ];
 
 let siguienteIdUsuario = 6; // Para asignar automáticamente el siguiente ID al registrar un nuevo usuario

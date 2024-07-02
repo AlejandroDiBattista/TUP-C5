@@ -68,13 +68,13 @@ app.put('/login',(req, res) => {
     let token = req.cookies.token;
     let { user, password } = req.body;
 
+    
     let usuarioLogueado = usuarios.find(u => u.user === user && password === u.password && u.token);
     if (usuarioLogueado) {
         res.status(401).json({ ok: false, mensaje: 'Ya existe una sesión iniciada' });
         console.log(token)
         return;
     }
-
 console.log(usuarios);
 
     let usuario = usuarios.find(u => u.user === user && password === u.password && !u.token);
@@ -82,12 +82,10 @@ console.log(usuarios);
     if (usuario) {
         let token = crearToken();
         usuario.token = token;
-        res.cookie('token', token,
-            {
-                httpOnly: true,
-
-                expires: new Date(Date.now() + 1000 * 60 * 10)
-            });
+        res.cookie('token', token, {
+            httpOnly: true,
+            expires: new Date(Date.now() + 1000 * 60 * 10)
+        });
         res.status(200);
         res.json({ ok: true, mensaje: 'El usuario ha sido logueado con éxito' });
     }

@@ -1,9 +1,5 @@
 # Evaluación TP3 en C5
 
-## 51 - 58951 - Robles, Ezequiel
-- Nota: 10
--  Perfecto
-
 ## 01 - 55681 - Bustos, Mauricio Benjamin
 - Nota: 10
 
@@ -217,10 +213,14 @@
 - Nota: 10
 -  Diferencias menores en el diseño
 
-## 53 - 59909 - Wierna, Belén
-- Nota: 9
--  No hay forma de cancelar la alta
-
 ## 50 - 59001 - Peralta, Axel Rubens
 - Nota: 10
 -  Diferencias menores en el diseño
+
+## 51 - 58951 - Robles, Ezequiel
+- Nota: 10
+-  Perfecto
+
+## 53 - 59909 - Wierna, Belén
+- Nota: 9
+-  No hay forma de cancelar la alta

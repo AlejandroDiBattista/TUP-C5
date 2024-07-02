@@ -52,7 +52,7 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #14, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express)",
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)",
     "nota_tp3": 7,
     "comentario_tp3": ""
   },
@@ -111,7 +111,7 @@
     "nota_tp3": 10,
     "comentario_tp3": " Diferencias menores del diseño",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #14, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express)"
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)"
   },
   {
     "id": "C5-07",
@@ -186,7 +186,7 @@
     "tp6": true,
     "nota_tp3": 10,
     "comentario_tp3": " Diferencias menores en el diseño",
-    "nota_tp6": 7,
+    "nota_tp6": 9,
     "comentario_tp6": "Son iguales #10, #29"
   },
   {
@@ -263,7 +263,7 @@
     "nota_tp3": 10,
     "comentario_tp3": " Muy pequeñas diferencias en el diseño",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #14, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express)"
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)"
   },
   {
     "id": "C5-15",
@@ -280,7 +280,7 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #14, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express)",
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)",
     "nota_tp3": 10,
     "comentario_tp3": " Perfecto"
   },
@@ -377,7 +377,7 @@
     "nota_tp3": 9,
     "comentario_tp3": " No permite cancelar la alta de producto; No respeta el diseño",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #14, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express)"
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)"
   },
   {
     "id": "C5-21",
@@ -601,7 +601,7 @@
     "nota_tp3": 9,
     "comentario_tp3": " Falla la cancelacion al agregar",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #14, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express)"
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)"
   },
   {
     "id": "C5-33",
@@ -713,7 +713,7 @@
     "nota_tp3": 9,
     "comentario_tp3": " No reutiliza el formulario de agregar producto; No se puede cancelar el alta",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #14, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express)"
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)"
   },
   {
     "id": "C5-39",
@@ -732,7 +732,7 @@
     "nota_tp3": 9,
     "comentario_tp3": " Permite realizar multiples altas simultaneas",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #14, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express)"
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)"
   },
   {
     "id": "C5-40",
@@ -770,7 +770,7 @@
     "nota_tp3": 9,
     "comentario_tp3": " No reutiliza el formulario de agregar producto",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #14, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express);Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (react)"
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express);Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (react)"
   },
   {
     "id": "C5-42",
@@ -789,7 +789,7 @@
     "nota_tp3": 9,
     "comentario_tp3": "No tiene el boton cancelar en la alta ",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #14, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express);Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (react)"
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express);Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (react)"
   },
   {
     "id": "C5-43",
@@ -846,7 +846,7 @@
     "nota_tp3": 8,
     "comentario_tp3": " No hace un formulario para dar la alta sino muestra siempre los campos.; Permit dar la alta sin tener en cuenta si se ingresaron los datos.",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #14, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express);Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (react)"
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express);Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (react)"
   },
   {
     "id": "C5-46",
@@ -865,7 +865,7 @@
     "nota_tp3": 10,
     "comentario_tp3": " Diferencias menores en el diseño",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #14, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express)"
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express)"
   },
   {
     "id": "C5-47",
@@ -922,7 +922,7 @@
     "nota_tp3": 10,
     "comentario_tp3": " Diferencias menores en el diseño",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #15, #20, #23, #28, #38, #39, #41, #42, #45, #46, #51, #53 (express)"
+    "comentario_tp6": "Son iguales #03, #15, #20, #23, #28, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)"
   },
   {
     "id": "C5-50",
@@ -962,7 +962,7 @@
     "nota_tp3": 10,
     "comentario_tp3": " Perfecto",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #14, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express);Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (react)"
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express);Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (react)"
   },
   {
     "id": "C5-52",
@@ -997,6 +997,6 @@
     "nota_tp3": 9,
     "comentario_tp3": " No hay forma de cancelar la alta",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #14, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express);Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (react)"
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express);Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (react)"
   }
 ]

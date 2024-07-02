@@ -119,7 +119,6 @@ function App() {
                     <button onClick={info}>Info</button>
                     <button className="ash" onClick={logout}>Logout</button>
                     <pre>{mensaje}</pre>
-                    
                 </div>
             )}
         </div>
