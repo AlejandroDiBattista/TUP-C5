@@ -1,5 +1,5 @@
 let datos = [
-    {  usuario: 'admin', password: 'admin' },
+    { user: 'admin', password: 'admin' },
 ]
 const generarToken = () => {
     return Math.random().toString().substring(2)
@@ -7,35 +7,42 @@ const generarToken = () => {
 
 
 
-export async function login(req, res) {
-    const { user, password } = req.body
-    const buscarUsuario = datos.find(datos => datos.usuario === user && datos.password === password)
-    if (!buscarUsuario) {
-        return res.json({ message: 'Usuario o contraseña incorrecta' })
-    }
-    else {
+export const login = async (req, res) => {
+    try {
+        const { user, password } = req.body
+        console.log('Request body:', req.body)
+        const buscarUsuario = datos.find((datos) => datos.user === user && datos.password === password)
+        if (!buscarUsuario) {
+            console.log('Usuario o contraseña incorrecta')
+            return res.status(401).json({ message: 'Usuario o contraseña incorrecta' })
+        }
         const token = generarToken()
         buscarUsuario.token = token
-        res.cookie('token', token)
-        res.json({ user, token })
+
+        res.cookie('token', token, { httpOnly: true, MaxAge: 100 })
+        console.log('Login successful:', { user, token })
+        res.status(200).json({ user, token })
+
+    }
+    catch (error){
+        console.error('Error en el login:', error)
+        res.status(500).json({message: 'Error interno del servidor'})
     }
 
 }
 
-export const register = (req, res) => {
-    const { nombre, apellido, email, user, password } = req.body
+export async function register(req, res) {
+    const { user, password } = req.body
 
     if (!user || !password) {
         res.status(400).json('Faltan datos')
     } else {
 
-        let existe = datos.find(u => u.user === user)
+        const existe = datos.find(u => u.user === user)
         if (existe) {
-            res.status(402)
-            res.json("El usuario ya existe")
+            res.status(409).json("El usuario ya existe")
         } else {
-            const newUser = { nombre, apellido, email, user, password }
-            datos.push(newUser)
+            datos.push({ user: user, password: password })
             res.status(201).json({ message: 'Usuario registrado con éxito' })
         }
     }
@@ -59,16 +66,16 @@ export function validarUsuario(req, res, next) {
     let usuario = datos.find(d => d.token === token);
 
     if (usuario) {
-        req.usuario = usuario;
+        req.user = usuario;
         next();
-        console.log("Token en RES", res.get('token'))
     } else {
+        res.clearCookie('token')
         res.status(401).send('Acceso no autorizado');
     }
 }
 
 export const getInfo = (req, res) => {
-    let usuario = req.usuario
+    let usuario = req.user
     res.send('Información sensible');
 }
 
