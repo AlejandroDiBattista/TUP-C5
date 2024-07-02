@@ -210,8 +210,6 @@
                 alGuardar({ ...producto, nombre, ean, stock });
             }
 
-
-
             return (
                 <form className="panel" onSubmit={guardarCambios}>
                     <input placeholder="Nombre" value={nombre} onChange={cambiarNombre} />
@@ -220,22 +218,26 @@
                     {error && <p className="erro">El campo está vacío, todos los campos son obligatorios</p>}
                     <div className="acciones-guardar">
                         <button type="submit">Aceptar</button>
-                        <button onClick={alCancelar}>Cancelar</button>
+                        <button type="button" onClick={alCancelar}>Cancelar</button>:
                     </div>
                 </form>
             );
         }
 
-        function Mostrar({ producto, alGuardar, alBorrar, enEdicionInicial }) {
-            const [editando, setEditando] = useState(enEdicionInicial || false);
+        function Mostrar({ producto, alGuardar, alBorrar, alCancelar }) {
+            const [editando, setEditando] = useState(producto.enEdicionInicial || false);
 
             const editar = e => {
                 e.stopPropagation();
                 setEditando(true);
             }
 
-            const cancelar = () => {
+            const cancelar = e => {
+                e.stopPropagation();
                 setEditando(false);
+                if (producto.enEdicionInicial) {
+                    alCancelar(producto.id);
+                }
             }
 
             const incrementarStock = () => {
@@ -253,8 +255,7 @@
                     ) : (
                         <>
                             <div className="st">
-                                <p className="stock" >{producto.stock}</p>
-
+                                <p className="stock">{producto.stock}</p>
                             </div>
                             <div className="nombre">
                                 <p className="gaseosa">{producto.nombre}</p>
@@ -273,7 +274,7 @@
             );
         }
 
-        function Agenda({ productos, alAgregar, alGuardar, alBorrar }) {
+        function Agenda({ productos, alAgregar, alGuardar, alBorrar, alCancelarAgregar }) {
             if (productos.length === 0) return <h1>No hay Productos <button onClick={alAgregar}><i className="fa-solid fa-plus"></i></button></h1>;
             return (
                 <>
@@ -284,6 +285,7 @@
                             producto={producto}
                             alGuardar={alGuardar}
                             alBorrar={alBorrar}
+                            alCancelar={alCancelarAgregar}
                             enEdicionInicial={producto.enEdicionInicial}
                         />
                     )}
@@ -331,9 +333,14 @@
                 setProductos([...productos, nuevoProducto]);
             }
 
+            const cancelarNuevoProducto = id => {
+                let copia = productos.filter(p => p.id !== id);
+                setProductos(copia);
+            }
+
             return (
                 <>
-                    <Agenda productos={productos} alAgregar={agregar} alGuardar={guardar} alBorrar={borrar} />
+                    <Agenda productos={productos} alAgregar={agregar} alGuardar={guardar} alBorrar={borrar} alCancelarAgregar={cancelarNuevoProducto} />
                 </>
             );
         }
