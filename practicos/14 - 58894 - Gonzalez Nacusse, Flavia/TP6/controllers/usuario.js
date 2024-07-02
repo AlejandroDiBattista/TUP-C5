@@ -66,6 +66,7 @@ const logoutUsuario = (req, res) => {
 };
 
 const getInfo = (req, res) => {
+    
     res.send('Información sensible');
 };
 

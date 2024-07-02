@@ -58,7 +58,7 @@ app.post('/login', (req, res) => {
     if (usuario) {
         let token = generarToken();
         usuario.token = token;
-        res.cookie('token', token, { httpOnly: true });
+        res.cookie('token', token, { httpOnly: true });// Verificar
         return res.status(200).json({ message: 'Inicio de sesión exitoso' });
     }
 

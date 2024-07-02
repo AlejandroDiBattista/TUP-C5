@@ -36,7 +36,6 @@ app.post('/registro', (req, res) => {
         usuarios.push({ user, password });
         res.status(201).json({ ok: true, mensaje: 'El usuario ha sido registrado con éxito' });
     }
-
 });
 
 app.put('/logout',(req, res) =>  {

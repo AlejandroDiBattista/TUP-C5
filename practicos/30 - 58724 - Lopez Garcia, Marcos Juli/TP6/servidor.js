@@ -22,6 +22,7 @@ app.post('/register', (req, res) => {
 
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
+    
     if (users[username] && users[username] === password) {
         res.cookie('username', username, { httpOnly: true });
         return res.json({ message: 'Inicio de sesión exitoso' });
@@ -35,7 +36,7 @@ app.post('/logout', (req, res) => {
 });
 
 app.get('/protected', (req, res) => {
-    if (req.cookies.username) {
+    if (req.cookies.username) {// Verificar
         return res.json({ message: `Bienvenido ${req.cookies.username}` });
     }
     res.status(401).json({ message: 'No autorizado' });

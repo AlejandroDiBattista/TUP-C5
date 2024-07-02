@@ -27,7 +27,7 @@ const validarUsuario = (req, res, next) => {
 }
 
 const registrarUsuario = (req, res) => {
-    let {usuario, correo, contraseña} = req.body
+    let { usuario, correo, contraseña } = req.body
     const nuevoUsuario = {id: creadId(), usuario, correo, contraseña}
 
     if (!usuario || !contraseña) {
@@ -62,7 +62,7 @@ const loginUsuario = (req, res) => {
 
 const logoutUsuario = (req, res) => {
     const usuario = req.usuario
-    res.clearCookie('token')
+    res.clearCookie('token')// Verificar
     res.send('Usuario deslogueado')
 }
 

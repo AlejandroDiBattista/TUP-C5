@@ -33,12 +33,12 @@ app.post('/registrar', (req, res) => {
         return res.status(400).send('Complete los campos para iniciar');
     }
 
-    const existe = usuarios.find(u => u.user === user);
+    const existe = usuarios.find(u => u.user === user);// Verificar
     if (existe) {
         return res.status(402).send("Usuario ya existente, pruebe con otro");
     }
 
-    usuarios.push({ user, password });
+    usuarios.push({ user, password });// Verificar
     res.send('Registro completado');
 });
 

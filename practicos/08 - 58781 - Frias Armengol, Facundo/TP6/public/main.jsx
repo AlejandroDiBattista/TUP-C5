@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 
 const Aplicacion = () => {
     const [mensaje, setMensaje] = useState("");
@@ -43,8 +43,8 @@ const Aplicacion = () => {
                 }
             }
         } catch (error) {
-            console.error(Error al ${registro ? "registrar" : "iniciar sesión"}:, error);
-            setMensaje(Error al ${registro ? "registrar" : "iniciar sesión"});
+            console.error(`Error al ${registro ? "registrar" : "iniciar sesión"}:`, error);
+            setMensaje(`Error al ${registro ? "registrar" : "iniciar sesión"}`);
         }
     };
 
@@ -74,7 +74,7 @@ const Aplicacion = () => {
                 credentials: "include",
             });
             if (res.ok) {
-                setMensaje(¡Bienvenido ${nombreUsuario}! Estás logueado.);
+                setMensaje(`¡Bienvenido ${nombreUsuario}! Estás logueado.`);
             } else {
                 setMensaje("¡Usuario no encontrado!");
             }
@@ -139,4 +139,4 @@ const Aplicacion = () => {
     );
 };
 
-export default Aplicacion;
+// export default Aplicacion;

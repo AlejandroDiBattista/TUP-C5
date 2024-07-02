@@ -50,7 +50,7 @@ const loginUsuario = (req, res) => {
     if (usuario) {
         let token = generarToken();
         usuario.token = token;
-        res.cookie('token', token, { httpOnly: true });
+        res.cookie('token', token, { httpOnly: true });// Verificar
         return res.send("Usuario logueado");
     } else {
         return res.status(401).send('Usuario o contraseña incorrectos');
@@ -60,6 +60,7 @@ const loginUsuario = (req, res) => {
 const logoutUsuario = (req, res) => {
     let usuario = req.usuario;
     delete usuario.token;
+    
     res.send('Usuario deslogueado');
 }
 

@@ -1,151 +1,194 @@
 # Evaluación TP6 en C5
 
-## 51 - 58951 - Robles, Ezequiel
-- Nota: 0
-
 ## 01 - 55681 - Bustos, Mauricio Benjamin
-- Nota: 0
+- Nota: 10
 
 ## 02 - 55457 - Carranza, Javier
-- Nota: 0
+- Nota: 9
+- Faltaba Express-session
 
 ## 03 - 58773 - Elli Salazar, Gerónimo
-- Nota: 0
+- Nota: 7
+- Son iguales #03, #06, #14, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express)
 
 ## 04 - 55578 - Fernandez Dumit, Patricio
-- Nota: 0
+- Nota: 7
+- Son iguales #04, #25, #33
 
 ## 05 - 58735 - Fernandez Gomez, Manuel
-- Nota: 0
+- Nota: 7
+- Son iguales #05, #08, #09
 
 ## 06 - 58723 - Figueroa, Santiago Isaac
-- Nota: 0
+- Nota: 7
+- Son iguales #03, #06, #14, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express)
 
 ## 07 - 58895 - Flores Gonzalez, Tomas
-- Nota: 0
+- Nota: 10
 
 ## 08 - 58781 - Frias Armengol, Facundo
-- Nota: 0
+- Nota: 1
+- Son iguales #05, #08, #09
+- Pero no funciona: Faltan comillas, usa import, export en donde no se puede App se llama Apliacion
 
 ## 09 - 58734 - Galvan, Victor Mateo
-- Nota: 0
+- Nota: 7
+- Son iguales #05, #08, #09
 
 ## 10 - 59154 - Garcia, Máximo
-- Nota: 0
+- Nota: 7
+- Son iguales #10, #29
 
 ## 11 - 58740 - Garcia, Sergio Martín
-- Nota: 0
+- Nota: 10
 
 ## 12 - 59076 - Gomez Martinez, Matias
-- Nota: 0
+- Nota: 10
 
 ## 13 - 59135 - Gomez, Facundo Matias
-- Nota: 0
+- Nota: 7
+- Son iguales #13, #31, #50
+- Tiene una clase en controladores que no se usa y es identica a servidor!
 
 ## 14 - 58894 - Gonzalez Nacusse, Flavia
-- Nota: 0
+- Nota: 7
+- Son iguales #03, #06, #14, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express)
 
 ## 15 - 59488 - Gonzalez, Mariano Emanuel
-- Nota: 0
+- Nota: 7
+- Son iguales #03, #06, #14, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express)
 
 ## 16 - 58720 - Gonzalez, Martín Natanael
-- Nota: 0
+- Nota: 10
+- El mejor diseño y navegación
 
 ## 17 - 59068 - Gonzalez, Silvina Mariela
-- Nota: 0
+- Nota: 10
+- No importa express-session
 
 ## 18 - 58786 - Gutierrez, Augusto Pedro
-- Nota: 0
+- Nota: 9
+- No instala bcrypt ni express-session
+- No hay forma de volver de la pantalla Info
 
 ## 19 - 58880 - Gutierrez, Cecilia Ana Lu
-- Nota: 0
+- Nota: 7
+- Son iguales #19, #47
 
 ## 20 - 58687 - Jadur, Sofia Nahir
-- Nota: 0
+- Nota: 7
+- Son iguales #03, #06, #14, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express)
 
 ## 21 - 58736 - Juarez Hindi, Lucas David
-- Nota: 0
+- Nota: 10
 
 ## 23 - 58758 - Juarez, Milagro Macarena
-- Nota: 0
+- Nota: 9
 
 ## 24 - 58721 - Juncos, Gonzalo Sebastian
-- Nota: 0
+- Nota: 10
 
 ## 25 - 59070 - Ladina, Maia Agostina
-- Nota: 0
+- Nota: 7
+- Son iguales #04, #25, #33
 
 ## 27 - 58756 - Lazarte, Agustina Milagro
-- Nota: 0
+- Nota: 9
 
 ## 28 - 58727 - Lazarte, Lucas
-- Nota: 0
+- Nota: 10
 
 ## 29 - 59152 - Lopez Chipoloni, Agustin
-- Nota: 0
+- Nota: 7
+- Son iguales #10, #29
 
 ## 30 - 58724 - Lopez Garcia, Marcos Juli
-- Nota: 0
+- Nota: 7
+- Son iguales #30, #43
 
 ## 31 - 58726 - Lopez, Fausto Agustin
-- Nota: 0
+- Nota: 7
+- Son iguales #13, #31, #50
 
 ## 32 - 58729 - Lovey, Mathias Exequiel
-- Nota: 0
+- Nota: 7
+- Son iguales #03, #06, #14, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express)
 
 ## 33 - 59071 - Medina, Daiana Micaela
-- Nota: 0
+- Nota: 7
+- Son iguales #04, #25, #33
 
 ## 34 - 59099 - Moyano Berrondo, Tahiel L
 - Nota: 0
 
 ## 35 - 58805 - Prieto, Matias Hernan
-- Nota: 0
+- Nota: 10
 
 ## 36 - 59054 - Rahman Rintoul, Ramiro
-- Nota: 0
+- Nota: 10
 
 ## 37 - 58766 - Reinoso, Lisandro Gabriel
-- Nota: 0
+- Nota: 10
 
 ## 38 - 58753 - Rivadeneira, Lautaro
-- Nota: 0
+- Nota: 7
+- Son iguales #03, #06, #14, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express)
 
 ## 39 - 58686 - Rodriguez, Gustavo
-- Nota: 0
+- Nota: 7
+- Son iguales #03, #06, #14, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express)
 
 ## 40 - 58806 - Rojas, Carlos Augusto
-- Nota: 0
+- Nota: 10
 
 ## 41 - 58692 - Rosello Salas, Maia Josef
-- Nota: 0
+- Nota: 7
+- Son iguales #03, #06, #14, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express)
+- Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (react)
 
 ## 42 - 58873 - Salazar, Enzo Gabriel
-- Nota: 0
+- Nota: 7
+- Son iguales #03, #06, #14, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express)
+- Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (react)
 
 ## 43 - 55870 - Stemberger, Emiliano
-- Nota: 0
+- Nota: 7
+- Son iguales #30, #43
 
 ## 44 - 58845 - Terrera, Augusto Dante
-- Nota: 0
+- Nota: 8
+- No funciona el login. Guarda como 'user' pero compara como 'usuario'
 
 ## 45 - 59052 - Teseira, Lucas Benjamin
-- Nota: 0
+- Nota: 7
+- Son iguales #03, #06, #14, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express)
+- Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (react)
 
 ## 46 - 57543 - Touceda, Federico
-- Nota: 0
+- Nota: 7
+- Son iguales #03, #06, #14, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express)
 
 ## 47 - 59064 - Urbani, Juan Pablo
-- Nota: 0
+- Nota: 7
+- Son iguales #19, #47
 
 ## 48 - 59188 - Vaca, Andres Emanuel
-- Nota: 0
+- Nota: 9
 
 ## 49 - 58899 - Villagra, Juan Gabriel
-- Nota: 0
-
-## 53 - 59909 - Wierna, Belén
-- Nota: 0
+- Nota: 7
+- Son iguales #03, #15, #20, #23, #28, #38, #39, #41, #42, #45, #46, #51, #53 (express)
 
 ## 50 - 59001 - Peralta, Axel Rubens
-- Nota: 0
+- Nota: 7
+- Son iguales #13, #31, #50
+
+## 51 - 58951 - Robles, Ezequiel
+- Nota: 7
+- Son iguales #03, #06, #14, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express)
+- Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (react)
+
+## 53 - 59909 - Wierna, Belén
+- Nota: 7
+- Son iguales #03, #06, #14, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express)
+- Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (react)

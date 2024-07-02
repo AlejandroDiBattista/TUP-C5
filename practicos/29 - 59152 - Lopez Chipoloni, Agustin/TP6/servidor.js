@@ -40,7 +40,7 @@ app.post('/registrar', (req, res) => {
   }
 
   usuarios.push({ usuario, contraseña, email, celular });
-  res.send('¡Registro exitoso! Ahora puedes iniciar sesión.');
+  res.send('¡Registro exitoso! Ahora puedes iniciar sesión.');// Verificar
 });
 
 app.post('/iniciar-sesion', (req, res) => {

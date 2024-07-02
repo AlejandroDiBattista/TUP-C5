@@ -28,12 +28,10 @@ const getUsuarios = (req, res) => {
 
 const registrarUsuario = (req, res) => {
     let { user, password } = req.body // Era JSON porque 
-    // app.use(express.json())
 
     if (!user || !password) {
         res.status(400).send('Faltan datos');
     } else {
-
         let existe = usuarios.find(u => u.user === user);
         if (existe) {
             res.status(402)
@@ -69,8 +67,8 @@ const loginUsuario = (req, res) => {
 
 const logoutUsuario = (req, res) => {
     let usuario = req.usuario
-
     delete usuario.token
+    
     res.send('Usuario deslogueado');
 }
 

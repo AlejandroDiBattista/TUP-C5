@@ -54,7 +54,7 @@ app.post('/login', (req, res) => {
     if (usuario) {
         let token = genToken();
         usuario.token = token;
-        res.cookie('token', token, { httpOnly: true });
+        res.cookie('token', token, { httpOnly: true });// Verificar
         return res.send("Sesión Exitosa!");
     }
 

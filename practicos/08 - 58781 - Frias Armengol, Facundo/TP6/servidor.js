@@ -69,7 +69,7 @@ aplicación.put('/logout', validarUsuario, (req, res) => {
 
 aplicación.get('/info', validarUsuario, (req, res) => {
     const usuario = req.usuario;
-    res.send(¡Bienvenido ${usuario.usuario}! Estás logueado.);
+    res.send("¡Bienvenido ${usuario.usuario}! Estás logueado.");
 });
 
 aplicación.listen(3000, () => {

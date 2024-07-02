@@ -64,9 +64,8 @@ const logoutUsuario = (req, res) => {
     res.status(200).json({ message: 'Usuario deslogueado' });
 }
 
-
-
 const getInfo = (req, res) => {
+    
     res.send('Información sensible');
 }
 

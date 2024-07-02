@@ -67,6 +67,7 @@ const loginUsuario = (req, res) => {
 const logoutUsuario = (req, res) => {
     let usuario = req.usuario
     delete usuario.token
+    
     res.send('Usuario deslogueado');
 }
 

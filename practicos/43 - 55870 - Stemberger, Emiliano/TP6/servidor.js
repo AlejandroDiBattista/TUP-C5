@@ -35,7 +35,7 @@ app.post('/logout', (req, res) => {
 });
 
 app.get('/protected', (req, res) => {
-    if (req.cookies.username) {
+    if (req.cookies.username) {// Verificar
         return res.json({ message: `Bienvenido ${req.cookies.username}` });
     }
     res.status(401).json({ message: 'No autorizado' });
