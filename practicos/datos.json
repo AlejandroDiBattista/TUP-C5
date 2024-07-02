@@ -413,7 +413,9 @@
     "tp5": true,
     "tp6": false,
     "nota_tp3": 10,
-    "comentario_tp3": " Hay diferencias en el diseño pero no afectan la funcionalidad"
+    "comentario_tp3": " Hay diferencias en el diseño pero no afectan la funcionalidad",
+    "nota_tp6": 7,
+    "comentario_tp6": "No presentó el servidor, solo react;Son iguales: #22, #33 (react)"
   },
   {
     "id": "C5-23",
@@ -826,8 +828,8 @@
     "tp6": true,
     "nota_tp3": 10,
     "comentario_tp3": "",
-    "nota_tp6": 8,
-    "comentario_tp6": "No funciona el login. Guarda como 'user' pero compara como 'usuario'"
+    "nota_tp6": 9,
+    "comentario_tp6": ""
   },
   {
     "id": "C5-45",

@@ -82,6 +82,11 @@
 ## 21 - 58736 - Juarez Hindi, Lucas David
 - Nota: 10
 
+## 22 - 58761 - Juarez, Lautaro Andres
+- Nota: 7
+- No presentó el servidor, solo react
+- Son iguales: #22, #33 (react)
+
 ## 23 - 58758 - Juarez, Milagro Macarena
 - Nota: 9
 
