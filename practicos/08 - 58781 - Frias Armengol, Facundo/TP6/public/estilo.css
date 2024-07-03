@@ -1,135 +1,68 @@
 html {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 24px;
-    background-color: #eee;
-    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    background-color: #191414;
+    color: #FFFFFF;
 }
 
 *, *:before, *:after {
-    box-sizing: inherit;
+    box-sizing: border-box;
 }
 
-.envase {
+#root {
+    width: 100%;
     max-width: 400px;
-    margin: 0 auto;
+    margin: 20px auto;
     padding: 20px;
-    border: 1px solid #3498db;
+    background-color: #000;
     border-radius: 10px;
-    background-color: #ecf0f1;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.24);
 }
 
-#raíz {
-    width: 400px;
-    margin: 0 auto;
-    padding: 10px;
-}
-
-.contenedor-de-formulario {
-    margin-bottom: 20px;
-}
-
-/* Estilos para encabezados h1-h6 */
-h1, h2, h3, h4, h5, h6 {
-    color: #333;
-    margin: 8px 0;
-}
-
-.contenedor-de-formulario h2 {
-    margin-bottom: 15px;
-    font-size: 2rem;
-    color: #3498db;
+h2 {
+    color: #1DB954;
     text-align: center;
-    text-transform: uppercase;
-}
-
-button {
-    padding: 4px 6px;
-    min-width: 100px;
-    cursor: pointer;
-    border: 0.5px solid #bbb;
-}
-
-.aporte {
-    width: calc(100% - 22px);
-    padding: 12px;
     margin-bottom: 20px;
-    border: 2px solid #3498db;
-    border-radius: 5px;
-    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
-    font-size: 1.2rem;
-}
-
-button:hover {
-    background-color: #ddd;
-}
-
-.entrada:focus {
-    outline: none;
-    border-color: #2980b9;
-    box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
 }
 
 form {
-    display: block;
+    width: 100%;
 }
 
-.btns {
-    display: flex;
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #B3B3B3;
+    font-size: 14px;
+}
+
+input {
     width: 100%;
-    justify-content: space-between;
-    margin-top: 16px;
     padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #B3B3B3;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #282828;
+    color: #FFFFFF;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #1DB954;
+    color: #FFFFFF;
     border: none;
     border-radius: 5px;
-    background-color: #3498db;
-    color: #fff;
-    font-size: 1.2rem;
     cursor: pointer;
-    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.btns:hover {
-    background-color: #2980b9;
+button:hover {
+    background-color: #1ED760;
 }
 
-.btns2 {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    border: 2px solid #3498db;
-    border-radius: 5px;
-    background-color: #fff;
-    color: #3498db;
-    font-size: 1.2rem;
-    cursor: pointer;
-    text-transform: uppercase;
-}
-
-section {
-    padding: 10px;
-    margin: 10px 0;
-    background-color: #fff;
-    border: 0.5px solid #bbb;
-    border-radius: 15px;
-    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
-}
-
-.btns2:hover {
-    background-color: #f0f0f0;
-}
-
-ul {
-    list-style-type: none;
-}
-
-#mensaje {
-    margin-top: 20px;
-    padding: 15px;
-    border-radius: 5px;
-    font-size: 1.1rem;
-    color: #fff;
-    background-color: #2ecc71;
-    text-align: center;
-    box-shadow: 0 0 10px rgba(46, 204, 113, 0.6);
+button:active {
+    transform: scale(0.98);
 }
