@@ -29,7 +29,9 @@
 -  Diferencia menor en el diseño
 
 ## 08 - 58781 - Frias Armengol, Facundo
-- Nota: 0
+- Nota: 8
+- No edita en el lugar
+- Edita en página separada
 
 ## 09 - 58734 - Galvan, Victor Mateo
 - Nota: 6

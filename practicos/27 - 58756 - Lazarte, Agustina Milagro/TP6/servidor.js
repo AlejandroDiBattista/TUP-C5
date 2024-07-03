@@ -16,7 +16,6 @@ app.post('/login', Usuario.loginUsuario);
 app.put('/logout', Usuario.validarUsuario, Usuario.logoutUsuario);
 app.get('/info', Usuario.validarUsuario, Usuario.getInfo);
 
-
 app.listen(3000, () => {
     console.log('Servidor iniciado en http://localhost:3000');
 });

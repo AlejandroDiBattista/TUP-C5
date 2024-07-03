@@ -1,5 +1,3 @@
-import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom/client';
 
 function App() {
     const [usuario, setUsuario] = useState('');
@@ -94,6 +92,3 @@ function App() {
         </div>
     );
 }
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);

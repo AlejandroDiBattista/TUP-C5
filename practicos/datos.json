@@ -92,7 +92,7 @@
     "nota_tp3": 7,
     "comentario_tp3": " No hacer el agregado arriba; No incrementa la cantidad de productos.; No respeta el diseño original.",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #05, #08, #09"
+    "comentario_tp6": "Son iguales #05, #09"
   },
   {
     "id": "C5-06",
@@ -146,10 +146,10 @@
     "tp4": true,
     "tp5": false,
     "tp6": true,
-    "nota_tp3": 0,
-    "comentario_tp3": "",
-    "nota_tp6": 1,
-    "comentario_tp6": "Son iguales #05, #08, #09;Pero no funciona: Faltan comillas, usa import, export en donde no se puede App se llama Apliacion"
+    "nota_tp3": 8,
+    "comentario_tp3": "No edita en el lugar;Edita en página separada",
+    "nota_tp6": 8,
+    "comentario_tp6": "Son iguales #05, #09"
   },
   {
     "id": "C5-09",
@@ -168,7 +168,7 @@
     "nota_tp3": 6,
     "comentario_tp3": " No cancela la edicion; No incrementa la cantidad de productos (1+1=11); Duplica el id de los productos",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #05, #08, #09"
+    "comentario_tp6": "Son iguales #05, #09"
   },
   {
     "id": "C5-10",

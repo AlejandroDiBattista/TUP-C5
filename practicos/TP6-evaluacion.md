@@ -17,7 +17,7 @@
 
 ## 05 - 58735 - Fernandez Gomez, Manuel
 - Nota: 7
-- Son iguales #05, #08, #09
+- Son iguales #05, #09
 
 ## 06 - 58723 - Figueroa, Santiago Isaac
 - Nota: 7
@@ -27,13 +27,12 @@
 - Nota: 10
 
 ## 08 - 58781 - Frias Armengol, Facundo
-- Nota: 1
-- Son iguales #05, #08, #09
-- Pero no funciona: Faltan comillas, usa import, export en donde no se puede App se llama Apliacion
+- Nota: 8
+- Son iguales #05, #09
 
 ## 09 - 58734 - Galvan, Victor Mateo
 - Nota: 7
-- Son iguales #05, #08, #09
+- Son iguales #05, #09
 
 ## 10 - 59154 - Garcia, Máximo
 - Nota: 9
