@@ -1,77 +1,67 @@
 import express from 'express';
-import cookieParser from 'cookie-parser';
+import session from 'express-session';
 import morgan from 'morgan';
 
-const aplicación = express();
+const app = express();
 
-aplicación.use(morgan('dev'));
-aplicación.use(cookieParser());
-aplicación.use(express.json());
-aplicación.use(express.static('public'));
+app.use(morgan('dev'));
+app.use(express.json());
+app.use(express.static('public'));
+app.use(session({
+    secret: 'secreto',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 60 * 60 * 1000 } // 1 hora
+}));
 
-const usuarios = [];
+let Usuarios = [
+    { username: 'admin', password: 'contraseña' },
+];
 
-const validarUsuario = (req, res, siguiente) => {
-    const id = req.cookies.identificación;
-    const usuario = usuarios.find(u => u.id === id);
+app.get('/usuarios', (req, res) => {
+    res.status(200).json(Usuarios);
+});
 
-    if (usuario) {
-        req.usuario = usuario;
-        siguiente();
+app.post('/registro', (req, res) => {
+    const { usuario, contraseña } = req.body;
+    const usuarioExistente = Usuarios.find((user) => user.username === usuario);
+    if (usuarioExistente) {
+        return res.status(400).json({ error: 'El usuario ya está en uso' });
     } else {
-        res.status(401).send('Sin autorización');
+        Usuarios.push({ username: usuario, password: contraseña });
+        res.status(200).json({ message: 'Usuario registrado exitosamente' });
     }
-};
+});
 
-const generarId = () => {
-    return Math.random().toString().substring(2);
-};
-
-aplicación.post('/registrador', (req, res) => {
+app.post('/login', (req, res) => {
     const { usuario, contraseña } = req.body;
-
-    if (!usuario || !contraseña) {
-        return res.status(400).send('Por favor complete los datos para registrarse.');
+    const user = Usuarios.find((user) => user.username === usuario && user.password === contraseña);
+    if (user) {
+        req.session.usuario = usuario;
+        res.status(200).json({ message: 'Usuario logueado exitosamente' });
+    } else {
+        return res.status(401).json({ error: 'Usuario o contraseña incorrectos' });
     }
-
-    const existe = usuarios.find(u => u.usuario === usuario);
-    if (existe) {
-        return res.status(402).send('Este usuario ya existe, pruebe uno diferente.');
-    }
-
-    usuarios.push({ usuario, contraseña });
-    res.send('¡Se ha registrado correctamente!');
 });
 
-aplicación.post('/iniciar sesión', (req, res) => {
-    const { usuario, contraseña } = req.body;
+app.post('/logout', (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            return res.status(500).json({ error: 'Error al cerrar sesión' });
+        } else {
+            res.status(200).json({ message: 'Usuario deslogueado exitosamente' });
+        }
+    });
+});
 
-    if (!usuario || !contraseña) {
-        return res.status(400).send('Ingrese su nombre de usuario y contraseña.');
+app.get('/verificarSesion', (req, res) => {
+    if (req.session.usuario) {
+        res.status(200).json({ usuario: req.session.usuario });
+    } else {
+        res.status(401).json({ error: 'No hay usuario logueado' });
     }
-
-    const usuarioEncontrado = usuarios.find(u => u.usuario === usuario && u.contraseña === contraseña);
-    if (usuarioEncontrado) {
-        const id = generarId();
-        usuarioEncontrado.id = id;
-        res.cookie('identificación', id, { httpOnly: true });
-        return res.send('¡Bienvenido a nuestra página de prueba!');
-    }
-
-    res.status(401).send('Usuario o contraseña incorrectos.');
 });
 
-aplicación.put('/logout', validarUsuario, (req, res) => {
-    const usuario = req.usuario;
-    delete usuario.id;
-    res.send('¡Ha cerrado sesión correctamente!');
-});
-
-aplicación.get('/info', validarUsuario, (req, res) => {
-    const usuario = req.usuario;
-    res.send("¡Bienvenido ${usuario.usuario}! Estás logueado.");
-});
-
-aplicación.listen(3000, () => {
+app.listen(3000, () => {
     console.log('Servidor iniciado en http://localhost:3000');
-})
+});

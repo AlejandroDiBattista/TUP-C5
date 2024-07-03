@@ -1,15 +1,39 @@
 import express from 'express';
-import cookieParser from 'cookie-parser';
-import morgan
- from 'morgan';
+import bodyParser from 'body-parser';
+
 const app = express();
+const PORT = 3000;
 
-app.use(morgan('dev'));     // Loggea cada request en consola
-app.use(cookieParser());    // Para leer cookies
-app.use(express.json());    // Para leer JSONs
-app.use(express.static('public'));  // Para servir archivos estáticos
+app.use(bodyParser.json()); 
 
-// Implementar las rutas necesarias
-app.listen(3000, () => {
-    console.log('Servidor iniciado en http://localhost:3000');
+let usuarios = [];
+
+app.post('/register', (req, res) => {
+    const { username, password, email } = req.body;
+
+    const existeUsuario = usuarios.find(user => user.username === username);
+    if (existeUsuario) {
+        return res.status(400).json({ message: 'El usuario ya existe. Por favor, elija otro nombre de usuario.' });
+    }
+
+    const nuevoUsuario = { username, password, email };
+    usuarios.push(nuevoUsuario);
+
+    res.status(201).json({ message: 'Usuario registrado exitosamente.' });
+});
+
+
+app.post('/login', (req, res) => {
+    const { username, password } = req.body;
+
+    const usuario = usuarios.find(user => user.username === username && user.password === password);
+    if (!usuario) {
+        return res.status(401).json({ message: 'Credenciales incorrectas. Por favor, intente de nuevo.' });
+    }
+
+    res.status(200).json({ message: 'Inicio de sesión exitoso.' });
+});
+
+app.listen(PORT, () => {
+    console.log(`Servidor iniciado en http://localhost:${PORT}`);
 });
