@@ -1,39 +1,69 @@
 import express from 'express';
-import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
+import morgan from 'morgan';
 
 const app = express();
 const PORT = 3000;
 
-app.use(bodyParser.json()); 
+app.use(morgan('dev'));           // Logging de cada request en consola
+app.use(cookieParser());          // Para leer cookies
+app.use(express.json());          // Para leer JSONs
+app.use(express.static('public'));  // Para servir archivos estáticos
 
-let usuarios = [];
+// JSON para almacenar los usuarios registrados (simulación)
+let users = [];
 
+// Rutas
+
+// Ruta para registrar un nuevo usuario
 app.post('/register', (req, res) => {
-    const { username, password, email } = req.body;
+    console.log('Datos recibidos:', req.body); // Verificar datos recibidos en consola del servidor
+    const { username, password, confirmPassword, phone, email } = req.body;
 
-    const existeUsuario = usuarios.find(user => user.username === username);
-    if (existeUsuario) {
-        return res.status(400).json({ message: 'El usuario ya existe. Por favor, elija otro nombre de usuario.' });
+    // Validar que todos los campos requeridos estén presentes
+    if (!username || !password || !confirmPassword || !phone || !email) {
+        return res.status(400).json({ error: 'Por favor completa todos los campos.' });
     }
 
-    const nuevoUsuario = { username, password, email };
-    usuarios.push(nuevoUsuario);
+    // Validar que las contraseñas coincidan
+    if (password !== confirmPassword) {
+        return res.status(400).json({ error: 'Las contraseñas no coinciden.' });
+    }
 
-    res.status(201).json({ message: 'Usuario registrado exitosamente.' });
+    // Validar si el usuario ya existe
+    if (users.find(user => user.username === username)) {
+        return res.status(400).json({ error: 'El usuario ya existe.' });
+    }
+
+    // Agregar el usuario a la lista (simulación)
+    users.push({ username, password, phone, email });
+    console.log('Usuarios registrados:', users); // Verificar en consola
+    res.status(200).json({ message: 'Usuario registrado exitosamente.' });
 });
 
-
+// Ruta para iniciar sesión
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
 
-    const usuario = usuarios.find(user => user.username === username && user.password === password);
-    if (!usuario) {
-        return res.status(401).json({ message: 'Credenciales incorrectas. Por favor, intente de nuevo.' });
+    // Buscar el usuario en la lista (simulación)
+    const user = users.find(user => user.username === username && user.password === password);
+
+    if (!user) {
+        return res.status(401).json({ error: 'Credenciales incorrectas.' });
     }
 
+    // Simular una cookie de sesión
+    res.cookie('loggedIn', true, { maxAge: 900000, httpOnly: true });
     res.status(200).json({ message: 'Inicio de sesión exitoso.' });
 });
 
+// Ruta para cerrar sesión
+app.post('/logout', (req, res) => {
+    res.clearCookie('loggedIn');
+    res.status(200).json({ message: 'Cierre de sesión exitoso.' });
+});
+
+// Iniciar el servidor
 app.listen(PORT, () => {
-    console.log(`Servidor iniciado en http://localhost:${PORT}`);
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
