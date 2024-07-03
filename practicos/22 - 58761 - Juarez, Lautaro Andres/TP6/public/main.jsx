@@ -1,201 +1,179 @@
-function App() {
-  const [formRegistro, setFormRegistro] = useState({
-    nombreUsuario: "",
-    clave: "",
-  });
-  const [formLogin, setFormLogin] = useState({ nombreUsuario: "", clave: "" });
-  const [estadoSesion, setEstadoSesion] = useState(false);
-  const [mensajeError, setMensajeError] = useState("");
-  const [mensajeExito, setMensajeExito] = useState("");
-  const [mensajeInfo, setMensajeInfo] = useState({
-    mensaje: "",
-    nombreUsuario: "",
-  });
+const { useState } = React;
 
-  const cambioRegistro = (e) => {
-    const { name, value } = e.target;
-    setFormRegistro({ ...formRegistro, [name]: value });
-    console.log(name, value);
-  };
+function UserManagementApp() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isRegistering, setIsRegistering] = useState(false);
+  const [notification, setNotification] = useState("");
 
-  const cambioLogin = (e) => {
-    const { name, value } = e.target;
-    setFormLogin({ ...formLogin, [name]: value });
-    console.log(name, value);
-  };
+  const registerAccount = async (event) => {
+    event.preventDefault();
+    const username = document.getElementById("regUsername").value.trim();
+    const password = document.getElementById("regPassword").value.trim();
+    const confirmPassword = document
+      .getElementById("regConfirmPassword")
+      .value.trim();
 
-  const registrarUsuario = async (e) => {
-    e.preventDefault();
+    if (!username || !password || !confirmPassword) {
+      alert("Por favor, complete todos los campos.");
+      return;
+    }
+
     try {
-      const response = await fetch("/registro", {
+      const response = await fetch("/register", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formRegistro),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password, confirmPassword }),
       });
+
       const data = await response.json();
-      if (data.ok) {
-        setMensajeExito(data.mensaje);
-        setMensajeError("");
-      } else {
-        setMensajeError(data.mensaje);
-        setMensajeExito("");
-      }
+      setNotification(data.message);
     } catch (error) {
-      console.error("Error al registrar usuario:", error);
+      setNotification("Hubo un error durante el registro.");
     }
   };
 
-  const iniciarSesionUsuario = async (e) => {
-    e.preventDefault();
+  const loginAccount = async (event) => {
+    event.preventDefault();
+    const username = document.getElementById("loginUsername").value.trim();
+    const password = document.getElementById("loginPassword").value.trim();
+
+    if (!username || !password) {
+      alert("Por favor, complete todos los campos.");
+      return;
+    }
+
     try {
-      const response = await fetch("/iniciarSes", {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formLogin),
+      const response = await fetch("/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
       });
+
       const data = await response.json();
-      console.log(data);
-      if (data.ok) {
-        setEstadoSesion(true);
-        setMensajeExito(data.mensaje);
-        setMensajeError("");
-      } else {
-        setMensajeError(data.mensaje);
-        setMensajeExito("");
+      setNotification(data.message);
+      if (response.status === 200) {
+        setIsAuthenticated(true);
       }
     } catch (error) {
-      console.error("Error al iniciar sesión:", error);
+      setNotification("Hubo un error durante el inicio de sesión.");
     }
   };
 
-  const obtenerInfoUsuario = async () => {
+  const logoutAccount = async (event) => {
+    event.preventDefault();
     try {
-      const response = await fetch("/informacion", {
-        method: "GET",
-        headers: { "Content-Type": "application/json" },
+      const response = await fetch("/logout", {
+        method: "POST",
       });
+
       const data = await response.json();
-      console.log(data);
-      if (data.ok) {
-        const infoNueva = {
-          mensaje: data.mensaje,
-          nombreUsuario: data.nombreUsuario,
-        };
-        setMensajeInfo(infoNueva);
-      } else {
-        setMensajeError(data.mensaje);
-        setMensajeExito("");
+      setNotification(data.message);
+      if (response.status === 200) {
+        setIsAuthenticated(false);
       }
     } catch (error) {
-      console.error("Error al obtener información del usuario:", error);
+      setNotification("Hubo un error durante el cierre de sesión.");
     }
   };
 
-  const cerrarSesionUsuario = async () => {
+  const fetchUserDetails = async (event) => {
+    event.preventDefault();
     try {
-      const response = await fetch("/cerrarSes", {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-      });
+      const response = await fetch("/info");
       const data = await response.json();
-      if (data.ok) {
-        setEstadoSesion(false);
-        setMensajeExito(data.mensaje);
-        setMensajeError("");
-      } else {
-        setMensajeError(data.mensaje);
-        setMensajeExito("");
-      }
+      setNotification(data.message);
     } catch (error) {
-      console.error("Error al cerrar sesión", error);
+      setNotification("Hubo un error al obtener la información.");
     }
   };
 
   return (
-    <div className="contenedor-formularios">
-      <h1 className="h1-tp6">¡Bienvenido!</h1>
-      <div className="contenedor-formularios-seccion-uno">
-        <div className="form-registro">
-          <h2 className="h2-form">Registro</h2>
-          <form className="form" onSubmit={registrarUsuario}>
-            <input
-              type="text"
-              name="nombreUsuario"
-              placeholder="Usuario"
-              className="input"
-              value={formRegistro.nombreUsuario}
-              onChange={cambioRegistro}
-            />
-            <input
-              type="password"
-              name="clave"
-              placeholder="Contraseña"
-              className="input"
-              value={formRegistro.clave}
-              onChange={cambioRegistro}
-            />
-            <button type="submit" className="button-registro">
-              Registrar
-            </button>
-          </form>
-        </div>
-        <div className="form-login">
-          <h2 className="h2-form">Iniciar Sesión</h2>
-          <form className="form" onSubmit={iniciarSesionUsuario}>
-            <img src="" alt="" />
-            <input
-              type="text"
-              name="nombreUsuario"
-              placeholder="Usuario"
-              className="input"
-              value={formLogin.nombreUsuario}
-              onChange={cambioLogin}
-            />
-            <input
-              type="password"
-              name="clave"
-              placeholder="Contraseña"
-              className="input"
-              value={formLogin.clave}
-              onChange={cambioLogin}
-            />
-            <button type="submit" className="button-login">
-              Iniciar Sesión
-            </button>
-          </form>
-        </div>
+    <div>
+      <h1>Gestión de Usuarios</h1>
+      <div className="form-container">
+        {!isAuthenticated &&
+          (!isRegistering ? (
+            <div>
+              <form onSubmit={loginAccount}>
+                <h2>Iniciar Sesión</h2>
+                <div>
+                  <label htmlFor="loginUsername">Nombre de Usuario:</label>
+                  <input
+                    type="text"
+                    id="loginUsername"
+                    placeholder="Nombre de Usuario"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="loginPassword">Contraseña:</label>
+                  <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="Contraseña"
+                  />
+                </div>
+                <button type="submit">Iniciar Sesión</button>
+              </form>
+              <button onClick={() => setIsRegistering(true)}>Registrar</button>
+            </div>
+          ) : (
+            <div>
+              <form onSubmit={registerAccount}>
+                <h2>Crear Cuenta</h2>
+                <div>
+                  <label htmlFor="regUsername">Nombre de Usuario:</label>
+                  <input
+                    type="text"
+                    id="regUsername"
+                    placeholder="Nombre de Usuario"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="regPassword">Contraseña:</label>
+                  <input
+                    type="password"
+                    id="regPassword"
+                    placeholder="Contraseña"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="regConfirmPassword">
+                    Confirmar Contraseña:
+                  </label>
+                  <input
+                    type="password"
+                    id="regConfirmPassword"
+                    placeholder="Confirmar Contraseña"
+                  />
+                </div>
+                <button type="submit">Registrarse</button>
+              </form>
+              <button onClick={() => setIsRegistering(false)}>
+                Volver al Inicio de Sesión
+              </button>
+            </div>
+          ))}
+
+        {isAuthenticated && (
+          <div className="authenticated-actions">
+            <form onSubmit={logoutAccount}>
+              <h2>Cerrar Sesión</h2>
+              <button type="submit">Cerrar Sesión</button>
+            </form>
+            <form onSubmit={fetchUserDetails}>
+              <h2>Detalles del Usuario</h2>
+              <button type="submit">Ver Detalles</button>
+            </form>
+          </div>
+        )}
       </div>
-      {!estadoSesion ? (
-        <div className="contenedor-formularios-seccion-dos">
-          <div className="mensajes">
-            <p className="msj-error">{mensajeError}</p>
-            <p className="msj-exito">{mensajeExito}</p>
-          </div>
-          <div className="info-usuario-logeado">
-            <p className="p-info-usuario-logeado">¡Adelante!</p>
-          </div>
-        </div>
-      ) : (
-        <div className="contenedor-formularios-seccion-dos">
-          <div className="mensajes">
-            <p className="msj-error">{mensajeError}</p>
-            <p className="msj-exito">{mensajeExito}</p>
-          </div>
-          <div className="info-usuario-logeado">
-            <p className="p-info-usuario-logeado">
-              {mensajeInfo.mensaje + " " + mensajeInfo.nombreUsuario}
-            </p>
-          </div>
-          <div className="contenedor-botones-usuario-logeado">
-            <button className="btn-ver-info" onClick={obtenerInfoUsuario}>
-              Ver informacion
-            </button>
-            <button className="btn-cerrar-sesion" onClick={cerrarSesionUsuario}>
-              Cerrar Sesión
-            </button>
-          </div>
-        </div>
-      )}
+      <p>{notification}</p>
     </div>
   );
 }
+
+ReactDOM.render(<UserManagementApp />, document.getElementById("root"));
