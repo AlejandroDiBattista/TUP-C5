@@ -3,18 +3,14 @@ const { useState, useEffect } = React;
 const App = () => {
     const [items, setItems] = useState(() => {
         const savedItems = localStorage.getItem('products');
-        if (savedItems) {
-            return JSON.parse(savedItems);
-        } else {
-            return [];
-        }
+        return savedItems ? JSON.parse(savedItems) : [];
     });
 
     useEffect(() => {
         localStorage.setItem('products', JSON.stringify(items));
     }, [items]);
 
-    const [editandoItem, setEditandoItem] = useState(null);
+    const [editandoItems, setEditandoItems] = useState({});
     const [mostrarFormulario, setMostrarFormulario] = useState(false);
 
     const incrementarCantidad = (id) => {
@@ -28,27 +24,31 @@ const App = () => {
     };
 
     const abrirFormularioEdicion = (item) => {
-        setEditandoItem(item);
+        setEditandoItems((prev) => ({ ...prev, [item.id]: item }));
     };
 
-    const cerrarFormularioEdicion = () => {
-        setEditandoItem(null);
-        setMostrarFormulario(false);
+    const cerrarFormularioEdicion = (id) => {
+        setEditandoItems((prev) => {
+            const updated = { ...prev };
+            delete updated[id];
+            return updated;
+        });
     };
 
     const modificarProducto = (id, cambios) => {
         setItems(items.map(item =>
             item.id === id ? { ...item, ...cambios } : item
         ));
-        cerrarFormularioEdicion();
+        cerrarFormularioEdicion(id);
     };
 
     const agregarProducto = (nuevoProducto) => {
         setItems([...items, nuevoProducto]);
+        setMostrarFormulario(false);  
     };
 
     const handleItemClick = (id) => {
-        if (!editandoItem || editandoItem.id !== id) {
+        if (!editandoItems[id]) {
             incrementarCantidad(id);
         }
     };
@@ -68,6 +68,7 @@ const App = () => {
                     onSubmit({ id: items.length ? items[items.length - 1].id + 1 : 1, name: nombre, code: ean, quantity: Number(cantidad) });
                 }
                 limpiarCampos();
+                onCancel();  
             } else {
                 setMensajeError('Todos los campos deben estar completos');
             }
@@ -87,7 +88,7 @@ const App = () => {
         };
 
         return (
-            <form className="product-form">
+            <form className="product-form" onSubmit={manejarEnvio}>
                 <div className="form-inputs">
                     <input type="text" placeholder="Nombre del producto" value={nombre} onChange={(e) => setNombre(e.target.value)} required />
                     <input type="text" placeholder="Código EAN" value={ean} onChange={(e) => setEan(e.target.value)} required />
@@ -96,12 +97,14 @@ const App = () => {
                 </div>
                 <div className="form-actions">
                     <br />
-                    <button type="submit" onClick={manejarEnvio}>Aceptar</button>
+                    <button type="submit">Aceptar</button>
                     <button type="button" onClick={manejarCancelar}>Cancelar</button>
                 </div>
             </form>
         );
     };
+
+    const sortedItems = [...items].sort((a, b) => a.name.localeCompare(b.name));
 
     return (
         <div className="app">
@@ -111,8 +114,9 @@ const App = () => {
                     {mostrarFormulario ? '-' : '+'}
                 </button>
             </header>
+            <br /><br /><br />
 
-            {mostrarFormulario && !editandoItem && (
+            {mostrarFormulario && (
                 <FormularioProducto
                     onSubmit={agregarProducto}
                     onCancel={() => setMostrarFormulario(false)}
@@ -120,7 +124,7 @@ const App = () => {
             )}
 
             <div className="items">
-                {items.map(item => (
+                {sortedItems.map(item => (
                     <div key={item.id} style={{ position: 'relative' }}>
                         <div className="item" id={`item-${item.id}`} onClick={() => handleItemClick(item.id)}>
                             <div className="number">{item.quantity}</div>
@@ -137,11 +141,11 @@ const App = () => {
                                 </button>
                             </div>
                         </div>
-                        {editandoItem && editandoItem.id === item.id && (
+                        {editandoItems[item.id] && (
                             <FormularioProducto
                                 onSubmit={modificarProducto}
-                                initialData={editandoItem}
-                                onCancel={cerrarFormularioEdicion}
+                                initialData={editandoItems[item.id]}
+                                onCancel={() => cerrarFormularioEdicion(item.id)}
                             />
                         )}
                     </div>
