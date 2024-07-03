@@ -97,6 +97,13 @@
 - Nota: 7
 - Son iguales #04, #25, #33
 
+## 26 - 58737 - Lasagna, Manuel
+- Nota: 1
+- No funciona
+- React al Servidor
+- El servidor no hace nada
+- Redirige la pagina a un sitio de pirateo de informacion
+
 ## 27 - 58756 - Lazarte, Agustina Milagro
 - Nota: 9
 
