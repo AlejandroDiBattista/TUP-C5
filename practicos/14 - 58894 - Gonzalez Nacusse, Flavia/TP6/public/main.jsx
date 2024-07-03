@@ -23,7 +23,7 @@ function App() {
         setPassword('');
     }
 
-    async function login(e) {
+    async function login(e) {  // Verificar
         e.preventDefault();
         let res = await fetch('/login', {
             method: 'POST',

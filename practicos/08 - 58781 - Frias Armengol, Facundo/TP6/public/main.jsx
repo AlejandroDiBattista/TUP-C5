@@ -1,142 +1,99 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom/client';
 
-const Aplicacion = () => {
-    const [mensaje, setMensaje] = useState("");
-    const [formData, setFormData] = useState({ usuario: "", contraseña: "" });
-    const [registro, setRegistro] = useState(false);
+function App() {
+    const [usuario, setUsuario] = useState('');
+    const [contraseña, setContraseña] = useState('');
+    const [mensaje, setMensaje] = useState('');
     const [logueado, setLogueado] = useState(false);
-    const [nombreUsuario, setNombreUsuario] = useState("");
+    const [modo, setModo] = useState('login');
 
-    const validarCampos = () => {
-        if (!formData.usuario || !formData.contraseña) {
-            setMensaje("Por favor ingrese los datos.");
-            return false;
-        }
-        return true;
-    };
-
-    const manejarSubmit = async (e) => {
-        e.preventDefault();
-        if (!validarCampos()) return;
-
-        const endpoint = registro ? "/registrador" : "/iniciar sesión";
-        try {
-            const res = await fetch(endpoint, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    usuario: formData.usuario,
-                    contraseña: formData.contraseña,
-                }),
-            });
-            const data = await res.text();
-            setMensaje(data);
-            if (res.ok) {
-                setFormData({ usuario: "", contraseña: "" });
-                if (registro) {
-                    setRegistro(false);
-                } else {
-                    setLogueado(true);
-                    setNombreUsuario(formData.usuario);
-                }
+    useEffect(() => {
+        const verificarSesion = async () => {
+            const response = await fetch('/verificarSesion');
+            if (response.ok) {
+                const data = await response.json();
+                setUsuario(data.usuario);
+                setLogueado(true);
             }
-        } catch (error) {
-            console.error(Error al ${registro ? "registrar" : "iniciar sesión"}:, error);
-            setMensaje(Error al ${registro ? "registrar" : "iniciar sesión"});
+        };
+        verificarSesion();
+    }, []);
+
+    const manejarCambio = (setter) => (e) => setter(e.target.value);
+
+    const manejarEnvio = async (e) => {
+        e.preventDefault();
+        const endpoint = modo === 'login' ? '/login' : '/registro';
+        const response = await fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ usuario, contraseña }),
+        });
+
+        const data = await response.json();
+        setMensaje(data.message);
+
+        if (response.ok) {
+            if (modo === 'login') {
+                setLogueado(true);
+            } else {
+                setUsuario('');
+                setContraseña('');
+            }
         }
     };
 
     const cerrarSesion = async () => {
-        try {
-            const res = await fetch("/cerrar sesión", {
-                method: "PUT",
-                credentials: "include",
-            });
-            const data = await res.text();
-            setMensaje(data);
-            if (res.ok) {
-                setFormData({ usuario: "", contraseña: "" });
-                setLogueado(false);
-                setNombreUsuario("");
-            }
-        } catch (error) {
-            console.error("Error al cerrar sesión:", error);
-            setMensaje("Error al cerrar sesión");
-        }
-    };
-
-    const obtenerInfo = async () => {
-        try {
-            const res = await fetch("/info", {
-                method: "GET",
-                credentials: "include",
-            });
-            if (res.ok) {
-                setMensaje(¡Bienvenido ${nombreUsuario}! Estás logueado.);
-            } else {
-                setMensaje("¡Usuario no encontrado!");
-            }
-        } catch (error) {
-            console.error("Error al buscar los datos del usuario:", error);
-            setMensaje("Error al buscar los datos del usuario");
+        const response = await fetch('/logout', { method: 'POST' });
+        const data = await response.json();
+        setMensaje(data.message);
+        if (response.ok) {
+            setLogueado(false);
+            setUsuario('');
+            setContraseña('');
         }
     };
 
     return (
-        <div>
-            <h1>TP6 - Sesiones</h1>
-            <div className="contenedor">
-                {logueado ? (
-                    <>
-                        <button className="btns" onClick={cerrarSesion}>
-                            Cerrar Sesión
-                        </button>
-                        <button className="btns" onClick={obtenerInfo}>
-                            Datos de usuario
-                        </button>
-                    </>
-                ) : (
-                    <>
-                        <form onSubmit={manejarSubmit} autoComplete="off">
-                            <h2 className="hder">
-                                {registro ? "Registrador" : "Iniciar Sesión"}
-                            </h2>
-                            <input
-                                className="entrada"
-                                type="text"
-                                placeholder="Usuario"
-                                value={formData.usuario}
-                                onChange={(e) =>
-                                    setFormData({ ...formData, usuario: e.target.value })
-                                }
-                                autoComplete="username"
-                            />
-                            <input
-                                className="entrada"
-                                type="password"
-                                placeholder="Contraseña"
-                                value={formData.contraseña}
-                                onChange={(e) =>
-                                    setFormData({ ...formData, contraseña: e.target.value })
-                                }
-                                autoComplete={registro ? "new-password" : "current-password"}
-                            />
-                            <button type="submit" className="btns">
-                                {registro ? "Registrador" : "Iniciar Sesión"}
-                            </button>
-                        </form>
-                        <button className="btns2" onClick={() => setRegistro(!registro)}>
-                            {registro ? "Iniciar Sesión" : "Registrarse"}
-                        </button>
-                    </>
-                )}
-
-                <div id="mensaje">{mensaje}</div>
-            </div>
+        <div id="root">
+            <h2>{modo === 'login' ? 'Login de Usuario' : 'Registro de Usuario'}</h2>
+            {logueado ? (
+                <div>
+                    <button onClick={cerrarSesion}>Cerrar Sesión</button>
+                </div>
+            ) : (
+                <form onSubmit={manejarEnvio}>
+                    <div>
+                        <label>Usuario:</label>
+                        <input
+                            type="text"
+                            value={usuario}
+                            onChange={manejarCambio(setUsuario)}
+                        />
+                    </div>
+                    <div>
+                        <label>Contraseña:</label>
+                        <input
+                            type="password"
+                            value={contraseña}
+                            onChange={manejarCambio(setContraseña)}
+                        />
+                    </div>
+                    <button type="submit">
+                        {modo === 'login' ? 'Iniciar Sesión' : 'Registrarse'}
+                    </button>
+                </form>
+            )}
+            {!logueado && (
+                <button onClick={() => setModo(modo === 'login' ? 'registrar' : 'login')}>
+                    {modo === 'login' ? 'Registrarse' : 'Iniciar Sesión'}
+                </button>
+            )}
+            <p>{mensaje}</p>
         </div>
     );
-};
+}
 
-export default Aplicacion;
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);

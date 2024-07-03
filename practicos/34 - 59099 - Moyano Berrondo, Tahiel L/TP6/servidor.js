@@ -17,13 +17,14 @@ app.use(cors({
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(express.json());
+app.use(express.static('public'));
 
 let usuarios = [
-    { id: 1, nombreUsuario: 'Lisandro', contraseña: await bcrypt.hash('1234', 10) },
-    { id: 2, nombreUsuario: 'Lautaro', contraseña: await bcrypt.hash('Hola', 10) },
-    { id: 3, nombreUsuario: 'Lucas', contraseña: await bcrypt.hash('zzz', 10) },
-    { id: 4, nombreUsuario: 'Esteban', contraseña: await bcrypt.hash('Nose', 10) },
-    { id: 5, nombreUsuario: 'Tahiel', contraseña: await bcrypt.hash('4321', 10) },
+    { id: 1, nombreUsuario: 'Lisandro', contraseña: '1234' },
+    { id: 2, nombreUsuario: 'Lautaro',  contraseña: 'Hola' },
+    { id: 3, nombreUsuario: 'Lucas',    contraseña: 'zzz' },
+    { id: 4, nombreUsuario: 'Esteban',  contraseña: 'Nose' },
+    { id: 5, nombreUsuario: 'Tahiel',   contraseña: '4321' },
 ];
 
 let siguienteIdUsuario = 6;

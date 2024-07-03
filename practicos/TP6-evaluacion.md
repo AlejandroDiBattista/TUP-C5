@@ -1,185 +1,205 @@
-# Evaluación tp6 - C5
+# Evaluación TP6 en C5
 
 ## 01 - 55681 - Bustos, Mauricio Benjamin
-- Aprobado: 
-- 
+- Nota: 10
 
 ## 02 - 55457 - Carranza, Javier
-- Aprobado: 
-- 
+- Nota: 9
+- Faltaba Express-session
 
 ## 03 - 58773 - Elli Salazar, Gerónimo
-- Aprobado: 
-- 
+- Nota: 7
+- Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)
 
 ## 04 - 55578 - Fernandez Dumit, Patricio
-- Aprobado: 
-- 
+- Nota: 7
+- Son iguales #04, #25, #33
+
+## 05 - 58735 - Fernandez Gomez, Manuel
+- Nota: 7
+- Son iguales #05, #08, #09
 
 ## 06 - 58723 - Figueroa, Santiago Isaac
-- Aprobado: 
-- 
+- Nota: 7
+- Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)
 
 ## 07 - 58895 - Flores Gonzalez, Tomas
-- Aprobado: 
-- 
+- Nota: 10
 
 ## 08 - 58781 - Frias Armengol, Facundo
-- Aprobado: 
-- 
+- Nota: 1
+- Son iguales #05, #08, #09
+- Pero no funciona: Faltan comillas, usa import, export en donde no se puede App se llama Apliacion
 
 ## 09 - 58734 - Galvan, Victor Mateo
-- Aprobado: 
-- 
+- Nota: 7
+- Son iguales #05, #08, #09
 
 ## 10 - 59154 - Garcia, Máximo
-- Aprobado: 
-- 
+- Nota: 9
+- Son iguales #10, #29
 
 ## 11 - 58740 - Garcia, Sergio Martín
-- Aprobado: 
-- 
+- Nota: 10
 
 ## 12 - 59076 - Gomez Martinez, Matias
-- Aprobado: 
-- 
+- Nota: 10
 
 ## 13 - 59135 - Gomez, Facundo Matias
-- Aprobado: 
-- 
+- Nota: 7
+- Son iguales #13, #31, #50
+- Tiene una clase en controladores que no se usa y es identica a servidor!
 
 ## 14 - 58894 - Gonzalez Nacusse, Flavia
-- Aprobado: 
-- 
+- Nota: 7
+- Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)
 
 ## 15 - 59488 - Gonzalez, Mariano Emanuel
-- Aprobado: 
-- 
+- Nota: 7
+- Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)
 
 ## 16 - 58720 - Gonzalez, Martín Natanael
-- Aprobado: 
-- 
+- Nota: 10
+- El mejor diseño y navegación
 
 ## 17 - 59068 - Gonzalez, Silvina Mariela
-- Aprobado: 
-- 
+- Nota: 10
+- No importa express-session
 
 ## 18 - 58786 - Gutierrez, Augusto Pedro
-- Aprobado: 
-- 
+- Nota: 9
+- No instala bcrypt ni express-session
+- No hay forma de volver de la pantalla Info
 
 ## 19 - 58880 - Gutierrez, Cecilia Ana Lu
-- Aprobado: 
-- 
+- Nota: 7
+- Son iguales #19, #47
 
 ## 20 - 58687 - Jadur, Sofia Nahir
-- Aprobado: 
-- 
+- Nota: 7
+- Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)
 
 ## 21 - 58736 - Juarez Hindi, Lucas David
-- Aprobado: 
-- 
+- Nota: 10
+
+## 22 - 58761 - Juarez, Lautaro Andres
+- Nota: 7
+- No presentó el servidor, solo react
+- Son iguales: #22, #33 (react)
 
 ## 23 - 58758 - Juarez, Milagro Macarena
-- Aprobado: 
-- 
+- Nota: 9
 
 ## 24 - 58721 - Juncos, Gonzalo Sebastian
-- Aprobado: 
-- 
+- Nota: 10
 
 ## 25 - 59070 - Ladina, Maia Agostina
-- Aprobado: 
-- 
+- Nota: 7
+- Son iguales #04, #25, #33
+
+## 26 - 58737 - Lasagna, Manuel
+- Nota: 1
+- No funciona
+- React al Servidor
+- El servidor no hace nada
+- Redirige la pagina a un sitio de pirateo de informacion
 
 ## 27 - 58756 - Lazarte, Agustina Milagro
-- Aprobado: 
-- 
+- Nota: 9
 
 ## 28 - 58727 - Lazarte, Lucas
-- Aprobado: 
-- 
+- Nota: 10
 
 ## 29 - 59152 - Lopez Chipoloni, Agustin
-- Aprobado: 
-- 
+- Nota: 7
+- Son iguales #10, #29
 
 ## 30 - 58724 - Lopez Garcia, Marcos Juli
-- Aprobado: 
-- 
+- Nota: 7
+- Son iguales #30, #43
 
 ## 31 - 58726 - Lopez, Fausto Agustin
-- Aprobado: 
-- 
+- Nota: 7
+- Son iguales #13, #31, #50
 
 ## 32 - 58729 - Lovey, Mathias Exequiel
-- Aprobado: 
-- 
+- Nota: 7
+- Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)
 
 ## 33 - 59071 - Medina, Daiana Micaela
-- Aprobado: 
-- 
+- Nota: 7
+- Son iguales #04, #25, #33
+
+## 34 - 59099 - Moyano Berrondo, Tahiel L
+- Nota: 0
 
 ## 35 - 58805 - Prieto, Matias Hernan
-- Aprobado: 
-- 
+- Nota: 10
 
 ## 36 - 59054 - Rahman Rintoul, Ramiro
-- Aprobado: 
-- 
+- Nota: 10
 
 ## 37 - 58766 - Reinoso, Lisandro Gabriel
-- Aprobado: 
-- 
+- Nota: 10
 
 ## 38 - 58753 - Rivadeneira, Lautaro
-- Aprobado: 
-- 
+- Nota: 7
+- Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)
 
 ## 39 - 58686 - Rodriguez, Gustavo
-- Aprobado: 
-- 
+- Nota: 7
+- Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)
 
 ## 40 - 58806 - Rojas, Carlos Augusto
-- Aprobado: 
-- 
+- Nota: 10
 
 ## 41 - 58692 - Rosello Salas, Maia Josef
-- Aprobado: 
-- 
+- Nota: 7
+- Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)
+- Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (react)
 
 ## 42 - 58873 - Salazar, Enzo Gabriel
-- Aprobado: 
-- 
+- Nota: 7
+- Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)
+- Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (react)
 
 ## 43 - 55870 - Stemberger, Emiliano
-- Aprobado: 
-- 
+- Nota: 7
+- Son iguales #30, #43
 
 ## 44 - 58845 - Terrera, Augusto Dante
-- Aprobado: 
-- 
+- Nota: 9
+
+## 45 - 59052 - Teseira, Lucas Benjamin
+- Nota: 7
+- Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express)
+- Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (react)
 
 ## 46 - 57543 - Touceda, Federico
-- Aprobado: 
-- 
+- Nota: 7
+- Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express)
 
 ## 47 - 59064 - Urbani, Juan Pablo
-- Aprobado: 
-- 
+- Nota: 7
+- Son iguales #19, #47
 
 ## 48 - 59188 - Vaca, Andres Emanuel
-- Aprobado: 
-- 
+- Nota: 9
 
 ## 49 - 58899 - Villagra, Juan Gabriel
-- Aprobado: 
-- 
+- Nota: 7
+- Son iguales #03, #15, #20, #23, #28, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)
+
+## 50 - 59001 - Peralta, Axel Rubens
+- Nota: 7
+- Son iguales #13, #31, #50
 
 ## 51 - 58951 - Robles, Ezequiel
-- Aprobado: 
-- 
+- Nota: 7
+- Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)
+- Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (react)
 
 ## 53 - 59909 - Wierna, Belén
-- Aprobado: 
-- 
+- Nota: 7
+- Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)
+- Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (react)

@@ -39,7 +39,7 @@ function App() {
         let data = await res.text();
         setMensaje(data.mensaje);
         if (res.ok) {
-            setShowLogin(false);
+            setShowLogin(false);// Verificar
             setShowInfo(true);
         }
     }

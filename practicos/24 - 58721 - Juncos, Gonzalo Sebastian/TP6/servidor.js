@@ -15,6 +15,9 @@ const users = {};
 
 app.post('/api/register', (req, res) => {
     const { username, password } = req.body;
+
+
+    
     if (users[username]) {
         return res.status(400).json({ error: 'Usuario ya existe' });
     }

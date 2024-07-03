@@ -23,7 +23,6 @@ function validarUsuario(req, res, next) {
     }
 }
 
-
 function generarToken() {
     return Math.random().toString().substring(2);
 }
@@ -67,6 +66,7 @@ const loginUsuario = (req, res) => {
 const logoutUsuario = (req, res) => {
     let usuario = req.usuario
     delete usuario.token
+    
     res.send('Usuario deslogueado');
 }
 
@@ -75,14 +75,10 @@ const getInfo = (req, res) => {
     res.send('Información sensible');
 }
 
-
-
 app.post('/registrar', registrarUsuario);
 app.post('/login', loginUsuario);
 app.put('/logout', validarUsuario, logoutUsuario);
 app.get('/info', validarUsuario, getInfo);
-
-
 
 // Implementar las rutas necesarias
 app.listen(3000, () => {

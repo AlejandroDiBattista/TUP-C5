@@ -39,7 +39,7 @@ app.post('/registrar', (req, res) => {
         return res.status(402).send("El usuario ya existe");
     }
 
-    usuarios.push({ user, password });
+    usuarios.push({ user, password });// Verificar
     res.send('Usuario registrado');
 });
 

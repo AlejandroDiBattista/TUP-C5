@@ -33,12 +33,12 @@ app.post('/registrar', (req, res) => {
         return res.status(400).send('complete los datos para iniciar.');
     }
 
-    const existe = usuarios.find(u => u.user === user);
+    const existe = usuarios.find(u => u.user === user);// Verificar
     if (existe) {
         return res.status(402).send("este usuario ya existe pruebe uno diferente.");
     }
 
-    usuarios.push({ user, password });
+    usuarios.push({ user, password });// Verificar
     res.send('te has registrado correctamente.');
 });
 

@@ -59,7 +59,7 @@ app.post('/login', (req, res) => {
     } else {
         let usuario = usuarios.find(u => u.user === user && u.password === password);
         if (usuario) {
-            let token = generarToken();
+            let token = generarToken();// Verificar 
             usuario.token = token;
             res.cookie('token', token); 
             res.send('Usuario logueado');

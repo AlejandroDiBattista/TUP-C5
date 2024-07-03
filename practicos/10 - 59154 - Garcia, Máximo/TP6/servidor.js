@@ -4,13 +4,13 @@ import morgan from 'morgan';
 
 const app = express();
 
+
 app.use(morgan('dev')); 
 app.use(cookieParser()); 
 app.use(express.json()); 
 app.use(express.static('public')); 
 
 let usuarios = [];
-
 
 function validarUsuario(req, res, next) {
   let id = req.cookies.id;
@@ -24,11 +24,9 @@ function validarUsuario(req, res, next) {
   }
 }
 
-
 function genId() {
   return Math.random().toString().substring(2);
 }
-
 
 app.post('/registrar', (req, res) => {
   let { user, password } = req.body;
@@ -43,7 +41,7 @@ app.post('/registrar', (req, res) => {
   }
 
   usuarios.push({ user, password });
-  res.send('¡Registro exitoso! Ahora puedes iniciar sesión.');
+  res.send('¡Registro exitoso! Ahora puedes iniciar sesión.');// Verificar
 });
 
 

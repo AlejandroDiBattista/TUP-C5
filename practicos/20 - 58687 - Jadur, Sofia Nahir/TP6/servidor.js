@@ -39,13 +39,12 @@ app.post('/registrar', (req, res) => {
         return res.status(402).send("Este Usuario Ya Existe");
     }
 
-    usuarios.push({ user, password });
+    usuarios.push({ user, password });// Verificar
     res.send('Usuario Registrado');
 });
 
 app.post('/login', (req, res) => {
     let { user, password } = req.body;
-
     if (!user || !password) {
         return res.status(400).send('Faltan Datos');
     }
@@ -54,7 +53,7 @@ app.post('/login', (req, res) => {
     if (usuario) {
         let token = generarToken();
         usuario.token = token;
-        res.cookie('token', token, { httpOnly: true });
+        res.cookie('token', token, { httpOnly: true });// Verificar
         return res.send("Usuario Logueado");
     }
 

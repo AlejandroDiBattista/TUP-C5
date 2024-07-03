@@ -51,8 +51,7 @@ const loginUsuario = (req, res) => {
     if (!user || !password) {
         res.status(400).send('Faltan datos');
     } else {
-        let usuario = usuarios.find(u => u.user === user
-            && u.password === password);
+        let usuario = usuarios.find(u => u.user === user && u.password === password);
         if (usuario) {
             // res.send('Usuario logueado >' + user + ":" + password );
             let token = generarToken();
@@ -62,7 +61,6 @@ const loginUsuario = (req, res) => {
             res.status(201).send("usuario logeado");
         } else {
             res.status(401).send('Usuario o contraseña incorrectos');
-            
         }
     }
 }

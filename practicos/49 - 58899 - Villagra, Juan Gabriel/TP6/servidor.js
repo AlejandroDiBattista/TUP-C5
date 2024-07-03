@@ -3,13 +3,13 @@ import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 const app = express();
 
-app.use(morgan('dev')); 
+app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(express.json());
-app.use(express.static('public')); 
+app.use(express.static('public'));
 const users = [];
 
-const genToken= ()=> {
+const genToken = () => {
     return Math.random().toString().substring(2);
 }
 
@@ -54,7 +54,7 @@ app.post('/login', (req, res) => {
     if (usuario) {
         let token = genToken();
         usuario.token = token;
-        res.cookie('token', token, { httpOnly: true });
+        res.cookie('token', token, { httpOnly: true });// Verificar
         return res.send("Sesión Exitosa!");
     }
 

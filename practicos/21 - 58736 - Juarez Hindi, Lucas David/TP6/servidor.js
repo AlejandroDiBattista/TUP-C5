@@ -2,18 +2,20 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 import cors from 'cors';
-
+//debe iniciarse node servidor.js en la terminal para correr el servidor 
 const app = express();
-
 
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.static('public'));
-app.use(cors()); 
+app.use(cors());
 
 let users = [];
 
+app.get('/userdata', (req, res) => {
+    res.json(users); 
+});
 
 app.post('/register', (req, res) => {
     const { username, password, celular, email, dni } = req.body;
@@ -31,7 +33,6 @@ app.post('/register', (req, res) => {
     }
 });
 
-
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
 
@@ -46,7 +47,6 @@ app.post('/login', (req, res) => {
         return res.status(400).json({ error: "Usuario o contraseña incorrectos" });
     }
 });
-
 
 const PORT = 3000;
 app.listen(PORT, () => {

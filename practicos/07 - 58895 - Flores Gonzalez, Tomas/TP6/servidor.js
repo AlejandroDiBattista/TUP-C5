@@ -27,6 +27,7 @@ app.post('/login', (req, res) => {
     const { username, password } = req.body
     const user = users[username]
     if (!user || user.password !== password) {
+        
         return res.status(401).json({ error: 'Usuario o contraseña inválidos' })
     }
     res.cookie('username', username, { httpOnly: true })

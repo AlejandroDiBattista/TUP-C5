@@ -62,7 +62,7 @@ app.post('/registrar', async (req, res) => {
         return res.status(401).json({ ok: false, mensaje: 'Usuario ya se encuentra registrado' });
     }
     try {
-        usuarios.push({ user, password });
+        usuarios.push({ user, password });// Verificar
         res.status(201).json({ ok: true, mensaje: 'Usuario registrado exitosamente' });
     } catch (error) {
         res.status(500).json({ ok: false, mensaje: 'Error al registrar el usuario' });
