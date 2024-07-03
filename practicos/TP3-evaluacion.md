@@ -102,7 +102,7 @@
 
 ## 24 - 58721 - Juncos, Gonzalo Sebastian
 - Nota: 8
--  La alta de producto aunque cancele igual agrega un producto
+- La alta de producto aunque cancele igual agrega un producto
 
 ## 25 - 59070 - Ladina, Maia Agostina
 - Nota: 8
