@@ -1,6 +1,5 @@
 import request from "supertest";
 import { expect, describe, test } from "@jest/globals";
-
 import app from "./app.js";
 
 describe("GET All", () => {
@@ -42,7 +41,6 @@ describe("GET All", () => {
 })
 
 describe("Crear una persona", () => {
-
     test("1. Crear una persona (retorna codigo)", async () => {
         const persona = { nombre: "Juan", apellido: "Perez", edad: 30 }
         const res = await request(app).put("/personas").send(persona)
@@ -51,14 +49,12 @@ describe("Crear una persona", () => {
 
     test("2. Crear una persona (y retorna su id)", async () => {
         const persona = { nombre: "Juan", apellido: "Perez", edad: 30 }
-
         const res = await request(app).put("/personas").send(persona)
         expect(res.body.id).toBeDefined()
     })
 
     test("3. Crear una persona (debe haber uno mas)", async () => {
         const persona = { nombre: "Juan", apellido: "Perez", edad: 30 }
-
         const leer = await request(app).get("/personas").send()
         const antes = leer.body.length
 
@@ -67,10 +63,8 @@ describe("Crear una persona", () => {
 
         const leer2 = await request(app).get("/personas").send()
         const despues = leer2.body.length
-
         expect(despues).toBe(antes + 1)
     })
-
 })
 
 describe("Actualizar una persona", () => {
@@ -88,12 +82,9 @@ describe("Actualizar una persona", () => {
 
     test("3. Actualizar una persona (y retorna la persona actualizada)", async () => {
         const persona = { id: 2, nombre: "JuanXX", apellido: "Perez", edad: 30 }
-
         const res = await request(app).put("/personas").send(persona)
-        console.log(">>>>",res.body)
         expect(res.body.borrado).toBeDefined()
         expect(res.body.actualizado).toBeDefined()
-
         expect(res.body.nombre).toBe(persona.nombre)
     })
 })
@@ -111,10 +102,8 @@ describe("Borrar una persona", () => {
         expect(res.statusCode).toBe(404)
     })
 
-
     test("3. Borrar una persona (y retorna la persona borrada)", async () => {
         const persona = { id: 3, borrado: true }
-
         const res = await request(app).put("/personas").send(persona)
         expect(res.body.borrado).toBe(true)
         expect(res.body.actualizado).toBeDefined()
@@ -123,7 +112,6 @@ describe("Borrar una persona", () => {
 
     test("4. Borrar una persona (debe haber uno menos)", async () => {
         const persona = { id: 4, borrado: true }
-
         const leerAntes = await request(app).get("/personas").send()
         const antes = leerAntes.body.length
 
@@ -132,7 +120,6 @@ describe("Borrar una persona", () => {
 
         const leerDespues = await request(app).get("/personas").send()
         const despues = leerDespues.body.length
-
         expect(despues).toBe(antes - 1)
     })
 })
