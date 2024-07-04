@@ -318,7 +318,7 @@
 
 				useEffect(() => {
 					traerDatos();
-					setFiltro('tp3 tp6 sin-nota cp5')
+					setFiltro('')
 				}, []);
 
 				async function traerDatos() {
@@ -329,6 +329,13 @@
 
 				function filtrar(e) {
 					setFiltro(e.target.value.toLowerCase());
+				}
+
+				function estadoAlumno(alumno) {
+					let practicos = calcularPracticos(alumno);
+					let entregados = practicos.filter((p) => alumno[p]);
+					let cantidad = entregados.length;
+					return cantidad === practicos.length ? 'completo' : cantidad === 0 ? 'falta' : 'incompleto';
 				}
 
 				function ponerFiltro(e){
@@ -343,13 +350,14 @@
                 mostrar = mostrar.filter((a) => cantidadPresentados(a) > 0);
 				return (
 					<div id='main'>
-						{comision === 'c4' || comision === 'c5' ? <h1>Trabajo en proceso...<br/>Las notas todavía no están puestas todavia</h1> : null}
 						<h1> | {comision} | Listado de alumnos{' '} <small>({mostrar.length})</small></h1>
 						<input type='search' value={filtro} onChange={filtrar} />
 						<div className="filtros">
-							<a href="#" onClick={(ponerFiltro)}>Promociona</a>
+							<a href="#" onClick={ponerFiltro}>Promociona</a>
 							<a href="#" onClick={ponerFiltro}>Casi</a>
 							<a href="#" onClick={ponerFiltro}>Revisar</a>
+							<a href="#" onClick={ponerFiltro}>Libres</a>
+							<a href="#" onClick={ponerFiltro}>Otros</a>
 						</div>
 						<Estadistica datos={datos} practicos={practicos} />
 						{mostrar.map((alumno) => <Alumno key={alumno.id} alumno={alumno} practicos={practicos}/>)}

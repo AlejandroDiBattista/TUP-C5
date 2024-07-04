@@ -16,7 +16,8 @@
     "nota_tp3": 10,
     "comentario_tp3": "",
     "nota_tp6": 10,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "estado": "regular"
   },
   {
     "id": "C5-02",
@@ -35,7 +36,8 @@
     "nota_tp3": 10,
     "comentario_tp3": "",
     "nota_tp6": 9,
-    "comentario_tp6": "Faltaba Express-session"
+    "comentario_tp6": "Faltaba Express-session",
+    "estado": "promocionado"
   },
   {
     "id": "C5-03",
@@ -54,7 +56,8 @@
     "nota_tp6": 7,
     "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)",
     "nota_tp3": 7,
-    "comentario_tp3": ""
+    "comentario_tp3": "",
+    "estado": "regular"
   },
   {
     "id": "C5-04",
@@ -73,7 +76,8 @@
     "nota_tp3": 7,
     "comentario_tp3": " no manejal edicion en el lugar, id repetidos.; No incrementa la cantidad de productos.",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #04, #25, #33"
+    "comentario_tp6": "Son iguales #04, #25, #33",
+    "estado": "regular"
   },
   {
     "id": "C5-05",
@@ -92,7 +96,8 @@
     "nota_tp3": 7,
     "comentario_tp3": " No hacer el agregado arriba; No incrementa la cantidad de productos.; No respeta el diseño original.",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #05, #09"
+    "comentario_tp6": "Son iguales #05, #09",
+    "estado": "regular"
   },
   {
     "id": "C5-06",
@@ -111,7 +116,8 @@
     "nota_tp3": 10,
     "comentario_tp3": " Diferencias menores del diseño",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)"
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)",
+    "estado": "regular"
   },
   {
     "id": "C5-07",
@@ -130,7 +136,8 @@
     "nota_tp3": 9,
     "comentario_tp3": " Diferencia menor en el diseño",
     "nota_tp6": 10,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "estado": "promocionado"
   },
   {
     "id": "C5-08",
@@ -149,7 +156,8 @@
     "nota_tp3": 8,
     "comentario_tp3": "No edita en el lugar;Edita en página separada",
     "nota_tp6": 8,
-    "comentario_tp6": "Son iguales #05, #09"
+    "comentario_tp6": "Son iguales #05, #09",
+    "estado": "regular"
   },
   {
     "id": "C5-09",
@@ -168,7 +176,8 @@
     "nota_tp3": 6,
     "comentario_tp3": " No cancela la edicion; No incrementa la cantidad de productos (1+1=11); Duplica el id de los productos",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #05, #09"
+    "comentario_tp6": "Son iguales #05, #09",
+    "estado": "regular"
   },
   {
     "id": "C5-10",
@@ -187,7 +196,8 @@
     "nota_tp3": 10,
     "comentario_tp3": " Diferencias menores en el diseño",
     "nota_tp6": 9,
-    "comentario_tp6": "Son iguales #10, #29"
+    "comentario_tp6": "Son iguales #10, #29",
+    "estado": "promocionado"
   },
   {
     "id": "C5-11",
@@ -206,7 +216,8 @@
     "nota_tp3": 6,
     "comentario_tp3": " No incrementa; No funciona la alta; No respeta el diseño",
     "nota_tp6": 10,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "estado": "regular"
   },
   {
     "id": "C5-12",
@@ -225,7 +236,8 @@
     "nota_tp3": 9,
     "comentario_tp3": " Diferencias menores en el diseño",
     "nota_tp6": 10,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "estado": "regular"
   },
   {
     "id": "C5-13",
@@ -244,7 +256,8 @@
     "nota_tp3": 8,
     "comentario_tp3": " No incrementa la cantidad de productos.; Estan mal los botones",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #13, #31, #50;Tiene una clase en controladores que no se usa y es identica a servidor!"
+    "comentario_tp6": "Son iguales #13, #31, #50;Tiene una clase en controladores que no se usa y es identica a servidor!",
+    "estado": "regular"
   },
   {
     "id": "C5-14",
@@ -263,7 +276,8 @@
     "nota_tp3": 10,
     "comentario_tp3": " Muy pequeñas diferencias en el diseño",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)"
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)",
+    "estado": "regular"
   },
   {
     "id": "C5-15",
@@ -282,7 +296,8 @@
     "nota_tp6": 7,
     "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)",
     "nota_tp3": 10,
-    "comentario_tp3": " Perfecto"
+    "comentario_tp3": " Perfecto",
+    "estado": "regular"
   },
   {
     "id": "C5-16",
@@ -301,7 +316,8 @@
     "nota_tp3": 10,
     "comentario_tp3": " Muy pequeños detalles en el diseño",
     "nota_tp6": 10,
-    "comentario_tp6": "El mejor diseño y navegación"
+    "comentario_tp6": "El mejor diseño y navegación",
+    "estado": "promocionado"
   },
   {
     "id": "C5-17",
@@ -320,7 +336,8 @@
     "nota_tp3": 10,
     "comentario_tp3": " Un solo problema, al cancelar muestra mensaje de validacion",
     "nota_tp6": 10,
-    "comentario_tp6": "No importa express-session"
+    "comentario_tp6": "No importa express-session",
+    "estado": "promocionado"
   },
   {
     "id": "C5-18",
@@ -339,7 +356,8 @@
     "nota_tp3": 10,
     "comentario_tp3": " uso innecesario de librerias externas pero funciona",
     "nota_tp6": 9,
-    "comentario_tp6": "No instala bcrypt ni express-session;No hay forma de volver de la pantalla Info"
+    "comentario_tp6": "No instala bcrypt ni express-session;No hay forma de volver de la pantalla Info",
+    "estado": "promocionado"
   },
   {
     "id": "C5-19",
@@ -358,7 +376,8 @@
     "nota_tp3": 8,
     "comentario_tp3": " No incrementa la cantidad de productos.; No respeta el diseño",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #19, #47"
+    "comentario_tp6": "Son iguales #19, #47",
+    "estado": "regular"
   },
   {
     "id": "C5-20",
@@ -377,7 +396,8 @@
     "nota_tp3": 9,
     "comentario_tp3": " No permite cancelar la alta de producto; No respeta el diseño",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)"
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)",
+    "estado": "regular"
   },
   {
     "id": "C5-21",
@@ -396,7 +416,8 @@
     "nota_tp3": 8,
     "comentario_tp3": " No permite agregar cuando se esta editando; No respeta el diseño original",
     "nota_tp6": 10,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "estado": "regular"
   },
   {
     "id": "C5-22",
@@ -415,7 +436,8 @@
     "nota_tp3": 10,
     "comentario_tp3": " Hay diferencias en el diseño pero no afectan la funcionalidad",
     "nota_tp6": 7,
-    "comentario_tp6": "No presentó el servidor, solo react;Son iguales: #22, #33 (react)"
+    "comentario_tp6": "No presentó el servidor, solo react;Son iguales: #22, #33 (react)",
+    "estado": "regular"
   },
   {
     "id": "C5-23",
@@ -434,7 +456,8 @@
     "nota_tp3": 9,
     "comentario_tp3": " No funciona el cancelar al agregar; Diferencia en el diseño, no reutiliza la edicion de productos",
     "nota_tp6": 9,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "estado": "promocionado"
   },
   {
     "id": "C5-24",
@@ -453,7 +476,8 @@
     "nota_tp3": 8,
     "comentario_tp3": "La alta de producto aunque cancele igual agrega un producto",
     "nota_tp6": 10,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "estado": "regular"
   },
   {
     "id": "C5-25",
@@ -472,7 +496,8 @@
     "nota_tp3": 8,
     "comentario_tp3": " No mantine los productos ordenados alfabeticamente; Agrega al final de la lista en lugar de al comienzo",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #04, #25, #33"
+    "comentario_tp6": "Son iguales #04, #25, #33",
+    "estado": "regular"
   },
   {
     "id": "C5-26",
@@ -491,7 +516,8 @@
     "nota_tp3": 6,
     "comentario_tp3": " No permite la edicion en el lugar.; No funciona el incremento de cantidad; No respeta el diseño; Al borrar un elemento se borran todos",
     "nota_tp6": 1,
-    "comentario_tp6": "No funciona;React al Servidor;El servidor no hace nada;Redirige la pagina a un sitio de pirateo de informacion"
+    "comentario_tp6": "No funciona;React al Servidor;El servidor no hace nada;Redirige la pagina a un sitio de pirateo de informacion",
+    "estado": "regular"
   },
   {
     "id": "C5-27",
@@ -510,7 +536,8 @@
     "nota_tp3": 5,
     "comentario_tp3": " No esta hecho en react!!!; No incrementa automaticamente; No realiza la edicion con un formulario; No permite la edicion en el lugar",
     "nota_tp6": 9,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "estado": "regular"
   },
   {
     "id": "C5-28",
@@ -529,7 +556,8 @@
     "nota_tp3": 9,
     "comentario_tp3": " Diferencia en el diseño",
     "nota_tp6": 10,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "estado": "promocionado"
   },
   {
     "id": "C5-29",
@@ -548,7 +576,8 @@
     "nota_tp3": 10,
     "comentario_tp3": " Diferencias menores en el diseño",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #10, #29"
+    "comentario_tp6": "Son iguales #10, #29",
+    "estado": "regular"
   },
   {
     "id": "C5-30",
@@ -567,7 +596,8 @@
     "nota_tp3": 10,
     "comentario_tp3": " Diferencias muy pequeñas en el diseño",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #30, #43"
+    "comentario_tp6": "Son iguales #30, #43",
+    "estado": "regular"
   },
   {
     "id": "C5-31",
@@ -586,7 +616,8 @@
     "nota_tp3": 9,
     "comentario_tp3": " No tiene cancelar el agregar y cuando la validacion falla limpia los campos",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #13, #31, #50"
+    "comentario_tp6": "Son iguales #13, #31, #50",
+    "estado": "regular"
   },
   {
     "id": "C5-32",
@@ -605,7 +636,8 @@
     "nota_tp3": 9,
     "comentario_tp3": " Falla la cancelacion al agregar",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)"
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)",
+    "estado": "regular"
   },
   {
     "id": "C5-33",
@@ -624,7 +656,8 @@
     "nota_tp3": 9,
     "comentario_tp3": " Agrega al final de la lista",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #04, #25, #33"
+    "comentario_tp6": "Son iguales #04, #25, #33",
+    "estado": "regular"
   },
   {
     "id": "C5-34",
@@ -641,7 +674,8 @@
     "tp5": true,
     "tp6": true,
     "nota_tp3": 10,
-    "comentario_tp3": " Diferencias mínimas en el diseño"
+    "comentario_tp3": " Diferencias mínimas en el diseño",
+    "estado": "regular"
   },
   {
     "id": "C5-35",
@@ -660,7 +694,8 @@
     "nota_tp3": 10,
     "comentario_tp3": "",
     "nota_tp6": 10,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "estado": "promocionado"
   },
   {
     "id": "C5-36",
@@ -679,7 +714,8 @@
     "nota_tp3": 10,
     "comentario_tp3": " Diferencias menores en el diseño",
     "nota_tp6": 10,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "estado": "promocionado"
   },
   {
     "id": "C5-37",
@@ -698,7 +734,8 @@
     "nota_tp3": 9,
     "comentario_tp3": " La alta la realiza en otra pagina",
     "nota_tp6": 10,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "estado": "promocionado"
   },
   {
     "id": "C5-38",
@@ -717,7 +754,8 @@
     "nota_tp3": 9,
     "comentario_tp3": " No reutiliza el formulario de agregar producto; No se puede cancelar el alta",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)"
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)",
+    "estado": "regular"
   },
   {
     "id": "C5-39",
@@ -736,7 +774,8 @@
     "nota_tp3": 9,
     "comentario_tp3": " Permite realizar multiples altas simultaneas",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)"
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)",
+    "estado": "regular"
   },
   {
     "id": "C5-40",
@@ -755,7 +794,8 @@
     "nota_tp3": 10,
     "comentario_tp3": "Pequeñas diferencias en el diseño",
     "nota_tp6": 10,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "estado": "promocionado"
   },
   {
     "id": "C5-41",
@@ -774,7 +814,8 @@
     "nota_tp3": 9,
     "comentario_tp3": " No reutiliza el formulario de agregar producto",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express);Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (react)"
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express);Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (react)",
+    "estado": "regular"
   },
   {
     "id": "C5-42",
@@ -793,7 +834,8 @@
     "nota_tp3": 9,
     "comentario_tp3": "No tiene el boton cancelar en la alta ",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express);Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (react)"
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express);Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (react)",
+    "estado": "regular"
   },
   {
     "id": "C5-43",
@@ -812,7 +854,8 @@
     "nota_tp3": 9,
     "comentario_tp3": " Permite multiples altas de prodoctos",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #30, #43"
+    "comentario_tp6": "Son iguales #30, #43",
+    "estado": "regular"
   },
   {
     "id": "C5-44",
@@ -831,7 +874,8 @@
     "nota_tp3": 10,
     "comentario_tp3": "",
     "nota_tp6": 9,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "estado": "promocionado"
   },
   {
     "id": "C5-45",
@@ -850,7 +894,8 @@
     "nota_tp3": 8,
     "comentario_tp3": " No hace un formulario para dar la alta sino muestra siempre los campos.; Permit dar la alta sin tener en cuenta si se ingresaron los datos.",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express);Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (react)"
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express);Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (react)",
+    "estado": "regular"
   },
   {
     "id": "C5-46",
@@ -869,7 +914,8 @@
     "nota_tp3": 10,
     "comentario_tp3": " Diferencias menores en el diseño",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express)"
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express)",
+    "estado": "regular"
   },
   {
     "id": "C5-47",
@@ -888,7 +934,8 @@
     "nota_tp3": 8,
     "comentario_tp3": " No hace la alta al comienzo de la lista; No cancela la alta",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #19, #47"
+    "comentario_tp6": "Son iguales #19, #47",
+    "estado": "regular"
   },
   {
     "id": "C5-48",
@@ -907,7 +954,8 @@
     "nota_tp6": 9,
     "comentario_tp6": "",
     "nota_tp3": 9,
-    "comentario_tp3": " La alta la realiza antes de titulo; No respeta el diseño de la consigna"
+    "comentario_tp3": " La alta la realiza antes de titulo; No respeta el diseño de la consigna",
+    "estado": "promocionado"
   },
   {
     "id": "C5-49",
@@ -926,7 +974,8 @@
     "nota_tp3": 10,
     "comentario_tp3": " Diferencias menores en el diseño",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #15, #20, #23, #28, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)"
+    "comentario_tp6": "Son iguales #03, #15, #20, #23, #28, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)",
+    "estado": "regular"
   },
   {
     "id": "C5-50",
@@ -946,7 +995,8 @@
     "nota_tp3": 10,
     "comentario_tp3": " Diferencias menores en el diseño",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #13, #31, #50"
+    "comentario_tp6": "Son iguales #13, #31, #50",
+    "estado": "regular"
   },
   {
     "id": "C5-51",
@@ -966,7 +1016,8 @@
     "nota_tp3": 10,
     "comentario_tp3": " Perfecto",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express);Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (react)"
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express);Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (react)",
+    "estado": "regular"
   },
   {
     "id": "C5-52",
@@ -982,7 +1033,8 @@
     "tp3": false,
     "tp4": false,
     "tp5": false,
-    "tp6": false
+    "tp6": false,
+    "estado": "libre"
   },
   {
     "id": "C5-53",
@@ -1001,6 +1053,7 @@
     "nota_tp3": 9,
     "comentario_tp3": " No hay forma de cancelar la alta",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express);Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (react)"
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express);Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (react)",
+    "estado": "regular"
   }
 ]

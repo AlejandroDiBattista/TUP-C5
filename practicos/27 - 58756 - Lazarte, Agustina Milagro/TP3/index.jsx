@@ -126,7 +126,7 @@ const App = () => {
             <div className="items">
                 {sortedItems.map(item => (
                     <div key={item.id} style={{ position: 'relative' }}>
-                        <div className="item" id={`item-${item.id}`} onClick={() => handleItemClick(item.id)}>
+                        <div className="item" id={"item-${item.id}"} onClick={() => handleItemClick(item.id)}>
                             <div className="number">{item.quantity}</div>
                             <div className="details">
                                 <h2>{item.name}</h2>

@@ -17,7 +17,6 @@ function validarUsuario(req, res, next) {
     }
 }
 
-
 function generarToken() {
     return Math.random().toString().substring(2);
 }
