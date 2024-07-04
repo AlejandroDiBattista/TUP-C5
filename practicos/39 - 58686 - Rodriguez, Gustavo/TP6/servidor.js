@@ -1,13 +1,12 @@
 import express from 'express';
 import cookieParser from 'cookie-parser';
-import morgan
- from 'morgan';
+import morgan from 'morgan';
 const app = express();
 
-app.use(morgan('dev'));     // Loggea cada request en consola
-app.use(cookieParser());    // Para leer cookies
-app.use(express.json());    // Para leer JSONs
-app.use(express.static('public'));  // Para servir archivos estáticos
+app.use(morgan('dev'));     
+app.use(cookieParser());   
+app.use(express.json());    
+app.use(express.static('public'));  
 
 let usuarios = [];
 
@@ -39,7 +38,7 @@ app.post('/registrar', (req, res) => {
         return res.status(409).send("El usuario ya existe");
     }
 
-    usuarios.push({ user, password });// Verificar
+    usuarios.push({ user, password });
     res.send('Usuario registrado');
 });
 
@@ -58,7 +57,7 @@ app.post('/login', (req, res) => {
     if (usuario) {
         let token = generarToken();
         usuario.token = token;
-        res.cookie('token', token, { httpOnly: true });// Verificar
+        res.cookie('token', token, { httpOnly: true });
         return res.send("Usuario logueado");
     }
 
@@ -77,17 +76,6 @@ app.get('/info', validarUsuario, (req, res) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-// Implementar las rutas necesarias
 app.listen(5500, () => {
     console.log('Servidor iniciado en http://localhost:5500');
 });
