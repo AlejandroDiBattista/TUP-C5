@@ -187,12 +187,13 @@
 				const conNota = (tp == 'tp3' || tp == 'tp6') && nota != '0';
 				const link = conIndex ? ubicar(alumno.ubicacion, entrega) : null;
 				const iguales = debeRevisar(alumno, tp);
-					
-					return (
+				const subio = (tp=='tp6' && alumno["subio"] != "No subido") ? alumno["subio"] : "";
+
+				return (
 					<>
 						<div>
 							<a href={link}>
-								{entrega} | {iguales ? '🟡' : '🟢'} {conIndex && "Ver Trabajo"} {conNota && <b> (nota {nota})</b>}
+								{entrega} | {iguales ? `🟡 ${subio}` : '🟢'} {conIndex && "Ver Trabajo"} {conNota && <b> (nota {nota})</b>}
 							</a>
 						</div>
 						{comentario && <ul>{comentario.split(";").map((comentario,i) => <li key={i}>{comentario}</li>)}</ul>}
