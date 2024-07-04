@@ -11,13 +11,13 @@
     "tp2": true,
     "tp3": true,
     "tp4": true,
-    "tp5": false,
+    "tp5": true,
     "tp6": true,
     "nota_tp3": 10,
     "comentario_tp3": "",
     "nota_tp6": 10,
     "comentario_tp6": "",
-    "estado": "regular"
+    "estado": "promocionado"
   },
   {
     "id": "C5-02",
@@ -231,13 +231,13 @@
     "tp2": true,
     "tp3": true,
     "tp4": true,
-    "tp5": false,
+    "tp5": true,
     "tp6": true,
     "nota_tp3": 9,
     "comentario_tp3": " Diferencias menores en el diseño",
     "nota_tp6": 10,
     "comentario_tp6": "",
-    "estado": "regular"
+    "estado": "promocionado"
   },
   {
     "id": "C5-13",
@@ -511,7 +511,7 @@
     "tp2": true,
     "tp3": true,
     "tp4": true,
-    "tp5": false,
+    "tp5": true,
     "tp6": true,
     "nota_tp3": 6,
     "comentario_tp3": " No permite la edicion en el lugar.; No funciona el incremento de cantidad; No respeta el diseño; Al borrar un elemento se borran todos",
@@ -531,10 +531,10 @@
     "tp2": true,
     "tp3": true,
     "tp4": true,
-    "tp5": false,
+    "tp5": true,
     "tp6": true,
-    "nota_tp3": 5,
-    "comentario_tp3": " No esta hecho en react!!!; No incrementa automaticamente; No realiza la edicion con un formulario; No permite la edicion en el lugar",
+    "nota_tp3": 9,
+    "comentario_tp3": " Corregido",
     "nota_tp6": 9,
     "comentario_tp6": "",
     "estado": "regular"

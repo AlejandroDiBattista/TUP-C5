@@ -82,6 +82,8 @@ function App() {
         const formData = new FormData(e.target);
         const user = formData.get('user');
         const password = formData.get('password');
+        e.preventDefault();
+        e.stopPropagation()
         registrarUsuario(user, password);
     }
 
@@ -90,6 +92,8 @@ function App() {
         const formData = new FormData(e.target);
         const user = formData.get('user');
         const password = formData.get('password');
+        e.preventDefault();
+        e.stopPropagation()
         loginUsuario(user, password);
     }
 
@@ -114,11 +118,7 @@ function App() {
                 <button onClick={getInfo}>Info</button>
             </div>
 
-            {token && (
-                <>
-                    <p>Token: {token}</p>
-                </>
-            )}
+            {token && <p>Token: {token}</p>}
             <section>
                 <pre>{mensaje}</pre>
             </section>

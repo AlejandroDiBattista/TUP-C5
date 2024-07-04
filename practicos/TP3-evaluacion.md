@@ -119,11 +119,8 @@
 -  Al borrar un elemento se borran todos
 
 ## 27 - 58756 - Lazarte, Agustina Milagro
-- Nota: 5
--  No esta hecho en react!!!
--  No incrementa automaticamente
--  No realiza la edicion con un formulario
--  No permite la edicion en el lugar
+- Nota: 9
+-  Corregido
 
 ## 28 - 58727 - Lazarte, Lucas
 - Nota: 9
