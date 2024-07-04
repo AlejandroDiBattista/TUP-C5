@@ -50,6 +50,10 @@ app.post('/login', (req, res) => {
         return res.status(400).send('Faltan datos');
     }
 
+
+
+
+    
     let usuario = usuarios.find(u => u.user === user && u.password === password);
     if (usuario) {
         let token = generarToken();

@@ -47,7 +47,6 @@ app.post('/login', (req, res) => {
 
     // Buscar el usuario en la lista (simulación)
     const user = users.find(user => user.username === username && user.password === password);
-
     if (!user) {
         return res.status(401).json({ error: 'Credenciales incorrectas.' });
     }

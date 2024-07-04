@@ -42,6 +42,10 @@ app.post('/login', (req, res) => {
     if (!username || !password) {
         return res.status(400).json({ message: 'Todos los campos son obligatorios.' })
     }
+    
+
+
+
 
     const user = users[username]
     if (!user || user.password !== password) {
