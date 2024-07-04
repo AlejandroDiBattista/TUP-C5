@@ -50,8 +50,7 @@
 - Tiene una clase en controladores que no se usa y es identica a servidor!
 
 ## 14 - 58894 - Gonzalez Nacusse, Flavia
-- Nota: 7
-- Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)
+- Nota: 9
 
 ## 15 - 59488 - Gonzalez, Mariano Emanuel
 - Nota: 7
