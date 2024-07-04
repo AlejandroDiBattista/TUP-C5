@@ -3,14 +3,20 @@
 
 <head>
     <meta charset="UTF-8">
+    <!-- 
+        nota: 6
+        observacion:
+        - No incrementa
+        - No funciona la alta
+        - No respeta el diseño
+    
+    -->
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <title>58740</title>
     <style>
-        
-
         body {
             font-family: Arial, sans-serif;
             background-color: #f8f8f8;
@@ -201,48 +207,51 @@
                     setError(true);
                     return;
                 }
-
                 alGuardar({ ...producto, nombre, ean, stock });
-            };
-
-            const cancelar = e => {
-                e.preventDefault();
-                alCancelar();
-            };
+            }
 
             return (
-                <form className="panel">
-                    <input type="text" value={nombre} onChange={cambiarNombre} />
-                    <input type="text" value={ean} onChange={cambiarEan} />
-                    <input type="text" value={stock} onChange={cambiarStock} />
+                <form className="panel" onSubmit={guardarCambios}>
+                    <input placeholder="Nombre" value={nombre} onChange={cambiarNombre} />
+                    <input placeholder="Ean:779" value={ean} onChange={cambiarEan} />
+                    <input placeholder="stock" value={stock} onChange={cambiarStock} />
                     {error && <p className="erro">El campo está vacío, todos los campos son obligatorios</p>}
                     <div className="acciones-guardar">
-                        <button id="Aceptar" onClick={guardarCambios}>Aceptar</button>
-                        <button id="cancelar" onClick={cancelar}>Cancelar</button>
+                        <button type="submit">Aceptar</button>
+                        <button type="button" onClick={alCancelar}>Cancelar</button>:
                     </div>
                 </form>
             );
         }
 
-        function Mostrar({ producto, alGuardar, alBorrar }) {
-            const [editando, setEditando] = useState(false);
-            const [tempProducto, setTempProducto] = useState(producto);
+        function Mostrar({ producto, alGuardar, alBorrar, alCancelar }) {
+            const [editando, setEditando] = useState(producto.enEdicionInicial || false);
 
-            const editar = () => setEditando(true);
-            const cancelar = () => {
-                setEditando(false);
-                setTempProducto(producto);
-            };
+            const editar = e => {
+                e.stopPropagation();
+                setEditando(true);
+            }
 
-            const guardar = actualizado => {
-                alGuardar(actualizado);
+            const cancelar = e => {
+                e.stopPropagation();
                 setEditando(false);
-            };
+                if (producto.enEdicionInicial) {
+                    alCancelar(producto.id);
+                }
+            }
+
+            const incrementarStock = () => {
+                const nuevoStock = parseInt(producto.stock, 10) + 1;
+                alGuardar({ ...producto, stock: nuevoStock.toString() });
+            }
 
             return (
-                <div className="panel">
+                <div className="panel" onClick={incrementarStock}>
                     {editando ? (
-                        <Editar producto={tempProducto} alGuardar={guardar} alCancelar={cancelar} />
+                        <Editar producto={producto} alGuardar={(actualizado) => {
+                            alGuardar(actualizado);
+                            setEditando(false);
+                        }} alCancelar={cancelar} />
                     ) : (
                         <>
                             <div className="st">
@@ -254,7 +263,10 @@
                             </div>
                             <div className="acciones">
                                 <button id="edicion" onClick={editar}><i className="fa-regular fa-pen-to-square"></i></button>
-                                <button id="trash" onClick={() => alBorrar(producto.id)}><i className="fa-solid fa-trash"></i></button>
+                                <button id="trash" onClick={(e) => {
+                                    e.stopPropagation();
+                                    alBorrar(producto.id);
+                                }}><i className="fa-solid fa-trash"></i></button>
                             </div>
                         </>
                     )}
@@ -262,7 +274,7 @@
             );
         }
 
-        function Agenda({ productos, alAgregar, alGuardar, alBorrar }) {
+        function Agenda({ productos, alAgregar, alGuardar, alBorrar, alCancelarAgregar }) {
             if (productos.length === 0) return <h1>No hay Productos <button onClick={alAgregar}><i className="fa-solid fa-plus"></i></button></h1>;
             return (
                 <>
@@ -273,6 +285,8 @@
                             producto={producto}
                             alGuardar={alGuardar}
                             alBorrar={alBorrar}
+                            alCancelar={alCancelarAgregar}
+                            enEdicionInicial={producto.enEdicionInicial}
                         />
                     )}
                 </>
@@ -298,28 +312,35 @@
             productos.sort((a, b) => a.nombre.localeCompare(b.nombre));
 
             const guardar = productoActualizado => {
-                let copia = productos.map(p => p.id === productoActualizado.id ? productoActualizado : p);
+                let copia = productos.map(p => p.id === productoActualizado.id ? { ...productoActualizado, enEdicionInicial: false } : p);
                 setProductos(copia);
-            };
+            }
 
             const borrar = id => {
                 let copia = productos.filter(p => p.id !== id);
                 setProductos(copia);
-            };
+            }
 
-            const agregar = () => {
+            const agregar = e => {
+                e.stopPropagation();
                 const nuevoProducto = {
                     id: productos.length > 0 ? Math.max(...productos.map(p => p.id)) + 1 : 1,
                     stock: '',
                     nombre: '',
-                    ean: ''
+                    ean: '',
+                    enEdicionInicial: true
                 };
                 setProductos([...productos, nuevoProducto]);
-            };
+            }
+
+            const cancelarNuevoProducto = id => {
+                let copia = productos.filter(p => p.id !== id);
+                setProductos(copia);
+            }
 
             return (
                 <>
-                    <Agenda productos={productos} alAgregar={agregar} alGuardar={guardar} alBorrar={borrar} />
+                    <Agenda productos={productos} alAgregar={agregar} alGuardar={guardar} alBorrar={borrar} alCancelarAgregar={cancelarNuevoProducto} />
                 </>
             );
         }

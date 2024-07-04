@@ -25,7 +25,7 @@ function App() {
         }
     }
 
-    async function login(e) {
+    async function login(e) {  // Verificar
         e.preventDefault();
         let res = await fetch('/login', {
             method: 'POST',
@@ -37,7 +37,7 @@ function App() {
         let data = await res.text();
         setMensaje(data);
         if (res.ok) {
-            setShowLogin(false);
+            setShowLogin(false);// Verificar
         }
     }
 

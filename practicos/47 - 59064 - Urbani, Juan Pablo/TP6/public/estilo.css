@@ -1,98 +1,146 @@
-html {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 24px;
-    background-color: #eee;
-    box-sizing:content-box;
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e0f7fa;
 }
 
-*, *:before, *:after {
-    box-sizing: inherit;
-}
-
-#root {
-    width: 400px;
+.container {
+    width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 10px;
+    padding: 60px 20px;
 }
 
-h1,h2,h3,h4,h5,h6 {
-    color: #333;
-    margin: 8px 0;
-}
-
-button {
-    padding: 4px 6px;
-    min-width: 100px;
-    cursor: pointer;
-    border: 0.5px solid #bbb;
-    border-radius: 5px;
-    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
-}
-
-button:hover {
-    background-color: #ddd;
+h1, h2 {
+    text-align: center;
+    color: #00695c;
+    margin-bottom: 20px;
+    font-weight: 700;
 }
 
 form {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+    color: #00796b;
+    font-weight: 600;
+    padding-left: 10px;
+}
+
+form input {
     width: 100%;
-    button[type='submit'] {
-        font-weight: bold;
-    }
-    label {
-        display: block;
-        margin: 8px 0;
-        font-size: 14px;
-        color: #666;
-        width: 100%;
-        input {
-            display: block;
-            width: calc(100% - 20px);
-            padding: 5px 10px;
-            margin-top: 5px;
-            border: 0.5px solid #bbb;
-            border-radius: 5px;
-            box-shadow: inset 0 0 4px 0 rgba(0, 0, 0, 0.2);
-            font-size: 20px;
-            font-weight: bold;
-        }
-    }
-    h3 {
-        margin: -5px 0 0 0;
-        padding: 0;
-    }
-    span:has(> button) {
-        padding-top: 10px;
-    }
+    padding: 12px;
+    margin-bottom: 25px;
+    border: 1px solid #b2dfdb;
+    border-radius: 6px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
 }
 
-span:has(> button) {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 16px;
-    gap: 10px;
+form input:focus {
+    border-color: #00796b;
+    outline: none;
 }
 
-div:has(> button) {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-top: 16px;
-    gap: 10px;
+form button {
+    width: auto;
+    padding: 8px 25px;
+    background-color: #00796b;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-section {
-    padding: 10px;
-    margin: 10px 0;
-    background-color: #fff;
-    border: 0.5px solid #bbb;
-    border-radius: 15px;
-    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+form button:hover {
+    background-color: #004d40;
+    transform: translateY(-2px);
+}
+form .password-toggle {
+    width: auto;
+    padding: 8px 16px;
+    margin-left: -10px;
+    background-color: #00796b;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-ul {
-    list-style-type: none;
-    li {
-        padding: 5px 0;
-    }
+form .password-toggle:hover {
+    background-color: #004d40;
+    transform: translateY(-2px);
+}
+.message {
+    text-align: center;
+    color: #000000;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.register-link, .login-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.register-link button, .login-link button {
+    background-color: transparent;
+    border: none;
+    color: #00796b;
+    cursor: pointer;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.register-link button:hover, .login-link button:hover {
+    text-decoration: underline;
+    color: #004d40;
+}
+
+.info-section {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.info-section button {
+    margin: 10px;
+    padding: 8px 16px;
+    background-color: #00796b;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.info-section button:hover {
+    background-color: #004d40;
+    transform: translateY(-2px);
+}
+
+.info-section .secret-info {
+    text-align: left;
+    margin-top: 20px;
+}
+
+.info-section .secret-info p {
+    word-break: break-all;
+    color: #00695c;
+    line-height: 1.6;
 }

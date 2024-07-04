@@ -28,7 +28,7 @@
             margin: 0 20px;
         }
 
-        .card {
+        .tarjeta {
             padding: 16px;
             margin: 4px;
             border-radius: 8px;
@@ -42,7 +42,7 @@
             flex-wrap: wrap;
             justify-content: start;
 
-            >div {
+            > div {
                 text-align: center;
                 width: 240px;
                 height: 96px;
@@ -107,7 +107,7 @@
 <body>
     <div id="root"></div>
     <script>
-        const datos = [
+        const contactos = [
             { id: 1, nombre: 'Juan', apellido: 'Perez', telefono: '(381) 123-4567', favorito: true },
             { id: 2, nombre: 'Maria', apellido: 'Gomez', telefono: '(381) 123-4567', favorito: false },
             { id: 3, nombre: 'Pedro', apellido: 'Gonzalez', telefono: '(381) 123-4567', favorito: true },
@@ -134,21 +134,54 @@
     <script type="text/babel">
         const { createRoot } = ReactDOM
 
-        const Contacto = ({ nombre, apellido, telefono }) =>
-            <div className="card">
+        const Favorito = ({ favorito, onToggle }) => {
+            const onClick = () => onToggle(!favorito)
+
+            return (
+                <span onClick={onClick}>
+                    {favorito ?
+                        <i className="fas fa-star"></i> :
+                        <i className="far fa-star"></i>
+                    }
+                </span>
+            )
+        }
+
+        const Contacto = ({ nombre, apellido, telefono, favorito, onToggleFavorito }) =>
+            <div className="tarjeta">
                 <div>{nombre} <b>{apellido}</b></div>
                 <div>{telefono}</div>
+                <Favorito favorito={favorito} onToggle={onToggleFavorito} />
             </div>
 
-        const Agenda = ({ datos }) =>
-            <div className="agenda">
-                {datos.map(contacto => <Contacto key={contacto.id} {...contacto} />)}
-            </div>
+        const Agenda = ({ contactos }) => {
+            contactos.sort((a, b) => {
+                if (a.favorito !== b.favorito) {
+                    return a.favorito ? -1 : 1;
+                }
+                return (a.apellido + a.nombre).localeCompare(b.apellido + b.apellido);
+            });
+
+            return (
+                <div className="agenda">
+                    {contactos.map(contacto => (
+                        <Contacto
+                            key={contacto.id}
+                            {...contacto}
+                            onToggleFavorito={() => {
+                                contacto.favorito = !contacto.favorito;
+                                root.render(<App />);
+                            }}
+                        />
+                    ))}
+                </div>
+            );
+        };
 
         const App = () =>
             <div>
                 <h1>Agenda</h1>
-                <Agenda datos={datos} />
+                <Agenda contactos={contactos} />
             </div>
 
         const root = createRoot(document.getElementById('root'))

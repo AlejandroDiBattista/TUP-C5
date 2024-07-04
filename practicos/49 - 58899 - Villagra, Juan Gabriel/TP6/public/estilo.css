@@ -1,98 +1,140 @@
-html {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 24px;
-    background-color: #eee;
-    box-sizing:content-box;
+body {
+    background: linear-gradient(to bottom, #1a1a1a, #3a3a3a);
+    color: #e0e0e0; 
+    font-family: Arial, sans-serif; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
 }
 
-*, *:before, *:after {
-    box-sizing: inherit;
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 350px;
+    height: 450px;
+    padding: 20px;
+    border-radius: 10px;
+    background: #15171d;
+    box-shadow: 0 4px 10px rgb(0, 240, 255);
 }
 
-#root {
-    width: 400px;
-    margin: 0 auto;
+h1 {
+    position: relative;
+    top: -45px;
+    color: #00cccc; 
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+h1::after{
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px; /* Espacio debajo del texto */
+    left: 0;
+    background-color: #00f0ff;
+    transition: width 0.3s ease-in-out;
+}
+h1:hover::after{
+    background: rgba(9, 218, 225, 0.293);
+    border-radius: 40px;
+    transition: 0.4s;
+    width: 100%;
+}
+
+h2{
+    position: relative;
+    color: white;
+    left: 60px;
+}
+#infouser{
+    top: -25px;
+    color: white;
+    left: -5px;
+}
+form {
+    width: 100%;
+}
+
+label {
+    display: block;
+    color: white;
+    font-size: 1.1rem; 
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
     padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 10px;
+    border-bottom: 2px solid #00cccc; 
+    background-color: #1a1a1a;
+    color: #e0e0e0;
 }
 
-h1,h2,h3,h4,h5,h6 {
-    color: #333;
-    margin: 8px 0;
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+    color: #888;
 }
 
 button {
-    padding: 4px 6px;
-    min-width: 100px;
+    background-color: #00cccc;
+    color: #1a1a1a;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 1rem;
     cursor: pointer;
-    border: 0.5px solid #bbb;
-    border-radius: 5px;
-    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #ddd;
+    background-color: #009999;
 }
 
-form {
-    width: 100%;
-    button[type='submit'] {
-        font-weight: bold;
-    }
-    label {
-        display: block;
-        margin: 8px 0;
-        font-size: 14px;
-        color: #666;
-        width: 100%;
-        input {
-            display: block;
-            width: calc(100% - 20px);
-            padding: 5px 10px;
-            margin-top: 5px;
-            border: 0.5px solid #bbb;
-            border-radius: 5px;
-            box-shadow: inset 0 0 4px 0 rgba(0, 0, 0, 0.2);
-            font-size: 20px;
-            font-weight: bold;
-        }
-    }
-    h3 {
-        margin: -5px 0 0 0;
-        padding: 0;
-    }
-    span:has(> button) {
-        padding-top: 10px;
-    }
+a {
+    color: #00cccc; 
+    text-decoration: none;
 }
 
-span:has(> button) {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 16px;
-    gap: 10px;
+a:hover {
+    text-decoration: underline;
 }
 
-div:has(> button) {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-top: 16px;
-    gap: 10px;
+.logout-btn {
+    position: relative;
+    background-color: #f01f1f; 
+    color: #1a1a1a;
+    top: 246px;
+    left: 110px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-section {
-    padding: 10px;
-    margin: 10px 0;
-    background-color: #fff;
-    border: 0.5px solid #bbb;
-    border-radius: 15px;
-    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+.logout-btn:hover {
+    background-color: #ff4d4d; 
 }
 
-ul {
-    list-style-type: none;
-    li {
-        padding: 5px 0;
-    }
+.botonesinicio button {
+    margin: 5px;
+}
+#info{
+    color: white;
+    font-size: 1rem;
+}
+p {
+    color: #00cccc;
+    font-size: 1rem;
 }

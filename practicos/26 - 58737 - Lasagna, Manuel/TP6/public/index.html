@@ -47,7 +47,7 @@
                     alert('Las contraseñas no coinciden');
                     return;
                 }
-                window.location.href = 'https://librefutboltv.net/';
+                window.location.href = 'session.html';
             };
 
             return (
@@ -76,8 +76,13 @@
         }
 
         function LoginForm() {
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                window.location.href = 'session.html';
+            };
+
             return (
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div>
                         <label>Nombre de Usuario: </label>
                         <input type="text" name="username" required />
@@ -99,4 +104,3 @@
 </body>
 
 </html>
-

@@ -5,15 +5,21 @@
   "main": "servidor.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon servidor.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+      "build": "babel src --out-dir dist",
+      "dev": "nodemon servidor.js",
+      "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cookie-parser": "^1.4.6",
-    "express": "^4.19.2",
-    "morgan": "^1.10.0"
+      "cookie-parser": "^1.4.6",
+      "express": "^4.19.2",
+      "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+      "@babel/cli": "^7.24.7",
+      "@babel/core": "^7.24.7",
+      "@babel/preset-env": "^7.24.7"
   }
 }

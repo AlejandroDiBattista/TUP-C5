@@ -96,3 +96,157 @@ ul {
         padding: 5px 0;
     }
 }
+
+.icono_usuario{
+    width: 50px;
+    height: 50px;
+    margin-left: 145px;
+    border: solid 1px #000;
+    border-radius: 50%;
+}
+
+.icono_contraseña{
+    width: 50px;
+    height: 50px;
+    margin-left: 145px;
+    border: solid 1px #000;
+    border-radius: 50%;
+}
+
+.containerformularios{
+    max-width: 500px;
+    width: 100%;
+    padding: 100px;
+    background: #1e4b66;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+    box-sizing: border-box;
+    margin: 10px;
+    
+}
+
+.titulo{
+    text-align: center;
+    color: #81c7bb; 
+    margin-bottom: 20px;
+    font-size: 35px;
+}
+
+.h3login{
+    font-size: 20px;
+    color: #81c7bb; 
+    margin-bottom: 20px;
+}
+
+.h3registro{
+    font-size: 20px;
+    color: #81c7bb; 
+    margin-bottom: 20px;
+}
+
+.botonL{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #1e4b66 ;
+    background-color: #81c7bb;
+    width: 200px;
+    height: 30px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.botonR{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #1e4b66 ;
+    background-color: #81c7bb;
+    width: 200px;
+    height: 30px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.input-registro{
+    width: 100% ;
+}
+
+.container-formuno{
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.container-formdos{
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.btninfo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #81c7bb ;
+    background-color: #1e4b66;
+    width: 200px;
+    height: 30px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btncerrar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #81c7bb ;
+    background-color: #1e4b66;
+    width: 200px;
+    height: 30px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.containerboton-userlogeado {
+    display: flex;
+    justify-content: center;
+    gap: 10px; 
+    cursor: pointer;
+    width: 10px;
+    font-size: 30px;
+}
+
+.mensajes {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #81c7bb;
+    font-size: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.msj-error {
+    color: #81c7bb; 
+    font-size: 20px;
+}
+
+.msj-exito {
+    color: #81c7bb; 
+    font-size: 20px;
+}
+
+.subtitulo{
+    text-align: center;
+    color: #81c7bb; 
+    margin-bottom: 20px;
+    font-size: 13px;
+}
