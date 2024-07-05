@@ -1,7 +1,7 @@
 # Resultado Final
 
+## RECUPERACIÓN
 > [!NOTE]
-> RECUPERACIÓN
 > Estos alumnos tienen hasta el lunes 8 para presentar las correcciones
 >
 58736 - **Juarez Hindi**, Lucas David           
