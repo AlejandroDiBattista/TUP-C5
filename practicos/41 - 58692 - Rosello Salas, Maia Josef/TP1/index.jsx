@@ -9,6 +9,11 @@ const ListaCompleta = [
     {id : 8 , nombre:  "Omar" , apellido: "Veron", telefono: "381859642"  }, 
     {id : 9 , nombre:  "Julian" , apellido: "Orellana", telefono: "22358914" }, 
     {id : 10 , nombre:  "Daniel" , apellido: "Wierna", telefono: "223569583"  }, 
+
+
+
+
+
 ];
 
 const Contacto = ({nombre, apellido, telefono}) => (

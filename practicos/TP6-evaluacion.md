@@ -129,7 +129,7 @@
 - Son iguales #04, #25, #33
 
 ## 34 - 59099 - Moyano Berrondo, Tahiel L
-- Nota: 0
+- Nota: 10
 
 ## 35 - 58805 - Prieto, Matias Hernan
 - Nota: 10
