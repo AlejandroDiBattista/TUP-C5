@@ -7,11 +7,14 @@
 58736 - **Juarez Hindi**, Lucas David           
 > **Corregir TP3**
 > *No permite agregar cuando se esta editando*
+>
 > *No respeta el diseño original*
+>
 
 58721 - **Juncos**, Gonzalo Sebastian           
 > **Corregir TP3**
 > *La alta de producto aunque cancele igual agrega un producto*
+>
 
 
 #### Promocionados
