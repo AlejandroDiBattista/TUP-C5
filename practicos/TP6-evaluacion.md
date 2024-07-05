@@ -81,9 +81,7 @@
 - Nota: 10
 
 ## 22 - 58761 - Juarez, Lautaro Andres
-- Nota: 7
-- No presentó el servidor, solo react
-- Son iguales: #22, #33 (react)
+- Nota: 10
 
 ## 23 - 58758 - Juarez, Milagro Macarena
 - Nota: 9

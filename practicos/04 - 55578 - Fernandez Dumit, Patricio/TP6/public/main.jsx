@@ -106,7 +106,6 @@ function App() {
         } catch (error) {
             console.error('Error al cerrar sesión', error);
         }
-
     };
 
     return (

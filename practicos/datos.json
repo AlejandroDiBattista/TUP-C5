@@ -456,9 +456,9 @@
     "tp6": true,
     "nota_tp3": 10,
     "comentario_tp3": "Hay diferencias en el diseño pero no afectan la funcionalidad",
-    "nota_tp6": 7,
-    "comentario_tp6": "No presentó el servidor, solo react;Son iguales: #22, #33 (react)",
-    "estado": "regular",
+    "nota_tp6": 10,
+    "comentario_tp6": "",
+    "estado": "promocionado",
     "subio": "02-Jul 17:06"
   },
   {

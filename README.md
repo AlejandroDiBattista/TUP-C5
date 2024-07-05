@@ -29,6 +29,7 @@
 1. 58720 - **Gonzalez**, Martín Natanael           
 1. 59068 - **Gonzalez**, Silvina Mariela           
 1. 58786 - **Gutierrez**, Augusto Pedro            
+1. 58761 - **Juarez**, Lautaro Andres              
 1. 58758 - **Juarez**, Milagro Macarena            
 1. 58756 - **Lazarte**, Agustina Milagro           
 1. 58727 - **Lazarte**, Lucas                      
@@ -51,7 +52,6 @@
 1. 59488 - **Gonzalez**, Mariano Emanuel           
 1. 58880 - **Gutierrez**, Cecilia Ana Lu           
 1. 58687 - **Jadur**, Sofia Nahir                  
-1. 58761 - **Juarez**, Lautaro Andres              
 1. 59070 - **Ladina**, Maia Agostina               
 1. 58737 - **Lasagna**, Manuel                     
 1. 59152 - **Lopez Chipoloni**, Agustin            

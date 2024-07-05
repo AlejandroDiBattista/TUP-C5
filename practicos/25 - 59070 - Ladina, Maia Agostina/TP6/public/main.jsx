@@ -103,7 +103,6 @@ function App() {
         }
     };
 
-
     return (
         <div className="containerformularios">
             <h2 className="titulo">¡Inicia aquí!</h2>
