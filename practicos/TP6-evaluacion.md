@@ -28,7 +28,6 @@
 
 ## 08 - 58781 - Frias Armengol, Facundo
 - Nota: 8
-- Son iguales #05, #09
 
 ## 09 - 58734 - Galvan, Victor Mateo
 - Nota: 7

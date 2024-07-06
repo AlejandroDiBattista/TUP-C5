@@ -276,7 +276,7 @@
         function App() {
             const [depositos, setDepositos] = useState(() => {
                 const datosGuardados = localStorage.getItem('depositos');
-                return datosGuardados ? JSON.parse(datosGuardados) : ProductoInicial;
+                return datosGuardados ? JSON.parse(datosGuardados) : [];
             });
 
             const guardarEnLocalStorage = (depositosActualizados) => {

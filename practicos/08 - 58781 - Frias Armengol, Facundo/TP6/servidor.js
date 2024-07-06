@@ -18,9 +18,11 @@ let Usuarios = [
     { username: 'admin', password: 'contraseña' },
 ];
 
+
 app.get('/usuarios', (req, res) => {
     res.status(200).json(Usuarios);
 });
+
 
 app.post('/registro', (req, res) => {
     const { usuario, contraseña } = req.body;
@@ -29,15 +31,21 @@ app.post('/registro', (req, res) => {
         return res.status(400).json({ error: 'El usuario ya está en uso' });
     } else {
         Usuarios.push({ username: usuario, password: contraseña });
+
         res.status(200).json({ message: 'Usuario registrado exitosamente' });
     }
 });
+
 
 app.post('/login', (req, res) => {
     const { usuario, contraseña } = req.body;
     const user = Usuarios.find((user) => user.username === usuario && user.password === contraseña);
     if (user) {
         req.session.usuario = usuario;
+
+
+
+
         res.status(200).json({ message: 'Usuario logueado exitosamente' });
     } else {
         return res.status(401).json({ error: 'Usuario o contraseña incorrectos' });

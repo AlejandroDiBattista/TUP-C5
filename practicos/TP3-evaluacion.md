@@ -30,8 +30,10 @@
 
 ## 08 - 58781 - Frias Armengol, Facundo
 - Nota: 8
+- No incrementa el contador
 - No edita en el lugar
 - Edita en página separada
+- No respeta el diseño
 
 ## 09 - 58734 - Galvan, Victor Mateo
 - Nota: 6
@@ -103,8 +105,7 @@
 - Diferencia en el diseño, no reutiliza la edicion de productos
 
 ## 24 - 58721 - Juncos, Gonzalo Sebastian
-- Nota: 8
-- La alta de producto aunque cancele igual agrega un producto
+- Nota: 9
 
 ## 25 - 59070 - Ladina, Maia Agostina
 - Nota: 8

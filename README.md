@@ -12,12 +12,6 @@
 > *No respeta el diseño original*
 >
 
-58721 - **Juncos**, Gonzalo Sebastian           
-> **Corregir TP3**
->
-> *La alta de producto aunque cancele igual agrega un producto*
->
-
 
 #### Promocionados
 1. 55681 - **Bustos**, Mauricio Benjamin           
@@ -31,6 +25,7 @@
 1. 58786 - **Gutierrez**, Augusto Pedro            
 1. 58761 - **Juarez**, Lautaro Andres              
 1. 58758 - **Juarez**, Milagro Macarena            
+1. 58721 - **Juncos**, Gonzalo Sebastian           
 1. 58756 - **Lazarte**, Agustina Milagro           
 1. 58727 - **Lazarte**, Lucas                      
 1. 59099 - **Moyano Berrondo**, Tahiel L           

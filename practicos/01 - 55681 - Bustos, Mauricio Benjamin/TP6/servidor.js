@@ -9,6 +9,10 @@ app.use(cookieParser()); // Para leer cookies
 app.use(express.json()); // Para leer JSONs
 app.use(express.static('public')); // Para servir archivos estáticos
 
+
+
+
+
 // Array de objetos/datos
 let Usuarios = [
     { username: 'admin', password: 'contraseña' },
@@ -27,7 +31,7 @@ app.post('/registro', (req, res) => {
         return res.status(400).json({ error: 'El usuario ya esta en uso' });
     } else {
         Usuarios.push({ username: usuario, password: contraseña });
-        console.log('Usuario registrado:', { username: usuario, password: contraseña });
+        // console.log('Usuario registrado:', { username: usuario, password: contraseña });
         res.status(200).json({ message: 'Usuario registrado exitosamente' });
     }
 });
@@ -40,20 +44,18 @@ app.post('/login', (req, res) => {
         const token = Math.random().toString().substring(2);
         user.token = token;
         res.cookie('token', token, { httpOnly: true, expires: new Date(Date.now() + 60 * 60 * 1000) });
-        console.log('Inicio de sesión exitoso');
-        console.log('Usuario logueado:', { username: usuario, password: contraseña, token });
+        // console.log('Inicio de sesión exitoso');
+        // console.log('Usuario logueado:', { username: usuario, password: contraseña, token });
         res.status(200).json({ message: 'Usuario logueado exitosamente' });
     } else {
         return res.status(401).json({ error: 'Usuario o contraseña incorrectos' });
     }
-
 });
-
 // Ruta de deslogueo
 app.post('/logout', (req, res) => {
     res.clearCookie('user');
-    console.log('Usuario deslogueado');
-    console.log('Sesión cerrada');
+    // console.log('Usuario deslogueado');
+    // console.log('Sesión cerrada');
     res.status(200).json({ message: 'Usuario deslogueado exitosamente' });
 });
 
