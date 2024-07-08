@@ -3,9 +3,9 @@
 
 ## RECUPERACIÓN
 > [!NOTE]
-> Estos alumnos tienen hasta el lunes 8 para presentar las correcciones
+> Estos alumnos tienen hasta el *miercoles 10* para presentar las correcciones
 >
-58736 - **Juarez Hindi**, Lucas David           
+58736 - **Juarez Hindi**, Lucas David             <img src="./material/verde.png" width="4" height="4"> <img src="./material/verde.png" width="4" height="4"> <img src="./material/amarillo.png" width="6" height="6"> <img src="./material/verde.png" width="4" height="4"> <img src="./material/verde.png" width="4" height="4"> <img src="./material/verde.png" width="6" height="6">
 > **Corregir TP3**
 >
 > *No permite agregar cuando se esta editando*
