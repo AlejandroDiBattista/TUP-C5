@@ -1,112 +1,132 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
-    <!-- Enlaces a React, ReactDOM y Babel -->
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <!-- Iconos FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
-    <title>Demo 1</title>
+    <title>Agenda de Contactos 58781</title>
     <style>
-        /* reset */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f0f0f0;
-        }
-
-        #root {
-            max-width: 1280px;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 0 20px;
+            height: 100vh;
+        }
+
+        #root {
+            max-width: 800px;
+            width: 100%;
+            margin: 20px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
         }
 
         .card {
             padding: 16px;
-            margin: 4px;
+            margin: 8px;
             border-radius: 8px;
             background-color: #ffffff;
-            box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+            cursor: pointer;
         }
 
-        .agenda {
-            margin-top: 16px;
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-content {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: start;
+            align-items: center;
+        }
 
-            >div {
-                text-align: center;
-                width: 240px;
-                height: 96px;
-                position: relative;
+        .card-content > div {
+            flex: 1;
+        }
 
-                span {
-                    position: absolute;
-                    top: 8px;
-                    right: 8px;
-                }
+        .card-content .name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
 
-                div {
-                    margin-top: 25px;
-                    font-size: 20px;
-                }
+        .card-content .info {
+            color: #666;
+            font-size: 14px;
+        }
 
-                div:last-child {
-                    text-align: right;
-                    font-size: 14px;
-                }
-            }
+        .star-icon {
+            color: #FFD43B;
+            cursor: pointer;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .star-icon:hover {
+            color: #FFC107;
         }
 
         form {
-            width: 240px;
+            margin-top: 20px;
             padding: 16px;
-            margin: 8px;
+            background-color: #f5f5f5;
             border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-            label {
-                display: block;
-                font-size: 12px;
-                color: #aaa;
-            }
+        form input {
+            flex: 1;
+            margin-right: 8px;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
 
-            input {
-                width: calc(100% - 8px);
-                border-radius: 4px;
-                margin: 4px 0;
-                border: 1px solid #ccc;
-                padding: 4px;
-                font-size: 16px;
-            }
+        form button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
 
-            div {
-                display: flex;
-                justify-content: space-between;
-                margin-top: 16px;
-
-                button {
-                    padding: 8px 16px;
-                    border: none;
-                    border-radius: 4px;
-                    font-size: 14px;
-                    cursor: pointer;
-                }
-            }
+        form button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
-
 <body>
-    <div id="root"></div>
-    <script>
+    <div id="root">
+        <h1>Agenda de Contactos</h1>
+        <div class="agenda"></div>
+    </div>
+
+    <script type="text/babel">
+        const { createRoot } = ReactDOM;
+        const { useState } = React;
+
         const datos = [
             { id: 1, nombre: 'Juan', apellido: 'Perez', telefono: '(381) 123-4567', favorito: true },
             { id: 2, nombre: 'Maria', apellido: 'Gomez', telefono: '(381) 123-4567', favorito: false },
@@ -128,32 +148,68 @@
             { id: 18, nombre: 'Matias', apellido: 'Luna', telefono: '(381) 123-4567', favorito: false },
             { id: 19, nombre: 'Cecilia', apellido: 'Carrizo', telefono: '(381) 123-4567', favorito: true },
             { id: 20, nombre: 'Facundo', apellido: 'Paez', telefono: '(381) 123-4567', favorito: false }
-        ]
-    </script>
+        ];
 
-    <script type="text/babel">
-        const { createRoot } = ReactDOM
+        const Favorito = ({ id, favorito, cambiar }) => (
+            <span className="star-icon" onClick={() => cambiar(id)}>
+                {favorito ? <i className="fas fa-star"></i> : <i className="far fa-star"></i>}
+            </span>
+        );
 
-        const Contacto = ({ nombre, apellido, telefono }) =>
+        const Contacto = ({ id, nombre, apellido, telefono, favorito, cambiar }) => (
             <div className="card">
-                <div>{nombre} <b>{apellido}</b></div>
-                <div>{telefono}</div>
+                <div className="card-content">
+                    <div>
+                        <div className="name">{nombre} <b>{apellido}</b></div>
+                        <div className="info">{telefono}</div>
+                    </div>
+                    <Favorito id={id} favorito={favorito} cambiar={cambiar} />
+                </div>
             </div>
+        );
 
-        const Agenda = ({ datos }) =>
-            <div className="agenda">
-                {datos.map(contacto => <Contacto key={contacto.id} {...contacto} />)}
-            </div>
+        const Agenda = ({ datos }) => {
+            const [contactos, setContactos] = useState(datos);
 
-        const App = () =>
-            <div>
-                <h1>Agenda</h1>
-                <Agenda datos={datos} />
-            </div>
+            const cambiarFavorito = (id) => {
+                const nuevosContactos = contactos.map((contacto) =>
+                    contacto.id === id ? { ...contacto, favorito: !contacto.favorito } : contacto
+                );
+                setContactos(nuevosContactos);
+            };
 
-        const root = createRoot(document.getElementById('root'))
+            const favoritos = contactos.filter((contacto) => contacto.favorito);
+            const noFavoritos = contactos.filter((contacto) => !contacto.favorito);
+
+            return (
+                <div className="agenda">
+                    {favoritos.length > 0 && (
+                        <>
+                            <h2>Favoritos</h2>
+                            <div className="agenda">
+                                {favoritos.map((contacto) => (
+                                    <Contacto key={contacto.id} {...contacto} cambiar={cambiarFavorito} />
+                                ))}
+                            </div>
+                        </>
+                    )}
+
+                    <h2>Todos los contactos</h2>
+                    <div className="agenda">
+                        {noFavoritos.map((contacto) => (
+                            <Contacto key={contacto.id} {...contacto} cambiar={cambiarFavorito} />
+                        ))}
+                    </div>
+                </div>
+            );
+        };
+
+        const App = () => (
+            <Agenda datos={datos} />
+        );
+
+        const root = createRoot(document.getElementById('root'));
         root.render(<App />);
     </script>
 </body>
-
 </html>

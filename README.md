@@ -42,6 +42,7 @@
 1. 55578 - **Fernandez Dumit**, Patricio           
 1. 58735 - **Fernandez Gomez**, Manuel             
 1. 58723 - **Figueroa**, Santiago Isaac            
+1. 58781 - **Frias Armengol**, Facundo             
 1. 58734 - **Galvan**, Victor Mateo                
 1. 58740 - **Garcia**, Sergio Martín               
 1. 59135 - **Gomez**, Facundo Matias               
@@ -69,7 +70,6 @@
 1. 59909 - **Wierna**, Belén                       
 
 #### Libres
-1. 58781 - **Frias Armengol**, Facundo             
 1. 55751 - **Jeréz**, Francisco David              
 ---
 ## ¿Cómo se rinde el examen final?
