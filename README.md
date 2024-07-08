@@ -15,62 +15,62 @@
 
 
 #### Promocionados
-1. 55681 - **Bustos**, Mauricio Benjamin           
-1. 55457 - **Carranza**, Javier                    
-1. 58895 - **Flores Gonzalez**, Tomas              
-1. 59154 - **Garcia**, Máximo                      
-1. 59076 - **Gomez Martinez**, Matias              
-1. 58894 - **Gonzalez Nacusse**, Flavia            
-1. 58720 - **Gonzalez**, Martín Natanael           
-1. 59068 - **Gonzalez**, Silvina Mariela           
-1. 58786 - **Gutierrez**, Augusto Pedro            
-1. 58761 - **Juarez**, Lautaro Andres              
-1. 58758 - **Juarez**, Milagro Macarena            
-1. 58721 - **Juncos**, Gonzalo Sebastian           
-1. 58756 - **Lazarte**, Agustina Milagro           
-1. 58727 - **Lazarte**, Lucas                      
-1. 59099 - **Moyano Berrondo**, Tahiel L           
-1. 58805 - **Prieto**, Matias Hernan               
-1. 59054 - **Rahman Rintoul**, Ramiro              
-1. 58766 - **Reinoso**, Lisandro Gabriel           
-1. 58806 - **Rojas**, Carlos Augusto               
-1. 58845 - **Terrera**, Augusto Dante              
-1. 59188 - **Vaca**, Andres Emanuel                
+1. 55681 - **Bustos**, Mauricio Benjamin            <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span>
+1. 55457 - **Carranza**, Javier                     <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span>
+1. 58895 - **Flores Gonzalez**, Tomas               <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span>
+1. 59154 - **Garcia**, Máximo                       <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span>
+1. 59076 - **Gomez Martinez**, Matias               <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span>
+1. 58894 - **Gonzalez Nacusse**, Flavia             <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span>
+1. 58720 - **Gonzalez**, Martín Natanael            <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span>
+1. 59068 - **Gonzalez**, Silvina Mariela            <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span>
+1. 58786 - **Gutierrez**, Augusto Pedro             <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span>
+1. 58761 - **Juarez**, Lautaro Andres               <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span>
+1. 58758 - **Juarez**, Milagro Macarena             <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span>
+1. 58721 - **Juncos**, Gonzalo Sebastian            <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span>
+1. 58756 - **Lazarte**, Agustina Milagro            <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span>
+1. 58727 - **Lazarte**, Lucas                       <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span>
+1. 59099 - **Moyano Berrondo**, Tahiel L            <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span>
+1. 58805 - **Prieto**, Matias Hernan                <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span>
+1. 59054 - **Rahman Rintoul**, Ramiro               <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span>
+1. 58766 - **Reinoso**, Lisandro Gabriel            <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span>
+1. 58806 - **Rojas**, Carlos Augusto                <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span>
+1. 58845 - **Terrera**, Augusto Dante               <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span>
+1. 59188 - **Vaca**, Andres Emanuel                 <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span>
 
 #### Regulares
-1. 58773 - **Elli Salazar**, Gerónimo              
-1. 55578 - **Fernandez Dumit**, Patricio           
-1. 58735 - **Fernandez Gomez**, Manuel             
-1. 58723 - **Figueroa**, Santiago Isaac            
-1. 58781 - **Frias Armengol**, Facundo             
-1. 58734 - **Galvan**, Victor Mateo                
-1. 58740 - **Garcia**, Sergio Martín               
-1. 59135 - **Gomez**, Facundo Matias               
-1. 59488 - **Gonzalez**, Mariano Emanuel           
-1. 58880 - **Gutierrez**, Cecilia Ana Lu           
-1. 58687 - **Jadur**, Sofia Nahir                  
-1. 59070 - **Ladina**, Maia Agostina               
-1. 58737 - **Lasagna**, Manuel                     
-1. 59152 - **Lopez Chipoloni**, Agustin            
-1. 58724 - **Lopez Garcia**, Marcos Juli           
-1. 58726 - **Lopez**, Fausto Agustin               
-1. 58729 - **Lovey**, Mathias Exequiel             
-1. 59071 - **Medina**, Daiana Micaela              
-1. 59001 - **Peralta**, Axel Rubens                
-1. 58753 - **Rivadeneira**, Lautaro                
-1. 58951 - **Robles**, Ezequiel                    
-1. 58686 - **Rodriguez**, Gustavo                  
-1. 58692 - **Rosello Salas**, Maia Josef           
-1. 58873 - **Salazar**, Enzo Gabriel               
-1. 55870 - **Stemberger**, Emiliano                
-1. 59052 - **Teseira**, Lucas Benjamin             
-1. 57543 - **Touceda**, Federico                   
-1. 59064 - **Urbani**, Juan Pablo                  
-1. 58899 - **Villagra**, Juan Gabriel              
-1. 59909 - **Wierna**, Belén                       
+1. 58773 - **Elli Salazar**, Gerónimo               <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span>
+1. 55578 - **Fernandez Dumit**, Patricio            <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span>
+1. 58735 - **Fernandez Gomez**, Manuel              <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span>
+1. 58723 - **Figueroa**, Santiago Isaac             <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span>
+1. 58781 - **Frias Armengol**, Facundo              <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span>
+1. 58734 - **Galvan**, Victor Mateo                 <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span>
+1. 58740 - **Garcia**, Sergio Martín                <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span>
+1. 59135 - **Gomez**, Facundo Matias                <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🔴</span><span style="font-size: 5px;">🟡</span>
+1. 59488 - **Gonzalez**, Mariano Emanuel            <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span>
+1. 58880 - **Gutierrez**, Cecilia Ana Lu            <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span>
+1. 58687 - **Jadur**, Sofia Nahir                   <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span>
+1. 59070 - **Ladina**, Maia Agostina                <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span>
+1. 58737 - **Lasagna**, Manuel                      <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span>
+1. 59152 - **Lopez Chipoloni**, Agustin             <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span>
+1. 58724 - **Lopez Garcia**, Marcos Juli            <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span>
+1. 58726 - **Lopez**, Fausto Agustin                <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span>
+1. 58729 - **Lovey**, Mathias Exequiel              <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span>
+1. 59071 - **Medina**, Daiana Micaela               <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span>
+1. 59001 - **Peralta**, Axel Rubens                 <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span>
+1. 58753 - **Rivadeneira**, Lautaro                 <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span>
+1. 58951 - **Robles**, Ezequiel                     <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span>
+1. 58686 - **Rodriguez**, Gustavo                   <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span>
+1. 58692 - **Rosello Salas**, Maia Josef            <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span>
+1. 58873 - **Salazar**, Enzo Gabriel                <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span>
+1. 55870 - **Stemberger**, Emiliano                 <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span>
+1. 59052 - **Teseira**, Lucas Benjamin              <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🔴</span><span style="font-size: 5px;">🟡</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🔴</span><span style="font-size: 5px;">🟡</span>
+1. 57543 - **Touceda**, Federico                    <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span>
+1. 59064 - **Urbani**, Juan Pablo                   <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span>
+1. 58899 - **Villagra**, Juan Gabriel               <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟡</span>
+1. 59909 - **Wierna**, Belén                        <span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 5px;">🟢</span><span style="font-size: 3px;">🟢</span><span style="font-size: 3px;">🔴</span><span style="font-size: 5px;">🟡</span>
 
 #### Libres
-1. 55751 - **Jeréz**, Francisco David              
+1. 55751 - **Jeréz**, Francisco David               <span style="font-size: 3px;">🔴</span><span style="font-size: 3px;">🔴</span><span style="font-size: 5px;">🔴</span><span style="font-size: 3px;">🔴</span><span style="font-size: 3px;">🔴</span><span style="font-size: 5px;">🔴</span>
 ---
 ## ¿Cómo se rinde el examen final?
 
