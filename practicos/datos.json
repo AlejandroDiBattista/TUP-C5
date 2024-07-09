@@ -56,7 +56,7 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)",
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (express)",
     "nota_tp3": 7,
     "comentario_tp3": "",
     "estado": "regular",
@@ -121,7 +121,7 @@
     "nota_tp3": 10,
     "comentario_tp3": "Diferencias menores del diseño",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)",
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (express)",
     "estado": "regular",
     "subio": "21-Jun 20:27"
   },
@@ -308,7 +308,7 @@
     "tp5": true,
     "tp6": true,
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)",
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (express)",
     "nota_tp3": 10,
     "comentario_tp3": "Perfecto",
     "estado": "regular",
@@ -415,7 +415,7 @@
     "nota_tp3": 9,
     "comentario_tp3": "No permite cancelar la alta de producto;No respeta el diseño",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)",
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (express)",
     "estado": "regular",
     "subio": "20-Jun 18:02"
   },
@@ -667,7 +667,7 @@
     "nota_tp3": 9,
     "comentario_tp3": "Falla la cancelacion al agregar",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)",
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (express)",
     "estado": "regular",
     "subio": "21-Jun 01:44"
   },
@@ -792,9 +792,9 @@
     "tp6": true,
     "nota_tp3": 9,
     "comentario_tp3": "No reutiliza el formulario de agregar producto;No se puede cancelar el alta",
-    "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)",
-    "estado": "regular",
+    "nota_tp6": 9,
+    "comentario_tp6": "",
+    "estado": "promocionado",
     "subio": "19-Jun 19:28"
   },
   {
@@ -814,7 +814,7 @@
     "nota_tp3": 9,
     "comentario_tp3": "Permite realizar multiples altas simultaneas",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)",
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (express)",
     "estado": "regular",
     "subio": "22-Jun 17:07"
   },
@@ -856,7 +856,7 @@
     "nota_tp3": 9,
     "comentario_tp3": "No reutiliza el formulario de agregar producto",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express);Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (react)",
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (express);Son iguales #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (react)",
     "estado": "regular",
     "subio": "20-Jun 18:02"
   },
@@ -877,7 +877,7 @@
     "nota_tp3": 9,
     "comentario_tp3": "No tiene el boton cancelar en la alta ",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express);Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (react)",
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (express);Son iguales #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (react)",
     "estado": "regular",
     "subio": "21-Jun 16:27"
   },
@@ -940,7 +940,7 @@
     "nota_tp3": 8,
     "comentario_tp3": "No hace un formulario para dar la alta sino muestra siempre los campos.;Permit dar la alta sin tener en cuenta si se ingresaron los datos.",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express);Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (react)",
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #39, #41, #42, #45, #46, #51, #53 (express);Son iguales #20, #32, #39, #41, #42, #45, #46, #51, #53 (react)",
     "estado": "regular",
     "subio": "25-Jun 20:46"
   },
@@ -961,7 +961,7 @@
     "nota_tp3": 10,
     "comentario_tp3": "Diferencias menores en el diseño",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express)",
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #39, #41, #42, #45, #46, #51, #53 (express)",
     "estado": "regular",
     "subio": "21-Jun 13:54"
   },
@@ -1024,7 +1024,7 @@
     "nota_tp3": 10,
     "comentario_tp3": "Diferencias menores en el diseño",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #15, #20, #23, #28, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)",
+    "comentario_tp6": "Son iguales #03, #15, #20, #23, #28, #39, #41, #42, #45, #46, #49, #51, #53 (express)",
     "estado": "regular",
     "subio": "21-Jun 22:53"
   },
@@ -1068,7 +1068,7 @@
     "nota_tp3": 10,
     "comentario_tp3": "Perfecto",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express);Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (react)",
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (express);Son iguales #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (react)",
     "estado": "regular",
     "subio": "20-Jun 18:24"
   },
@@ -1107,7 +1107,7 @@
     "nota_tp3": 9,
     "comentario_tp3": "No hay forma de cancelar la alta",
     "nota_tp6": 7,
-    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express);Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (react)",
+    "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (express);Son iguales #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (react)",
     "estado": "regular",
     "subio": "21-Jun 16:32"
   }

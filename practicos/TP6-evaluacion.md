@@ -9,7 +9,7 @@
 
 ## 03 - 58773 - Elli Salazar, Gerónimo
 - Nota: 7
-- Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)
+- Son iguales #03, #06, #15, #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (express)
 
 ## 04 - 55578 - Fernandez Dumit, Patricio
 - Nota: 7
@@ -21,7 +21,7 @@
 
 ## 06 - 58723 - Figueroa, Santiago Isaac
 - Nota: 7
-- Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)
+- Son iguales #03, #06, #15, #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (express)
 
 ## 07 - 58895 - Flores Gonzalez, Tomas
 - Nota: 10
@@ -53,7 +53,7 @@
 
 ## 15 - 59488 - Gonzalez, Mariano Emanuel
 - Nota: 7
-- Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)
+- Son iguales #03, #06, #15, #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (express)
 
 ## 16 - 58720 - Gonzalez, Martín Natanael
 - Nota: 10
@@ -74,7 +74,7 @@
 
 ## 20 - 58687 - Jadur, Sofia Nahir
 - Nota: 7
-- Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)
+- Son iguales #03, #06, #15, #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (express)
 
 ## 21 - 58736 - Juarez Hindi, Lucas David
 - Nota: 10
@@ -119,7 +119,7 @@
 
 ## 32 - 58729 - Lovey, Mathias Exequiel
 - Nota: 7
-- Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)
+- Son iguales #03, #06, #15, #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (express)
 
 ## 33 - 59071 - Medina, Daiana Micaela
 - Nota: 7
@@ -138,25 +138,24 @@
 - Nota: 10
 
 ## 38 - 58753 - Rivadeneira, Lautaro
-- Nota: 7
-- Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)
+- Nota: 9
 
 ## 39 - 58686 - Rodriguez, Gustavo
 - Nota: 7
-- Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)
+- Son iguales #03, #06, #15, #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (express)
 
 ## 40 - 58806 - Rojas, Carlos Augusto
 - Nota: 10
 
 ## 41 - 58692 - Rosello Salas, Maia Josef
 - Nota: 7
-- Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)
-- Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (react)
+- Son iguales #03, #06, #15, #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (express)
+- Son iguales #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (react)
 
 ## 42 - 58873 - Salazar, Enzo Gabriel
 - Nota: 7
-- Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)
-- Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (react)
+- Son iguales #03, #06, #15, #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (express)
+- Son iguales #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (react)
 
 ## 43 - 55870 - Stemberger, Emiliano
 - Nota: 7
@@ -167,12 +166,12 @@
 
 ## 45 - 59052 - Teseira, Lucas Benjamin
 - Nota: 7
-- Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express)
-- Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (react)
+- Son iguales #03, #06, #15, #20, #32, #39, #41, #42, #45, #46, #51, #53 (express)
+- Son iguales #20, #32, #39, #41, #42, #45, #46, #51, #53 (react)
 
 ## 46 - 57543 - Touceda, Federico
 - Nota: 7
-- Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #51, #53 (express)
+- Son iguales #03, #06, #15, #20, #32, #39, #41, #42, #45, #46, #51, #53 (express)
 
 ## 47 - 59064 - Urbani, Juan Pablo
 - Nota: 7
@@ -183,7 +182,7 @@
 
 ## 49 - 58899 - Villagra, Juan Gabriel
 - Nota: 7
-- Son iguales #03, #15, #20, #23, #28, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)
+- Son iguales #03, #15, #20, #23, #28, #39, #41, #42, #45, #46, #49, #51, #53 (express)
 
 ## 50 - 59001 - Peralta, Axel Rubens
 - Nota: 7
@@ -191,10 +190,10 @@
 
 ## 51 - 58951 - Robles, Ezequiel
 - Nota: 7
-- Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)
-- Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (react)
+- Son iguales #03, #06, #15, #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (express)
+- Son iguales #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (react)
 
 ## 53 - 59909 - Wierna, Belén
 - Nota: 7
-- Son iguales #03, #06, #15, #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (express)
-- Son iguales #20, #32, #38, #39, #41, #42, #45, #46, #49, #51, #53 (react)
+- Son iguales #03, #06, #15, #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (express)
+- Son iguales #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (react)
