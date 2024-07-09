@@ -540,8 +540,8 @@
     "tp6": true,
     "nota_tp3": 6,
     "comentario_tp3": "No permite la edicion en el lugar.;No funciona el incremento de cantidad;No respeta el diseño;Al borrar un elemento se borran todos",
-    "nota_tp6": 1,
-    "comentario_tp6": "No funciona;React al Servidor;El servidor no hace nada;Redirige la pagina a un sitio de pirateo de informacion",
+    "nota_tp6": 9,
+    "comentario_tp6": "Redirige a la pagina sesion.html ",
     "estado": "regular",
     "subio": "02-Jul 18:37"
   },
