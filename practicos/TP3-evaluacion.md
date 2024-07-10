@@ -91,9 +91,7 @@
 - No respeta el diseño
 
 ## 21 - 58736 - Juarez Hindi, Lucas David
-- Nota: 8
-- No permite agregar cuando se esta editando
-- No respeta el diseño original
+- Nota: 9
 
 ## 22 - 58761 - Juarez, Lautaro Andres
 - Nota: 10
