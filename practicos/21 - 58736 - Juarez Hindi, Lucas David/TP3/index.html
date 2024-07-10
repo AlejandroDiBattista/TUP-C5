@@ -2,16 +2,18 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Control de depósito (Lucas Juarez Hindi)</title>
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://kit.fontawesome.com/d59e108fde.js" crossorigin="anonymous"></script>
+    <title>Control Depósito (Lucas David Juarez Hindi)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="root"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://kit.fontawesome.com/d59e108fde.js" crossorigin="anonymous"></script>
+
     <script type="text/babel">
         const { useState, useEffect } = React;
 
@@ -22,6 +24,19 @@
             { id: 6, nombre: 'Mirinda', codigo: '7797894561230', cantidad: 4, editando: false },
             { id: 4, nombre: 'Sprite', codigo: '7796543219870', cantidad: 5, editando: false }
         ];
+
+        function proximoId(productos) {
+            return productos.length ? Math.max(...productos.map(p => p.id)) + 1 : 1;
+        }
+
+        function leerProductos() {
+            const productos = JSON.parse(localStorage.getItem('productos'));
+            return productos ? productos : ProductosIniciales;
+        }
+
+        function guardarProductos(productos) {
+            localStorage.setItem('productos', JSON.stringify(productos));
+        }
 
         function Editar({ producto, alGuardar, alCancelar }) {
             const [nombre, setNombre] = useState(producto.nombre);
@@ -75,10 +90,10 @@
                     </div>
                     <div className="item-actions">
                         <button className="edit-button" onClick={(e) => { e.stopPropagation(); alEditar(); }}>
-                            <i className="fa-regular fa-pen-to-square"></i> 
+                            <i className="fa-regular fa-pen-to-square"></i>
                         </button>
                         <button className="delete-button" onClick={(e) => { e.stopPropagation(); alBorrar(); }}>
-                            <i className="fa-solid fa-trash"></i> 
+                            <i className="fa-solid fa-trash"></i>
                         </button>
                     </div>
                 </div>
@@ -99,9 +114,9 @@
             return (
                 <div className="container">
                     <header className={`header ${isHeaderSticky ? 'sticky' : ''}`}>
-                        <h1 className="title">Control de Déposito</h1>
+                        <h1 className="title">Control Depósito</h1>
                         <button className="add-button" onClick={alAgregar}>
-                            <i className="fa-regular fa-square-plus"></i>
+                            <i className="fa-solid fa-plus"></i>
                         </button>
                     </header>
                     <div className="item-list">
@@ -134,19 +149,6 @@
             );
         }
 
-        function proximoId(productos) {
-            return productos.length ? Math.max(...productos.map(p => p.id)) + 1 : 1;
-        }
-
-        function leerProductos() {
-            const productos = JSON.parse(localStorage.getItem('productos'));
-            return productos ? productos : ProductosIniciales;
-        }
-
-        function guardarProductos(productos) {
-            localStorage.setItem('productos', JSON.stringify(productos));
-        }
-
         function App() {
             const [productos, setProductos] = useState(leerProductos());
 
@@ -155,19 +157,7 @@
             }, [productos]);
 
             const agregar = () => {
-                const productoEnEdicion = productos.find(producto => producto.editando);
-
-                if (productoEnEdicion) {
-                    const confirmar = window.confirm("Ya hay un producto en modo edición. ¿Deseas cancelar la edición actual y agregar uno nuevo?");
-                    if (!confirmar) {
-                        return; 
-                    } else {
-                        const productosSinEdicion = productos.filter(producto => !producto.editando);
-                        setProductos(productosSinEdicion);
-                    }
-                }
-
-                let nuevoId = proximoId(productos);
+                const nuevoId = proximoId(productos);
                 const nuevoProducto = { id: nuevoId, nombre: '', codigo: '', cantidad: 0, editando: true };
                 setProductos([nuevoProducto, ...productos]);
             };
@@ -183,16 +173,20 @@
             const cancelarEdicion = (id) => {
                 const productosOriginales = leerProductos();
                 const productoOriginal = productosOriginales.find(producto => producto.id === id);
-                setProductos(
-                    productos.map(producto =>
-                        producto.id === id ? { ...productoOriginal, editando: false } : producto
-                    )
-                );
+                
+                if (productoOriginal.nombre === '' && productoOriginal.codigo === '' && productoOriginal.cantidad === 0) {
+                    borrar(id);
+                } else {
+                    setProductos(
+                        productos.map(producto =>
+                            producto.id === id ? { ...productoOriginal, editando: false } : producto
+                        )
+                    );
+                }
             };
 
             const cancelarAgregar = () => {
-                const nuevosProductos = productos.filter(producto => !producto.editando);
-                setProductos(nuevosProductos);
+                setProductos(productos.filter(producto => producto.id !== -1));
             };
 
             const borrar = (id) => {
@@ -222,16 +216,18 @@
             };
 
             return (
-                <Inventario
-                    datos={productos}
-                    alAgregar={agregar}
-                    alEditar={editar}
-                    alBorrar={borrar}
-                    alGuardar={guardar}
-                    alCancelarEdicion={cancelarEdicion}
-                    alCancelarAgregar={cancelarAgregar}
-                    alIncrementarCantidad={incrementarCantidad}
-                />
+                <div>
+                    <Inventario
+                        datos={productos}
+                        alAgregar={agregar}
+                        alEditar={editar}
+                        alBorrar={borrar}
+                        alGuardar={guardar}
+                        alCancelarEdicion={cancelarEdicion}
+                        alCancelarAgregar={cancelarAgregar}
+                        alIncrementarCantidad={incrementarCantidad}
+                    />
+                </div>
             );
         }
 
