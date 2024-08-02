@@ -18,7 +18,8 @@
     "nota_tp6": 10,
     "comentario_tp6": "",
     "estado": "promocionado",
-    "subio": "21-Jun 21:29"
+    "subio": "21-Jun 21:29",
+    "nota": 10
   },
   {
     "id": "C5-02",
@@ -39,7 +40,8 @@
     "nota_tp6": 9,
     "comentario_tp6": "Faltaba Express-session",
     "estado": "promocionado",
-    "subio": "21-Jun 21:14"
+    "subio": "21-Jun 21:14",
+    "nota": 10
   },
   {
     "id": "C5-03",
@@ -60,7 +62,8 @@
     "nota_tp3": 7,
     "comentario_tp3": "",
     "estado": "regular",
-    "subio": "21-Jun 13:41"
+    "subio": "21-Jun 13:41",
+    "nota": 7
   },
   {
     "id": "C5-04",
@@ -81,7 +84,8 @@
     "nota_tp6": 7,
     "comentario_tp6": "Son iguales #04, #25, #33",
     "estado": "regular",
-    "subio": "21-Jun 15:24"
+    "subio": "21-Jun 15:24",
+    "nota": 7
   },
   {
     "id": "C5-05",
@@ -102,7 +106,8 @@
     "nota_tp6": 7,
     "comentario_tp6": "Son iguales #05, #09",
     "estado": "regular",
-    "subio": "25-Jun 19:32"
+    "subio": "25-Jun 19:32",
+    "nota": 7
   },
   {
     "id": "C5-06",
@@ -123,7 +128,8 @@
     "nota_tp6": 7,
     "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (express)",
     "estado": "regular",
-    "subio": "21-Jun 20:27"
+    "subio": "21-Jun 20:27",
+    "nota": 8
   },
   {
     "id": "C5-07",
@@ -144,7 +150,8 @@
     "nota_tp6": 10,
     "comentario_tp6": "",
     "estado": "promocionado",
-    "subio": "20-Jun 20:17"
+    "subio": "20-Jun 20:17",
+    "nota": 10
   },
   {
     "id": "C5-08",
@@ -165,7 +172,8 @@
     "nota_tp6": 8,
     "comentario_tp6": "",
     "estado": "regular",
-    "subio": "21-Jun 23:43"
+    "subio": "21-Jun 23:43",
+    "nota": 8
   },
   {
     "id": "C5-09",
@@ -186,7 +194,8 @@
     "nota_tp6": 7,
     "comentario_tp6": "Son iguales #05, #09",
     "estado": "regular",
-    "subio": "21-Jun 20:34"
+    "subio": "21-Jun 20:34",
+    "nota": 7
   },
   {
     "id": "C5-10",
@@ -207,7 +216,8 @@
     "nota_tp6": 9,
     "comentario_tp6": "Son iguales #10, #29",
     "estado": "promocionado",
-    "subio": "21-Jun 12:19"
+    "subio": "21-Jun 12:19",
+    "nota": 10
   },
   {
     "id": "C5-11",
@@ -228,7 +238,8 @@
     "nota_tp6": 10,
     "comentario_tp6": "",
     "estado": "regular",
-    "subio": "21-Jun 16:59"
+    "subio": "21-Jun 16:59",
+    "nota": 8
   },
   {
     "id": "C5-12",
@@ -249,7 +260,8 @@
     "nota_tp6": 10,
     "comentario_tp6": "",
     "estado": "promocionado",
-    "subio": "14-Jun 00:50"
+    "subio": "14-Jun 00:50",
+    "nota": 10
   },
   {
     "id": "C5-13",
@@ -270,7 +282,8 @@
     "nota_tp6": 7,
     "comentario_tp6": "Son iguales #13, #31, #50;Tiene una clase en controladores que no se usa y es identica a servidor!",
     "estado": "regular",
-    "subio": "21-Jun 22:51"
+    "subio": "21-Jun 22:51",
+    "nota": 8
   },
   {
     "id": "C5-14",
@@ -291,7 +304,8 @@
     "nota_tp6": 9,
     "comentario_tp6": "",
     "estado": "promocionado",
-    "subio": "19-Jun 21:33"
+    "subio": "19-Jun 21:33",
+    "nota": 10
   },
   {
     "id": "C5-15",
@@ -312,7 +326,8 @@
     "nota_tp3": 10,
     "comentario_tp3": "Perfecto",
     "estado": "regular",
-    "subio": "21-Jun 18:06"
+    "subio": "21-Jun 18:06",
+    "nota": 8
   },
   {
     "id": "C5-16",
@@ -333,7 +348,8 @@
     "nota_tp6": 10,
     "comentario_tp6": "El mejor diseño y navegación",
     "estado": "promocionado",
-    "subio": "21-Jun 20:16"
+    "subio": "21-Jun 20:16",
+    "nota": 10
   },
   {
     "id": "C5-17",
@@ -354,7 +370,8 @@
     "nota_tp6": 10,
     "comentario_tp6": "No importa express-session",
     "estado": "promocionado",
-    "subio": "20-Jun 19:06"
+    "subio": "20-Jun 19:06",
+    "nota": 10
   },
   {
     "id": "C5-18",
@@ -375,7 +392,8 @@
     "nota_tp6": 9,
     "comentario_tp6": "No instala bcrypt ni express-session;No hay forma de volver de la pantalla Info",
     "estado": "promocionado",
-    "subio": "21-Jun 01:40"
+    "subio": "21-Jun 01:40",
+    "nota": 10
   },
   {
     "id": "C5-19",
@@ -396,7 +414,8 @@
     "nota_tp6": 7,
     "comentario_tp6": "Son iguales #19, #47",
     "estado": "regular",
-    "subio": "21-Jun 16:52"
+    "subio": "21-Jun 16:52",
+    "nota": 8
   },
   {
     "id": "C5-20",
@@ -417,7 +436,8 @@
     "nota_tp6": 7,
     "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (express)",
     "estado": "regular",
-    "subio": "20-Jun 18:02"
+    "subio": "20-Jun 18:02",
+    "nota": 8
   },
   {
     "id": "C5-21",
@@ -437,8 +457,9 @@
     "comentario_tp3": "",
     "nota_tp6": 10,
     "comentario_tp6": "",
-    "estado": "recuperar",
-    "subio": "21-Jun 09:35"
+    "estado": "promocionado",
+    "subio": "21-Jun 09:35",
+    "nota": 10
   },
   {
     "id": "C5-22",
@@ -459,7 +480,8 @@
     "nota_tp6": 10,
     "comentario_tp6": "",
     "estado": "promocionado",
-    "subio": "02-Jul 17:06"
+    "subio": "02-Jul 17:06",
+    "nota": 10
   },
   {
     "id": "C5-23",
@@ -480,7 +502,8 @@
     "nota_tp6": 9,
     "comentario_tp6": "",
     "estado": "promocionado",
-    "subio": "21-Jun 17:01"
+    "subio": "21-Jun 17:01",
+    "nota": 9
   },
   {
     "id": "C5-24",
@@ -501,7 +524,8 @@
     "nota_tp6": 10,
     "comentario_tp6": "",
     "estado": "promocionado",
-    "subio": "21-Jun 16:21"
+    "subio": "21-Jun 16:21",
+    "nota": 10
   },
   {
     "id": "C5-25",
@@ -522,7 +546,8 @@
     "nota_tp6": 7,
     "comentario_tp6": "Son iguales #04, #25, #33",
     "estado": "regular",
-    "subio": "21-Jun 18:24"
+    "subio": "21-Jun 18:24",
+    "nota": 8
   },
   {
     "id": "C5-26",
@@ -543,7 +568,8 @@
     "nota_tp6": 9,
     "comentario_tp6": "Redirige a la pagina sesion.html ",
     "estado": "regular",
-    "subio": "02-Jul 18:37"
+    "subio": "02-Jul 18:37",
+    "nota": 8
   },
   {
     "id": "C5-27",
@@ -564,7 +590,8 @@
     "nota_tp6": 9,
     "comentario_tp6": "",
     "estado": "promocionado",
-    "subio": "21-Jun 21:57"
+    "subio": "21-Jun 21:57",
+    "nota": 9
   },
   {
     "id": "C5-28",
@@ -585,7 +612,8 @@
     "nota_tp6": 10,
     "comentario_tp6": "",
     "estado": "promocionado",
-    "subio": "21-Jun 20:55"
+    "subio": "21-Jun 20:55",
+    "nota": 10
   },
   {
     "id": "C5-29",
@@ -606,7 +634,8 @@
     "nota_tp6": 7,
     "comentario_tp6": "Son iguales #10, #29",
     "estado": "regular",
-    "subio": "21-Jun 21:50"
+    "subio": "21-Jun 21:50",
+    "nota": 8
   },
   {
     "id": "C5-30",
@@ -627,7 +656,8 @@
     "nota_tp6": 7,
     "comentario_tp6": "Son iguales #30, #43",
     "estado": "regular",
-    "subio": "21-Jun 13:32"
+    "subio": "21-Jun 13:32",
+    "nota": 8
   },
   {
     "id": "C5-31",
@@ -648,7 +678,8 @@
     "nota_tp6": 7,
     "comentario_tp6": "Son iguales #13, #31, #50",
     "estado": "regular",
-    "subio": "21-Jun 20:25"
+    "subio": "21-Jun 20:25",
+    "nota": 8
   },
   {
     "id": "C5-32",
@@ -669,7 +700,8 @@
     "nota_tp6": 7,
     "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (express)",
     "estado": "regular",
-    "subio": "21-Jun 01:44"
+    "subio": "21-Jun 01:44",
+    "nota": 8
   },
   {
     "id": "C5-33",
@@ -690,7 +722,8 @@
     "nota_tp6": 7,
     "comentario_tp6": "Son iguales #04, #25, #33",
     "estado": "regular",
-    "subio": "21-Jun 16:48"
+    "subio": "21-Jun 16:48",
+    "nota": 8
   },
   {
     "id": "C5-34",
@@ -711,7 +744,8 @@
     "estado": "promocionado",
     "subio": "24-Jun 21:20",
     "nota_tp6": 10,
-    "comentario_tp6": ""
+    "comentario_tp6": "",
+    "nota": 10
   },
   {
     "id": "C5-35",
@@ -732,7 +766,8 @@
     "nota_tp6": 10,
     "comentario_tp6": "",
     "estado": "promocionado",
-    "subio": "20-Jun 16:22"
+    "subio": "20-Jun 16:22",
+    "nota": 10
   },
   {
     "id": "C5-36",
@@ -753,7 +788,8 @@
     "nota_tp6": 10,
     "comentario_tp6": "",
     "estado": "promocionado",
-    "subio": "21-Jun 22:41"
+    "subio": "21-Jun 22:41",
+    "nota": 10
   },
   {
     "id": "C5-37",
@@ -774,7 +810,8 @@
     "nota_tp6": 10,
     "comentario_tp6": "",
     "estado": "promocionado",
-    "subio": "21-Jun 20:00"
+    "subio": "21-Jun 20:00",
+    "nota": 10
   },
   {
     "id": "C5-38",
@@ -795,7 +832,8 @@
     "nota_tp6": 9,
     "comentario_tp6": "",
     "estado": "promocionado",
-    "subio": "19-Jun 19:28"
+    "subio": "19-Jun 19:28",
+    "nota": 9
   },
   {
     "id": "C5-39",
@@ -816,7 +854,8 @@
     "nota_tp6": 7,
     "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (express)",
     "estado": "regular",
-    "subio": "22-Jun 17:07"
+    "subio": "22-Jun 17:07",
+    "nota": 8
   },
   {
     "id": "C5-40",
@@ -837,7 +876,8 @@
     "nota_tp6": 10,
     "comentario_tp6": "",
     "estado": "promocionado",
-    "subio": "21-Jun 15:06"
+    "subio": "21-Jun 15:06",
+    "nota": 10
   },
   {
     "id": "C5-41",
@@ -858,7 +898,8 @@
     "nota_tp6": 7,
     "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (express);Son iguales #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (react)",
     "estado": "regular",
-    "subio": "20-Jun 18:02"
+    "subio": "20-Jun 18:02",
+    "nota": 8
   },
   {
     "id": "C5-42",
@@ -879,7 +920,8 @@
     "nota_tp6": 7,
     "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (express);Son iguales #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (react)",
     "estado": "regular",
-    "subio": "21-Jun 16:27"
+    "subio": "21-Jun 16:27",
+    "nota": 8
   },
   {
     "id": "C5-43",
@@ -900,7 +942,8 @@
     "nota_tp6": 7,
     "comentario_tp6": "Son iguales #30, #43",
     "estado": "regular",
-    "subio": "21-Jun 21:26"
+    "subio": "21-Jun 21:26",
+    "nota": 8
   },
   {
     "id": "C5-44",
@@ -921,7 +964,8 @@
     "nota_tp6": 9,
     "comentario_tp6": "",
     "estado": "promocionado",
-    "subio": "21-Jun 20:55"
+    "subio": "21-Jun 20:55",
+    "nota": 10
   },
   {
     "id": "C5-45",
@@ -942,7 +986,8 @@
     "nota_tp6": 7,
     "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #39, #41, #42, #45, #46, #51, #53 (express);Son iguales #20, #32, #39, #41, #42, #45, #46, #51, #53 (react)",
     "estado": "regular",
-    "subio": "25-Jun 20:46"
+    "subio": "25-Jun 20:46",
+    "nota": 7
   },
   {
     "id": "C5-46",
@@ -963,7 +1008,8 @@
     "nota_tp6": 7,
     "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #39, #41, #42, #45, #46, #51, #53 (express)",
     "estado": "regular",
-    "subio": "21-Jun 13:54"
+    "subio": "21-Jun 13:54",
+    "nota": 8
   },
   {
     "id": "C5-47",
@@ -984,7 +1030,8 @@
     "nota_tp6": 7,
     "comentario_tp6": "Son iguales #19, #47",
     "estado": "regular",
-    "subio": "21-Jun 18:37"
+    "subio": "21-Jun 18:37",
+    "nota": 8
   },
   {
     "id": "C5-48",
@@ -1005,7 +1052,8 @@
     "nota_tp3": 9,
     "comentario_tp3": "La alta la realiza antes de titulo;No respeta el diseño de la consigna",
     "estado": "promocionado",
-    "subio": "21-Jun 21:17"
+    "subio": "21-Jun 21:17",
+    "nota": 9
   },
   {
     "id": "C5-49",
@@ -1026,7 +1074,8 @@
     "nota_tp6": 7,
     "comentario_tp6": "Son iguales #03, #15, #20, #23, #28, #39, #41, #42, #45, #46, #49, #51, #53 (express)",
     "estado": "regular",
-    "subio": "21-Jun 22:53"
+    "subio": "21-Jun 22:53",
+    "nota": 8
   },
   {
     "id": "C5-50",
@@ -1048,7 +1097,8 @@
     "nota_tp6": 7,
     "comentario_tp6": "Son iguales #13, #31, #50",
     "estado": "regular",
-    "subio": "24-Jun 23:34"
+    "subio": "24-Jun 23:34",
+    "nota": 8
   },
   {
     "id": "C5-51",
@@ -1070,7 +1120,8 @@
     "nota_tp6": 7,
     "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (express);Son iguales #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (react)",
     "estado": "regular",
-    "subio": "20-Jun 18:24"
+    "subio": "20-Jun 18:24",
+    "nota": 8
   },
   {
     "id": "C5-52",
@@ -1088,7 +1139,8 @@
     "tp5": false,
     "tp6": false,
     "estado": "libre",
-    "subio": "No subido"
+    "subio": "No subido",
+    "nota": 1
   },
   {
     "id": "C5-53",
@@ -1109,6 +1161,7 @@
     "nota_tp6": 7,
     "comentario_tp6": "Son iguales #03, #06, #15, #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (express);Son iguales #20, #32, #39, #41, #42, #45, #46, #49, #51, #53 (react)",
     "estado": "regular",
-    "subio": "21-Jun 16:32"
+    "subio": "21-Jun 16:32",
+    "nota": 8
   }
 ]
