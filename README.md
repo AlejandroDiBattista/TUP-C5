@@ -1,7 +1,4 @@
 # Resultado Final - Comisión 5
-(Estamos revisando el material, puede haber cambios)
-
-
 
 #### Promocionados
 1. 55681 - **Bustos**, Mauricio Benjamin             <img src="./material/verde.png" width="4" height="4"> <img src="./material/verde.png" width="4" height="4"> <img src="./material/verde.png" width="6" height="6"> <img src="./material/verde.png" width="4" height="4"> <img src="./material/verde.png" width="4" height="4"> <img src="./material/verde.png" width="6" height="6">
